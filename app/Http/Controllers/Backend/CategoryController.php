@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Livewire\Categorie\Categorie;
+// use App\Livewire\Categorie\Categorie;
+
 
 class CategoryController extends Controller
 {
@@ -25,5 +27,11 @@ class CategoryController extends Controller
 
      public function edit($id){
      return view('admin.Category.edit',compact('id'));
+     }
+
+
+     public function destroy($id){
+      Categorie::find($id)->delete();
+      return back();
      }
 }

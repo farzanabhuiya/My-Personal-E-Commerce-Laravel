@@ -1,3 +1,4 @@
+
 <div>
    
 
@@ -9,10 +10,10 @@
                 <div class="row ">
                    <div class="d-flex justify-content-between">
                     <div class="">
-                        <h1>Categories</h1>
+                        <h1>Subcategories</h1>
                     </div>
                     <div class="">
-                        <a href="{{route('category.index')}}" class="btn btn-primary">New Category</a>
+                        <a href="{{route('Subcategorie.index')}}" class="btn btn-primary">New Category</a>
                     </div>
                    </div>
                 </div>
@@ -24,10 +25,8 @@
             <!-- Default box -->
             <div class="container-fluid">
                 <div class="card">
-                    {{-- <form wire:submit="addCategory"  method="post"> --}}
+                  
                         <form  method="post">
-                
-    
                     <div class="card-header">
                         <div class="card-tools ">
                             
@@ -50,35 +49,37 @@
                                     <th width="">ID</th>
                                     <th>Name</th>
                                     <th>Slug</th>
+                                    <th>Categorie</th>
                                     <th width="1">Status</th>
                                     <th width="1">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                            
-                             @foreach ($categories as $categorie)
+                             @foreach ($subcategories as $subcategorie)
                              <tr>
-                                <td>{{$categorie->id}}</td>
-                                <td>{{$categorie->name}}</td>
-                                <td>{{$categorie->slug}}</td>
+                                <td>{{$subcategorie->id}}</td>
+                                <td>{{$subcategorie->name}}</td>
+                                <td>{{$subcategorie->slug}}</td>
+                                <td>{{$subcategorie->categorie->name}}</td>
                                 <td>
-                                    @if ($categorie->status==1)
+                                    @if ($subcategorie->status==1)
                                         
                                     
                                 
-                                    <svg class="text-success-50 text-success" xmlns="http://www.w3.org/100/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <svg class="text-success-50 text-success" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
 
                                     @else
 
-                                    <svg class="text-danger " xmlns="http://www.w3.org/100/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <svg class="text-danger " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{route('category.edit',$categorie->id)}}">
+                                    <a href="{{route('Subcategorie.edit',$subcategorie->id)}}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                                             <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
                                           </svg>
@@ -89,7 +90,7 @@
                                             <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                                           </svg>
                                     </a>
-                                    <form action="{{route('category.delete',$categorie->id)}}"  method="post">
+                                    <form action="{{route('Subcategorie.delete',$subcategorie->id)}}"  method="post">
                                         @csrf
                                         @method('DELETE')
                                     </form>

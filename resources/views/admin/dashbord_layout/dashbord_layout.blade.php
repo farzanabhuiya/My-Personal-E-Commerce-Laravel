@@ -768,6 +768,28 @@
                             </ul>
                         </li>
                         <!-- End::User -->
+
+
+                         <!-- Start::User -->
+                         <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <i class="bx bx-heart side-menu__icon"></i>
+                                <span class="side-menu__label">Brand</span>
+                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide side-menu__label1">
+                                    <a href="javascript:void(0)">Brand</a>
+                                </li>
+                                <li class="slide">
+                                    <a href="{{route('Brand.store')}}" class="side-menu__item">Avilable Brand</a>
+                                </li>
+                                <li class="slide">
+                                    <a href="{{route('Brand.index')}}" class="side-menu__item">Add New</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- End::User -->
         
                         {{-- <!-- Start::User -->
                         <li class="slide">

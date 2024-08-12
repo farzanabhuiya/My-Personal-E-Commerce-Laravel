@@ -11,11 +11,28 @@ class CreateComponent extends Component
 {
 
     use SlugGenerator;
-    public $categorie_id="";
+    // public $categorie_id="";
     public $name="";
     public $slug="";
     public $status="1";
     public $showhome="No";
+    public $categorie_id;
+
+
+    public function mount($categories)
+   {
+    // Default category ID set korar jonno
+    $this->categorie_id = $categories->first()->id ?? null;
+
+    if (!$this->categorie_id && $categories->isNotEmpty()) {
+        $this->categorie_id = $categories->first()->id;
+    }
+        }
+
+     
+
+
+
     function addSubcategorie(){
         $this->validate([
  
@@ -25,7 +42,7 @@ class CreateComponent extends Component
        
           ]);
 
-          
+           
            $subcategorie = new Subcategorie();
            $subcategorie->categorie_id = $this->categorie_id;
            $subcategorie->name = $this->name;
@@ -36,8 +53,7 @@ class CreateComponent extends Component
         //    $this->reset(['subcategorie']);
            return back()->with('success','SubCategory Successfull Create');
           
-           
-       
+        
            }
        
     

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\BrandController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Backend\CategoryController;
@@ -72,9 +73,18 @@ Route::get('/subcategorie',[SubCategorieController::class,'index'])->name('Subca
 Route::get('/subcategorie-story',[SubCategorieController::class,'story'])->name('Subcategorie.story');
 Route::get('/subcategorie-edit/{id}',[SubCategorieController::class,'edit'])->name('Subcategorie.edit');
 Route::delete('/subcategorie-delete/{id}',[SubCategorieController::class,'deleted'])->name('Subcategorie.delete');
+Route::get('/get-all-subcategories',[SubCategorieController::class,'getSubcategories'])->name('Subcategorie.get');
 
 
 
+Route::prefix('/backend/brand')->controller(BrandController::class)->name('Brand.')->group(
+    function(){
+        Route::get('/' ,'index')->name('index');
+        Route::get('/store' ,'store')->name('store');
+        // Route::get('/get-all-sub-category','getSubCategory')->name('get');
+
+    }
+);
 
 
 

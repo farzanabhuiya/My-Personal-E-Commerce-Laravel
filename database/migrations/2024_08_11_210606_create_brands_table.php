@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sub_categories', function (Blueprint $table) {
+        Schema::create('brands', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('categorie_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('subcategorie_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
-            $table->string('slug')->uniqid();
-            $table->enum('showhome',['Yes','No'])->default('No');
+            $table->string('slug')->unique();
             $table->integer('status')->default(1);
-             $table->timestamps();
+            $table->timestamps();
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sub_categories');
+        Schema::dropIfExists('brands');
     }
 };

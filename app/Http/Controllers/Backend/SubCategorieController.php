@@ -31,4 +31,11 @@ class SubCategorieController extends Controller
         Subcategorie::find($id)->delete();
         return back();
        }
+
+       
+    ///product page subcategorie
+   public function getSubcategories(Request $request){
+    $subcategories= Subcategorie::where('categorie_id',$request->categoryId)->get();
+    return $subcategories;
+  }
 }

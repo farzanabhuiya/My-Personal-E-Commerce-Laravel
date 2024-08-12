@@ -38,11 +38,10 @@
                                     <label for="categorie_id">Category</label>
                                     <select  wire:model='categorie_id'  id="categorie_id" class="form-control">
                                         @forelse ($categories as $categorie )
-                                        {{-- <option selected  value="{{$categorie->id }}">{{ $categorie->name }}</option> --}}
+                                        <option selected  value="{{$categorie->id }}">{{ $categorie->name }}</option>
                                      
-                                        <option value="{{ $categorie->id }}" {{ $categorie->id == $this->categorie_id ? 'selected' : '' }}>
-                                            {{ $categorie->name }}
-                                        </option>
+                                        {{-- <option value="{{ $categorie->id }}" {{ $categorie->id == $this->categorie_id ? 'selected' : '' }}>
+                                            {{ $categorie->name }}</option> --}}
                                         @empty
                                         <option disabled selected>No catrgory found</option>
                                       @endforelse

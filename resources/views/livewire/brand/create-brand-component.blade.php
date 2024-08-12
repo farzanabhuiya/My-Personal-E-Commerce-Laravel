@@ -13,7 +13,7 @@
                         <h1>Create Brand</h1>
                     </div>
                     <div class="">
-                        <a href="" class="btn btn-primary">Back</a>
+                        <a href="{{route('Brand.store')}}" class="btn btn-primary">Back</a>
                     </div>
                    </div>
                 </div>

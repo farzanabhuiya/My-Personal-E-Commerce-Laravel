@@ -19,15 +19,15 @@ class CreateComponent extends Component
     public $categorie_id;
 
 
-    public function mount($categories)
-   {
-    // Default category ID set korar jonno
-    $this->categorie_id = $categories->first()->id ?? null;
+//     public function mount($categories)
+//    {
+//     // Default category ID set korar jonno
+//     $this->categorie_id = $categories->first()->id ?? null;
 
-    if (!$this->categorie_id && $categories->isNotEmpty()) {
-        $this->categorie_id = $categories->first()->id;
-    }
-        }
+//     if (!$this->categorie_id && $categories->isNotEmpty()) {
+//         $this->categorie_id = $categories->first()->id;
+//     }
+//         }
 
      
 

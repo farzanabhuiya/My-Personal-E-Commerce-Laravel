@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categorie extends Model
+class Item extends Model
 {
     use HasFactory;
-
-
+    function categorie(){
+        return $this->belongsTo(Categorie::class);
+    }
     function Subcategorie(){
-        return $this->hasMany(Subcategorie::class);
+        return $this->belongsTo(Subcategorie::class);
     }
     function Brand(){
-        return $this->hasMany(Brand::class);
-    }
-    function Item(){
-        return $this->hasMany(Item::class);
+        return $this->belongsTo(Brand::class);
     }
 }

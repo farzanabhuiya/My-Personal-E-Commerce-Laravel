@@ -35,7 +35,6 @@ class CreateBrandComponent extends Component
     $brand->name = $this->name;
     $brand->slug=$this->generateslug($this->name,Brand::class);
     $brand->status = $this->status;
-
     $brand->save();
     return back()->with('success','Brand Successfull Create');
     
@@ -45,8 +44,8 @@ class CreateBrandComponent extends Component
 
     public function render()
     {
-      // $subcategories = Subcategorie::with('categorie')->get();
+       $subcategories = Subcategorie::with('categorie')->get();
       $categories = Categorie::with('Subcategorie')->select('id','name')->latest()->get();
-        return view('livewire.brand.create-brand-component',compact('categories'));
+        return view('livewire.brand.create-brand-component',compact('categories','subcategories'));
     }
 }

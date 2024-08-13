@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Backend\BrandController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\ItemController;
 
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Dashbord\DashbordController;
 use App\Http\Controllers\Backend\SubCategorieController;
@@ -81,7 +82,22 @@ Route::prefix('/backend/brand')->controller(BrandController::class)->name('Brand
     function(){
         Route::get('/' ,'index')->name('index');
         Route::get('/store' ,'store')->name('store');
-        // Route::get('/get-all-sub-category','getSubCategory')->name('get');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::delete('/delete/{id}','delete')->name('delete');
+   
+
+    }
+);
+
+
+
+
+Route::prefix('/backend/item')->controller(ItemController::class)->name('Item.')->group(
+    function(){
+        Route::get('/' ,'index')->name('index');
+        Route::get('/store' ,'store')->name('store');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::delete('/delete/{id}','delete')->name('delete');
 
     }
 );

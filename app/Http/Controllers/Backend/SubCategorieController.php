@@ -29,7 +29,7 @@ class SubCategorieController extends Controller
     
     public function deleted($id){
         Subcategorie::find($id)->delete();
-        return back();
+        return back()->with('success','Subcategories Successfull deleted');;
        }
 
        

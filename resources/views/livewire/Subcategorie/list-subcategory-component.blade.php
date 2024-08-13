@@ -1,7 +1,11 @@
 
 <div>
    
-
+    @if (session('success'))
+    <div  class="alert alert-success w-10 h-20">
+        <h4>{{session('success')}}</h4>
+    </div>
+      @endif
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->

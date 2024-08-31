@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\Product;
 use App\Models\ProductColour;
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ItemController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\ProductController;
@@ -108,52 +109,41 @@ Route::prefix('/backend/item')->controller(ItemController::class)->name('Item.')
 
 
 
-// Route::prefix('/backend/item')->controller(ProductController::class)->name('Product.')->group(
-//     function(){
-//         // Route::get('/' ,'index')->name('index');
-//         // Route::get('/store' ,'store')->name('store');
-//         // Route::get('/edit/{id}','edit')->name('edit');
-//         // Route::delete('/delete/{id}','delete')->name('delete');
-
-//     }
-// );
 
 
-// Route::prefix('/backend/productColour')->controller(ProductcolourController::class)->name('ProductColour.')->group(
-//     function(){
-//         Route::get('/' ,'index')->name('index');
-//         // Route::get('/store' ,'store')->name('store');
-//         // Route::get('/edit/{id}','edit')->name('edit');
-//         // Route::delete('/delete/{id}','delete')->name('delete');
-
-//     }
-// );
-
-
+ /////////////////////product Route
 
 Route::prefix('/backend/productSize')->controller(ProductSizeController::class)->name('ProductSize.')->group(
     function(){
         Route::get('/' ,'index')->name('index');
         Route::get('/store' ,'store')->name('store');
-        // Route::get('/edit/{id}','edit')->name('edit');
-        // Route::delete('/delete/{id}','delete')->name('delete');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::delete('/delete/{id}','delete')->name('delete');
 
     }
 );
-
-
 
 
 Route::prefix('/backend/productcolour')->controller(ProductColourController::class)->name('ProductColour.')->group(
     function(){
         Route::get('/' ,'index')->name('index');
         Route::get('/store' ,'store')->name('store');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::delete('/delete/{id}','delete')->name('delete');
+
+    }
+);
+
+
+Route::prefix('/backend/product')->controller(Product::class)->name('Product.')->group(
+    function(){
+        Route::get('/' ,'index')->name('index');
+        // Route::get('/store' ,'store')->name('store');
         // Route::get('/edit/{id}','edit')->name('edit');
         // Route::delete('/delete/{id}','delete')->name('delete');
 
     }
 );
-
 
 
 

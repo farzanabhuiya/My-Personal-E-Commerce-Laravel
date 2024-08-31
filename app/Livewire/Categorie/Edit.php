@@ -45,6 +45,7 @@ class Edit extends Component
     $categories->status = $this->status;
     $categories->showhome = $this->showhome;
     $categories->save();
+    $this->reset();
     return back()->with('success','Category Successfull Update');
     }
 

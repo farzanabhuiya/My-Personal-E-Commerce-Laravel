@@ -1,3 +1,3 @@
 <div>
-    {{-- Care about people's approval and you will be their prisoner. --}}
+    {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
 </div>

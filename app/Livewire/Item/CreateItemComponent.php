@@ -41,6 +41,7 @@ class CreateItemComponent extends Component
     $items->name = $this->name;
     $items->slug=$this->generateslug($this->name,Item::class);
     $items->save();
+    $this->reset();
     return back()->with('success','Item Successfull Create');
     
 

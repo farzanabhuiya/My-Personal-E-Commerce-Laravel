@@ -1,13 +1,16 @@
 <?php
 
+use App\Models\ProductColour;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\ItemController;
 
+use App\Http\Controllers\Backend\ItemController;
 use App\Http\Controllers\Backend\BrandController;
-use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Dashbord\DashbordController;
+use App\Http\Controllers\Backend\ProductSizeController;
 use App\Http\Controllers\Backend\SubCategorieController;
+use App\Http\Controllers\Backend\ProductcolourController;
 use App\Http\Controllers\userDashboard\UserDashboardController;
 
 Route::get('/', function () {
@@ -105,10 +108,33 @@ Route::prefix('/backend/item')->controller(ItemController::class)->name('Item.')
 
 
 
-Route::prefix('/backend/item')->controller(ProductController::class)->name('Product.')->group(
+// Route::prefix('/backend/item')->controller(ProductController::class)->name('Product.')->group(
+//     function(){
+//         // Route::get('/' ,'index')->name('index');
+//         // Route::get('/store' ,'store')->name('store');
+//         // Route::get('/edit/{id}','edit')->name('edit');
+//         // Route::delete('/delete/{id}','delete')->name('delete');
+
+//     }
+// );
+
+
+// Route::prefix('/backend/productColour')->controller(ProductcolourController::class)->name('ProductColour.')->group(
+//     function(){
+//         Route::get('/' ,'index')->name('index');
+//         // Route::get('/store' ,'store')->name('store');
+//         // Route::get('/edit/{id}','edit')->name('edit');
+//         // Route::delete('/delete/{id}','delete')->name('delete');
+
+//     }
+// );
+
+
+
+Route::prefix('/backend/productSize')->controller(ProductSizeController::class)->name('ProductSize.')->group(
     function(){
-        // Route::get('/' ,'index')->name('index');
-        // Route::get('/store' ,'store')->name('store');
+        Route::get('/' ,'index')->name('index');
+        Route::get('/store' ,'store')->name('store');
         // Route::get('/edit/{id}','edit')->name('edit');
         // Route::delete('/delete/{id}','delete')->name('delete');
 
@@ -116,6 +142,17 @@ Route::prefix('/backend/item')->controller(ProductController::class)->name('Prod
 );
 
 
+
+
+Route::prefix('/backend/productcolour')->controller(ProductColourController::class)->name('ProductColour.')->group(
+    function(){
+        Route::get('/' ,'index')->name('index');
+        Route::get('/store' ,'store')->name('store');
+        // Route::get('/edit/{id}','edit')->name('edit');
+        // Route::delete('/delete/{id}','delete')->name('delete');
+
+    }
+);
 
 
 

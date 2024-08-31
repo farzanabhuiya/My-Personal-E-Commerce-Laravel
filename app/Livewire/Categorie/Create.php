@@ -29,10 +29,10 @@ class Create extends Component
   
     $category->name = $this->name;
     $category->slug=$this->generateslug($this->name,Categorie::class);
-    // $category->slug = $this->name;
     $category->status = $this->status;
     $category->showhome = $this->showhome;
     $category->save();
+    $this->reset();
     return back()->with('success','Category Successfull Create');
     
 

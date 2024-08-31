@@ -50,7 +50,7 @@ class CreateComponent extends Component
            $subcategorie->status = $this->status;
            $subcategorie->showhome = $this->showhome;
            $subcategorie->save();
-        //    $this->reset(['subcategorie']);
+           $this->reset();
            return back()->with('success','SubCategory Successfull Create');
           
         

@@ -50,6 +50,7 @@ class EditSubcategoryComponent extends Component
     $subcategories->status = $this->status;
     $subcategories->showhome = $this->showhome;
     $subcategories->save();
+    $this->reset();
     return back()->with('success','SubCategory Successfull Update');
    
     }

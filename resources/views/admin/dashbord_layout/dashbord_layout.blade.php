@@ -815,7 +815,51 @@
 
 
 
+                   <!-- Start::ProductSize -->
+                   <li class="slide has-sub">
+                    <a href="javascript:void(0);" class="side-menu__item">
+                        <i class="bx bx-heart side-menu__icon"></i>
+                        <span class="side-menu__label">ProductSize</span>
+                        <i class="fe fe-chevron-right side-menu__angle"></i>
+                    </a>
+                    <ul class="slide-menu child1">
+                        <li class="slide side-menu__label1">
+                            <a href="javascript:void(0)">ProductSize</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{route('ProductSize.store')}}" class="side-menu__item">Avilable ProductSize</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{route('ProductSize.index')}}" class="side-menu__item">Add New</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- End::ProductSize -->
+                      
 
+
+
+                   
+                   <!-- Start::ProductColour -->
+                   <li class="slide has-sub">
+                    <a href="javascript:void(0);" class="side-menu__item">
+                        <i class="bx bx-heart side-menu__icon"></i>
+                        <span class="side-menu__label">ProductColour</span>
+                        <i class="fe fe-chevron-right side-menu__angle"></i>
+                    </a>
+                    <ul class="slide-menu child1">
+                        <li class="slide side-menu__label1">
+                            <a href="javascript:void(0)">ProductColour</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{route('ProductColour.store')}}" class="side-menu__item">Avilable ProductColour</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{route('ProductColour.index')}}" class="side-menu__item">Add New</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- End::ProductColour -->
 
         
                         {{-- <!-- Start::User -->

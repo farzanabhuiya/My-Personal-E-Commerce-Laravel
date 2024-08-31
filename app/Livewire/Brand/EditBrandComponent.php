@@ -51,6 +51,7 @@ class EditBrandComponent extends Component
           $brands->slug=$this->generateslug($this->name,Brand::class);
           $brands->status = $this->status;
           $brands->save();
+          $this->reset();
           return back()->with('success','Brand Successfull Update');
          
           }

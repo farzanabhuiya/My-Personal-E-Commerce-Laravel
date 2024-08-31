@@ -36,8 +36,8 @@ return new class extends Migration
             $table->enum('discount_type',['percent','fixed'])->default('percent');
             $table->double('offer_amount',10,2)->nullable();
             $table->enum('offer_type',['percent','fixed'])->default('percent');
-            $table->foreignId('product_size_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('product_colour_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('productsize_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('productcolour_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -36,6 +36,7 @@ class CreateBrandComponent extends Component
     $brand->slug=$this->generateslug($this->name,Brand::class);
     $brand->status = $this->status;
     $brand->save();
+    $this->reset();
     return back()->with('success','Brand Successfull Create');
     
 

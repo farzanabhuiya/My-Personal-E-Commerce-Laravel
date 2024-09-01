@@ -8,11 +8,13 @@ use App\Http\Controllers\Backend\ItemController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\DiscountCouponController;
 use App\Http\Controllers\Dashbord\DashbordController;
 use App\Http\Controllers\Backend\ProductSizeController;
 use App\Http\Controllers\Backend\SubCategorieController;
 use App\Http\Controllers\Backend\ProductcolourController;
 use App\Http\Controllers\userDashboard\UserDashboardController;
+use App\Models\DiscountCoupon;
 
 Route::get('/', function () {
     return view('frontend.contant.homepage');
@@ -135,15 +137,30 @@ Route::prefix('/backend/productcolour')->controller(ProductColourController::cla
 );
 
 
-Route::prefix('/backend/product')->controller(Product::class)->name('Product.')->group(
+Route::prefix('/backend/product')->controller(ProductController::class)->name('Product.')->group(
     function(){
         Route::get('/' ,'index')->name('index');
         // Route::get('/store' ,'store')->name('store');
         // Route::get('/edit/{id}','edit')->name('edit');
         // Route::delete('/delete/{id}','delete')->name('delete');
+        // Route::get('/relatedproduct' ,'relatedproduct')->name('relatedproduct');
+
 
     }
 );
+Route::get('/relatedproduct',[ProductController::class,'relatedproduct'])->name('Product.related');
 
+
+Route::prefix('/backend/discount')->controller(DiscountCouponController::class)->name('Discount.')->group(
+    function(){
+        Route::get('/' ,'index')->name('index');
+        Route::get('/store' ,'store')->name('store');
+        // Route::get('/edit/{id}','edit')->name('edit');
+        // Route::delete('/delete/{id}','delete')->name('delete');
+        // Route::get('/relatedproduct' ,'relatedproduct')->name('relatedproduct');
+
+
+    }
+);
 
 

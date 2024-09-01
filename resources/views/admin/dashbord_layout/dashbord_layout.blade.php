@@ -25,6 +25,11 @@
     <script src="../assets/js/main.js"></script>
     <script src="../asset/js"></script>
 
+
+
+    		<!---/datetimepicker-->
+		<link rel="stylesheet" href="{{asset('admin/css/datetimepicker.css')}} ">
+
     <!-- Bootstrap Css -->
     <link id="style" href="{{ asset('admin/asset/libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -885,6 +890,30 @@
                     </li>
                     <!-- End::Product-->
 
+
+
+                    
+                      <!-- Start::DiscountCoupon -->
+                      <li class="slide has-sub">
+                        <a href="javascript:void(0);" class="side-menu__item">
+                            <i class="bx bx-heart side-menu__icon"></i>
+                            <span class="side-menu__label">DiscountCoupon</span>
+                            <i class="fe fe-chevron-right side-menu__angle"></i>
+                        </a>
+                        <ul class="slide-menu child1">
+                            <li class="slide side-menu__label1">
+                                <a href="javascript:void(0)">DiscountCoupon</a>
+                            </li>
+                            <li class="slide">
+                                <a href="{{route('Discount.store')}}" class="side-menu__item">Avilable DiscountCoupon</a>
+                            </li>
+                            <li class="slide">
+                                <a href="{{route('Discount.index')}}" class="side-menu__item">Add New</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- End::Product-->
+
         
                         {{-- <!-- Start::User -->
                         <li class="slide">
@@ -1097,6 +1126,10 @@
     <!-- Quill Editor JS -->
     <script src="{{ asset('admin/asset/libs/quill/quill.min.js') }}"></script> 
    
+
+
+     <!---/datetimepicker--->
+<script src="{{asset('admin/js/datetimepicker.js')}}"></script>
 
     <!-- Internal Quill JS -->
     <script src="{{ asset('admin/asset/js/quill-editor.js') }}"></script>

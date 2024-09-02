@@ -11,7 +11,11 @@ class ProductController extends Controller
   public function index(){
     return view('admin.Product.create-product');
   }
-}
+
+  public function store(){
+    return view('admin.Product.list-product');
+  }
+
 
 
 
@@ -35,4 +39,8 @@ if($request->term != ""){
   'tags' =>$tempProduct,
   'status' =>true,
  ]);
+}
+
+
+  
 }

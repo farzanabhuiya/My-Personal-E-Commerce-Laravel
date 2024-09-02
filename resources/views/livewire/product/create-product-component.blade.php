@@ -65,26 +65,18 @@
                         </div>	                                                                      
                     </div>
 
+         
+                        <div>           
+                            @if ($images)
+                            @foreach ($images as $image)
+                            <img  src="{{ $image->temporaryUrl() }}" width="100px">
 
+                            @endforeach 
+                            @endif
 
-                    
-                        <div>
-                            <input name="image" type="file" class="form-control my-3">
+                            <input type="file" wire:model="images" multiple>     
+                        @error('image.*') <span class="error">{{ $message }}</span> @enderror
                         </div>
-
-                     
-              
-                    {{-- <div class="card mb-3">
-                        <div class="card-body">
-                            <h2 class="h4 mb-3">Media</h2>								
-                            <div id="image" class="dropzone dz-clickable">
-                                <div class="dz-message needsclick">    
-                                    <br>Drop files here or click to upload.<br><br>                                            
-                                </div>
-                            </div>
-                        </div>	                                                                      
-                    </div> --}}
-
 
                     <div class="card mb-3">
                         <div class="card-body">
@@ -176,13 +168,13 @@
                             <h2 class="h4  mb-3">Product category</h2>
                             <div class="mb-3">
                                 <label for="category">Category</label>
-                                <select wire:model='category_id' class="form-control categorySelect ">
-                                    {{-- @forelse ($categories as $category )
+                                <select wire:model='categorie_id' id="categorie_id" class="form-control categorySelect ">
+                                    @forelse ($categories as $category )
                                     <option  value="{{  $category->id }}">{{ $category->name }}</option>
                                  
                                     @empty
                                     <option disabled selected>No catrgory found</option>
-                                  @endforelse --}}
+                                  @endforelse
                                     
                                 </select>
                             </div>
@@ -195,18 +187,22 @@
                             </div>
                         </div>
                     </div> 
+
+
+
+                  
                     <div class="card mb-3">
                         <div class="card-body">	
                             <h2 class="h4 mb-3">Product brand</h2>
                             <div class="mb-3">
                                
-                                      <select wire:model='brand_id'  id="status" class="form-control">
-                                    {{-- @forelse ($brands as $brand )
+                                      <select wire:model='brand_id'  id="brand_id" class="form-control">
+                                    @forelse ($brands as $brand )
                                     <option  value="{{  $brand->id }}">{{ $brand->name }}</option>
                                  
                                     @empty
                                     <option disabled selected>No brand found</option>
-                                  @endforelse --}}
+                                  @endforelse
                                 </select>
                             </div>
                         </div>
@@ -218,13 +214,13 @@
                             <h2 class="h4 mb-3">Product Item</h2>
                             <div class="mb-3">
                                
-                                      <select wire:model='item_id'  id="status" class="form-control">
-                                    {{-- @forelse ($brands as $brand )
-                                    <option  value="{{  $brand->id }}">{{ $brand->name }}</option>
+                                      <select wire:model='item_id'  id="item_id" class="form-control">
+                                    @forelse ($items as $item )
+                                    <option  value="{{  $item->id }}">{{ $item->name }}</option>
                                  
                                     @empty
                                     <option disabled selected>No brand found</option>
-                                  @endforelse --}}
+                                  @endforelse
                                 </select>
                             </div>
                         </div>
@@ -233,15 +229,14 @@
                     <div class="card mb-3">
                         <div class="card-body">	
                             <h2 class="h4 mb-3">Product Sizes</h2>
-                            <div class="mb-3">
-                               
-                                      <select wire:model='productsize_id'  id="status" class="form-control">
-                                    {{-- @forelse ($brands as $brand )
-                                    <option  value="{{  $brand->id }}">{{ $brand->name }}</option>
+                            <div class="mb-3">                        
+                                      <select wire:model='productsize_id'  id="productsize_id" class="form-control">
+                                    @forelse ($sizes as $size )
+                                    <option  value="{{$size->id }}">{{ $size->name }}</option>
                                  
                                     @empty
                                     <option disabled selected>No brand found</option>
-                                  @endforelse --}}
+                                  @endforelse
                                 </select>
                             </div>
                         </div>
@@ -254,14 +249,13 @@
                         <div class="card-body">	
                             <h2 class="h4 mb-3">Product Colour</h2>
                             <div class="mb-3">
-                                {{-- <select name="status" id="status" class="form-control"> --}}
-                                      <select wire:model='productcolour_id'  id="status" class="form-control">
-                                    {{-- @forelse ($brands as $brand )
-                                    <option  value="{{  $brand->id }}">{{ $brand->name }}</option>
+                                      <select wire:model='productcolour_id'  id="productcolour_id" class="form-control">
+                                    @forelse ($colours as $colour )
+                                    <option  value="{{$colour->id }}">{{$colour->name }}</option>
                                  
                                     @empty
                                     <option disabled selected>No brand found</option>
-                                  @endforelse --}}
+                                  @endforelse
                                 </select>
                             </div>
                         </div>
@@ -276,7 +270,59 @@
                                 </select>
                             </div>
                         </div>
-                    </div>                                 
+                    </div>   
+                    
+                    
+
+
+                    <div class="card mb-3">
+                        <div class="card-body">	
+                            <h2 class="h4 mb-3">Discount_Amount</h2>
+                            <div class="mb-3">
+                                <input type="text" wire:model='discount_amount' id="discount_amount" class="form-control" placeholder="discount_amount">	 
+                            </div>
+                        </div>
+                    </div>   
+                    
+            
+                    <div class="card mb-3">
+                        <div class="card-body">	
+                            <h2 class="h4 mb-3">Discount_type</h2>
+                            <div class="mb-3">
+                                <select wire:model='discount_type' id='discount_type' class="form-control">
+                                    <option value="percent">Percent</option>
+                                    <option value="fixed">Fixed</option>                                               
+                                </select>
+                            </div>
+                        </div>
+                    </div>  
+                    
+                    
+
+
+                    
+                    <div class="card mb-3">
+                        <div class="card-body">	
+                            <h2 class="h4 mb-3">Offer_Amount</h2>
+                            <div class="mb-3">
+                                <input type="text" wire:model='offer_amount' id="offer_amount" class="form-control" placeholder="discount_amount">	 
+                            </div>
+                        </div>
+                    </div>   
+                    
+            
+                    <div class="card mb-3">
+                        <div class="card-body">	
+                            <h2 class="h4 mb-3">Offer_type</h2>
+                            <div class="mb-3">
+                                <select wire:model='offer_type' id='offer_type' class="form-control">
+                                    <option value="percent">Percent</option>
+                                    <option value="fixed">Fixed</option>                                               
+                                </select>
+                            </div>
+                        </div>
+                    </div> 
+                    
                 </div>
             </div>
             

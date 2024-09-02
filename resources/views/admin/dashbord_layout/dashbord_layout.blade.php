@@ -28,7 +28,7 @@
 
 
     		<!---/datetimepicker-->
-		<link rel="stylesheet" href="{{asset('admin/css/datetimepicker.css')}} ">
+		<link rel="stylesheet" href="{{asset('admin/asset/css/datetimepicker.css')}} ">
 
     <!-- Bootstrap Css -->
     <link id="style" href="{{ asset('admin/asset/libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -881,7 +881,7 @@
                                 <a href="javascript:void(0)">Product</a>
                             </li>
                             <li class="slide">
-                                <a href="" class="side-menu__item">Avilable Product</a>
+                                <a href="{{route('Product.store')}}" class="side-menu__item">Avilable Product</a>
                             </li>
                             <li class="slide">
                                 <a href="{{route('Product.index')}}" class="side-menu__item">Add New</a>
@@ -1128,13 +1128,15 @@
    
 
 
-     <!---/datetimepicker--->
-<script src="{{asset('admin/js/datetimepicker.js')}}"></script>
+
 
     <!-- Internal Quill JS -->
     <script src="{{ asset('admin/asset/js/quill-editor.js') }}"></script>
      <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
+
+          <!---/datetimepicker--->
+<script src="{{asset('admin/asset/js/datetimepicker.js')}}"></script>
 
      @stack('customJs')
 

@@ -140,7 +140,7 @@ Route::prefix('/backend/productcolour')->controller(ProductColourController::cla
 Route::prefix('/backend/product')->controller(ProductController::class)->name('Product.')->group(
     function(){
         Route::get('/' ,'index')->name('index');
-        // Route::get('/store' ,'store')->name('store');
+        Route::get('/store' ,'store')->name('store');
         // Route::get('/edit/{id}','edit')->name('edit');
         // Route::delete('/delete/{id}','delete')->name('delete');
         // Route::get('/relatedproduct' ,'relatedproduct')->name('relatedproduct');
@@ -157,7 +157,7 @@ Route::prefix('/backend/discount')->controller(DiscountCouponController::class)-
         Route::get('/store' ,'store')->name('store');
         // Route::get('/edit/{id}','edit')->name('edit');
         // Route::delete('/delete/{id}','delete')->name('delete');
-        // Route::get('/relatedproduct' ,'relatedproduct')->name('relatedproduct');
+        
 
 
     }

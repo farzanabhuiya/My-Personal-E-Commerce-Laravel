@@ -14,7 +14,7 @@ class CreateDiscountCouponComponent extends Component
     public $name="";
     public $max_uses ="";
     public $max_uses_user="";
-    public $type ="";
+    public $type="";
     public $discount_amount ="";
     public $min_amount ="";
     public $status="";
@@ -35,24 +35,16 @@ class CreateDiscountCouponComponent extends Component
 
    ]);
 
-//    if(!empty($starts_at)){
-//     $start_time = Carbon::now()->format('Y/m/d H:i',$starts_at);
-//   }
+        if(!empty($starts_at)){
+    $start_time = Carbon::now()->format('Y/m/d H:i',$starts_at);
+  }
 
-//   if(!empty($starts_at) && !empty($expires_at)){
-//       $expires = Carbon::now()->format('Y/m/d H:i',$expires_at); 
-//       $start = Carbon::now()->format('Y/m/d H:i',$starts_at);
-//    }
+  if(!empty($starts_at) && !empty($expires_at)){
+      $expires = Carbon::now()->format('Y/m/d H:i',$expires_at); 
+      $start = Carbon::now()->format('Y/m/d H:i',$starts_at);
+   }
+   
 
-
-//     if(!empty($request->starts_at)){
-//     $start_time = Carbon::now()->format('Y/m/d H:i',$request->starts_at);
-//   }
-
-//   if(!empty($request->starts_at) && !empty($request->expires_at)){
-//       $expires = Carbon::now()->format('Y/m/d H:i',$request->expires_at); 
-//       $start = Carbon::now()->format('Y/m/d H:i',$request->starts_at);
-//    }
 
     $discountCoupons = new DiscountCoupon();
   

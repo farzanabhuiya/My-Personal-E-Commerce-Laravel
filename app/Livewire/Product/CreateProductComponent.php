@@ -2,20 +2,27 @@
 
 namespace App\Livewire\Product;
 
+use App\Models\Brand;
 use App\Models\Product;
 use Livewire\Component;
+use App\Models\Categorie;
+use App\Models\Subcategorie;
+use Livewire\WithFileUploads;
 use App\Http\Controllers\Helpers\SlugGenerator;
+use App\Models\Item;
+use App\Models\Productcolour;
+use App\Models\Productsize;
 
 class CreateProductComponent extends Component
 {
-            
+    use WithFileUploads;      
     use SlugGenerator;
       public $title="";
       public $description="";
       public $short_description="";
       public $shipping_returns="";
       public $related_products="";
-      public $image="";
+      public $images=[];
       public $price="";
       public $compare_price="";
       public $categorie_id="";
@@ -38,8 +45,6 @@ class CreateProductComponent extends Component
      public function addProduct(){
         
 
-
-
         $this->validate([
  
             'title'=> 'required|max:25',
@@ -47,11 +52,16 @@ class CreateProductComponent extends Component
             'subcategorie_id' =>'required',
             'brand_id' =>'required',
             'price' =>'required',
-            'image' =>'required'
-       
-           
+            
        
           ]);
+          $productPhotos =[];
+           foreach ($this->images as $image) {
+            $fileName = time().'.'.$image->extension(); 
+            $image->storeAs('ProductImage',$fileName,'public');
+            $productPhotos[]=$fileName;  
+        }
+          
            $products = new Product();
            $products->title = $this->title;
            $products->slug=$this->generateslug($this->title,Product::class);
@@ -59,7 +69,9 @@ class CreateProductComponent extends Component
            $products->short_description = $this->short_description;
            $products-> shipping_returns= $this->shipping_returns;
            $products->related_products = $this->related_products;
-           $products->image = $this->image;
+
+           $products->image = json_encode($productPhotos);
+
            $products-> price= $this->price;
            $products->compare_price = $this->compare_price;
            $products->categorie_id = $this->categorie_id;
@@ -78,6 +90,7 @@ class CreateProductComponent extends Component
            $products-> offer_type= $this->offer_type;
            $products-> productsize_id= $this->productsize_id;
            $products->productcolour_id = $this->productcolour_id;
+        //    dd($products);
            $products->save();
            $this->reset();
            return back()->with('success','product Successfull Create');
@@ -86,7 +99,13 @@ class CreateProductComponent extends Component
            
      }
     public function render()
-    {
-        return view('livewire.product.create-product-component');
+    {   
+        $subcategories = Subcategorie::with('categorie')->get();
+        $categories = Categorie::with('Subcategorie')->select('id','name')->latest()->get();
+        $brands = Brand::latest()->get();
+        $items = Item::latest()->get();
+        $sizes = Productsize::latest()->get();
+        $colours = Productcolour::latest()->get();
+        return view('livewire.product.create-product-component',compact('categories','subcategories','brands','items','sizes','colours'));
     }
 }

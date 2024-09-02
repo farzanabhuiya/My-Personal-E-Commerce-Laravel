@@ -50,9 +50,9 @@
                                                 <th width="60">ID</th>
                                                 <th>Code</th>
                                                 <th>Name</th>
-                                                <th>Discount</th>
-                                                {{-- <th>Start Date</th>
-                                                <th>End Date</th> --}}
+                                                <th>Discount Amount</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
                                                 <th width="100">Status</th>
                                                 <th width="100">Action</th>
                                             </tr>
@@ -74,50 +74,44 @@
                                                     @endif
                                                 </td>
     
-                                                 {{-- <td>
-                                                    {{($cupon->starts_at)? \Carbon\Carbon::parse($cupon->starts_at)->format('y-m-d H.i.s'):''}}
+                                                 <td>
+                                                    {{($coupon->starts_at)? \Carbon\Carbon::parse($coupon->starts_at)->format('y-m-d H.i.s'):''}}
                                                    
                                                  </td>
                                                  <td>
-                                                    {{($cupon->expires_at)? \Carbon\Carbon::parse($cupon->expires_at)->format('y-m-d H.i.s'):''}}
+                                                    {{($coupon->expires_at)? \Carbon\Carbon::parse($coupon->expires_at)->format('y-m-d H.i.s'):''}}
                                                  </td>
-     --}}
-                                                <td>
+    
+                                                 <td>
                                                     @if ($coupon->status==1)
-                                                        
-                                                    
                                                 
-                                                    <svg class="text-success-500 h-6 w-6 text-success" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                                    <svg class="text-success-50 text-success" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                                     </svg>
-    
+                
                                                     @else
-    
-                                                    <svg class="text-danger h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                
+                                                    <svg class="text-danger-50 text-danger " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                                                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                                     </svg>
                                                     @endif
                                                 </td>
-    
                                                 <td>
-                                                    {{-- <a href="{{route('category.edit',$category->id)}}"> --}}
-                                                        <svg class="filament-link-icon w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                                                        </svg>
-                                                    </a>
-                                                
-                                                       <a href=""  class="text-danger w-4 h-4 mr-1 deleteBtn " id="deleteBtn" >
-                                                        <svg wire:loading.remove.delay="" wire:target=""  class="filament-link-icon w-4 h-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                            <path 	ath fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                                    <a href="">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                                            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
                                                           </svg>
                                                     </a>
-                                                    {{-- <form action="{{route('category.delete',$category->id)}}"  method="post">
+                                                    <a href="#" class="text-danger w-4 h-4 mr-1 deleteBtn">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                                          </svg>
+                                                    </a>
+                                                    {{-- <form action="{{route('category.delete',$categorie->id)}}"  method="post">
                                                         @csrf
                                                         @method('DELETE')
-                                                    </form>
-                                             --}}
-                                                
-    
+                                                    </form> --}}
                                                 </td>
     
                                             </tr>

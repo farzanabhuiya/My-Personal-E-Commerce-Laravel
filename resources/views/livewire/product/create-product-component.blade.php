@@ -120,7 +120,7 @@
                                     <div class="mb-3">
                                         <div class="custom-control custom-checkbox">
                                             <input wire:model='track_qty'  class="d-none" type="text" value="no"  >
-                                            <input class="custom-control-input" type="checkbox" id="track_qty" value="yes" name="track_qty" checked>
+                                            <input wire:model='track_qty' class="custom-control-input" type="checkbox" id="track_qty" value="yes" name="track_qty" >
                                             <label for="track_qty" class="custom-control-label">Track Quantity</label>
                                         </div>
                                     </div>
@@ -232,7 +232,7 @@
                             <div class="mb-3">                        
                                       <select wire:model='productsize_id'  id="productsize_id" class="form-control">
                                     @forelse ($sizes as $size )
-                                    <option  value="{{$size->id }}">{{ $size->name }}</option>
+                                    <option  value="{{$size->id }}">{{ $size->size }}</option>
                                  
                                     @empty
                                     <option disabled selected>No brand found</option>
@@ -251,7 +251,7 @@
                             <div class="mb-3">
                                       <select wire:model='productcolour_id'  id="productcolour_id" class="form-control">
                                     @forelse ($colours as $colour )
-                                    <option  value="{{$colour->id }}">{{$colour->name }}</option>
+                                    <option  value="{{$colour->id }}">{{$colour->colour }}</option>
                                  
                                     @empty
                                     <option disabled selected>No brand found</option>

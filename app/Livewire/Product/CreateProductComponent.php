@@ -90,7 +90,7 @@ class CreateProductComponent extends Component
            $products-> offer_type= $this->offer_type;
            $products-> productsize_id= $this->productsize_id;
            $products->productcolour_id = $this->productcolour_id;
-        //    dd($products);
+            // dd($products);
            $products->save();
            $this->reset();
            return back()->with('success','product Successfull Create');

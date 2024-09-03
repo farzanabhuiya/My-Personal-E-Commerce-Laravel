@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashbord\DashbordController;
 use App\Http\Controllers\Backend\ProductSizeController;
 use App\Http\Controllers\Backend\SubCategorieController;
 use App\Http\Controllers\Backend\ProductcolourController;
+use App\Http\Controllers\Backend\ShippingController;
 use App\Http\Controllers\userDashboard\UserDashboardController;
 use App\Models\DiscountCoupon;
 
@@ -157,6 +158,22 @@ Route::prefix('/backend/discount')->controller(DiscountCouponController::class)-
         Route::get('/store' ,'store')->name('store');
         // Route::get('/edit/{id}','edit')->name('edit');
         // Route::delete('/delete/{id}','delete')->name('delete');
+        
+
+
+    }
+);
+
+
+
+////////////////route shipping
+
+Route::prefix('/backend/shipping')->controller(ShippingController::class)->name('Shipping.')->group(
+    function(){
+        Route::get('/' ,'index')->name('index');
+        Route::get('/store' ,'store')->name('store');
+        // Route::get('/edit/{id}','edit')->name('edit');
+        Route::delete('/delete/{id}','delete')->name('delete');
         
 
 

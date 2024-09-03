@@ -912,7 +912,34 @@
                             </li>
                         </ul>
                     </li>
+                    <!-- End::discount-->
+
+
+
+                    
+
+
+                      <!-- Start::Shipping -->
+                      <li class="slide has-sub">
+                        <a href="javascript:void(0);" class="side-menu__item">
+                            <i class="bx bx-heart side-menu__icon"></i>
+                            <span class="side-menu__label">Shipping</span>
+                            <i class="fe fe-chevron-right side-menu__angle"></i>
+                        </a>
+                        <ul class="slide-menu child1">
+                            <li class="slide side-menu__label1">
+                                <a href="javascript:void(0)">Shipping</a>
+                            </li>
+                            <li class="slide">
+                                <a href="{{route('Shipping.store')}}" class="side-menu__item">Avilable Shipping</a>
+                            </li>
+                            <li class="slide">
+                                <a href="{{route('Shipping.index')}}" class="side-menu__item">Add New</a>
+                            </li>
+                        </ul>
+                    </li>
                     <!-- End::Product-->
+
 
         
                         {{-- <!-- Start::User -->

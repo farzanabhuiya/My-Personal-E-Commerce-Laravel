@@ -23,7 +23,7 @@
             <section class="content">
                 <!-- Default box -->
                 <div class="container-fluid">
-                    <form wire:submit="UpdateCategory({{$id}})" method="post"  enctype="multipart/form-data" >
+                    <form wire:submit="UpdateCategory({{$id}})" method="post" >
                         @csrf
                         
                     

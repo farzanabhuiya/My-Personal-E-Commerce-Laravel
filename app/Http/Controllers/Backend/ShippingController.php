@@ -16,7 +16,11 @@ class ShippingController extends Controller
     public function store(){
         return view('admin.Shipping.list-shipping');
     }
-
+     
+    
+    public function edit($id){
+        return view('admin.Shipping.edit-shipping',compact('id'));
+        }
 
     public function delete($id){
         Shipping::find($id)->delete();

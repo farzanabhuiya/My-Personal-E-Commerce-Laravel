@@ -172,7 +172,7 @@ Route::prefix('/backend/shipping')->controller(ShippingController::class)->name(
     function(){
         Route::get('/' ,'index')->name('index');
         Route::get('/store' ,'store')->name('store');
-        // Route::get('/edit/{id}','edit')->name('edit');
+        Route::get('/edit/{id}','edit')->name('edit');
         Route::delete('/delete/{id}','delete')->name('delete');
         
 

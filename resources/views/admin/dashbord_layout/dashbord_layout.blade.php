@@ -628,10 +628,20 @@
                         <a href="#" class="header-link dropdown-toggle" id="mainHeaderProfile" data-bs-toggle="dropdown"
                             data-bs-auto-close="outside" aria-expanded="false">
                             <div class="d-flex align-items-center">
-                                <div class="me-sm-2 me-0">
+                                {{-- <div class="me-sm-2 me-0">
                                     <img src="{{ asset('images/default/default.png') }}" alt="img" width="32"
                                         height="32" class="rounded-circle">
+                                </div> --}}
+                                <div class="me-sm-2 me-0">
+                                    <img src="https://api.dicebear.com/7.x/initials/svg?seed= {{ auth()->user()->name }}"alt="img" width="32"
+                                        height="32" class="rounded-circle">
                                 </div>
+
+{{-- 
+                                <div class="image">
+                                    <!---<img src="https://api.dicebear.com/7.x/initials/svg?seed= {{ auth()->user()->name }}" alt="" />--->
+                                    <img src="{{ asset('storage/users/'.auth()->user()->profile_img) ? asset('storage/users/'.auth()->user()->profile_img) : ''}}" alt="" />
+                                   </div> --}}
                                 <div class="d-sm-block d-none">
                                     <p class="fw-semibold mb-0 lh-1">{{ config('app.name') }}</p>
 
@@ -656,6 +666,15 @@
                         <ul class="main-header-dropdown dropdown-menu pt-0 overflow-hidden header-profile-dropdown dropdown-menu-end"
                             aria-labelledby="mainHeaderProfile">
         
+
+
+                            <li>
+                                <a href="{{ route('profile') }}">
+                                  <i class="lni lni-user"></i> View Profile
+                                </a>
+                              </li>
+
+
                             <li class="logout"><a class="dropdown-item d-flex" href="#"><i class="ti ti-logout fs-18 me-2 op-7"></i>Log
                                     Out</a></li>
 

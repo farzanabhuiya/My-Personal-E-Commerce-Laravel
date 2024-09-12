@@ -13,13 +13,21 @@ use App\Http\Controllers\Dashbord\DashbordController;
 use App\Http\Controllers\Backend\ProductSizeController;
 use App\Http\Controllers\Backend\SubCategorieController;
 use App\Http\Controllers\Backend\ProductcolourController;
+use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\ShippingController;
+use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\userDashboard\UserDashboardController;
 use App\Models\DiscountCoupon;
 
-Route::get('/', function () {
-    return view('frontend.contant.homepage');
-});
+// Route::get('/', function () {
+//     return view('frontend.contant.homepage');
+// });
+
+
+Route::get('/',[HomePageController::class,'homePage'])->name('frontend.contant.homepage');
+
+
+
 
 // Route::middleware([
 //     'auth:sanctum',
@@ -179,5 +187,10 @@ Route::prefix('/backend/shipping')->controller(ShippingController::class)->name(
 
     }
 );
+
+
+Route::get('/profile',[ProfileController::class,'showProfile'])->name('profile');
+Route::put('/profile-update',[ProfileController::class,'updateProfile'])->name('profile.update');
+Route::put('/password-update',[ProfileController::class,'updatepassword'])->name('profile.password.update');
 
 

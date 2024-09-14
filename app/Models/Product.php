@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    function brand(){
+    function Brand(){
         return $this->hasMany(Brand::class);
     }
 }

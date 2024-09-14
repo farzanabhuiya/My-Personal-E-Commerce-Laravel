@@ -120,13 +120,26 @@
 
                     <div class="card shadow mt-3">
                       <div class="image-container">
-                        <img style="width: 200px;height:300px object-fit:cover;obect-position:center;"
-                         src="{{asset('storage/ProductImage/'.$product->image)}}" class="card-img-top">
+
+                        @php
+                        $images = json_decode($product->image);
+                     
+                           @endphp
+
+                       {{-- @foreach($images as $image) --}}
+                              
+                                <img style="width: 200px;height:300px object-fit:cover;obect-position:center;"
+                                src="{{asset('storage/ProductImage/'.$images[0])}}" class="card-img-top">
+                          
+                          {{-- @endforeach --}}
+
+
+
                         <div class="text-overlay"><i class="fa-regular fa-heart"></i></div>
                       </div>
                       <div class="card-body">
-                        {{-- @foreach ($products->brand as $brand)
-                        <p class="card-text">Brand Name: <span class="brand-name">{{$product->brand->name}}</span></p>
+                        {{-- @foreach ($products->brands as $brand)
+                        <p class="card-text">Brand Name: <span class="brand-name">{{$brand->name}}</span></p>
                         @endforeach --}}
                          <p class="card-text">Brand Name: <span class="brand-name">{{$product->brand_id}}</span></p> 
                         <h5 class="card-title">{{$product->title}}</>
@@ -437,7 +450,16 @@
 
                     <div class="card shadow mt-3">
                       <div class="image-container">
-                        <img src="{{asset('frontend/asset/image/cloth-1.jpg')}}" class="card-img-top">
+                        @php
+                        $images = json_decode($latestproduct->image);
+                     
+                           @endphp
+
+                 
+                              
+                                <img style="width: 200px;height:300px object-fit:cover;obect-position:center;"
+                                src="{{asset('storage/ProductImage/'.$images[0])}}" class="card-img-top">
+                       
                         <div class="text-overlay"><i class="fa-regular fa-heart"></i></div>
                       </div>
                       <div class="card-body">

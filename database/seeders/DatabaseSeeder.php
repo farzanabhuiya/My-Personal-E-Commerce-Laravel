@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             DistrictSeeder::class,
             CategorieSeeder::class,
+            SubCategorieSeeder::class,
             
         
 

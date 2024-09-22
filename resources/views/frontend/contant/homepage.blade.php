@@ -142,7 +142,8 @@
                         <p class="card-text">Brand Name: <span class="brand-name">{{$brand->name}}</span></p>
                         @endforeach --}}
                          <p class="card-text">Brand Name: <span class="brand-name">{{$product->brand_id}}</span></p> 
-                        <h5 class="card-title">{{$product->title}}</>
+                        <h5 class="card-title">Product Name:
+                          {{$product->title}}</>
                         <h6>Price: <span class="price">${{$product->price}} </span><span><del>${{$product->compare_price}}</del></span></>
 
                         <!-- ratting system start -->
@@ -183,54 +184,9 @@
                   @endforeach
               
                  
-                  {{-- <div class="col-12 d-flex col-sm-6 col-md-4 col-lg-4 col-xl-3">
-
-                    <div class="card shadow mt-3">
-                      <div class="image-container">
-                        <img src="{{asset('frontend/asset/image/cloth-1.jpg')}}" class="card-img-top">
-                        <div class="text-overlay"><i class="fa-regular fa-heart"></i></div>
-                      </div>
-                      <div class="card-body">
-                        <p class="card-text">Brand Name: <span class="brand-name">আপনার ব্র্যান্ডের নাম</span></p>
-                        <h5 class="card-title">Product Name</>
-                        <h6>Price: <span class="price">$290 </span><span><del>$300</del></span></>
-
-                        <!-- ratting system start -->
-                        <div class="star-rating">
-                         
-                          <input  type="radio" id="5-stars" name="rating" value="5" />
-                          <label  for="5-stars" class="star">&#9733;</label>
-                          <input type="radio" id="4-stars" name="rating" value="4" />
-                          <label for="4-stars" class="star">&#9733;</label>
-                          <input type="radio" id="3-stars" name="rating" value="3" />
-                          <label for="3-stars" class="star">&#9733;</label>
-                          <input type="radio" id="2-stars" name="rating" value="2" />
-                          <label for="2-stars" class="star">&#9733;</label>
-                          <input type="radio" id="1-star" name="rating" value="1" />
-                          <label for="1-star" class="star">&#9733;</label>
-                          <span>(3)</span>
-                        </div>
-      
-                        <!-- ratting system end -->
-
-
-
-
-                        <div class="shopping d-flex flex-column gap-1  ">
-                          <a id="cart" type="button" class="btn "><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
-                          <a id="buy-now" type="button" class="btn" > <i class="fa-solid fa-bag-shopping"></i>Buy Now</a>
-
-                         
-
-
-                        </div>
-
-                      </div>
-                    </div>
-
-                    
-                  </div>
+               
                  
+                  
                   <div class="col-12 d-flex col-sm-6 col-md-4 col-lg-4 col-xl-3">
 
                     <div class="card shadow mt-3">
@@ -277,151 +233,7 @@
                     </div>
 
                     
-                  </div>
-                 
-                  <div class="col-12 d-flex col-sm-6 col-md-4 col-lg-4 col-xl-3">
-
-                    <div class="card shadow mt-3">
-                      <div class="image-container">
-                        <img src="{{asset('frontend/asset/image/cloth-1.jpg')}}" class="card-img-top">
-                        <div class="text-overlay"><i class="fa-regular fa-heart"></i></div>
-                      </div>
-                      <div class="card-body">
-                        <p class="card-text">Brand Name: <span class="brand-name">আপনার ব্র্যান্ডের নাম</span></p>
-                        <h5 class="card-title">Product Name</>
-                        <h6>Price: <span class="price">$290 </span><span><del>$300</del></span></>
-
-                        <!-- ratting system start -->
-                        <div class="star-rating">
-                         
-                          <input  type="radio" id="5-stars" name="rating" value="5" />
-                          <label  for="5-stars" class="star">&#9733;</label>
-                          <input type="radio" id="4-stars" name="rating" value="4" />
-                          <label for="4-stars" class="star">&#9733;</label>
-                          <input type="radio" id="3-stars" name="rating" value="3" />
-                          <label for="3-stars" class="star">&#9733;</label>
-                          <input type="radio" id="2-stars" name="rating" value="2" />
-                          <label for="2-stars" class="star">&#9733;</label>
-                          <input type="radio" id="1-star" name="rating" value="1" />
-                          <label for="1-star" class="star">&#9733;</label>
-                          <span>(3)</span>
-                        </div>
-      
-                        <!-- ratting system end -->
-
-
-
-
-                        <div class="shopping d-flex flex-column gap-1  ">
-                          <a id="cart" type="button" class="btn "><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
-                          <a id="buy-now" type="button" class="btn" > <i class="fa-solid fa-bag-shopping"></i>Buy Now</a>
-
-                         
-
-
-                        </div>
-
-                      </div>
-                    </div>
-
-                    
-                  </div> --}}
-                 
-                  {{-- <div class="col-12 d-flex col-sm-6 col-md-4 col-lg-4 col-xl-3">
-
-                    <div class="card shadow mt-3">
-                      <div class="image-container">
-                        <img src="{{asset('frontend/asset/image/cloth-1.jpg')}}" class="card-img-top">
-                        <div class="text-overlay"><i class="fa-regular fa-heart"></i></div>
-                      </div>
-                      <div class="card-body">
-                        <p class="card-text">Brand Name: <span class="brand-name">আপনার ব্র্যান্ডের নাম</span></p>
-                        <h5 class="card-title">Product Name</>
-                        <h6>Price: <span class="price">$290 </span><span><del>$300</del></span></>
-
-                        <!-- ratting system start -->
-                        <div class="star-rating">
-                         
-                          <input  type="radio" id="5-stars" name="rating" value="5" />
-                          <label  for="5-stars" class="star">&#9733;</label>
-                          <input type="radio" id="4-stars" name="rating" value="4" />
-                          <label for="4-stars" class="star">&#9733;</label>
-                          <input type="radio" id="3-stars" name="rating" value="3" />
-                          <label for="3-stars" class="star">&#9733;</label>
-                          <input type="radio" id="2-stars" name="rating" value="2" />
-                          <label for="2-stars" class="star">&#9733;</label>
-                          <input type="radio" id="1-star" name="rating" value="1" />
-                          <label for="1-star" class="star">&#9733;</label>
-                          <span>(3)</span>
-                        </div>
-      
-                        <!-- ratting system end -->
-
-
-
-
-                        <div class="shopping d-flex flex-column gap-1  ">
-                          <a id="cart" type="button" class="btn "><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
-                          <a id="buy-now" type="button" class="btn" > <i class="fa-solid fa-bag-shopping"></i>Buy Now</a>
-
-                         
-
-
-                        </div>
-
-                      </div>
-                    </div>
-
-                    
-                  </div> --}}
-{{--                  
-                  <div class="col-12 d-flex col-sm-6 col-md-4 col-lg-4 col-xl-3">
-
-                    <div class="card shadow mt-3">
-                      <div class="image-container">
-                        <img src="{{asset('frontend/asset/image/cloth-1.jpg')}}" class="card-img-top">
-                        <div class="text-overlay"><i class="fa-regular fa-heart"></i></div>
-                      </div>
-                      <div class="card-body">
-                        <p class="card-text">Brand Name: <span class="brand-name">আপনার ব্র্যান্ডের নাম</span></p>
-                        <h5 class="card-title">Product Name</>
-                        <h6>Price: <span class="price">$290 </span><span><del>$300</del></span></>
-
-                        <!-- ratting system start -->
-                        <div class="star-rating">
-                         
-                          <input  type="radio" id="5-stars" name="rating" value="5" />
-                          <label  for="5-stars" class="star">&#9733;</label>
-                          <input type="radio" id="4-stars" name="rating" value="4" />
-                          <label for="4-stars" class="star">&#9733;</label>
-                          <input type="radio" id="3-stars" name="rating" value="3" />
-                          <label for="3-stars" class="star">&#9733;</label>
-                          <input type="radio" id="2-stars" name="rating" value="2" />
-                          <label for="2-stars" class="star">&#9733;</label>
-                          <input type="radio" id="1-star" name="rating" value="1" />
-                          <label for="1-star" class="star">&#9733;</label>
-                          <span>(3)</span>
-                        </div>
-      
-                        <!-- ratting system end -->
-
-
-
-
-                        <div class="shopping d-flex flex-column gap-1  ">
-                          <a id="cart" type="button" class="btn "><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
-                          <a id="buy-now" type="button" class="btn" > <i class="fa-solid fa-bag-shopping"></i>Buy Now</a>
-
-                         
-
-
-                        </div>
-
-                      </div>
-                    </div>
-
-                    
-                  </div> --}}
+                  </div> 
                  
                  
                  
@@ -530,73 +342,26 @@
 <div class="container-fluid mt-2 z-0">
   <p>All Brand (Showing 4 brands of 50 brands)</p>
   <div class="row">
+  
+    @foreach ($brands as $brand)
     <div class="col-12 col-md-6 col-xl-4 col-xxl-3 mb-3">
       <div class="card h-auto">
         <div class="row no-gutters">
           <div class="col-4 d-flex align-items-center">
-            <img src="../asset/image/cloth-logo-3.jpg" class="img-fluid rounded-start w-100" alt="...">
+            <img src="{{asset('storage/BrandImage/'.$brand->image)}}" alt="Image" style="max-width: 100%; height: auto;">
           </div>
           <div class="col-8">
             <div class="card-body">
               <h5 class="card-title">Brand Name:</h5>
-              <p class="card-text">Title: Content is a little bit longer.</p>
+              <p class="card-text">Title: {{$brand->name}}.</p>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-6 col-xl-4 col-xxl-3 mb-3">
-      <div class="card h-auto">
-        <div class="row no-gutters">
-          <div class="col-4 d-flex align-items-center">
-            <img src="../asset/image/cloth-logo-3.jpg" class="img-fluid rounded-start w-100" alt="...">
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <h5 class="card-title">Brand Name:</h5>
-              <p class="card-text">Title: Content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-xl-4 col-xxl-3 mb-3">
-      <div class="card h-auto">
-        <div class="row no-gutters">
-          <div class="col-4 d-flex align-items-center">
-            <img src="../asset/image/cloth-logo-3.jpg" class="img-fluid rounded-start w-100" alt="...">
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <h5 class="card-title">Brand Name:</h5>
-              <p class="card-text">Title: Content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-xl-4 col-xxl-3 mb-3">
-      <div class="card h-auto">
-        <div class="row no-gutters">
-          <div class="col-4 d-flex align-items-center">
-            <img src="../asset/image/cloth-logo-3.jpg" class="img-fluid rounded-start w-100" alt="...">
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <h5 class="card-title">Brand Name:</h5>
-              <p class="card-text">Title: Content is a little bit longer.</p>
-             
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-   
-
+    @endforeach
+ 
   </div>
 </div>
 <!-- All brand cards end -->
@@ -604,143 +369,46 @@
 <div class="container-fluid">
   <div class="row">
     <h3 class="col-12">What do you want to buy!</h3>
+  @foreach ($items as $item)
+  <div class="col-12  col-md-6 col-xl-4 col-xxl-3">
+    <div class="card">
+      <div class="row no-gutters  g-0">
+        <div class="col-4 d-flex align-items-center">
 
-    <div class="col-12  col-md-6 col-xl-4 col-xxl-3">
-      <div class="card">
-        <div class="row no-gutters  g-0">
-          <div class="col-4 d-flex align-items-center">
-            <img src="../asset/image/medicine-4.jpg" class="img-fluid rounded-start w-100" alt="...">
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <h5 class="card-title">Medicine</h5>
-              <p class="card-text">Content is a little bit longer.</p>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-    </div>
+                          @php
+                          $images = json_decode($item->image);
+                      
+                       
+                             @endphp
+  
+                         {{-- @foreach($images as $image) --}}
+                                
+                                  <img style="width: 200px;height:300px object-fit:cover;obect-position:center;"
+                                  src="{{asset('storage/ItemImage/'.$images[0])}}" class="card-img-top">
+                            {{-- @endforeach --}}
+                            
+  
+                    
+                  
 
-    <div class="col-12  col-md-6 col-xl-4 col-xxl-3">
-      <div class="card mb-3">
-        <div class="row no-gutters  g-0">
-          <div class="col-4">
-            <img src="../asset/image/cloth-2.jpg" class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <h5 class="card-title">Any type of clothes</h5>
-              <p class="card-text">Total clothes.</p>
           
-              
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-
-    <div class="col-12  col-md-6 col-xl-4 col-xxl-3">
-      <div class="card mb-3">
-        <div class="row no-gutters  g-0">
-          <div class="col-4">
-            <img src="../asset/image/girl-item-1.jpg" class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <h5 class="card-title">Girl Item</h5>
-              <p class="card-text">Total Girl item.</p>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12  col-md-6 col-xl-4 col-xxl-3">
-      <div class="card mb-3">
-        <div class="row no-gutters  g-0">
-          <div class="col-4">
-            <img src="../asset/image/cloth-2.jpg" class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <h5 class="card-title">Boys Item</h5>
-              <p class="card-text">Content is a little bit longer.</p>
-          
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12  col-md-6 col-xl-4 col-xxl-3">
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col-4">
-            <img src="../asset/image/cupple-item -1.jpg" class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <h5 class="card-title">Couple Item</h5>
-              <p class="card-text">Content is a little bit longer.</p>
-     
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12  col-md-6 col-xl-4 col-xxl-3">
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col-4">
-            <img src="../asset/image/new-couple.jpg" class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <h5 class="card-title">New Couple Item</h5>
-              <p class="card-text">Content is a little bit longer.</p>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-xl-4 col-xxl-3">
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col-4">
-            <img src="../asset/image/new reallationship-1.jpg" class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <h5 class="card-title">New Relationship</h5>
-              <p class="card-text">Content is a little bit longer.</p>
+        <div class="col-8">
+          <div class="card-body">
+            <h5 class="card-title">{{$item->name}}</h5>
+            {{-- <p class="card-text">Content is a little bit longer.</p> --}}
             
           </div>
         </div>
       </div>
     </div>
+    
   </div>
-    <div class="col-12 col-md-6 col-xl-4 col-xxl-3">
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col-4">
-            <img src="../asset/image/new reallationship-1.jpg" class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <h5 class="card-title">New Relationship</h5>
-              <p class="card-text">Content is a little bit longer.</p>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  @endforeach
+  
+
+
 
     
 

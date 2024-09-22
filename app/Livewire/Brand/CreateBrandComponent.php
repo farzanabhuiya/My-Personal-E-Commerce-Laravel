@@ -6,17 +6,19 @@ use App\Models\Brand;
 use Livewire\Component;
 use App\Models\Categorie;
 use App\Models\Subcategorie;
+use Livewire\WithFileUploads;
 use App\Http\Controllers\Helpers\SlugGenerator;
 
 class CreateBrandComponent extends Component
 {
 
-   
+    use WithFileUploads;
     use SlugGenerator;
     public $categorie_id="";
     public $subcategorie_id="";
     public $name="";
     public $slug="";
+    public $image;
     public $status="1";
 
 
@@ -24,16 +26,25 @@ class CreateBrandComponent extends Component
     function addBrand(){
    $this->validate([
  
-     'name'=> 'required|max:12',
+     'name'=> 'required|max:20',
      'status'=>'required',
+      
     
 
    ]);
+
+    // dd($this->image);
+      $fileName = time().'.'.$this->image->extension(); 
+      
+       $this->image->storeAs('BrandImage',$fileName,'public');
+       
     $brand = new Brand();
     $brand->categorie_id = $this->categorie_id;
     $brand->subcategorie_id = $this->subcategorie_id;
     $brand->name = $this->name;
     $brand->slug=$this->generateslug($this->name,Brand::class);
+    $brand->image = $fileName;
+    // $brand->image = json_encode($Photos);
     $brand->status = $this->status;
     $brand->save();
     $this->reset();

@@ -42,22 +42,22 @@
 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="description">shipping and Returns</label>
-                                        <textarea wire:model='shipping_returns' id="shipping_returns" cols="30" rows="10" class="summernote" placeholder="Description"></textarea>
+                                        <label for="shipping_returns">shipping and Returns</label>
+                                        <textarea wire:model='shipping_returns'  id="editor" placeholder="Content Goes Here...."></textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label for="description">Description</label>
-                                        <textarea wire:model='description'  id="description" cols="30" rows="10" class="summernote" placeholder="Description"></textarea>
+                                        <textarea wire:model='description' id="edito"  cols="30" rows="10" class="summernote" placeholder="Description"></textarea>
                                     </div>
                                 </div>   
                                 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="description">Short Description</label>
-                                        <textarea wire:model='short_description'  id="short_description" cols="30" rows="10" class="summernote" placeholder="Description"></textarea>
+                                        <label for="short_description">Short Description</label>
+                                        <textarea wire:model='short_description'  id="edit" cols="30" rows="10" class="summernote" placeholder="Short_description"></textarea>
                                     </div>
                                 </div> 
 
@@ -397,6 +397,47 @@ $('.related_product').select2({
         }
     }
 }); 
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
+<script>
+ClassicEditor
+    .create( document.querySelector( '#edito' ) )
+    .catch( error => {
+        console.error( error );
+    } );
+</script>
+<script>
+ClassicEditor
+    .create( document.querySelector( '#edit' ) )
+    .catch( error => {
+        console.error( error );
+    } );
 </script>
     @endpush
 

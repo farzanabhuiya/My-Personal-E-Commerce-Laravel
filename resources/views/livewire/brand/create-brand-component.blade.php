@@ -24,7 +24,7 @@
         <section class="content">
             <!-- Default box -->
             <div class="container-fluid">
-                <form wire:submit="addBrand" method="post"  >
+                <form wire:submit="addBrand" method="post"  enctype="multipart/form-data">
                 <div class="card">
                     <div class="card-body">
                      									
@@ -90,6 +90,15 @@
                                 <span class="text-danger">{{$message }}</span>
                                @enderror
                             </div>
+
+
+                            
+                        <div>           
+                           
+
+                            <input type="file" wire:model="image">     
+                          @error('image.*') <span class="error">{{ $message }}</span> @enderror
+                        </div>
     
                             
                         </div>

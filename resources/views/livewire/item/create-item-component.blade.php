@@ -25,7 +25,7 @@
         <section class="content">
             <!-- Default box -->
             <div class="container-fluid">
-                <form wire:submit="addItem" method="post"  >
+                <form wire:submit="addItem" method="post" enctype="multipart/form-data" >
                 <div class="card">
                     <div class="card-body">
                      									
@@ -93,6 +93,19 @@
                                 </div>
                             </div>
 
+
+                            
+                        <div>           
+                            @if ($images)
+                            @foreach ($images as $image)
+                            <img  src="{{ $image->temporaryUrl() }}" width="100px">
+
+                            @endforeach 
+                            @endif
+
+                            <input type="file" wire:model="images" multiple>     
+                        @error('image.*') <span class="error">{{ $message }}</span> @enderror
+                        </div>
                            
     
                             

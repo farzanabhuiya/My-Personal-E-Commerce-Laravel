@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             CategorieSeeder::class,
             SubCategorieSeeder::class,
             BrandSeeder::class,
+            ItemSeeder::class,
             
         
 

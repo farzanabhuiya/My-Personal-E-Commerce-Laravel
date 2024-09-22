@@ -6,7 +6,7 @@
 
 <section id="profile ">
 
-       <div class="container mt-5 pt-4">
+       <div class="container mt-1 pt-1">
 
              <div class="row">
 
@@ -51,7 +51,7 @@
 
 
 
-             <div class="col-lg-4 mx-auto ">
+             <div class="col-lg-6 mx-auto ">
             
                 <div class="card bg-success-subtle">
                     <div class="card-header  ">
@@ -61,18 +61,19 @@
                         <form action="{{ route('profile.password.update') }}" method="post">
                             @csrf
                            @method('put')
-                            <input name="old"  type="text" class=" from-control my-2 php " placeholder="old password">
+                            <input name="old" type="text" class="form-control my-2" placeholder="old password">
                             @error('old')
                             <span style="color: red" >{{ $message }}</span>
                             @enderror
-
-                            <input  name="password" type="text" class="from-control my-2" placeholder="new password">
+                             
+                            <input name="password" type="text" class="form-control my-2" placeholder="New password">
+                            
                             @error('password')
                             <span style="color: red" >{{ $message }}</span>
                             @enderror
-                            <input  name="password_confirmation" type="text" class="from-control my-2" placeholder="comfirm password">
+                            <input name="password_confirmation" type="text" class="form-control my-2" placeholder="comfirm password">
                             @error('password_confirmation')
-                            <span style="color: red" >{{ $message }}</span>
+                            <span class="d-block" style="color: red" >{{ $message }}</span>
                             @enderror
                             <button class="btn btn-primary d-block " type="submit">UpdatePassword</button>
                         </form>

@@ -18,7 +18,7 @@
     <link rel="icon" href="./asset/images/brand-logos/favicon.png" type="image/x-icon">
 
     <!-- Choices JS -->
-    <script src="{{ asset('admin/asset/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script> -
+    <script src="{{ asset('admin/asset/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
     <script src="./asset/libs/choices.js/public/assets/scripts/choices.min.js"></script>
 
     <!-- Main Theme Js -->

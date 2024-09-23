@@ -15,19 +15,23 @@ class CreateComponent extends Component
     public $name="";
     public $slug="";
     public $status="1";
-    public $showhome="No";
+    public $showhome="Yes";
     public $categorie_id;
+  
+    
 
 
-//     public function mount($categories)
-//    {
-//     // Default category ID set korar jonno
-//     $this->categorie_id = $categories->first()->id ?? null;
+    public function mount($categories)
+   {
+    // Default category ID set korar jonno
+    $this->categorie_id = $categories->first()->id ?? null;
 
-//     if (!$this->categorie_id && $categories->isNotEmpty()) {
-//         $this->categorie_id = $categories->first()->id;
-//     }
-//         }
+     if (!$this->categorie_id && $categories->isNotEmpty()) {
+        $this->categorie_id = $categories->first()->id;
+    }
+      
+
+}
 
      
 
@@ -36,7 +40,7 @@ class CreateComponent extends Component
     function addSubcategorie(){
         $this->validate([
  
-            'name'=> 'required|max:12',
+            'name'=> 'required|max:23',
             'status'=>'required',
             'showhome'=>'required',
        
@@ -51,7 +55,10 @@ class CreateComponent extends Component
            $subcategorie->showhome = $this->showhome;
            $subcategorie->save();
            $this->reset();
-           return back()->with('success','SubCategory Successfull Create');
+          
+           $this->dispatch('toast', ['message' => 'Data stored successfully!']);
+          
+           return back();
           
         
            }

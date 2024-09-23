@@ -22,8 +22,7 @@ class BrandFactory extends Factory
             'subcategorie_id' =>$this->faker->randomElement([1,2,3,4]) ,
             
             'name'=>$this->faker->name,
-            "slug"=>Str::slug($this->faker->unique->words(4,true))
-            ,
+            "slug"=>Str::slug($this->faker->unique->words(4,true)),
             'status'=> $this->faker->boolean(80)
             
             

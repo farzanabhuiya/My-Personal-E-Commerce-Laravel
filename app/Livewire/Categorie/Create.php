@@ -13,8 +13,8 @@ class Create extends Component
     use SlugGenerator;
     public $name="";
     public $slug="";
-    public $status="1";
-    public $showhome="No";
+    public $status;
+    public $showhome;
 
 
     function addCategory(){
@@ -46,14 +46,3 @@ class Create extends Component
         return view('livewire.categorie.create');
     }
 }
-
-
-
-
-
-
-
-
-
-
-

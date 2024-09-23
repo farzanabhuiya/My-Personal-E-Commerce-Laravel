@@ -19,11 +19,13 @@
 
     <!-- Choices JS -->
     <script src="{{ asset('admin/asset/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
-    <script src="./asset/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+    {{-- <script src="./asset/libs/choices.js/public/assets/scripts/choices.min.js"></script> --}}
 
     <!-- Main Theme Js -->
-    <script src="../assets/js/main.js"></script>
-    <script src="../asset/js"></script>
+
+
+    <script src="{{asset('admin/asset/js/main.js')}}"></script>
+    {{-- <script src="../asset/js"></script> --}}
 
 
 
@@ -1183,6 +1185,11 @@
 
           <!---/datetimepicker--->
 <script src="{{asset('admin/asset/js/datetimepicker.js')}}"></script>
+{{-- sweetalert cdn --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- custom sweetalert --}}
+
+  <script src="{{ asset('Js/sweetalert.js') }}"></script>
 
      @stack('customJs')
 
@@ -1197,13 +1204,15 @@ $(document).ready(function(event){
 
        $(this).next('form').submit();
 
-        console.log('hello')
+   
        
     })
 })
 
 
 </script>
+
+
 
 
 </html>

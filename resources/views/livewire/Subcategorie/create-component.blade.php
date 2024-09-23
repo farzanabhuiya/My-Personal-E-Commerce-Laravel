@@ -1,9 +1,6 @@
 <div>
-    @if (session('success'))
-    <div  class="alert alert-success w-10 h-20">
-        <h4>{{session('success')}}</h4>
-    </div>
-      @endif
+  
+
     <div>
         <section class="content-header">					
             <div class="container-fluid ">
@@ -38,10 +35,10 @@
                                     <label for="categorie_id">Category</label>
                                     <select  wire:model='categorie_id'  id="categorie_id" class="form-control">
                                         @forelse ($categories as $categorie )
-                                        <option selected  value="{{$categorie->id }}">{{ $categorie->name }}</option>
+                                        
                                      
-                                        {{-- <option value="{{ $categorie->id }}" {{ $categorie->id == $this->categorie_id ? 'selected' : '' }}>
-                                            {{ $categorie->name }}</option> --}}
+                                        <option value="{{ $categorie->id }}" {{ $categorie->id == $this->categorie_id ? 'selected' : '' }}>
+                                            {{ $categorie->name }}</option>
                                         @empty
                                         <option disabled selected>No catrgory found</option>
                                       @endforelse
@@ -88,8 +85,8 @@
                                 <div class="mb-3">
                                     <label for="status">Show on Home</label>
                                     <select wire:model='showhome' id='showhome' class="form-control">
+                                        <option selected value="yes">Yes</option>
                                         <option value="no">No</option>
-                                        <option value="yes">Yes</option>
                                         
                                     </select>
                                 </div>
@@ -118,5 +115,39 @@
     
     </div>
     
+    
 </div>
+
+
+   
+  
+    
+
+  @push('customJs')
+
+<script>
+
+
+
+$(document).ready(function(){
+
+
+showToast('Data stored successfully!')
+
+})
+
+
+
+
+</script>
+    
+
+    
+
+
+  @endpush
+
+  
+ 
+
 

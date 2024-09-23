@@ -129,7 +129,7 @@
                        {{-- @foreach($images as $image) --}}
                               
                                 <img style="width: 200px;height:300px object-fit:cover;obect-position:center;"
-                                src="{{asset('storage/ProductImage/'.$images[0])}}" class="card-img-top">
+                                {{-- src="{{asset('storage/ProductImage/'.$images[0])}}" class="card-img-top"> --}}
                           
                           {{-- @endforeach --}}
 
@@ -384,7 +384,7 @@
                          {{-- @foreach($images as $image) --}}
                                 
                                   <img style="width: 200px;height:300px object-fit:cover;obect-position:center;"
-                                  src="{{asset('storage/ItemImage/'.$images[0])}}" class="card-img-top">
+                                  {{-- src="{{asset('storage/ItemImage/'.$images[0])}}" class="card-img-top"> --}}
                             {{-- @endforeach --}}
                             
   

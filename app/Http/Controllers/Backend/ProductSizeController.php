@@ -9,11 +9,13 @@ use Illuminate\Http\Request;
 class ProductSizeController extends Controller
 {
     public function index(){
-        return view('admin.ProductSize.create-productSize');
+       $ProductSize  = Productsize::select('size')->latest()->get(); 
+     
+         return view('admin.Productsize.list-productsize');
     }
 
     public function store(){
-        return view('admin.Productsize.list-productsize');
+        return view('admin.ProductSize.create-productSize');
     }
 
 

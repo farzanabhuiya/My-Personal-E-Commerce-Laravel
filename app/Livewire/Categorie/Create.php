@@ -13,8 +13,8 @@ class Create extends Component
     use SlugGenerator;
     public $name="";
     public $slug="";
-    public $status="1";
-    public $showhome="No";
+    public $status;
+    public $showhome;
 
 
     function addCategory(){
@@ -33,6 +33,10 @@ class Create extends Component
     $category->showhome = $this->showhome;
     $category->save();
     $this->reset();
+    
+
+    $this->dispatch('toast', message:'Data stored successfully!'); 
+    
     return back()->with('success','Category Successfull Create');
     
 
@@ -46,14 +50,3 @@ class Create extends Component
         return view('livewire.categorie.create');
     }
 }
-
-
-
-
-
-
-
-
-
-
-

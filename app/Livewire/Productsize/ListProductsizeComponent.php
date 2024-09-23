@@ -9,10 +9,13 @@ class ListProductsizeComponent extends Component
 {
     public $search; 
     public $productsizes='';
-    // public function mount()
-    // {
-    //     $this->productsizes = Productsize::all();
-    // }
+
+
+    public function mount()
+    {
+        $this->productsizes = Productsize::select('id','size')->latest()->get();
+    }
+
 
 
 

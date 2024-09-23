@@ -19,11 +19,17 @@
 
     <!-- Choices JS -->
     <script src="{{ asset('admin/asset/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+<<<<<<< HEAD
     <script src="./asset/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+=======
+    {{-- <script src="./asset/libs/choices.js/public/assets/scripts/choices.min.js"></script> --}}
+>>>>>>> 9ef94c46b2d41adf8541f0bafdb6b3426a30ea78
 
     <!-- Main Theme Js -->
-    <script src="../assets/js/main.js"></script>
-    <script src="../asset/js"></script>
+
+
+    <script src="{{asset('admin/asset/js/main.js')}}"></script>
+    {{-- <script src="../asset/js"></script> --}}
 
 
 
@@ -806,10 +812,10 @@
                                     <a href="javascript:void(0)">Brand</a>
                                 </li>
                                 <li class="slide">
-                                    <a href="{{route('Brand.store')}}" class="side-menu__item">Avilable Brand</a>
+                                    <a href="{{route('Brand.index')}}" class="side-menu__item">Avilable Brand</a>
                                 </li>
                                 <li class="slide">
-                                    <a href="{{route('Brand.index')}}" class="side-menu__item">Add New</a>
+                                    <a href="{{route('Brand.store')}}" class="side-menu__item">Add New</a>
                                 </li>
                             </ul>
                         </li>
@@ -828,10 +834,10 @@
                                     <a href="javascript:void(0)">Item</a>
                                 </li>
                                 <li class="slide">
-                                    <a href="{{route('Item.store')}}" class="side-menu__item">Avilable Items</a>
+                                    <a href="{{route('Item.index')}}" class="side-menu__item">Avilable Items</a>
                                 </li>
                                 <li class="slide">
-                                    <a href="{{route('Item.index')}}" class="side-menu__item">Add New</a>
+                                    <a href="{{route('Item.store')}}" class="side-menu__item">Add New</a>
                                 </li>
                             </ul>
                         </li>
@@ -851,10 +857,10 @@
                             <a href="javascript:void(0)">ProductSize</a>
                         </li>
                         <li class="slide">
-                            <a href="{{route('ProductSize.store')}}" class="side-menu__item">Avilable ProductSize</a>
+                            <a href="{{route('ProductSize.index')}}" class="side-menu__item">Avilable ProductSize</a>
                         </li>
                         <li class="slide">
-                            <a href="{{route('ProductSize.index')}}" class="side-menu__item">Add New</a>
+                            <a href="{{route('ProductSize.store')}}" class="side-menu__item">Add New</a>
                         </li>
                     </ul>
                 </li>
@@ -1183,6 +1189,11 @@
 
           <!---/datetimepicker--->
 <script src="{{asset('admin/asset/js/datetimepicker.js')}}"></script>
+{{-- sweetalert cdn --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- custom sweetalert --}}
+
+  <script src="{{ asset('Js/sweetalert.js') }}"></script>
 
      @stack('customJs')
 
@@ -1197,13 +1208,15 @@ $(document).ready(function(event){
 
        $(this).next('form').submit();
 
-        console.log('hello')
+   
        
     })
 })
 
 
 </script>
+
+
 
 
 </html>

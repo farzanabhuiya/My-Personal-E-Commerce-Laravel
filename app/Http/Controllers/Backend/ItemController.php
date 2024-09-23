@@ -9,11 +9,11 @@ use App\Http\Controllers\Controller;
 class ItemController extends Controller
 {
     public function index(){
-        return view('admin.Item.create-item');
+        return view('admin.Item.list-item');
     }
 
     public function store(){
-        return view('admin.Item.list-item');
+        return view('admin.Item.create-item');
     }
 
     public function edit($id){

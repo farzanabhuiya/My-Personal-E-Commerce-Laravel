@@ -15,23 +15,32 @@ class CreateBrandComponent extends Component
     use WithFileUploads;
     use SlugGenerator;
     public $categorie_id="";
-    public $subcategorie_id="";
+    public $subcategorie_id=1;
     public $name="";
     public $slug="";
     public $image;
     public $status="1";
 
 
+    public function mount($categories){
+        
+      $this->categorie_id = $categories->first()->id ?? null;
+      
+    }
 
     function addBrand(){
    $this->validate([
  
      'name'=> 'required|max:20',
      'status'=>'required',
-      
+      'image'=>'required',
+      'categorie_id'=>'required',
+      'subcategorie_id'=>'required',
     
 
    ]);
+   
+   
 
     // dd($this->image);
       $fileName = time().'.'.$this->image->extension(); 
@@ -48,6 +57,7 @@ class CreateBrandComponent extends Component
     $brand->status = $this->status;
     $brand->save();
     $this->reset();
+    $this->dispatch('toast',message:'Data stored successfully!');
     return back()->with('success','Brand Successfull Create');
     
 

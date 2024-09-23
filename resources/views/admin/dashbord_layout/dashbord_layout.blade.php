@@ -19,7 +19,11 @@
 
     <!-- Choices JS -->
     <script src="{{ asset('admin/asset/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+<<<<<<< HEAD
+    <script src="./asset/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+=======
     {{-- <script src="./asset/libs/choices.js/public/assets/scripts/choices.min.js"></script> --}}
+>>>>>>> 9ef94c46b2d41adf8541f0bafdb6b3426a30ea78
 
     <!-- Main Theme Js -->
 

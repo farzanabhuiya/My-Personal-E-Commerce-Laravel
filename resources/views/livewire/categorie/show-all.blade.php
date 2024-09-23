@@ -32,7 +32,7 @@
                         <div class="card-tools ">
                             
                             <div class="input-group input-group" style="width: 250px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                <input type="text" wire:model.live="search" class="form-control float-right" placeholder="Search">
             
                                 <div class="input-group-append">
                                   <button type="submit" class="btn btn-default">
@@ -41,6 +41,7 @@
                                 </div>
                               </div>
                         </div>
+                     
                     </div>
                 </form>
                     <div class="card-body">								
@@ -95,14 +96,18 @@
                                     </form>
                                 </td>
                             </tr>
+                          
                              @endforeach
                               
                             </tbody>
+                            
                         </table>
-                        {{-- {{$category->links()}}										 --}}
+                        {{-- {{ $categories->links() }} --}}
+                     									
                     </div>
-                    
+                    {{-- {{ $categories->links() }} --}}
                 </div>
+               
             </div>
             <!-- /.card -->
         </section>

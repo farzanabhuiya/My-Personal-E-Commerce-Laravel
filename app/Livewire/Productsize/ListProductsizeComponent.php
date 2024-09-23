@@ -11,7 +11,7 @@ class ListProductsizeComponent extends Component
     public $productsizes='';
     public function mount()
     {
-        $this->productsizes = Productsize::all();
+        $this->productsizes = Productsize::select('id','size')->latest()->get();
     }
 
 

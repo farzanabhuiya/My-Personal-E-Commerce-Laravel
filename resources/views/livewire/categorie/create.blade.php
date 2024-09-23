@@ -1,9 +1,4 @@
 <div>
-    @if (session('success'))
-    <div  class="alert alert-success w-10 h-20">
-        <h4>{{session('success')}}</h4>
-    </div>
-      @endif
     <div>
         <section class="content-header">					
             <div class="container-fluid ">
@@ -103,3 +98,31 @@
     </div>
     
 </div>
+
+
+{{-- sweetalert  --}}
+
+
+  @push('customJs')
+
+<script>
+
+
+
+$(document).ready(function(){
+
+
+showToast('Data stored successfully!')
+
+})
+
+
+
+
+</script>
+    
+
+    
+
+
+  @endpush

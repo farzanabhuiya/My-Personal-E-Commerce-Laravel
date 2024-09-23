@@ -18,7 +18,7 @@ class CreateProductsizeComponent extends Component
    public function productsize(){
    $this->validate([
  
-     'size'=> 'required|max:5',
+    'size' => 'required|max:5|unique:productsizes',
      
 
    ]);

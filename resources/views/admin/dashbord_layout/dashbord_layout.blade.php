@@ -853,10 +853,10 @@
                             <a href="javascript:void(0)">ProductSize</a>
                         </li>
                         <li class="slide">
-                            <a href="{{route('ProductSize.store')}}" class="side-menu__item">Avilable ProductSize</a>
+                            <a href="{{route('ProductSize.index')}}" class="side-menu__item">Avilable ProductSize</a>
                         </li>
                         <li class="slide">
-                            <a href="{{route('ProductSize.index')}}" class="side-menu__item">Add New</a>
+                            <a href="{{route('ProductSize.store')}}" class="side-menu__item">Add New</a>
                         </li>
                     </ul>
                 </li>

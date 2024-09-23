@@ -17,7 +17,7 @@ class CreateProductcolourComponent extends Component
    public function productcolour(){
    $this->validate([
  
-     'colour'=> 'required|max:8',
+     'colour'=> 'required|max:8|unique:productcolours',
      
 
    ]);

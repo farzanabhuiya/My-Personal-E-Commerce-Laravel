@@ -20,7 +20,7 @@ class Create extends Component
     function addCategory(){
    $this->validate([
  
-     'name'=> 'required|max:12',
+     'name'=> 'required|max:20',
      'status'=>'required',
      'showhome'=>'required',
 
@@ -33,6 +33,10 @@ class Create extends Component
     $category->showhome = $this->showhome;
     $category->save();
     $this->reset();
+    
+
+    $this->dispatch('toast', message:'Data stored successfully!'); 
+    
     return back()->with('success','Category Successfull Create');
     
 

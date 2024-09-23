@@ -1,9 +1,5 @@
 <div>
-    @if (session('success'))
-    <div  class="alert alert-success w-10 h-20">
-        <h4>{{session('success')}}</h4>
-    </div>
-      @endif
+
     <div>
         <section class="content-header">					
             <div class="container-fluid ">
@@ -35,13 +31,21 @@
                                 <div class="mb-3">
                                     <label for="name">Category</label>
                                     <select  wire:model='categorie_id'  id="categorie_id" class="form-control categorySelect">
+
+                                   
                                         @forelse ($categories as $categorie )
+
+
                                         <option  value="{{$categorie->id }}">{{ $categorie->name }}</option>
                                      
                                         @empty
                                         <option disabled selected>No catrgory found</option>
                                       @endforelse
                                     </select>
+
+                                            @error('categorie_id')
+                                <span class="text-danger">{{$message }}</span>
+                               @enderror
                                 </div>
                             </div>
 
@@ -55,6 +59,11 @@
                                         <option disabled selected>No catrgory found</option>
                                      
                                     </select>
+
+
+                                            @error('subcategorie_id')
+                                <span class="text-danger">{{$message }}</span>
+                               @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -66,15 +75,7 @@
                                    @enderror	
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="slug">Slug</label>
-                                    <input wire:model='slug' type="text" id="slug"  class="form-control" placeholder="Slug">	
-                                    @error('slug')
-                                    <span class="text-danger">{{$message }}</span>
-                                   @enderror	
-                                </div>
-                            </div>	
+                           	
     
                             
                             <div class="col-md-6">
@@ -96,8 +97,16 @@
                         <div>           
                            
 
-                            <input type="file" wire:model="image">     
-                          @error('image.*') <span class="error">{{ $message }}</span> @enderror
+                           <label for="formFile" class="form-label">Barnd Image</label>
+                            <input  wire:model="image" class="form-control" type="file" id="formFile">  
+
+
+                                            @if ($image) 
+                        <img src="{{ $image->temporaryUrl() }}" width="200px" class="mt-2">
+                    @endif   
+                                        @error('image') <span class="error text-danger">{{ $message }}</span> @enderror
+
+
                         </div>
     
                             
@@ -138,7 +147,7 @@ function getSubcategories(){
             categoryId:$(this).val()
         },
         success:function(res){
-            let options=[]
+            let options=[ ]
 
             if(res.length >0){
 
@@ -146,6 +155,10 @@ function getSubcategories(){
                 let optionTag=`<option value ='${subcategorie.id}'>${subcategorie.name}</option>`
                 options.push(optionTag)
             })
+
+
+            
+              $('.subcategorieSelect').html(options)
               $('.subcategorieSelect').html(options)
 
             }else{
@@ -157,6 +170,8 @@ function getSubcategories(){
         }
     });
 };
+
+showToast('Data stored successfully!')
 
 
 </script>

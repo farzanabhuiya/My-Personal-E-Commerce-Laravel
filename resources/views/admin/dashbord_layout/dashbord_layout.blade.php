@@ -808,10 +808,10 @@
                                     <a href="javascript:void(0)">Brand</a>
                                 </li>
                                 <li class="slide">
-                                    <a href="{{route('Brand.store')}}" class="side-menu__item">Avilable Brand</a>
+                                    <a href="{{route('Brand.index')}}" class="side-menu__item">Avilable Brand</a>
                                 </li>
                                 <li class="slide">
-                                    <a href="{{route('Brand.index')}}" class="side-menu__item">Add New</a>
+                                    <a href="{{route('Brand.store')}}" class="side-menu__item">Add New</a>
                                 </li>
                             </ul>
                         </li>
@@ -830,10 +830,10 @@
                                     <a href="javascript:void(0)">Item</a>
                                 </li>
                                 <li class="slide">
-                                    <a href="{{route('Item.store')}}" class="side-menu__item">Avilable Items</a>
+                                    <a href="{{route('Item.index')}}" class="side-menu__item">Avilable Items</a>
                                 </li>
                                 <li class="slide">
-                                    <a href="{{route('Item.index')}}" class="side-menu__item">Add New</a>
+                                    <a href="{{route('Item.store')}}" class="side-menu__item">Add New</a>
                                 </li>
                             </ul>
                         </li>

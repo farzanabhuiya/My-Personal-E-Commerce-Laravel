@@ -7,9 +7,7 @@ use Livewire\Component;
 
 class ListItemComponenet extends Component
 {
-    // public $categorie_id="";
-    // public $subcategorie_id="";
-    // public $brand_id="";
+   
     public $items="";
     public $search;
 
@@ -24,7 +22,7 @@ class ListItemComponenet extends Component
     public function render()
     {
         if(! $this->search){
-            $this->items =Item::latest()->paginate(5)->all(); 
+            $this->items =Item::latest()->paginate(6)->all(); 
         }else{
             $this->items =Item::where('name', 'like', '%'.$this->search.'%')->get();
         }

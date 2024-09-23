@@ -20,7 +20,7 @@ class Create extends Component
     function addCategory(){
    $this->validate([
  
-     'name'=> 'required|max:12',
+     'name'=> 'required|max:20',
      'status'=>'required',
      'showhome'=>'required',
 

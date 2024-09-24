@@ -1,10 +1,6 @@
 
 <div>
-    @if (session('success'))
-    <div  class="alert alert-success w-10 h-20">
-        <h4>{{session('success')}}</h4>
-    </div>
-      @endif
+   
     <div>
         <section class="content-header">					
             <div class="container-fluid ">
@@ -95,15 +91,20 @@
 
 
                             
-                        <div>           
+                        <div>    
+
+   <label for="formFile" class="form-label">Default file input example</label>
+                    <input wire:model='images' class="form-control" type="file" id="formFile" multiple> 
+
+
                             @if ($images)
                             @foreach ($images as $image)
-                            <img  src="{{ $image->temporaryUrl() }}" width="100px">
+                            <img  class='my-2' src="{{ $image->temporaryUrl() }}" width="100px">
 
                             @endforeach 
                             @endif
 
-                            <input type="file" wire:model="images" multiple>     
+                        
                         @error('image.*') <span class="error">{{ $message }}</span> @enderror
                         </div>
                            
@@ -165,6 +166,9 @@ function getSubcategories(){
         }
     });
 };
+
+
+showToast('Data stored successfully!')
 
 
 </script>

@@ -18,14 +18,28 @@ class CreateItemComponent extends Component
     use WithFileUploads; 
     use SlugGenerator;
     public $categorie_id="";
-    public $subcategorie_id="";
+    public $subcategorie_id=1;
     public $brand_id="";
     public $name="";
     public $slug="";
     public $images=[];
+    
+     
+    
   
 
 
+    public function mount($Categorie,$SubCategorie,$Brand){
+      
+      $this->categorie_id = $Categorie->first()->id ?? null;
+      // $this->subcategorie_id = $SubCategorie->first()->id ?? null;
+      $this->brand_id = $Brand->first()->id ?? null;
+      
+      
+      
+    }
+    
+    
 
     function addItem(){
    $this->validate([
@@ -53,6 +67,7 @@ class CreateItemComponent extends Component
     $items->image = json_encode($itemPhotos);
     $items->save();
     $this->reset();
+    $this->dispatch('toast',message:'Data stored successfully!');
     return back()->with('success','Item Successfull Create');
     
 

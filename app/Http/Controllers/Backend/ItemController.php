@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Categorie;
+use App\Models\Subcategorie;
 
 class ItemController extends Controller
 {
@@ -13,7 +16,10 @@ class ItemController extends Controller
     }
 
     public function store(){
-        return view('admin.Item.create-item');
+        $Categorie = Categorie::select('id')->get();
+        $SubCategorie = Subcategorie::select('id')->get();
+        $Brand = Brand::select('id')->get();
+        return view('admin.Item.create-item',compact('Categorie','SubCategorie','Brand'));
     }
 
     public function edit($id){

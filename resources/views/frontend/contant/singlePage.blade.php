@@ -101,12 +101,15 @@
 
            <!--  Comments Section start -->
            <div class="mt-4">
-            <h5>Comments</h5>
+            <h5>Comments  ({{ $product->totalComments }})</h5>
             <div class="media mb-3">
-                <img src="https://via.placeholder.com/50" class="mr-3 rounded-circle" alt="User Image">
+              @foreach ( $product->comments as $cmt)
+                
+              <img  style="width: 50px;height:40px object-fit:cover;obect-position:center;" src="{{ $cmt->user->profile_img ? asset ('storage/users/' . $cmt->user->profile_img) : env('AVATAR_API').$cmt->user->name }}" alt="User Image" />
+                
                 <div class="media-body">
-                    <h6 class="mt-0">User Name</h6>
-                    This is a comment.
+                    <h6 class="mt-0">{{$cmt->user->name}}</h6>
+                    <p>{{$cmt->comment}}</p>
                     <div class="mt-2">
                         <a href="#" class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#reply1" aria-expanded="false" aria-controls="reply1">Reply</a>
                     </div>
@@ -133,15 +136,23 @@
                         </div>
                     </div>
                 </div>
-            </div>
+           
+           
+                @endforeach
+              </div>
             <!-- Add Comment Form -->
-            <form>
+            @auth
+            <form  method="post" action="{{ route('frontend.contant.commentStore') }}">
+              @csrf
+              <input type="hidden" name="product_id"  value="{{$product->id}}">
+							<input type="hidden" name="parent_id" value="">
                 <div class="form-group">
                     <label for="commentTextarea">Add a Comment</label>
-                    <textarea class="form-control" id="commentTextarea" rows="3" placeholder="Comment Heare....."></textarea>
+                    <textarea name="comment" class="form-control" id="commentTextarea" rows="3" placeholder="Comment Heare....."></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit Comment</button>
             </form>
+            @endauth
         </div>
 
 

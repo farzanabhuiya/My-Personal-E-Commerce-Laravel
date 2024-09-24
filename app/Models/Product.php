@@ -11,4 +11,8 @@ class Product extends Model
     function Brand(){
         return $this->hasMany(Brand::class);
     }
+
+    function comments(){
+        return $this->hasMany(Comment::class)->with('user:id,name,profile_img');
+    }
 }

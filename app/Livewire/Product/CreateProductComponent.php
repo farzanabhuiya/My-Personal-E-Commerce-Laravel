@@ -2,16 +2,17 @@
 
 namespace App\Livewire\Product;
 
+use App\Models\Item;
 use App\Models\Brand;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Categorie;
+use App\Models\Productsize;
+use Illuminate\Support\Str;
 use App\Models\Subcategorie;
+use App\Models\Productcolour;
 use Livewire\WithFileUploads;
 use App\Http\Controllers\Helpers\SlugGenerator;
-use App\Models\Item;
-use App\Models\Productcolour;
-use App\Models\Productsize;
 
 class CreateProductComponent extends Component
 {
@@ -57,7 +58,7 @@ class CreateProductComponent extends Component
           ]);
           $productPhotos =[];
            foreach ($this->images as $image) {
-            $fileName = time().'.'.$image->extension(); 
+            $fileName = Str::random(10).'.'.$image->extension();  
             $image->storeAs('ProductImage',$fileName,'public');
             $productPhotos[]=$fileName;  
         }

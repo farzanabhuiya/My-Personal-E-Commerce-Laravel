@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\ProductcolourController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\ShippingController;
 use App\Http\Controllers\Frontend\HomePageController;
+use App\Http\Controllers\Frontend\SinglePageController;
 use App\Http\Controllers\userDashboard\UserDashboardController;
 use App\Models\DiscountCoupon;
 
@@ -25,6 +26,8 @@ use App\Models\DiscountCoupon;
 
 
 Route::get('/',[HomePageController::class,'homePage'])->name('frontend.contant.homepage');
+Route::get('singlePage/{slug}',[SinglePageController::class,'singlePage'])->name('frontend.contant.singlePage');
+
 
 
 

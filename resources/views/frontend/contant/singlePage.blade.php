@@ -111,10 +111,11 @@
                     <h6 class="mt-0">{{$cmt->user->name}}</h6>
                     <p>{{$cmt->comment}}</p>
                     <div class="mt-2">
-                        <a href="#" class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#reply1" aria-expanded="false" aria-controls="reply1">Reply</a>
+                        <a href="#comment-form" data-parent-id="{{$cmt->id}}" data-name="{{$cmt->user->name}}" class="btn btn-sm btn-outline-primary replyBtn " data-toggle="collapse" data-target="#reply1" aria-expanded="false" aria-controls="reply1">Reply</a>
                     </div>
+                  </div>
                     <!-- Reply Form -->
-                    <div class="collapse mt-2" id="reply1">
+                    {{-- <div class="collapse mt-2" id="reply1">
                         <div class="card card-body">
                             <form>
                                 <div class="form-group">
@@ -124,37 +125,50 @@
                                 <button type="submit" class="btn btn-primary btn-sm">Submit Reply</button>
                             </form>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- Replies -->
-                    <div class="media mt-3">
+
+                    @if (count($cmt->replies) >0)
+								
+							
+                       @foreach ($cmt->replies as $reply )
+
+                    <div class="media mt-3 right">
                         <a class="pr-3" href="#">
-                            <img src="https://via.placeholder.com/50" class="mr-3 rounded-circle" alt="User Image">
+                          <img  style="width: 50px;height:40px object-fit:cover;obect-position:center;" src="{{ $reply->user->profile_img ? asset ('storage/users/' . $reply->user->profile_img) : env('AVATAR_API').$reply->user->name }}" alt="User Image" />
                         </a>
                         <div class="media-body">
-                            <h6 class="mt-0">Reply User Name</h6>
-                            This is a reply to the comment.
+                            <h6 class="mt-0">{{$reply->user->name}}</h6>
+                            <p>{{$reply->comment}}</p>
+                            <div class="mt-2">
+                              <a href="#comment-form" data-parent-id="{{$reply->id}}" data-name="{{$reply->user->name}}" class="btn btn-sm btn-outline-primary replyBtn " data-toggle="collapse" data-target="#reply1" aria-expanded="false" aria-controls="reply1">Reply</a>
+                          </div>
                         </div>
                     </div>
-                </div>
-           
-           
+                    @include('frontend.utility.comment')
+                    @endforeach
+                    @endif
+             
                 @endforeach
               </div>
             <!-- Add Comment Form -->
             @auth
-            <form  method="post" action="{{ route('frontend.contant.commentStore') }}">
+            <form id="comment-form"  method="post" action="{{ route('frontend.contant.commentStore') }}">
               @csrf
               <input type="hidden" name="product_id"  value="{{$product->id}}">
 							<input type="hidden" name="parent_id" value="">
                 <div class="form-group">
-                    <label for="commentTextarea">Add a Comment</label>
+                    <label class="commentTitle" for="commentTextarea">Add a Comment</label>
                     <textarea name="comment" class="form-control" id="commentTextarea" rows="3" placeholder="Comment Heare....."></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit Comment</button>
             </form>
-            @endauth
+            
         </div>
-
+        @endauth
+        @guest
+        <h6>please <a href=" {{ route('login')}}">Login</a> First</h6>
+      @endguest
 
             
            <!--  Comments Section end -->
@@ -301,4 +315,24 @@
     </div>
 
   </main>
+
+
+
+
+
+  
+@push('frontendJs')
+
+<script>
+	function replyingComment (){
+		let userName = $(this).attr('data-name')
+		let parentId = $(this).attr('data-parent-id')
+		$('input[name="parent_id"]').val(parentId)
+        $('.commentTitle').html(`Replying to ${userName}`)
+
+	}
+	$('.replyBtn').click(replyingComment)
+	
+</script>
+@endpush
 @endsection

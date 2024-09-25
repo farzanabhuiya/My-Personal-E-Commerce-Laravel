@@ -222,8 +222,8 @@
 
                  
                               
-                                <img style="width: 200px;height:300px object-fit:cover;obect-position:center;"
-                                src="{{asset('storage/ProductImage/'.$images[0])}}" class="card-img-top">
+                              <a href ="{{route('frontend.contant.singlePage',$product->slug)}}">  <img style="width: 200px;height:300px object-fit:cover;obect-position:center;"
+                                src="{{asset('storage/ProductImage/'.$images[0])}}" class="card-img-top"> </a>
                        
                         <div class="text-overlay"><i class="fa-regular fa-heart"></i></div>
                       </div>

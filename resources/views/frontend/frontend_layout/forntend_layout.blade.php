@@ -461,8 +461,11 @@
     <!-- owl carousel js file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
 
+    
+    @stack('frontendJs')
     <script>
         $(document).ready(function() {
             $('.owl-carousel').owlCarousel({

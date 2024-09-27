@@ -12,54 +12,44 @@
        <div class="card p-4 wrapper">
         <div class="row">
 
-          {{-- @foreach ($products as $product)  --}}
+          
           <div class=" col-12 col-sm-6 col-md-5 col-lg-4 custom-column card">
             <div class="slider-container d-flex gap-2 justify-content-between align-items-center ">
-              @foreach ($products as $product)  
+              @foreach ($products as $product)
+              
+              {{-- onek pic aksathe --}}
               <div class="carousel-nav w-25">
-                
                  @php
                       $images = json_decode($product->image);
                    
                          @endphp
                           @foreach($images as $image)
-                      <div class="carousel-cell mb-2"><img  src="{{asset('storage/ProductImage/'.$images[0])}}"  alt="" class="img-fluid"></div>
-                      @endforeach
-                     
+                      <div class="carousel-cell mb-2"><img  src="{{asset('storage/ProductImage/'.$image)}}"  alt="" class="img-fluid"></div>
+                      @endforeach                 
                     </div>
+
+
 
 
                   <div class="main-carousel w-75 mr-3">
                          @php
                           $images = json_decode($product->image);
                            @endphp
-
-
-                  
-                      <div class="carousel-cell"><img src="{{asset('storage/ProductImage/'.$images[0])}}"alt="Image 1" class="img-fluid"></div>
-                      
+                             <div class="carousel-cell"><img src="{{asset('storage/ProductImage/'.$images[0])}}"alt="Image 1" class="img-fluid"></div>                   
                   </div>
-          </div>
-       
-            
-          </div>
+
+                       </div>
+                       </div>
 
           
           
 
           <div class="col-12 col-sm-6 col-md-7 col-lg-8  custom-column ">
-           
-                
-            {{-- @foreach ($products as $product) --}}
               <div class="card p-3">
-             
-                  <h6 class="title">Brand name: <span class="brand-name">{{$product->brand_id}}</span></h6>
-                  <h6>Title : {{$product->title}}</h6>
-                  <h4>Spiceal Price:</h4>
+                     <h6 class="title">Brand name: <span class="brand-name">{{$product->brand_id}}</span></h6>
+                     <h6>Title : {{$product->title}}</h6>
+                       <h4>Spiceal Price:</h4>
 
-
-               
-            
                     @php
                     if( $product->rattings_count> 0){
                       $avgRatting = $product->rattings_sum_rating/$product->rattings_count;
@@ -89,14 +79,7 @@
                           </div>
                       </div>
                   </div>  
-           
-            
-                  <div class="pt-2 ps-2">({{$product->rattings_count}} Review)</div></div>
-
-
-
-
-                  
+                 <div class="pt-2 ps-2">({{$product->rattings_count}} Review)</div></div> 
                   <div> 
                       <span class="price">${{$product->price}} </span><span><del>${{$product->compare_price}}</del></span>
                   </div>
@@ -109,12 +92,12 @@
                   <button id="cart" type="button" class="btn ">Add to Cart</button>
                           <button id="buy-now" type="button" class="btn">buy now</button>
                  </div>
-
-
-                </div>
-               
+                </div>              
           </div>
           @endforeach
+
+
+
 
 
           <div class="col-md-12 mt-5">

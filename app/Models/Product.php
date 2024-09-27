@@ -20,4 +20,10 @@ class Product extends Model
     function comments(){
         return $this->hasMany(Comment::class)->where('parent_id',null)->with('user:id,name,profile_img')->with('replies');
     }
+
+
+    public function rattings()
+    {
+        return $this->hasMany(Ratting::class);
+    }
 }

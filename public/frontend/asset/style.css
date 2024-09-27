@@ -494,25 +494,55 @@ padding: 7px 0px 8px 0px;
 
 
 /* for product Ratting system start*/
-.star-rating {
- 
-  font-size: 1.5rem;
+.rating {
+	direction: rtl;
+	unicode-bidi: bidi-override;
+	color: #ddd; /* Personal choice */
+    font-size: 8px;
+    margin-left: -15px;
 }
-.star-rating input {
-  display: none;
+.rating input {
+	display: none;
 }
-.star-rating label {
-  color: #ddd;
-  font-size: 2rem;
-  padding: 0;
-  cursor: pointer;
-}
-.star-rating input:checked ~ label,
-.star-rating input:hover ~ label,
-.star-rating label:hover ~ label {
-  color: #f5c518;
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input:checked + label,
+.rating input:checked + label ~ label {
+	color: #ffc107; /* Personal color choice. Lifted from Bootstrap 4 */
+    font-size: 8px;
 }
 
 
+.front-stars, .back-stars, .star-rating {
+    display: flex;
+  }
+  
+  .star-rating {
+    align-items: left;
+    /* change
+    font-size: 1.5em; */
+    font-size: 1.2em;
+    justify-content: left;
+    margin-left: -5px;
+  }
+  
+  .back-stars {
+    color: #CCC;
+    position: relative;
+  }
+  
+  .front-stars {
+    color: #FFBC0B;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transition: all 0.5s;
+  }
+
+  
+  .percent {
+    color: #bb5252;
+    font-size: 1.5em;
+  }
 
 /* for product Ratting system end */

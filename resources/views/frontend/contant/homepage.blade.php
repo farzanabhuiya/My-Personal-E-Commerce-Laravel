@@ -139,7 +139,7 @@
                       </div>
                       <div class="card-body">
                         {{-- @foreach ($products->brands as $brand)
-                        <p class="card-text">Brand Name: <span class="brand-name">{{$brand->name}}</span></p>
+                        <p class="card-text">Brand Name: <span">{{$brand->name}}</span></p>
                         @endforeach --}}
                          <p class="card-text">Brand Name: <span class="brand-name">{{$product->brand_id}}</span></p> 
                         <h5 class="card-title">Product Name:
@@ -147,20 +147,45 @@
                         <h6>Price: <span class="price">${{$product->price}} </span><span><del>${{$product->compare_price}}</del></span></h6>
 
                         <!-- ratting system start -->
-                        <div class="star-rating">
-                         
-                          <input  type="radio" id="5-stars" name="rating" value="5" />
-                          <label  for="5-stars" class="star">&#9733;</label>
-                          <input type="radio" id="4-stars" name="rating" value="4" />
-                          <label for="4-stars" class="star">&#9733;</label>
-                          <input type="radio" id="3-stars" name="rating" value="3" />
-                          <label for="3-stars" class="star">&#9733;</label>
-                          <input type="radio" id="2-stars" name="rating" value="2" />
-                          <label for="2-stars" class="star">&#9733;</label>
-                          <input type="radio" id="1-star" name="rating" value="1" />
-                          <label for="1-star" class="star">&#9733;</label>
-                          <span>(3)</span>
-                        </div>
+
+
+
+                        @php
+                          if( $product->rattings_count> 0){
+                            $avgRatting = $product->rattings_sum_rating/$product->rattings_count;
+                          } else {
+                           
+                            $avgRatting= 0;
+                          }
+                          $avgRattingPer = ($avgRatting*100)/5
+                        @endphp
+                         <div class="d-flex">
+                     <div class="star-rating mt-2" title="">
+                      <h4 class="h5 pe-2">{{$avgRatting}}</h4>
+                      <div class="back-stars">
+                        
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          
+                   
+                            <div class="front-stars" style="width: {{$avgRattingPer}}%">
+                               <i class="fa fa-star" aria-hidden="true"></i>
+                              <i class="fa fa-star" aria-hidden="true"></i>
+                              <i class="fa fa-star" aria-hidden="true"></i>
+                              <i class="fa fa-star" aria-hidden="true"></i>
+                              <i class="fa fa-star" aria-hidden="true"></i>
+                              
+                          </div>
+                          
+                      </div>
+                  </div>  
+                  <div class="pt-1 ps-1">({{$product->rattings_count}} Review)</div></div>
+           
+            
+                 
       
                         <!-- ratting system end -->
 
@@ -233,20 +258,45 @@
                             <h6>Price: <span class="price">${{$latestproduct->price}}</span><span><del>${{$latestproduct->compare_price}}</del></span></>
 
                         <!-- ratting system start -->
-                        <div class="star-rating">
+
+
+                        
+
+                        @php
+                        if( $latestproduct->rattings_count> 0){
+                          $avgRatting = $latestproduct->rattings_sum_rating/$latestproduct->rattings_count;
+                        } else {
                          
-                          <input  type="radio" id="5-stars" name="rating" value="5" />
-                          <label  for="5-stars" class="star">&#9733;</label>
-                          <input type="radio" id="4-stars" name="rating" value="4" />
-                          <label for="4-stars" class="star">&#9733;</label>
-                          <input type="radio" id="3-stars" name="rating" value="3" />
-                          <label for="3-stars" class="star">&#9733;</label>
-                          <input type="radio" id="2-stars" name="rating" value="2" />
-                          <label for="2-stars" class="star">&#9733;</label>
-                          <input type="radio" id="1-star" name="rating" value="1" />
-                          <label for="1-star" class="star">&#9733;</label>
-                          <span>(3)</span>
+                          $avgRatting= 0;
+                        }
+                        $avgRattingPer = ($avgRatting*100)/5
+                      @endphp
+
+                       <div class="d-flex">
+                   <div class="star-rating mt-2" title="">
+                    <h4 class="h5 pe-2">{{$avgRatting}}</h4>
+                    <div class="back-stars">
+                      
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        
+                 
+                          <div class="front-stars" style="width: {{$avgRattingPer}}%">
+                             <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                           
                         </div>
+                        
+                    </div>
+                </div>  
+                <div class="pt-2 ps-2">({{$latestproduct->rattings_count}} Review)</div></div>
+                        
       
                         <!-- ratting system end -->
 

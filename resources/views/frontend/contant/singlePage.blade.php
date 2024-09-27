@@ -58,23 +58,40 @@
                   <h4>Spiceal Price:</h4>
 
 
-                  
-                  
-                  
-                    <div class="star-rating">
-                        <input type="radio" id="5-stars" name="rating" value="5" />
-                        <label for="5-stars" class="star">&#9733;</label>
-                        <input type="radio" id="4-stars" name="rating" value="4" />
-                        <label for="4-stars" class="star">&#9733;</label>
-                        <input type="radio" id="3-stars" name="rating" value="3" checked />
-                        <label for="3-stars" class="star">&#9733;</label>
-                        <input type="radio" id="2-stars" name="rating" value="2" />
-                        <label for="2-stars" class="star">&#9733;</label>
-                        <input type="radio" id="1-star" name="rating" value="1" />
-                        <label for="1-star" class="star">&#9733;</label>
-                    </div>
+               
             
-
+                    @php
+                    if( $product->rattings_count> 0){
+                      $avgRatting = $product->rattings_sum_rating/$product->rattings_count;
+                    } else {
+                     
+                      $avgRatting= 0;
+                    }
+                    $avgRattingPer = ($avgRatting*100)/5
+                  @endphp
+                  <div class="d-flex">
+                   <h1 class="h3 pe-3">{{$avgRatting}}</h1>
+                    <div class="star-rating mt-2" title="">
+                     
+                      <div class="back-stars">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          
+                          <div class="front-stars" style="width: {{$avgRattingPer}}%">
+                              <i class="fa fa-star" aria-hidden="true"></i>
+                              <i class="fa fa-star" aria-hidden="true"></i>
+                              <i class="fa fa-star" aria-hidden="true"></i>
+                              <i class="fa fa-star" aria-hidden="true"></i>
+                              <i class="fa fa-star" aria-hidden="true"></i>
+                          </div>
+                      </div>
+                  </div>  
+           
+            
+                  <div class="pt-2 ps-2">({{$product->rattings_count}} Review)</div></div>
 
 
 
@@ -99,6 +116,174 @@
           </div>
           @endforeach
 
+
+          <div class="col-md-12 mt-5">
+            <div class="bg-light">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab" aria-controls="shipping" aria-selected="false">Shipping & Returns</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                        {!!$product->description!!}
+                       
+                    </div>
+                    <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                   {!!$product->shipping_returns!!}
+                    </div>
+
+                    @if (session('success'))
+                    <div class="alert alert-success">{{session('success')}}</div>
+                       @endif
+                    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                     
+                      <div class="col-md-8">
+                          <form action="{{ route('frontend.contant.rattingStore',$product->id) }}" method="POST">
+                            @csrf
+                          <div class="row">
+                              <h3 class="h4 pb-3">Write a Review</h3>
+                              <div class="form-group col-md-6 mb-3">
+                                  <label for="name">Name</label>
+                                  <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                                  @error('name')
+                                    <span class="text-danger">{{$message }}</span>
+                                   @enderror
+                              </div>
+                              <div class="form-group col-md-6 mb-3">
+                                  <label for="email">Email</label>
+                                  <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+                                  @error('email')
+                                    <span class="text-danger">{{$message }}</span>
+                                   @enderror
+                              </div>
+                              <div class="form-group mb-3">
+                                  <label for="rating">Rating</label>
+                                  <br>
+                                  <div class="rating" style="width: 10rem">
+                                      <input id="rating-5" type="radio" name="rating" value="5"/><label for="rating-5"><i class="fas fa-3x fa-star"></i></label>
+                                      <input id="rating-4" type="radio" name="rating" value="4"  /><label for="rating-4"><i class="fas fa-3x fa-star"></i></label>
+                                      <input id="rating-3" type="radio" name="rating" value="3"/><label for="rating-3"><i class="fas fa-3x fa-star"></i></label>
+                                      <input id="rating-2" type="radio" name="rating" value="2"/><label for="rating-2"><i class="fas fa-3x fa-star"></i></label>
+                                      <input id="rating-1" type="radio" name="rating" value="1"/><label for="rating-1"><i class="fas fa-3x fa-star"></i></label>
+                                      @error('rating')
+                                    <span class="text-danger">{{$message }}</span>
+                                   @enderror
+                                  </div>
+                              </div>
+                              <div class="form-group mb-3">
+                                  <label for="">How was your overall experience?</label>
+                                  <textarea name="comment"  id="review" class="form-control" cols="30" rows="10" placeholder="How was your overall experience?"></textarea>
+                                  @error('comment')
+                                    <span class="text-danger">{{$message }}</span>
+                                   @enderror
+                              </div>
+                              <div>
+                                  <button class="btn btn-dark">Submit</button>
+                              </div>
+                            
+                              
+                          </div>
+                        </form>
+                      </div>
+                      
+
+
+                          @php
+                          if( $product->rattings_count> 0){
+                            $avgRatting = $product->rattings_sum_rating/$product->rattings_count;
+                          } else {
+                           
+                            $avgRatting= 0;
+                          }
+                          $avgRattingPer = ($avgRatting*100)/5
+                        @endphp
+                          <div class="col-md-12 mt-5">
+                            <div class="overall-rating mb-3">
+                                <div class="d-flex">
+                                    <h1 class="h3 pe-3">{{$avgRatting}}</h1>
+                                    <div class="star-rating mt-2" title="">
+                                        <div class="back-stars">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            
+                                            <div class="front-stars" style="width: {{ $avgRattingPer}}%">
+                                           
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="pt-2 ps-2">({{$product->rattings_count}} Reviews)</div>
+                                </div>
+                                
+                            </div>
+
+
+
+
+                          @foreach (  $product->rattings as $ratting )
+                          @php
+                              $ratingPar = ($ratting->rating*100)/5;
+                          @endphp
+                          <div class="rating-group mb-4">
+                            <span> <strong> {{ $ratting->name }} </strong></span>
+                             <div class="star-rating mt-2" title="">
+                                 <div class="back-stars">
+                                     <i class="fa fa-star" aria-hidden="true"></i>
+                                     <i class="fa fa-star" aria-hidden="true"></i>
+                                     <i class="fa fa-star" aria-hidden="true"></i>
+                                     <i class="fa fa-star" aria-hidden="true"></i>
+                                     <i class="fa fa-star" aria-hidden="true"></i>
+                                     
+                                     <div class="front-stars" style="width: {{ $ratingPar}}%">
+                                         <i class="fa fa-star" aria-hidden="true"></i>
+                                         <i class="fa fa-star" aria-hidden="true"></i>
+                                         <i class="fa fa-star" aria-hidden="true"></i>
+                                         <i class="fa fa-star" aria-hidden="true"></i>
+                                         <i class="fa fa-star" aria-hidden="true"></i>
+                                     </div>
+                                 </div>
+                             </div>   
+                             <div class="my-3">
+                                 <p> {{ $ratting->comment }} </p>
+                             </div>
+                         </div>
+                          @endforeach
+                          
+
+                          
+                      </div>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
            <!--  Comments Section start -->
            <div class="mt-4">
             <h5>Comments  ({{ $product->totalComments }})</h5>
@@ -114,19 +299,7 @@
                         <a href="#comment-form" data-parent-id="{{$cmt->id}}" data-name="{{$cmt->user->name}}" class="btn btn-sm btn-outline-primary replyBtn " data-toggle="collapse" data-target="#reply1" aria-expanded="false" aria-controls="reply1">Reply</a>
                     </div>
                   </div>
-                    <!-- Reply Form -->
-                    {{-- <div class="collapse mt-2" id="reply1">
-                        <div class="card card-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="replyTextarea1">Your Reply</label>
-                                    <textarea class="form-control" id="replyTextarea1" rows="2" placeholder="Replay here...."></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-sm">Submit Reply</button>
-                            </form>
-                        </div>
-                    </div> --}}
-                    <!-- Replies -->
+                  
 
                     @if (count($cmt->replies) >0)
 								

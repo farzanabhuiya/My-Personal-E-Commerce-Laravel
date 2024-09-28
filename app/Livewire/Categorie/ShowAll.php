@@ -11,24 +11,21 @@ class ShowAll extends Component
 {
      use WithPagination; 
     
-     public $search;
-     public $categories;
-    // public function mount()
-    // {
-    //     // $categories = Categorie::paginate(5)->all();
-    //     $this->categories = Categorie::latest()->paginate(5);
-    // }
+     public $search= '';
+   
 
 
-    
     public function render()
     {  
         
-        if(! $this->search){
-        $this->categories = Categorie::latest()->paginate(3)->all(); 
-    }else{
-        $this->categories = Categorie::where('name', 'like', '%'.$this->search.'%')->get();
-    }
-        return view('livewire.categorie.show-all');
+        $categories = Categorie::query()
+        ->where('name', 'like', '%' . $this->search . '%') 
+        ->orWhere('slug', 'like', '%' . $this->search . '%') 
+        ->paginate(8);
+        // $categories = Categorie::where('name', 'like', '%'.$this->search .'%')->paginate(2);
+    
+        return view('livewire.categorie.show-all',[
+            'categories' => $categories,
+        ]);
     }
 }

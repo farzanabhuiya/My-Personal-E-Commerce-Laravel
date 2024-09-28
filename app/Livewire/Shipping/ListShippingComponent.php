@@ -20,6 +20,8 @@ class ListShippingComponent extends Component
 
 
     public function render()
+
+    
     {    $districtes=District::orderBy('district_name','ASC')->get();
         $shippings = Shipping::with('District')->get();
         return view('livewire.shipping.list-shipping-component',compact('districtes','shippings'));

@@ -1,5 +1,8 @@
 
 @extends('frontend.frontend_layout.forntend_layout')
+@section('title')
+  Product Details
+@endsection
 @section('content')
 
 
@@ -32,10 +35,13 @@
 
 
                   <div class="main-carousel w-75 mr-3">
+
                          @php
                           $images = json_decode($product->image);
                            @endphp
-                             <div class="carousel-cell"><img src="{{asset('storage/ProductImage/'.$images[0])}}"alt="Image 1" class="img-fluid"></div>                   
+                           @foreach($images as $image)
+                             <div class="carousel-cell"><img src="{{asset('storage/ProductImage/'.$image)}}"alt="Image 1" class="img-fluid"></div>  
+                             @endforeach                
                   </div>
 
                        </div>

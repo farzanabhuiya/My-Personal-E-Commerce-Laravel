@@ -7,13 +7,12 @@ use Livewire\Component;
 
 class ListProductsizeComponent extends Component
 {
-    public $search; 
-    public $productsizes='';
-
+    public $search=''; 
+    
 
     public function mount()
     {
-        $this->productsizes = Productsize::select('id','size')->latest()->get();
+        // $this->productsizes = Productsize::select('id','size')->latest()->get();
     }
 
 
@@ -21,11 +20,11 @@ class ListProductsizeComponent extends Component
 
     public function render()
     {
-        if(! $this->search){
-            $this->productsizes =Productsize::latest()->paginate(3)->all(); 
-        }else{
-            $this->productsizes = Productsize::where('size', 'like', '%'.$this->search.'%')->get();
-        }
-        return view('livewire.productsize.list-productsize-component');
+        $productsizes = Productsize::query()->select('id','size')
+        ->where('size', 'like', '%' . $this->search . '%')->paginate(6);
+
+        return view('livewire.productsize.list-productsize-component',[
+            'productsizes' => $productsizes,
+        ]);
     }
 }

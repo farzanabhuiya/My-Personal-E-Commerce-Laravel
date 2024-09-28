@@ -106,7 +106,7 @@
                               
                             </tbody>
                         </table>
-                        {{-- {{$category->links()}}										 --}}
+                        {{$brands ->links()}}										
                     </div>
                     
                 </div>

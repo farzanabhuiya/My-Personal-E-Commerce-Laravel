@@ -120,9 +120,9 @@
                                             
                                         </tbody>
                                     </table>
-                                    {{-- {{$categories->links()}}										 --}}
+                                    									
                                 </div>
-                            
+                                {{-- {{$coupons->links()}}	 --}}
                             </div>
                         </div>
                         <!-- /.card -->

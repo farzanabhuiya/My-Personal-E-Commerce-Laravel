@@ -8,8 +8,8 @@ use Livewire\Component;
 class ListItemComponenet extends Component
 {
    
-    public $items="";
-    public $search;
+    
+    public $search='';
 
 
     // public function mount(){
@@ -21,11 +21,13 @@ class ListItemComponenet extends Component
 
     public function render()
     {
-        if(! $this->search){
-            $this->items =Item::latest()->paginate(6)->all(); 
-        }else{
-            $this->items =Item::where('name', 'like', '%'.$this->search.'%')->get();
-        }
-        return view('livewire.item.list-item-componenet');
+        $items = Item::query()
+        ->where('name', 'like', '%' . $this->search . '%') 
+        ->orWhere('slug', 'like', '%' . $this->search . '%') 
+        ->paginate(6);
+        
+        return view('livewire.item.list-item-componenet',[
+            'items' => $items,
+        ]);
     }
 }

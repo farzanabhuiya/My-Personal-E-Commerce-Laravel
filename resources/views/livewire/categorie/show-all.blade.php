@@ -105,7 +105,7 @@
                         {{-- {{ $categories->links() }} --}}
                      									
                     </div>
-                    {{-- {{ $categories->links() }} --}}
+                    {{ $categories->links() }}
                 </div>
                
             </div>

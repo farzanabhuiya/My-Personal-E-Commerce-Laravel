@@ -21,7 +21,6 @@ class Create extends Component
    $this->validate([
  
      'name'=> 'required|max:20',
-     'status'=>'required',
      'showhome'=>'required',
 
    ]);

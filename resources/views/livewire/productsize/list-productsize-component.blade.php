@@ -87,7 +87,7 @@
                               
                             </tbody>
                         </table>
-                        {{-- {{$category->links()}}										 --}}
+                        {{$productsizes->links()}}										
                     </div>
                     
                 </div>

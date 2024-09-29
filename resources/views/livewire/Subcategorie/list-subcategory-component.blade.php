@@ -104,7 +104,7 @@
                               
                             </tbody>
                         </table>
-                        {{-- {{$category->links()}}										 --}}
+                        {{$subcategories->links()}}										
                     </div>
                     
                 </div>

@@ -14,10 +14,16 @@ class HomePageController extends Controller
 
 
     public function homePage(){
-         $categorie= Categorie::orderBy('name','ASC')->with('Subcategorie')->where('showhome','Yes')->get();
+    $categorie= Categorie::orderBy('name','ASC')->with('Subcategorie')->where('showhome','Yes')->get();
         //  dd($categorie);
-         $products=Product::orderBy('id','DESC')->where('is_featured','Yes')->where('status',1)->get();
-         $latestproducts=product::orderBy('id','DESC')->where('status',1)->latest()->take(6)->get();
+    $products=Product::orderBy('id','DESC') 
+         ->withCount('rattings')->withSum('rattings','rating')->with('rattings')
+         ->where('is_featured','Yes')->where('status',1)->get();
+
+     $latestproducts=product::orderBy('id','DESC')->withCount('rattings')
+         ->withSum('rattings','rating')->with('rattings')
+         ->where('status',1)->latest()->take(6)->get();
+         
          $brands = Brand::get();
          $items = Item::get();
         return view('frontend.contant.homepage',compact('categorie','products','latestproducts','brands','items'));

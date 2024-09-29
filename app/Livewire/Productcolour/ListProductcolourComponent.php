@@ -9,8 +9,8 @@ class ListProductcolourComponent extends Component
 {
 
 
-    public $search;
-    public $productcolours="";
+    public $search ='';
+   
     // public function mount()
     // // {
     // //     $this->productcolours = Productcolour::all();
@@ -19,11 +19,14 @@ class ListProductcolourComponent extends Component
     public function render()
     {
 
-        if(! $this->search){
-            $this->productcolours =Productcolour::latest()->paginate(7)->all(); 
-        }else{
-            $this->productcolours = Productcolour::where('colour', 'like', '%'.$this->search.'%')->get();
-        }
-        return view('livewire.productcolour.list-productcolour-component');
+
+        $productcolours = Productcolour::query()
+        ->where('colour', 'like', '%' . $this->search . '%')
+        ->paginate(6);
+
+    
+        return view('livewire.productcolour.list-productcolour-component',[
+            'productcolours' => $productcolours,
+        ]);
     }
 }

@@ -17,6 +17,7 @@ class CreateProductComponent extends Component
 {
     use WithFileUploads;      
     use SlugGenerator;
+    
       public $title="";
       public $description="";
       public $short_description="";
@@ -41,26 +42,45 @@ class CreateProductComponent extends Component
       public $offer_type="";
       public $productsize_id="";
       public $productcolour_id="";
+      
+
+      public function updatedImages()
+      {
+          // ফাইল আপডেট হওয়ার পর ইভেন্ট ট্রিগার হবে
+          $this->dispatch('imageSelected');
+          
+      }
+
+      
 
      public function addProduct(){
         
 
         $this->validate([
  
-            'title'=> 'required|max:25',
-            'categorie_id' =>'required',
-            'subcategorie_id' =>'required',
-            'brand_id' =>'required',
-            'price' =>'required',
+            // 'title'=> 'required|max:25',
+            // 'categorie_id' =>'required',
+            // 'subcategorie_id' =>'required',
+            // 'brand_id' =>'required',
+            // 'price' =>'required',
             
-       
+            
+            
+            
           ]);
+          
+
+
+
+
+
+
           $productPhotos =[];
            foreach ($this->images as $image) {
             $fileName = time().'.'.$image->extension(); 
             $image->storeAs('ProductImage',$fileName,'public');
             $productPhotos[]=$fileName;  
-        }
+        }   
           
            $products = new Product();
            $products->title = $this->title;
@@ -98,6 +118,38 @@ class CreateProductComponent extends Component
        
            
      }
+     
+
+    //  extra
+    
+   
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function render()
     {   
         $subcategories = Subcategorie::with('categorie')->get();

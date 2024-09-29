@@ -10,7 +10,7 @@
                         <h1>Create Items</h1>
                     </div>
                     <div class="">
-                        <a href="{{route('Item.store')}}" class="btn btn-primary">Back</a>
+                        <a href="{{route('Item.index')}}" class="btn btn-primary">Back</a>
                     </div>
                    </div>
                 </div>

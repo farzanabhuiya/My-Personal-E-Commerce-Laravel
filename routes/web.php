@@ -149,7 +149,10 @@ Route::prefix('/backend/productcolour')->controller(ProductColourController::cla
 Route::prefix('/backend/product')->controller(ProductController::class)->name('Product.')->group(
     function(){
         Route::get('/' ,'index')->name('index');
-        Route::get('/store' ,'store')->name('store');
+        
+        Route::get('/create/product','Create')->name('create');
+        
+        Route::post('/store' ,'store')->name('store');
         // Route::get('/edit/{id}','edit')->name('edit');
         // Route::delete('/delete/{id}','delete')->name('delete');
         // Route::get('/relatedproduct' ,'relatedproduct')->name('relatedproduct');
@@ -157,7 +160,12 @@ Route::prefix('/backend/product')->controller(ProductController::class)->name('P
 
     }
 );
-Route::get('/relatedproduct',[ProductController::class,'relatedproduct'])->name('Product.related');
+Route::get('/get-products', [ProductController::class, 'getProducts'])->name('relatedProduct');
+
+
+// relaed product ajax
+
+Route::get('/relatedproduct',[ProductController::class,'getRelatedProducts'])->name('get.Product.related');
 
 
 Route::prefix('/backend/discount')->controller(DiscountCouponController::class)->name('Discount.')->group(

@@ -17,7 +17,7 @@
                         <h1>Brand</h1>
                     </div>
                     <div class="">
-                        <a href="{{route('Brand.index')}}" class="btn btn-primary">New Brand</a>
+                        <a href="{{route('Brand.store')}}" class="btn btn-primary">New Brand</a>
                     </div>
                    </div>
                 </div>

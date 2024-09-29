@@ -18,7 +18,7 @@
                         <h1>Create ProductSizes</h1>
                     </div>
                     <div class="">
-                        <a href="{{route('ProductSize.store')}}" class="btn btn-primary">Back</a>
+                        <a href="{{route('ProductSize.index')}}" class="btn btn-primary">Back</a>
                     </div>
                    </div>
                 </div>

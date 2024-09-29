@@ -17,7 +17,7 @@
                         <h1>Items</h1>
                     </div>
                     <div class="">
-                        <a href="" class="btn btn-primary">New Item</a>
+                        <a href="{{route('Item.store')}}" class="btn btn-primary">New Item</a>
                     </div>
                    </div>
                 </div>

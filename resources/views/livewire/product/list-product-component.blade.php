@@ -1,6 +1,10 @@
 
 <div>
    
+
+
+
+
     @if (session('success'))
     <div  class="alert alert-success w-10 h-20">
         <h4>{{session('success')}}</h4>
@@ -17,7 +21,7 @@
                         <h1>Product</h1>
                     </div>
                     <div class="">
-                        <a href="{{route('Brand.index')}}" class="btn btn-primary">New Product</a>
+                        <a href="{{route('Product.create')}}" class="btn btn-primary">New Product</a>
                     </div>
                    </div>
                 </div>
@@ -35,7 +39,7 @@
                         <div class="card-tools ">
                             
                             <div class="input-group input-group" style="width: 250px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                <input type="text" wire:model.live="search" class="form-control float-right" placeholder="Search">
             
                                 <div class="input-group-append">
                                   <button type="submit" class="btn btn-default">
@@ -65,12 +69,30 @@
                             </thead>
                             <tbody>
                            
-                             @foreach ($products as $product)
+                             @foreach ($products as $key=> $product)
                              <tr>
-                                {{-- <td>{{$products->firstITEM()  +$key}}</td> --}}
-                                <td>ID</td>
+                              <td>{{ $products->firstItem()+ $key }}</td>
+                           
 
-                                <td> <a href="{{asset('storage/productImage/'.$product->image)}}" target="_blank">  <img src="{{asset('storage/product/'.$product->image)}}" class="img-thumbnail" width="50" > </a> </td>
+                                <td> 
+                                
+
+                                <?php
+                                $productPhoto =  json_decode($product->image, true)
+                                
+                                ?>
+
+                               
+
+                                            <a href="{{asset('storage/ProductImage/'.$productPhoto[0])}}" target="_blank">  <img src="{{asset('storage/ProductImage/'.$productPhoto[0])}}" class="img-thumbnail" width="50" > </a> 
+
+
+                                    
+
+
+
+                                
+                                </td>
                             
                                 <td><a href="#">{{$product->title}}</a></td> 
                                 <td>{{$product->price}}</td>
@@ -114,7 +136,7 @@
                                 </td>
                             </tr>
                              @endforeach
-                              
+                                 {{ $products->links() }}
                             </tbody>
                         </table>
                         {{-- {{$category->links()}}										 --}}

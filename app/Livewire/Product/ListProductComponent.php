@@ -13,7 +13,7 @@ class ListProductComponent extends Component
     // public $products;
   
    
-   
+    public $status ; 
 
     public $search='';
     
@@ -22,6 +22,37 @@ class ListProductComponent extends Component
         
         
     }
+    
+    
+    
+    public function toggleStatus($id){
+        
+        $product = Product::find($id);
+        
+        if($product != null){
+            
+            $this->status = $product ->status;
+            
+            
+            $product->update(['status' => $product->status == 1 ? 0 : 1]);
+            
+        
+            $this->dispatch('toast', ['success' => 'Status updated successfully!']);
+            
+        }
+        
+        
+        
+        
+    }
+
+
+
+
+
+
+
+    
     
     
     

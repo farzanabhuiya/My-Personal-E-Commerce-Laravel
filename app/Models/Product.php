@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    
+    protected $fillable=[
+        'status',
+    ];
+    
+    
     function Brand(){
         return $this->hasMany(Brand::class);
     }

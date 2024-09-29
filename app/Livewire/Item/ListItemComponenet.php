@@ -8,7 +8,7 @@ use Livewire\Component;
 class ListItemComponenet extends Component
 {
    
-    
+    public $status ; 
     public $search='';
 
 
@@ -16,6 +16,26 @@ class ListItemComponenet extends Component
     //     $this->items= Item::all();
     // }
 
+    public function toggleStatus($id){
+        
+        $item = Item::find($id);
+        
+        if($item != null){
+            
+            $this->status = $item->status;
+            
+            
+            $item->update(['status' => $item->status == 1 ? 0 : 1]);
+            
+        
+            $this->dispatch('toast', ['success' => 'Status updated successfully!']);
+            
+        }
+        
+        
+        
+        
+    }
 
     
 

@@ -8,6 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     use HasFactory;
+    
+    
+    
+    protected $fillable = [
+        'status',
+        
+    ];
+
+    
+    
+    
     function categorie(){
         return $this->belongsTo(Categorie::class);
     }

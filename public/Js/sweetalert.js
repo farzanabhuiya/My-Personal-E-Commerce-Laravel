@@ -1,4 +1,14 @@
 
+
+
+
+
+
+
+
+
+
+
 // sweet alert
 
 function showToast(message, icon = 'success') {
@@ -17,7 +27,8 @@ function showToast(message, icon = 'success') {
     
         Toast.fire({
             icon: 'success',
-             title:  message ,
+             title: message ,
+             
         });
     });
 

@@ -343,8 +343,7 @@
 
       <!-- All brand cards start -->
 <div class="container-fluid mt-2 z-0">
-  <p>All Brand (Showing 4 brands of 50 brands)</p>
-  <div class="row">
+  <p>All Brand (Showing 4 brands of 50 brands)</p>  <div class="row">
   
     @foreach ($brands as $brand)
     <div class="col-12 col-md-6 col-xl-4 col-xxl-3 mb-3">

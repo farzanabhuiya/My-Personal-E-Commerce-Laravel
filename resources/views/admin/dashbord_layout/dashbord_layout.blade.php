@@ -24,7 +24,7 @@
     <!-- Choices JS -->
     <script src="{{ asset('admin/asset/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
     {{-- <script src="./asset/libs/choices.js/public/assets/scripts/choices.min.js"></script> --}}
->>>>>>> 5ecae10cc7a3670dc7bfa309492e0844f516c7cf
+
 
 
     <!-- Main Theme Js -->

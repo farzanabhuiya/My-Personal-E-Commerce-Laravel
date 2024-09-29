@@ -57,23 +57,32 @@
                             </thead>
                             <tbody>
                            
-                             @foreach ($categories as $categorie)
+                             @foreach ($categories as $key=> $categorie)
                              <tr>
-                                <td>{{$categorie->id}}</td>
+                                <td>{{$categories->firstItem()+$key}}</td>
                                 <td>{{$categorie->name}}</td>
                                 <td>{{$categorie->slug}}</td>
                                 <td>
                                     @if ($categorie->status==1)
                                         
-                                    
+                                        @php
+                                            $status = $categorie->status; 
+                                        @endphp
+                                                                            
                                 
-                                    <svg class="text-success-50 text-success" xmlns="http://www.w3.org/100/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <svg wire:click='toggleStatus({{$categorie->id}})' class="text-success-50 text-success" xmlns="http://www.w3.org/100/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
 
                                     @else
 
-                                    <svg class="text-danger " xmlns="http://www.w3.org/100/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                            @php
+                                            $status = $categorie->status; 
+                                        @endphp
+
+
+
+                                    <svg wire:click='toggleStatus({{$categorie->id}})' class="text-danger " xmlns="http://www.w3.org/100/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
                                     @endif
@@ -138,6 +147,19 @@
     });
     
         </script>
+
+
+    <script>
+
+showToast('Status updated successfully!')
+    
+    
+    
+    </script>
+
+
+
+
     @endpush
 
 

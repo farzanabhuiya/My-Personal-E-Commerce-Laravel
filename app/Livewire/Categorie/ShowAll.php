@@ -14,6 +14,26 @@ class ShowAll extends Component
      public $search= '';
    
 
+   
+        
+     
+
+     public function toggleStatus($id)
+     {
+        $category = Categorie::find($id);  
+        if ($category) {
+           
+            $category->update(['status' => $category->status == 1 ? 0 : 1]);
+            
+        
+            $this->dispatch('toast', ['success' => 'Status updated successfully!']);
+            
+            
+        }
+     }
+
+
+
 
     public function render()
     {  
@@ -21,6 +41,7 @@ class ShowAll extends Component
         $categories = Categorie::query()
         ->where('name', 'like', '%' . $this->search . '%') 
         ->orWhere('slug', 'like', '%' . $this->search . '%') 
+        ->latest()
         ->paginate(8);
         // $categories = Categorie::where('name', 'like', '%'.$this->search .'%')->paginate(2);
     

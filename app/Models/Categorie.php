@@ -10,6 +10,15 @@ class Categorie extends Model
     use HasFactory;
 
 
+    
+    
+    protected $fillable = [
+        'status',
+       
+    ];
+    
+
+    
     function Subcategorie(){
         return $this->hasMany(Subcategorie::class);
     }

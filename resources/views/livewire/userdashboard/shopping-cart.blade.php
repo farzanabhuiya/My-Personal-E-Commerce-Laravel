@@ -9,34 +9,52 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
+                                    
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>#</th>
+                                                <th>ID</th>
                                                 <th>Product Name</th>
-                                                <th>Quantity</th>
                                                 <th>Price</th>
+                                                <th>  Quantity</th>  
                                                 <th>Total</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($cartContents as $item)
+                                        
+                                           
                                             <!-- Example Product Row -->
                                             <tr>
-                                                <td>1</td>
-                                                <td>Example Product 1</td>
-                                                <td>2</td>
-                                                <td>$25.00</td>
-                                                <td>$50.00</td>
+                                                <td>{{$item->id}}</td>
+                                                <td>{{$item->name}}</td>
+                                                <td>${{$item->price}}</td>
+                                                {{-- <td>  {{$item->qty}}</td> --}}
+
+                                                <td>
+                                                    <div class="input-group quantity mx-auto" style="width: 100px;">
+                                                        <div class="input-group-btn">
+                                                            <button class="btn btn-sm btn-dark btn-minus p-2 pt-1 pb-1 sub" >
+                                                                <i class="fa fa-minus"></i>
+                                                            </button>
+                                                        </div>
+                                                        <input type="text" class="form-control form-control-sm  border-0 text-center"value="{{$item->qty}}">
+                                                        <div class="input-group-btn">
+                                                            <button class="btn btn-sm btn-dark btn-plus p-2 pt-1 pb-1 add" >
+                                                                <i class="fa fa-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    $ {{$item->price*$item->qty}}
+                                                 </td>
+                                               
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Example Product 2</td>
-                                                <td>1</td>
-                                                <td>$30.00</td>
-                                                <td>$30.00</td>
-                                            </tr>
+                                            
                                             <!-- Add more product rows as needed -->
                                         </tbody>
+                                        @endforeach
                                     </table>
                                 </div>
                             </div>
@@ -57,16 +75,16 @@
                                         </tr>
                                         <tr>
                                             <td>Subtotal:</td>
-                                            <td>$80.00</td>
+                                            <td>${{Cart::subtotal()}}</td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <td>Delivery Charge:</td>
                                             <td>$5.00</td>
                                         </tr>
                                         <tr>
                                             <td>Shipping Charge:</td>
                                             <td>$10.00</td>
-                                        </tr>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
                                 <hr>
@@ -74,9 +92,10 @@
                                     <tbody>
                                         <tr>
                                             <td><strong>Total Cost:</strong></td>
-                                            <td><strong>$95.00</strong></td>
+                                            <td><strong>${{Cart::subtotal()}}</strong></td>
                                         </tr>
                                     </tbody>
+                                   
                                 </table>
                                 <button type="button" class="btn btn-primary btn-block">Proceed to Checkout</button>
                             </div>

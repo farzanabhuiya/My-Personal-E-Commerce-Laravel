@@ -14,6 +14,10 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+
+      {{-- <meta name="csrf-token" frontend="{{csrf_token()}}"> --}}
+	 <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- owl carousel css link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 
@@ -125,7 +129,7 @@
                         
 
                         <div class="nav-item position-relative">
-                            <a href="#" class="text-light me-2 nav-link">
+                            <a href="{{route('frontend.contant.Cart')}}" class="text-light me-2 nav-link">
                                 <i class="fa-solid fa-cart-shopping"></i>
                                 <span class="badge bg-danger">2</span>
                             </a>
@@ -476,6 +480,13 @@
     @stack('frontendJs')
 
 
+    <script>
+        $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+  </script>
 
     <script>
         $(document).ready(function(){

@@ -128,7 +128,7 @@
 
                        {{-- @foreach($images as $image) --}}
                               
-                             <a href="{{route('frontend.contant.singlePage',$product->slug)}}">   <img style="width: 200px;height:300px object-fit:cover;obect-position:center;"
+                             <a href="{{route('frontend.contant.singlePage',$product->slug)}}">   <img style="width: 260px;height:300px object-fit:cover;obect-position:center;"
                                 src="{{asset('storage/ProductImage/'.$images[0])}}" class="card-img-top"></a>
                           
                           {{-- @endforeach --}}
@@ -193,7 +193,7 @@
 
 
                         <div class="shopping d-flex flex-column gap-1  ">
-                          <a id="cart" type="button" class="btn "><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
+                          <a href="javascript: void(0)" onclick="AddToCart({{$product->id}})" id="cart" type="button" class="btn "><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
                           <a id="buy-now" type="button" class="btn" > <i class="fa-solid fa-bag-shopping"></i>Buy Now</a>
 
                          
@@ -247,7 +247,7 @@
 
                  
                               
-                              <a href ="{{route('frontend.contant.singlePage',$product->slug)}}">  <img style="width: 200px;height:300px object-fit:cover;obect-position:center;"
+                              <a href ="{{route('frontend.contant.singlePage',$product->slug)}}">  <img style="width: 260px;height:300px object-fit:cover;obect-position:center;"
                                 src="{{asset('storage/ProductImage/'.$images[0])}}" class="card-img-top"> </a>
                        
                         <div class="text-overlay"><i class="fa-regular fa-heart"></i></div>
@@ -304,7 +304,7 @@
 
 
                         <div class="shopping d-flex flex-column gap-1  ">
-                          <a id="cart" type="button" class="btn "><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
+                          <a id="cart"  href="javascript: void(0)" onclick="AddToCart({{$product->id}})" type="button" class="btn "><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
                           <a id="buy-now" type="button" class="btn" > <i class="fa-solid fa-bag-shopping"></i>Buy Now</a>
 
                          
@@ -385,7 +385,7 @@
   
                          {{-- @foreach($images as $image) --}}
                                 
-                                  <img  style="width: 200px;height:300px object-fit:cover;obect-position:center;"
+                                  <img  style="width: 500px;height:300px object-fit:cover;obect-position:center;"
                                   src="{{asset('storage/ItemImage/'.$images[0])}}" class="card-img-top">
                             {{-- @endforeach --}}
                             
@@ -423,4 +423,36 @@
     </main>
 
 
+
+
+
+
+    
+    @push('frontendJs')
+    <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
+    
+    <script type="text/javascript">
+        function AddToCart(id) {
+            $.ajax({
+                url: "{{route('frontend.contant.AddToCart')}}",
+                 type: 'POST',
+                  data: {id:id,},
+                dataType:'json',
+                success:function(response){
+                  let cart =[];
+                    cart = response;
+                   
+                   if(  cart.status == true){
+                    alert(cart.message)
+    
+                   }else{
+                    alert(cart.message)
+                   }
+    
+                } 
+            });
+        }
+    
+    </script>
+    @endpush
 @endsection

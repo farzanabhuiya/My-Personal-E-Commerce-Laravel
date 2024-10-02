@@ -95,7 +95,7 @@
                   </div>
 
                  <div>
-                  <button id="cart" type="button" class="btn ">Add to Cart</button>
+                  <a href="javascript: void(0)" onclick="AddToCart({{$product->id}})" id="cart" type="button" class="btn ">Add to Cart</a>
                           <button id="buy-now" type="button" class="btn">buy now</button>
                  </div>
                 </div>              

@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\SubCategorieController;
 use App\Http\Controllers\Backend\ProductcolourController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\ShippingController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\RattingController;
@@ -32,7 +33,8 @@ Route::get('singlePage/{slug}',[SinglePageController::class,'singlePage'])->name
 Route::post('comment',[CommentController::class,'commentStore'])->name('frontend.contant.commentStore');
 Route::post('/singlePage/{product}/ratting', [RattingController::class, 'store'])->name('frontend.contant.rattingStore');
 
-
+Route::get('/cart', [CartController::class, 'cart'])->name('frontend.contant.Cart');
+Route::post('/AddToCart', [CartController::class, 'AddToCart'])->name('frontend.contant.AddToCart');
 
 
 

@@ -1,4 +1,6 @@
 
+
+{{-- <h1>hiiii</h1> --}}
 @extends('frontend.frontend_layout.forntend_layout')
 @section('title')
   Product Details
@@ -18,7 +20,7 @@
           
           <div class=" col-12 col-sm-6 col-md-5 col-lg-4 custom-column card">
             <div class="slider-container d-flex gap-2 justify-content-between align-items-center ">
-              @foreach ($products as $product)
+              {{-- @foreach ($products as $product) --}}
               
               {{-- onek pic aksathe --}}
               <div class="carousel-nav w-25">
@@ -100,7 +102,7 @@
                  </div>
                 </div>              
           </div>
-          @endforeach
+          {{-- @endforeach --}}
 
 
 

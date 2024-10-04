@@ -90,10 +90,13 @@
                             <div class="card-body">
                                 <table class="table table-borderless">
                                     <tbody>
+                                        {{-- @foreach (Cart::content() as $item ) --}}
                                         <tr>
                                             <td>Total Items:</td>
-                                            <td>3</td>
+                                            {{-- <td>{{$item->id}}</td> --}}
                                         </tr>
+                                       
+                                        {{-- @endforeach --}}
                                         <tr>
                                             <td>Subtotal:</td>
                                             <td>${{Cart::subtotal()}}</td>

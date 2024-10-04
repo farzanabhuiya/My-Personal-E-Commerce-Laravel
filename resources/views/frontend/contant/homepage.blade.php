@@ -425,36 +425,4 @@
 
 
 
-
-
-    
-    @push('frontendJs')
-    <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
-    
-    <script type="text/javascript">
-        function AddToCart(id) {
-            $.ajax({
-                url: "{{route('frontend.contant.AddToCart')}}",
-                 type: 'POST',
-                  data: {id:id,},
-                dataType:'json',
-                success:function(response){
-                  let cart =[];
-                    cart = response;
-                   
-                   if(  cart.status == true){
-                    alert(cart.message)
-    
-                   }else{
-                    alert(cart.message)
-                   }
-    
-                } 
-            });
-        }
-    
-    </script>
-
-
-    @endpush
 @endsection

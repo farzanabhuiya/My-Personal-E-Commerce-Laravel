@@ -20,7 +20,7 @@ class CartController extends Controller
 
     public function AddToCart(Request $request){
        
-
+      
         $id = $request->id;
         $product = Product::find($id);
         
@@ -40,6 +40,7 @@ class CartController extends Controller
                 }
                 if($productAlreadyExist ==false){
                     Cart::add(['id'=>$product->id, 'name' => $product->title, 'qty' =>1, 'price' =>$product->price]);
+                    $cartCount=Cart::count();
                     $status=true;
                     $message = 'Product add in Card';
                 }else{
@@ -51,12 +52,15 @@ class CartController extends Controller
 
         }else{
             Cart::add(['id'=>$product->id, 'name' => $product->title, 'qty' =>1, 'price' =>$product->price]);
+            $cartCount=Cart::count();
            $status=true;
            $message = 'Product add in Card';
         }
+
         return response()->json([
             'status' =>$status,
             'message' => $message ,
+            'cartCount' =>$cartCount,
         ]);
 
     }

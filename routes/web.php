@@ -35,6 +35,8 @@ Route::post('/singlePage/{product}/ratting', [RattingController::class, 'store']
 
 Route::get('/cart', [CartController::class, 'cart'])->name('frontend.contant.Cart');
 Route::post('/AddToCart', [CartController::class, 'AddToCart'])->name('frontend.contant.AddToCart');
+Route::post('/UpdateCart', [CartController::class, 'UpdateCart'])->name('frontend.contant.UpdateCart');
+Route::delete('/UpdateCart/{rowId}', [CartController::class, 'delete'])->name('frontend.contant.deleted');
 
 
 

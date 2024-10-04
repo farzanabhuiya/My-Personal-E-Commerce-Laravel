@@ -61,6 +61,26 @@ class CartController extends Controller
 
     }
 
+ public function UpdateCart(Request $request){
+    $rowId= $request->rowId;
+    $qty = $request->qty;
+    Cart::update($rowId,$qty);
+  
+    $message = 'Card Update Successfully';
+    session()->flash('success',$message );
 
+    return response()->json([
+        'status' =>true,
+        'message' => $message,
+    ]);
+
+ }
+
+ public function delete($rowId){
+
+    Cart::remove($rowId);
+    return back();
+    
+ }
 
 }

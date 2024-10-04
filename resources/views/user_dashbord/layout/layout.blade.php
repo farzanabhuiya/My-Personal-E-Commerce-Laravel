@@ -19,7 +19,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{asset('user_dashbord/asset/css/sb-admin-2.css')}}" rel="stylesheet">
 
 </head>
@@ -452,8 +452,16 @@
    
     <script src="./asset/userasset/js/demo/chart-pie-demo.js"></script>
     <script src="{{asset('user_dashbord/asset/js/demo/chart-pie-demo.js')}}"></script>
+    
+    @stack('frontendJs')
 
-
+    <script>
+        $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+  </script>
 
     <script>
 

@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\ProductcolourController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\ShippingController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckOutController;
 use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\RattingController;
@@ -37,6 +38,10 @@ Route::get('/cart', [CartController::class, 'cart'])->name('frontend.contant.Car
 Route::post('/AddToCart', [CartController::class, 'AddToCart'])->name('frontend.contant.AddToCart');
 Route::post('/UpdateCart', [CartController::class, 'UpdateCart'])->name('frontend.contant.UpdateCart');
 Route::delete('/UpdateCart/{rowId}', [CartController::class, 'delete'])->name('frontend.contant.deleted');
+
+
+Route::get('/checkout',[CheckOutController::class,'checkout'])->name('front.contant.checkout');
+Route::post('/processCheckout',[CheckOutController::class,'processCheckout'])->name('front.contant.processCheckout');
 
 
 

@@ -11,9 +11,10 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class CartController extends Controller
 {
     public function cart(Request $request){
-        // return "hiii";
         $categorie= Categorie::orderBy('name','ASC')->with('Subcategorie')->where('showhome','Yes')->get();
         $cartContents = Cart::content();
+
+        //dd($cartContents);
          return view('frontend.contant.Cart',compact('categorie','cartContents'));
     }
 
@@ -22,9 +23,10 @@ class CartController extends Controller
        
       
         $id = $request->id;
+    
         $product = Product::find($id);
         
-
+     
         if($product == null){
             return response()->json([
                 'status' =>false,
@@ -39,8 +41,9 @@ class CartController extends Controller
                 $productAlreadyExist =true;
                 }
                 if($productAlreadyExist ==false){
-                    Cart::add(['id'=>$product->id, 'name' => $product->title, 'qty' =>1, 'price' =>$product->price]);
-                    $cartCount=Cart::count();
+                    Cart::add(['id'=>$product->id, 'name' => $product->title, 'qty' =>1, 'price' =>$product->price,'options' =>[$product->image]]);
+                
+                     $cartCount=Cart::count();
                     $status=true;
                     $message = 'Product add in Card';
                 }else{
@@ -51,7 +54,7 @@ class CartController extends Controller
            
 
         }else{
-            Cart::add(['id'=>$product->id, 'name' => $product->title, 'qty' =>1, 'price' =>$product->price]);
+            Cart::add(['id'=>$product->id, 'name' => $product->title, 'qty' =>1, 'price' =>$product->price,'options' =>[$product->image]]);
             $cartCount=Cart::count();
            $status=true;
            $message = 'Product add in Card';

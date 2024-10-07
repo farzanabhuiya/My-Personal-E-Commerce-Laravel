@@ -36,7 +36,7 @@ class CreateShippingComponent extends Component
     }
     public function render()
     {    $districtes=District::orderBy('district_name','ASC')->get();
-         $shippings = Shipping::with('district')->get();
+         $shippings = Shipping::with('District')->get();
         return view('livewire.shipping.create-shipping-component',compact('districtes','shippings'));
     }
 }

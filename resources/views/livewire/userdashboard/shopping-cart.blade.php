@@ -1,3 +1,5 @@
+
+
 <div>
    
  <div class="row">
@@ -12,7 +14,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
     </div>
-  @endif
+  @endif   
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
@@ -26,6 +28,7 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
+                                                <th>Image</th>
                                                 <th>Product Name</th>
                                                 <th>Price</th>
                                                 <th>Quantity</th>  
@@ -40,6 +43,21 @@
                                             <!-- Example Product Row -->
                                             <tr>
                                                 <td>{{$item->id}}</td>
+                                                <td>
+                                                   <?php 
+                                                    
+                                                    $imageString = $item->options[0]; 
+                                                    $imageArray = json_decode($imageString, true);
+                                                    // dd($imageArray[0]);
+                                                    ?>
+                                                   
+                                                   
+
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        <img style="width: 50px;height:50px object-fit:cover;obect-position:center;" src="{{asset('storage/ProductImage/'.$imageArray[0])}}" >
+                                                        
+                                                    </div>
+                                                </td>
                                                 <td>{{$item->name}}</td>
                                                 <td>${{$item->price}}</td>
                         
@@ -121,7 +139,7 @@
                                     </tbody>
                                    
                                 </table>
-                                <button type="button" class="btn btn-primary btn-block">Proceed to Checkout</button>
+                                <a href="{{route('front.contant.checkout')}}" type="button" class="btn btn-primary btn-block">Proceed to Checkout</a>
                             </div>
                         </div>
                     </div>

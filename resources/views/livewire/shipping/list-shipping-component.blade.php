@@ -59,7 +59,8 @@
                              @foreach ($shippings as $shipping)
                              <tr>
                                 <td>{{$shipping->id}}</td>
-                                <td>{{$shipping->district_name}}</td>
+                                {{-- <td>{{$shipping->district_name}}</td> --}}
+                                <td>{{$shipping->district->district_name}}</td>
                                 <td>{{$shipping->amount}}</td>
                                 <td>
                                     @if ($shipping->status==1)

@@ -359,115 +359,39 @@
              <h1>Related Product</h1>
              <div class="row">
 
-            <div class="col-xm-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card mb-3 ">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="./asset/image/07957cd0-f64e-4d8c-a15b-0731377b3e44.jpg" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8 ">
-                        <div class="card-body">
-                          <h5 class="card-title">Brand Name</h5>
-                          <p class="card-text">Available Item</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                
-                
-            </div>
-            <div class="col-xm-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card mb-3 ">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="./asset/image/07957cd0-f64e-4d8c-a15b-0731377b3e44.jpg" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8 ">
-                        <div class="card-body">
-                          <h5 class="card-title">Brand Name</h5>
-                          <p class="card-text">Available Item</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                
-                
-            </div>
-            <div class="col-xm-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card mb-3 ">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="./asset/image/07957cd0-f64e-4d8c-a15b-0731377b3e44.jpg" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8 ">
-                        <div class="card-body">
-                          <h5 class="card-title">Brand Name</h5>
-                          <p class="card-text">Available Item</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                
-                
-            </div>
-            <div class="col-xm-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card mb-3 ">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="./asset/image/07957cd0-f64e-4d8c-a15b-0731377b3e44.jpg" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8 ">
-                        <div class="card-body">
-                          <h5 class="card-title">Brand Name</h5>
-                          <p class="card-text">Available Item</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                
-                
-            </div>
-            <div class="col-xm-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card mb-3 ">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="./asset/image/07957cd0-f64e-4d8c-a15b-0731377b3e44.jpg" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8 ">
-                        <div class="card-body">
-                          <h5 class="card-title">Brand Name</h5>
-                          <p class="card-text">Available Item</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                
-                
-            </div>
-            <div class="col-xm-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card mb-3 ">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="./asset/image/07957cd0-f64e-4d8c-a15b-0731377b3e44.jpg" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8 ">
-                        <div class="card-body">
-                          <h5 class="card-title">Brand Name</h5>
-                          <p class="card-text">Available Item</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                
-                
-            </div>
 
+
+              @foreach ($relatedproducts as $relatedproduct)
+                
+           
+            <div class="col-xm-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card mb-3 ">
+                    <div class="row g-0">
+                      {{-- <div class="col-md-4">
+                        <img src="./asset/image/07957cd0-f64e-4d8c-a15b-0731377b3e44.jpg" class="img-fluid rounded-start" alt="...">
+                      </div> --}}
+
+                      @php
+                      $images = json_decode($product->image);
+                       @endphp
+                      
+                         <div class="carousel-cell"><img style="width: 300px;height:200px object-fit:cover;obect-position:center;"
+                          src="{{asset('storage/ProductImage/'.$images[0])}}"alt="Image 1" class="img-fluid"></div>  
+                                        
+              </div>
+                      <div class="col-md-8 ">
+                        <div class="card-body">
+                          <h5 class="card-title">{{$relatedproduct->title}}</h5>
+                          <p class="card-text">Available Item</p>
+                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                
+            </div>
+            @endforeach
 
             
             

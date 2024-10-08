@@ -193,7 +193,7 @@
 
 
                         <div class="shopping d-flex flex-column gap-1  ">
-                          <a href="javascript: void(0)" onclick="AddToCart({{$product->id}})" id="cart" type="button" class="btn "><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
+                          <a href="javascript: void(0)" onclick="AddCart({{$product->id}})" id="cart" type="button" class="btn "><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
                           <a id="buy-now" type="button" class="btn" > <i class="fa-solid fa-bag-shopping"></i>Buy Now</a>
 
                          
@@ -304,7 +304,7 @@
 
 
                         <div class="shopping d-flex flex-column gap-1  ">
-                          <a id="cart"  href="javascript: void(0)" onclick="AddToCart({{$product->id}})" type="button" class="btn "><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
+                          <a id="cart"  href="javascript: void(0)" onclick="AddCart({{$latestproduct->id}})" type="button" class="btn "><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
                           <a id="buy-now" type="button" class="btn" > <i class="fa-solid fa-bag-shopping"></i>Buy Now</a>
 
                          

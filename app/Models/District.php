@@ -13,8 +13,12 @@ class District extends Model
        
     ];
 
-    
-    function Shipping(){
-        return $this->hasMany(Shipping::class);
+
+    public function shipping()
+    {
+        return $this->hasOne(Shipping::class); 
     }
-}
+//     function Shipping(){
+//         return $this->hasMany(Shipping::class);
+//     }
+ }

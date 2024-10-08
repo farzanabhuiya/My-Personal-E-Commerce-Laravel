@@ -149,13 +149,12 @@
 </div>
 
 @push('frontendJs')
-    <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
-    
-    <script type="text/javascript">
+    {{-- <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script> --}}
+  <script>
    
 
 $('.add').click(function(){
-     var qtyElement = $(this).parent().prev(); // Qty Input
+     var qtyElement = $(this).parent().prev();
      var qtyValue = parseInt(qtyElement.val());
      if (qtyValue < 10) {
         
@@ -177,8 +176,9 @@ $('.add').click(function(){
          UpdateCart(rowId,newQty)
      }        
   });
+</script>
 
-
+  <script>
   function UpdateCart(rowId,qty){
      $.ajax({
          url:"{{route('frontend.contant.UpdateCart')}}",

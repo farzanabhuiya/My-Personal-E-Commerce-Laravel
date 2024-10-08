@@ -5,6 +5,7 @@ namespace App\Livewire\Frontend;
 use App\Models\Order;
 use Livewire\Component;
 use App\Models\District;
+use App\Models\Shipping;
 use App\Models\Categorie;
 use App\Models\OrderItem;
 use App\Models\Customeraddersse;
@@ -12,14 +13,13 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutComponent extends Component
 {
-    // public $cartContents;
-    //  public $cartCount;
-    // public $categories;
+     
+    public $amount='';
     public $subTotal;
-    public $shipping = 0;
+    public $shipping;
     public $grandTotal;
-    public $discount='';
-    // public $districts;
+    public $discount=00;
+   
 
     public $first_name='';
     public $last_name=''; 
@@ -33,27 +33,23 @@ class CheckoutComponent extends Component
      public $zip='';
      public $notes='';
      public $payment_method='';
+    
+     public $shippingCharge;
 
+    public function updateShippingCharge($selectedValue)
+    {
+       
+        $shipping = Shipping::where('district_id', $selectedValue)->first();
+        if ($shipping && $shipping->amount !== null) {        
+            $this->shippingCharge = $shipping->amount;
+            $this->district=$selectedValue;
+        } else {
+            $this->shippingCharge = 0;
+        }
+        
+    
+    }
 
-
-    // public function mount()
-    // {
-    //     $this->categories = Categorie::orderBy('name', 'ASC')
-    //         ->with('Subcategorie')
-    //         ->where('showhome', 'Yes')
-    //         ->get();
-    //     $this->cartContents = Cart::content();
-    //     // $this->cartCount = Cart::count();
-      
-          
-    //     // if ($this->cartContents->count() == 0)
-    //     // if ($this->cartCount == 0) {
-    //     //     return redirect()->route('frontend.contant.Cart');
-    //     // }
-
-    //     // $this->subTotal = Cart::subtotal(2, '.', '');
-    //     $this->districts = District::orderBy('district_name', 'ASC')->get();
-    // }
 
 
     public function processCheckout()
@@ -63,7 +59,7 @@ class CheckoutComponent extends Component
             'last_name' => 'required',
             'email' => 'required|email',
             'mobile' => 'required|min:11',
-            // 'district' => 'required',
+             'district' => 'required',
             'address' => 'required',
         
      ]);
@@ -85,23 +81,21 @@ class CheckoutComponent extends Component
         $address->save();
 
         // Step 2: Store data in order table
-        if ($this->payment_method === 'cod') {
-            $discountCodeId = '';
-            $promoCode = '';
+        if ($this->payment_method === 'cod') {       
             $order = new Order();
-            $order->subtotal = $this->subTotal;
-            $order->shipping = $this->shipping;
+            $order->user_id =auth()->user()->id;
+            $order->subtotal = Cart::subTotal();
+            $order->shipping = $this->shippingCharge;
             $order->grand_total = $this->subTotal + $this->shipping;
             $order->discount = $this->discount;
-            $order->coupon_code = $promoCode;
-            $order->coupon_code_id = $discountCodeId;
+            $order->coupon_code = 00;
+            $order->coupon_code_id = 00;
             $order->payment_status = "not paid";
             $order->status = 'pending';
             $order->save();
 
             // Step 3: Store order items
-            // foreach (Cart::content() as $item) 
-            foreach ($this->cartContents as $item){
+            foreach (Cart::content() as $item){
                 $orderItem = new OrderItem();
                 $orderItem->product_id = $item->id;
                 $orderItem->order_id = $order->id;
@@ -111,28 +105,25 @@ class CheckoutComponent extends Component
                 $orderItem->total = $item->price * $item->qty;
                 $orderItem->save();
             }
-            // return back();
           
+             Cart::destroy();
         }
-         $this->reset();
-        return back();
+        
+      $this->reset();
+      return back();
     }
 
-
+ 
     public function render()
      {
+        $this->grandTotal=Cart::SubTotal()+$this->shippingCharge;
+       // dd($this->districts);
         $categories = Categorie::orderBy('name', 'ASC')
         ->with('Subcategorie')
         ->where('showhome', 'Yes')->get();
         $cartContents = Cart::content();
-
-        // if (Cart::Count()== 0) {
-        //          return redirect()->route('frontend.contant.Cart');
-        //    }
-    
         $districts = District::orderBy('district_name', 'ASC')->get();
         return view('livewire.frontend.checkout-component',compact('categories','cartContents','districts'));
 
-         return view('livewire.frontend.checkout-component');
     }
 }

@@ -9,7 +9,12 @@ class Shipping extends Model
 {
     use HasFactory;
 
-    function District(){
+    // function District(){
+    //     return $this->belongsTo(District::class);
+    // }
+
+    public function district()
+    {
         return $this->belongsTo(District::class);
     }
 }

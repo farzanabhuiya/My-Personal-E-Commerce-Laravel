@@ -13,6 +13,7 @@ class CartController extends Controller
     public function cart(Request $request){
         $categorie= Categorie::orderBy('name','ASC')->with('Subcategorie')->where('showhome','Yes')->get();
         $cartContents = Cart::content();
+      
 
         //dd($cartContents);
          return view('frontend.contant.Cart',compact('categorie','cartContents'));
@@ -21,7 +22,8 @@ class CartController extends Controller
 
     public function AddToCart(Request $request){
        
-      
+    //   dd($request->all());
+    //return $request->all();
         $id = $request->id;
     
         $product = Product::find($id);
@@ -36,10 +38,12 @@ class CartController extends Controller
 
         if( Cart::count()>0){
             $productAlreadyExist =false;
+            
             foreach(Cart::content() as $item){
                 if($item->id == $product->id){
                 $productAlreadyExist =true;
                 }
+
                 if($productAlreadyExist ==false){
                     Cart::add(['id'=>$product->id, 'name' => $product->title, 'qty' =>1, 'price' =>$product->price,'options' =>[$product->image]]);
                 
@@ -47,6 +51,7 @@ class CartController extends Controller
                     $status=true;
                     $message = 'Product add in Card';
                 }else{
+                   
                     $status=false;
                     $message = 'Product all ready exist';
                 }

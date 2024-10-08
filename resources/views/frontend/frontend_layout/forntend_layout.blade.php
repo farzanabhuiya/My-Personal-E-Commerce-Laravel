@@ -647,22 +647,21 @@
 
 
 
-    <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
+    {{-- <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script> --}}
     
-{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
-
-    <script type="text/javascript">
-        function AddToCart(id) {
+    <script>
+        function AddCart(id) {
             $.ajax({
                 url: "{{route('frontend.contant.AddToCart')}}",
                  type: 'POST',
                   data: {id:id,},
                 dataType:'json',
                 success:function(response){
+                    // console.log(response) 
                   let cart =[];
                     cart = response;
                    
-                   if(  cart.status == true){
+                   if(cart.status == true){
                      $('#cartCount').html(cart.cartCount);
                     alert(cart.message)
     

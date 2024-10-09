@@ -15,10 +15,12 @@ use App\Http\Controllers\Backend\SubCategorieController;
 use App\Http\Controllers\Backend\ProductcolourController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\ShippingController;
+use App\Http\Controllers\Frontend\BrandAllController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckOutController;
 use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\HomePageController;
+use App\Http\Controllers\Frontend\ProductSubcategoryController;
 use App\Http\Controllers\Frontend\RattingController;
 use App\Http\Controllers\Frontend\SinglePageController;
 use App\Http\Controllers\userDashboard\UserDashboardController;
@@ -30,6 +32,11 @@ use App\Models\DiscountCoupon;
 
 
 Route::get('/',[HomePageController::class,'homePage'])->name('frontend.contant.homepage');
+
+              ///productSubcategory route
+ Route::get('productSubcategory/{slug}',[ProductSubcategoryController::class,'productSubcategory'])->name('frontend.contant.ProductSubcategory');
+            ////BranddAll route
+ Route::get('BranddAll/{slug}',[BrandAllController::class,'Branddall'])->name('frontend.contant.BranddAll');
 Route::get('singlePage/{slug}',[SinglePageController::class,'singlePage'])->name('frontend.contant.singlePage');
 Route::post('comment',[CommentController::class,'commentStore'])->name('frontend.contant.commentStore');
 Route::post('/singlePage/{product}/ratting', [RattingController::class, 'store'])->name('frontend.contant.rattingStore');

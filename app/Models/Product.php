@@ -13,7 +13,17 @@ class Product extends Model
         'status',
     ];
     
+      /// subcategory sathe product relation
+    function Subcategorie(){
+        return $this->belongsTo(Subcategorie::class);
+    }
     
+
+        /// brand sathe product relation/akta brand upor onek product
+        function Brands(){
+            return $this->belongsTo(Brand::class);
+        }
+
     function Brand(){
         return $this->hasMany(Brand::class);
     }
@@ -32,4 +42,10 @@ class Product extends Model
     {
         return $this->hasMany(Ratting::class);
     }
+
+
+//     public function brands()
+// {
+//     return $this->belongsTo(Brand::class, 'brand_id');
+// }
 }

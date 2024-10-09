@@ -15,4 +15,16 @@ class Brand extends Model
     function Product(){
         return $this->belongsTo(Product::class);
     }
+
+
+/// akta brand upor onek product relation/brand sathe product relation
+   function products(){
+   return $this->hasMany(Product::class);
+}
+    
+//     public function products()
+// {
+//     return $this->hasMany(Product::class);
+// }
+
 }

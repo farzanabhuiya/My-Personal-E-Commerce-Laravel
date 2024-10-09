@@ -21,4 +21,9 @@ class Subcategorie extends Model
     function categorie(){
         return $this->belongsTo(Categorie::class);
     }
+     /// product sathe Subcategorie relation
+    function Product(){
+        return $this->hasMany(Product::class);
+    }
+ 
 }

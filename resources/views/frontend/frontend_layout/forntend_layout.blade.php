@@ -362,7 +362,7 @@
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         @foreach ($category->Subcategorie as $Subcategorie)
-                        <li><a class="dropdown-item" href="#">{{$Subcategorie->name}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('frontend.contant.ProductSubcategory', [$Subcategorie->slug])}}">{{$Subcategorie->name}}</a></li>
                         
                         @endforeach 
                     </ul>

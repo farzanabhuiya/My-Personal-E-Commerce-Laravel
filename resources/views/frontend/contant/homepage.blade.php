@@ -255,7 +255,7 @@
                       <div class="card-body">
                         <p class="card-text">Brand Name: <span class="brand-name">আপনার ব্র্যান্ডের নাম</span></p>
                         <h5 class="card-title">{{$latestproduct->title}}</>
-                            <h6>Price: <span class="price">${{$latestproduct->price}}</span><span><del>${{$latestproduct->compare_price}}</del></span></>
+                            <h6>Price: <span class="price">${{$latestproduct->price}}</span><span><del>${{$latestproduct->compare_price}}</del></span></h6>
 
                         <!-- ratting system start -->
 
@@ -347,14 +347,15 @@
   
     @foreach ($brands as $brand)
     <div class="col-12 col-md-6 col-xl-4 col-xxl-3 mb-3">
+      
       <div class="card h-auto">
         <div class="row no-gutters">
           <div class="col-4 d-flex align-items-center">
-            <img src="{{asset('storage/BrandImage/'.$brand->image)}}" alt="Image" style="max-width: 100%; height: auto;">
+           <a href="{{route('frontend.contant.BranddAll', [$brand->slug])}}"><img  src="{{asset('storage/BrandImage/'.$brand->image)}}" alt="Image" style="max-width: 100%; height: auto;"></a> 
           </div>
           <div class="col-8">
             <div class="card-body">
-              <h5 class="card-title">Brand Name:</h5>
+              <h5  class="card-title">Brand Name:</h5>
               <p class="card-text">Title: {{$brand->name}}.</p>
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>

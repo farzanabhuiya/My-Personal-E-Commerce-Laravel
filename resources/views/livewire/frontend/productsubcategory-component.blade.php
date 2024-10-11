@@ -51,12 +51,26 @@
                            
                         </a>
                     </span>
-        
+              
+
+                    
                
                     <div class="collapse" id="Discount">
                         <div class=" card-body">
+                      
+                         
+                         <input type="checkbox" wire:model.lazy="selectedDiscounts" value=0> 0-10%<br>
+                          <input type="checkbox" wire:model.lazy="selectedDiscounts" value=10> 10-20%<br>
+                          <input type="checkbox" wire:model.lazy="selectedDiscounts" value=30> 20-30%<br>
+                          <div>
+                           
+                            <pre>{{ print_r($selectedDiscounts) }}</pre>
                           
-                        <div>
+                        </div>
+
+
+
+                        {{-- <div>
                           
                           <input type="checkbox" id="brand">
                           <label class="form-check-label" for="flexCheckDefault" for="brand">All Discount </label>
@@ -75,7 +89,7 @@
                           
                           <input type="checkbox" id="brand">
                           <label class="form-check-label" for="flexCheckDefault" for="brand">All Discount </label>
-                        </div>
+                        </div> --}}
                          
                         </div>
                     </div>
@@ -95,12 +109,12 @@
                   </hr>
                     <div class="collapse" id="Brand">
                         <div class=" card-body">
-                          {{-- @foreach($brands as $brand)  --}}
+                          @foreach($brands as $brand) 
                         <div>
-                          <input type="checkbox"id="brand">
-                          <label class="form-check-label" for="flexCheckDefault" for="brand"> </label>
+                          <input type="checkbox" wire:model="selectedBrands" id="brand" value="{{ $brand->id }}">
+                          <label class="form-check-label" for="flexCheckDefault" for="brand">{{$brand->name}} </label>
                         </div>
-                        {{-- @endforeach --}}
+                        @endforeach
                         
                  
                          
@@ -203,9 +217,9 @@
                         <div class="text-overlay"><i class="fa-regular fa-heart"></i></div>
                       </div>
                       <div class="card-body">
-                        <p class="card-text">ব্র্যান্ডের নাম: <span class="brand-name"></span></p>
+                        <p class="card-text">Brand Name: <span class="brand-name">{{$product->brand->name}}</span></p>
                         <h5 class="card-title">Product Name::{{$product->title}}</h5>
-                        <p class="card-text">মূল্য: <span class="price">${{$product->price}}</span><span><del>${{$product->compare_price}}</del></span></p>
+                        <p class="card-text">Price: <span class="price">${{$product->price}}</span><span><del>${{$product->compare_price}}</del></span></p>
                         <div class="d-flex justify-content-between">
                           <a  href="javascript: void(0)" onclick="AddCart({{$product->id}})" id="cart" type="button" class="btn">Add to Cart</a>
                           <button id="buy-now" type="button" class="btn">buy now</button>
@@ -257,15 +271,15 @@
             <div class="card shadow mt-3">
               <div class="image-container">
                 @php
-                $images= json_decode($product->image);
+                $images= json_decode($FutureProduct->image);
               @endphp
                 <img src="{{asset('storage/ProductImage/'.$images[0])}}" class="card-img-top">
                 <div class="text-overlay"><i class="fa-regular fa-heart"></i></div>
               </div>
               <div class="card-body">
-                <p class="card-text">ব্র্যান্ডের নাম: <span class="brand-name">আপনার ব্র্যান্ডের নাম</span></p>
+                <p class="card-text">Brand Name: <span class="brand-name">{{$FutureProduct->brand->name}}</span></p>
                 <h5 class="card-title">Product Name:{{$FutureProduct->title}}</h5>
-                <p class="card-text">মূল্য: <span class="price">${{$FutureProduct->price}} </span><span><del>${{$FutureProduct->compare_price}}</del></span></p>
+                <p class="card-text">Price: <span class="price">${{$FutureProduct->price}} </span><span><del>${{$FutureProduct->compare_price}}</del></span></p>
                 <div class="d-flex justify-content-between">
                   <a  href="javascript: void(0)" onclick="AddCart({{$product->id}})" id="cart" type="button" class="btn">Add to Cart</a>
                   <button id="buy-now" type="button" class="btn">buy now</button>

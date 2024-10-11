@@ -23,6 +23,7 @@ use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\ProductSubcategoryController;
 use App\Http\Controllers\Frontend\RattingController;
 use App\Http\Controllers\Frontend\SinglePageController;
+use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\userDashboard\UserDashboardController;
 use App\Models\DiscountCoupon;
 
@@ -50,6 +51,18 @@ Route::delete('/UpdateCart/{rowId}', [CartController::class, 'delete'])->name('f
 Route::get('/checkout',[CheckOutController::class,'checkout'])->name('front.contant.checkout');
 Route::post('/processCheckout',[CheckOutController::class,'processCheckout'])->name('front.contant.processCheckout');
 
+
+Route::prefix('/userProfile')->controller(UserProfileController::class)->name('frontend.')->group(
+    function(){
+        Route::get('/' ,'index')->name('userProfile');
+       // Route::get('/store' ,'store')->name('store');
+       Route::get('/editUserProfile','editUserProfile')->name('editUserProfile');
+        Route::get('/PasswordUpdate','PasswordUpdate')->name('PasswordUpdate');
+
+     
+
+    }
+);
 
 
 // Route::middleware([

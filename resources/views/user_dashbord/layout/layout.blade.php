@@ -68,9 +68,9 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Your Profile</h6>
-                        <a class="collapse-item" href="./user profile.html">Profile</a>
-                        <a class="collapse-item" href="./editeprofile.html">Edite Profile</a>
-                        <a class="collapse-item" href="./changepassword.html">Change passwor</a>
+                        <a class="collapse-item" href="{{route('frontend.userProfile')}}">Profile</a>
+                        <a class="collapse-item" href="{{route('frontend.editUserProfile')}}">Edite Profile</a>
+                        <a class="collapse-item" href="{{route('frontend.PasswordUpdate')}}">Change passwor</a>
                     </div>
                 </div>
             </li>

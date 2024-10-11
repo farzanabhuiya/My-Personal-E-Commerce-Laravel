@@ -12,19 +12,16 @@ class Brand extends Model
         return $this->belongsTo(Categorie::class);
     }
     
-    function Product(){
-        return $this->belongsTo(Product::class);
-    }
+    // function Product(){
+    //     return $this->belongsTo(Product::class);
+    // }
+
+
 
 
 /// akta brand upor onek product relation/brand sathe product relation
-   function products(){
+   function product(){
    return $this->hasMany(Product::class);
 }
-    
-//     public function products()
-// {
-//     return $this->hasMany(Product::class);
-// }
 
 }

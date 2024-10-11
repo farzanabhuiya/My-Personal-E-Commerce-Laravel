@@ -101,9 +101,9 @@
                             <input  wire:model="image" class="form-control" type="file" id="formFile">  
 
 
-                                            @if ($image) 
+                          @if ($image) 
                         <img src="{{ $image->temporaryUrl() }}" width="200px" class="mt-2">
-                    @endif   
+                         @endif   
                                         @error('image') <span class="error text-danger">{{ $message }}</span> @enderror
 
 

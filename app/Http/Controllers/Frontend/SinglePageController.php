@@ -19,7 +19,7 @@ class SinglePageController extends Controller
      $product=Product::withCount('comments as totalComments')->with('comments')
         ->withCount('rattings')->withSum('rattings','rating')->with('rattings')
         ->with(['user:id,name,profile_img'])
-        ->where('slug',$slug)->where('is_featured','Yes')->where('status',1)->first();
+        ->where('slug',$slug)->where('is_featured','Yes')->where('status',1)->with('brand')->first();
        
 
         $relatedproducts=[];

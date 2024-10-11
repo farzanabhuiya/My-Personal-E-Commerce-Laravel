@@ -141,7 +141,7 @@
                         {{-- @foreach ($products->brands as $brand)
                         <p class="card-text">Brand Name: <span">{{$brand->name}}</span></p>
                         @endforeach --}}
-                         <p class="card-text">Brand Name: <span class="brand-name">{{$product->brand_id}}</span></p> 
+                         <p class="card-text">Brand Name: <span class="brand-name">{{$product->brand->name}}</span></p> 
                         <h5 class="card-title">Product Name:
                           {{$product->title}}</h5>
                         <h6>Price: <span class="price">${{$product->price}} </span><span><del>${{$product->compare_price}}</del></span></h6>
@@ -253,7 +253,7 @@
                         <div class="text-overlay"><i class="fa-regular fa-heart"></i></div>
                       </div>
                       <div class="card-body">
-                        <p class="card-text">Brand Name: <span class="brand-name">আপনার ব্র্যান্ডের নাম</span></p>
+                        <p class="card-text">Brand Name: <span class="brand-name">{{$latestproduct->brand->name}}</span></p>
                         <h5 class="card-title">{{$latestproduct->title}}</>
                             <h6>Price: <span class="price">${{$latestproduct->price}}</span><span><del>${{$latestproduct->compare_price}}</del></span></h6>
 

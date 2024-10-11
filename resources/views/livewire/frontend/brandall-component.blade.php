@@ -235,7 +235,7 @@
                   <div class="row">
                     
                     @foreach ($brandProducts as $brandProduct)
-                    @foreach ($brandProduct->products as $product)
+                    @foreach ($brandProduct->product as $product)
                     <div class="col-12 col-md-4 col-lg-3">
   
                       <div class="card shadow">
@@ -248,8 +248,8 @@
                         </div>
                         <div class="card-body">
                           <p class="card-text">Brand Name: <span class="brand-name">{{$brandProduct->name}}</span></p>
-                          <h5 class="card-title">{{$product->title}}</h5>
-                          <p class="card-text">মূল্য: <span class="price">{{$product->price}}</span> <span><del>${{$product->compare_price}}</del></span></p>
+                          <h5 class="card-title">Product Name:{{$product->title}}</h5>
+                          <p class="card-text">Price: <span class="price">{{$product->price}}</span> <span><del>${{$product->compare_price}}</del></span></p>
                           <div class="d-flex justify-content-between">
                             <button id="cart" type="button" class="btn">Add to Cart</button>
                             <button id="buy-now" type="button" class="btn">buy now</button>

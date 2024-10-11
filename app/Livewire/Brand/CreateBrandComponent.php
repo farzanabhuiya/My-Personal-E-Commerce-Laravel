@@ -31,7 +31,7 @@ class CreateBrandComponent extends Component
     function addBrand(){
    $this->validate([
  
-     'name'=> 'required|max:20',
+     'name'=> 'required|max:20|unique:brands',
      'status'=>'required',
       'image'=>'required',
       'categorie_id'=>'required',

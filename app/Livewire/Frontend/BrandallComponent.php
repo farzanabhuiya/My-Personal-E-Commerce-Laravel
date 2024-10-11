@@ -24,7 +24,7 @@ class BrandallComponent extends Component
        
         $this->cartCount=Cart::count();
         $this->brands = Brand::get();
-       $this->brandProducts =Brand::with('products')->where('slug',$slug)->get();
+       $this->brandProducts =Brand::with('product')->where('slug',$slug)->get();
     }
 
 

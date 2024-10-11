@@ -54,8 +54,8 @@
 
           <div class="col-12 col-sm-6 col-md-7 col-lg-8  custom-column ">
               <div class="card p-3">
-                     <h6 class="title">Brand name: <span class="brand-name">{{$product->brand_id}}</span></h6>
-                     <h6>Title : {{$product->title}}</h6>
+                     <h6 class="title">Brand name: <span class="brand-name">{{$product->brand->name}}</span></h6>
+                     <h6>Product Name : {{$product->title}}</h6>
                        <h4>Spiceal Price:</h4>
 
                     @php
@@ -381,7 +381,7 @@
               </div>
                       <div class="col-md-8 ">
                         <div class="card-body">
-                          <h5 class="card-title">{{$relatedproduct->title}}</h5>
+                          <h5 class="card-title">Product Name::{{$relatedproduct->title}}</h5>
                           <p class="card-text">Available Item</p>
                           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                         </div>

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class PasswordupdateCompenet extends Component
 {   public $old;
    public $password;
-   public $confirmPassword;
+   public $password_confirmation;
 
     public function PasswordUpdate()
     {
@@ -18,11 +18,12 @@ class PasswordupdateCompenet extends Component
         
           'old' =>"required|current_password",
           'password' =>"required|confirmed|different:old",
-          'confirmPassword' =>"required",
+          'password_confirmation' =>"required",
         ]);
         $user = User::find(auth()->user()->id);
         $user->password = Hash::make($this->password);
         $user->save();
+        $this->reset();
         return back()->with('success','PassWordUpdate UserProfile Successfull');
             
     

@@ -43,7 +43,7 @@ class EdituserprofileCompenet extends Component
           $users = User::find(auth()->user()->id);
           $users->name = $this->name;
           $users->email = $this->email;
-          $users->profile_img = $this->email;
+          $users->profile_img = $fileName;
           $users->save();
           $this->reset();
           return back()->with('success','Update UserProfile Successfull');

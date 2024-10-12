@@ -9,7 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-   @yield('title')
+   {{-- @yield('title') --}}
+   <title> @yield('title')</title>
 
   <!-- Custom fonts for this template-->
     <link href="{{asset('user_dashbord/asset/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css"> 
@@ -37,6 +38,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
+                
                 <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
             </a>
 
@@ -86,7 +88,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Your Card Details</h6>
-                        <a class="collapse-item" href="./card.html">Card</a>
+                        <a class="collapse-item" href="{{route('frontend.contant.Cart')}}">Card</a>
                         <a class="collapse-item" href="./cardhistory.html">History</a>
                        
                     </div>
@@ -432,7 +434,6 @@
     <script src="{{asset('user_dashbord/asset/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
-  
     <script src="./asset/userasset/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="{{asset('user_dashbord/asset/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 

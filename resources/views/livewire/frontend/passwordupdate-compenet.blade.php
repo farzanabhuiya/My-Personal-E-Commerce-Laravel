@@ -22,7 +22,7 @@
           
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Back</button>
+                        <a href="{{route('frontend.userProfile')}}" type="button" class="btn btn-primary">Back</a>
                         <h3>Change Password</h3>
                         <div></div>
                     </div>
@@ -41,9 +41,9 @@
                                 
                             </div>
                             <div class="form-group">
-                                <label for="confirmPassword">Confirm New Password</label>
-                                <input wire:model="confirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Confirm your new password">
-                                @error('confirmPassword')
+                                <label for="password_confirmation">Confirm New Password</label>
+                                <input wire:model="password_confirmation" type="password" class="form-control" id="confirmPassword" placeholder="Confirm your new password">
+                                @error('password_confirmation')
                                 <span class="text-danger">{{$message }}</span>
                                 @enderror
                             </div>

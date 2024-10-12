@@ -21,23 +21,22 @@
                
                  <div class="card">
                      <div class="card-header d-flex justify-content-between align-items-center">
-                         <button type="button" class="btn btn-primary">Edit</button>
+                         <a href="{{route('frontend.PasswordUpdate')}}" type="button" class="btn btn-primary">Password</a>
                          <h3>User Edit Profile</h3>
                          <button type="button" class="btn btn-secondary" onclick="window.history.back();">Back</button>
                      </div>
-                     <div class="card-body">
+                     <div class="card-body d-block">
 
                        
-                         <div class="row">
+                         <div class="row d-block">
                            <form method="post"  wire:submit="updateProfile" enctype="multipart/form-data">
                            
-                               
-                               <input wire:model="name"  type="text" class="form-control my-2" placeholder="You user Name">
+                            <input  wire:model="name" type="text" class="form-control my-2 "  placeholder="You user Name">
                                  @error('name')
                                  <span class="text-danger">{{$message }}</span>
                                  @enderror
        
-                               <input wire:model="email"  type="text" class="form-control my-2"  placeholder="You Email">
+                               <input wire:model="email"  type="text" class="form-control my-3"  placeholder="You Email">
                                     
                                @error('email')
                                  <span class="text-danger">{{$message }}</span>
@@ -54,7 +53,7 @@
                                  <span class="text-danger d-block">{{$message }}</span>
                                  @enderror
        
-                               <button class="btn btn-primary" type="submit">Update Profile</button>
+                               <button class="btn btn-primary " type="submit">Update Profile</button>
                            </form>
                          </div>
                          

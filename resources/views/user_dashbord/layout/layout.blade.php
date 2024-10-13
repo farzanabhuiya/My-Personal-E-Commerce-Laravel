@@ -455,6 +455,7 @@
     <script src="{{asset('user_dashbord/asset/js/demo/chart-pie-demo.js')}}"></script>
     
     @stack('frontendJs')
+    @livewireScripts
 
     <script>
         $.ajaxSetup({

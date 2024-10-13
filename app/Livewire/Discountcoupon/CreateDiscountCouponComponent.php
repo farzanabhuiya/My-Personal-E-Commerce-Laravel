@@ -28,8 +28,8 @@ class CreateDiscountCouponComponent extends Component
     $this->validate([
      
      'code'=> 'required|max:8',
-     'starts_at'=>'required',
-     'expires_at'=>'required',
+    //  'starts_at'=>'required',
+    //  'expires_at'=>'required',
      'discount_amount'=>'required',
      
 

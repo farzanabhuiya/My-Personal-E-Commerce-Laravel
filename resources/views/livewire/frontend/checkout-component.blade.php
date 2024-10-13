@@ -25,6 +25,11 @@
                         <div class="sub-title">
                             <h2>Shipping Address</h2>
                         </div>
+                        @if (session('success'))
+                        <div  class="alert alert-success w-10 h-20">
+                            <h4>{{session('success')}}</h4>
+                        </div>
+                          @endif
                         <div class="card shadow-lg border-0">
                             <div class="card-body checkout-form">
                                 <div class="row">
@@ -140,7 +145,7 @@
                                 </div>
                                 <div class="d-flex justify-content-between mt-2">
                                     <div class="h6"><strong>discount</strong></div>
-                                    <div class="h6"><strong>$0</strong></div>
+                                    <div class="h6"><strong>${{$discount}}</strong></div>
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-between mt-2 summery-end">
@@ -151,7 +156,25 @@
                             </div>
                         </div>       
 
-                        <div class="card payment-form "> 
+
+                         
+
+                        
+
+                        {{-- Discount Coupone Apply --}}
+                        <div class="input-group apply-coupan mt-4">
+                            <input type="text" name="code" placeholder="Coupon Code" wire:model='CouponCode' class="form-control" name="discount_code" id="discount_code">
+                            <button wire:click="applyCoupon('{{ $CouponCode }}')" class="btn btn-dark" type="button">Apply Coupon</button>
+                        </div>
+                      {{-- {{print_r($applyCoupon)}} --}}
+                     
+                        @if($message)
+                        <div class="alert alert-info mt-3">{{ $message }}</div>
+                    @endif
+        
+               
+
+                        <div class="card payment-form pt-2 my-4"> 
                             <h3 class="card-title h5 mb-3">Payment Method</h3> 
                             <div>
                                

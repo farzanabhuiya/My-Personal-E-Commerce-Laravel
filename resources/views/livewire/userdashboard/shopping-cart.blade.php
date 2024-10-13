@@ -27,7 +27,7 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
+                                                {{-- <th>ID</th> --}}
                                                 <th>Image</th>
                                                 <th>Product Name</th>
                                                 <th>Price</th>
@@ -42,7 +42,8 @@
                                            
                                             <!-- Example Product Row -->
                                             <tr>
-                                                <td>{{$item->id}}</td>
+                                              
+                                                {{-- <td>{{$item->id}}</td> --}}
                                                 <td>
                                                    <?php 
                                                     
@@ -111,7 +112,7 @@
                                         {{-- @foreach (Cart::content() as $item ) --}}
                                         <tr>
                                             <td>Total Items:</td>
-                                            {{-- <td>{{$item->id}}</td> --}}
+                                            <td>{{Cart::count()}}</td>
                                         </tr>
                                        
                                         {{-- @endforeach --}}

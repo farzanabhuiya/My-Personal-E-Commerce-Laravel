@@ -47,7 +47,7 @@
    
     
    </style>
-
+  
     <!-- Styles -->
     @livewireStyles
 </head>
@@ -478,6 +478,7 @@
 
     
     @stack('frontendJs')
+    @livewireScripts
 
 
     <script>

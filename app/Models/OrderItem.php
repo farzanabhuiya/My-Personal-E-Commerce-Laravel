@@ -12,4 +12,13 @@ class OrderItem extends Model
     function Customeraddersse(){
         return $this->belongsTo(Customeraddersse::class);
     }
+
+
+    function order(){
+        return $this->belongsTo(Order::class);
+    }
+
+
+
+    
 }

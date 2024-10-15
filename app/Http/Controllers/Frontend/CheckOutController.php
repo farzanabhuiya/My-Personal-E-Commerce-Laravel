@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Order;
 use App\Models\District;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
@@ -27,6 +28,11 @@ class CheckOutController extends Controller
     function processCheckout(){
         return view('frontend.contant.CheckOut');
     }
+   public function thanks(Request $request,$orderId){
+    $order = Order::where('id', $orderId)->with('orderitems')->first();
+   
 
+   return view('frontend.contant.thanks',compact('orderId','order'));
+    }
    
 }

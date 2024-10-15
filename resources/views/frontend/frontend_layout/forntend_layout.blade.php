@@ -644,7 +644,7 @@
 
 
 
-    @livewireScripts
+    {{-- @livewireScripts --}}
 
 
 

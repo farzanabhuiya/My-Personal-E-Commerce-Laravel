@@ -22,7 +22,7 @@
     <!-- Custom styles for this template-->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{asset('user_dashbord/asset/css/sb-admin-2.css')}}" rel="stylesheet">
-
+    @livewireScripts
 </head>
 
 <body id="page-top">

@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
@@ -24,6 +25,11 @@ class CartController extends Controller
        
     //   dd($request->all());
     //return $request->all();
+
+    //   if(Auth::check()==false){
+    //     return redirect()->route('login');
+
+    //   }
         $id = $request->id;
     
         $product = Product::find($id);

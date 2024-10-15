@@ -26,5 +26,5 @@ class ShippingController extends Controller
         Shipping::find($id)->delete();
         return back()->with('success','Shipping Successfull deleted');;
       }
-  
+ 
 }

@@ -5,16 +5,20 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Item;
 use App\Models\Brand;
 use App\Models\Product;
+use App\Mail\OrderEmail;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Mail\OrderShipped;
 
 class HomePageController extends Controller
 {
   
 
     public function homePage(){
+
     $categorie= Categorie::orderBy('name','ASC')->with('Subcategorie')->where('showhome','Yes')->get();
         //  dd($categorie);
     $products=Product::orderBy('id','DESC') 

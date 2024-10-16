@@ -18,7 +18,13 @@ class OrderItem extends Model
         return $this->belongsTo(Order::class);
     }
 
+///thanks page jonno relation ta kora
+    public function product() {
+        return $this->belongsTo(Product::class);
+    }
 
-
+    function orders(){
+        return $this->hasMany(Order::class);
+    }
     
 }

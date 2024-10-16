@@ -9,145 +9,140 @@
   </head>
   <body>
     <br><br>
-    <div>
-      <h2>Thanks Your for Order!</h2>
-      <h2>order:{{$orderId}}</h2>
+    
+    <div class="m-auto text-center"  >
+        <h2>Thanks for Your Order!</h2>
+      <h3>Order Id:{{$orderId}}</h3>
     </div>
   
 
-    <main>
 
 
-      <section class="section-9 pt-4">
-          <div class="container">
-              <div class="row">
-                     <div class="col-md-8">       
-                      <div class="card shadow-lg border-0">
-                          <div class="card-body checkout-form">
-                              
-                              <div class="sub-title">
-                                  <h2>Order Deails</h2>
-                              </div>
-                              <hr>
-                              <hr>
-                           
-                              <div class="row">
-                                  
-                                  <div class="col-md-12">
-                                      <div class="mb-3">
-                                          <input type="text" class="form-control"  placeholder=" Name">
+
+  <div class="row m-auto ">
+
+  
+                    <div class="col-md-7 m-auto pt-4 ">
+                        <div class="card text-center">
+                            <div class="text-center ">
+                                <h3 class="pt-2">Order Details</h3>
+                               
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                {{-- <th>ID</th> --}}
+                                                <th>Image</th>
+                                                <th>Product Name</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>  
+                                              
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+
+
+                                            @foreach($orderitem as $item)
+                                            {{-- @foreach ($item->product as $product) --}}
+                                                
+                                       
                                         
-                                      </div>            
-                                  </div>
-                                  <div class="col-md-12">
-                                      <div class="mb-3">
-                                          <input type="text"  class="form-control" placeholder=" Email">
-                                         
-                                      </div>            
-                                  </div>
-                                  
-                                  <div class="col-md-12">
-                                      <div class="mb-3">
-                                          <input type="text"  class="form-control" placeholder="Email">
-                                  
-                                      </div>            
-                                  </div>
-  
-                                  <div class="col-md-12">
-                                      <div class="mb-3">
-                                          <input type="text" value="{{ $order->customer_email }}" class="form-control" placeholder="Email">
-                                  
-                                      </div>            
-                                  </div>
-                                  <div class="col-md-4">
-                                      <div class="mb-3">
-                                          <input type="text"  value="{{ $order->city }}" class="form-control" placeholder="City">
-                                      </div>            
-                                  </div>
-  
-                                  <div class="col-md-4">
-                                      <div class="mb-3">
-                                          <input type="text" class="form-control" placeholder="State">
-                                      </div>            
-                                  </div>
-                                  <div class="image-container">
-                                            
-                                             <img style="width: 400px;height:300px object-fit:cover;obect-position:center;"
-                                              src="image" class="card-img-top">
-              
-                                      <div class="text-overlay"> <i class="fa-regular fa-heart"></i></div>
-                                    </div>
-                             
-                              </div>
-  
-  
-                                  <!-- Example Card History Entry -->
-                                  
-                                     
-                                          {{-- <h5 class="card-title">Order #12345</h5>
-                                          <p class="card-text">Product: Example Product 1</p>
-                                          <p class="card-text">Date: 2024-05-01</p>
-                                          <p class="card-text">Price: $49.99</p>
-                                          <p class="card-text">Status: Delivered</p> --}}
-                                      
-                                
-                         
-                              
-                          </div>
-                      </div>    
-                  </div>
-  
-   
-  
-                  <div class="col-md-4">                   
-                      <div class="card cart-summery">
-                          <div class="card-body">
-                              
-                              <div class="sub-title">
-                                  <h2>Order details</h3>
-                              </div> 
-                              <hr>
-                             
+                                           
+                                            <!-- Example Product Row -->
+                                            <tr>
+                                              
+                                                
+                                                <td>
+                                                   
+                                                  
+
+                                                    <?php 
+                                                    
+                                                    $imageString = $item->product->image; 
+                                                    $imageArray = json_decode($imageString, true);
+                                                    // dd($imageArray[0]);
+                                                    ?>
+                                                   
+                                                   
+
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        <img style="width: 60px;height:50px object-fit:cover;obect-position:center;" src="{{asset('storage/ProductImage/'.$imageArray[0])}}" >
+                                                        
+                                                    </div>
+                                                </td>    
+                                                
+                                                <td>{{$item->product->title}}</td>
+                                                <td>${{$item->product->price}}</td>
                         
-                           
-                              @foreach($order->orderitems as $item)
-                              <div class="d-flex justify-content-between pb-2">
-                                  <div class="h6">{{ $item->name }} x {{ $item->qty }}</div>
-                                  <div class="h6">${{ $item->price * $item->qty }}</div>
-                              </div>
-                            @endforeach
-                            <hr>
+                                                {{-- @endforeach --}}
+                                             
+                                                <td>
+                                                    $ {{ $item->qty }}
+                                                 </td>
 
-                              <div class="d-flex justify-content-between summery-end">
-                                  <div class="h6"><strong>Subtotal</strong></div>
-                                  <div class="h6"><strong>${{ $order->subtotal }}</strong></div>
-                              </div>
-                              <div class="d-flex justify-content-between mt-2">
-                                  <div class="h6"><strong>Shipping</strong></div>
-                                  <div class="h6"><strong>${{ $order->shipping }}</strong></div>
-                              </div>
-                              <div class="d-flex justify-content-between mt-2">
-                                  <div class="h6"><strong>Discount</strong></div>
-                                  <div class="h6"><strong>${{ $order->discount }}</strong></div>
-                              </div>
-                              <hr>
-                              <div class="d-flex justify-content-between mt-2 summery-end">
-                                  <div class="h5"><strong>Total</strong></div>
-                                  <div class="h5"><strong>${{$order->grand_total}}</strong></div>
-                              </div>                            
-                          </div>
-                      </div>       
-  
-                            
-                      <!-- CREDIT CARD FORM ENDS HERE -->
-                      
-                  </div>
-        
-              </div>
-          </div>
-      </section>
-  </main>
+                                                
+                                               
+                                            </tr>
+                                            
+                                            <!-- Add more product rows as needed -->
+                                        </tbody>
+                                        @endforeach
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Corder Summary Section -->
+                    <div class="col-md-5 pt-4">
+                        <div class="card ">
+                            <div class="card-header text-center">
+                                <h5>Order Summary</h5>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-borderless">
+                                    <tbody>
+                                            {{-- @foreach ($orderitem as $item ) --}}
+                                                
+                                                
+                                        <tr>
+                                            <td>Subtotal:</td>
+                                            <td>${{ $order->subtotal }}</td>
+                                        </tr>
+                                       
+                                        <tr>
+                                            <td>Shipping Charge:</td>
+                                            <td>${{ $order->shipping }}</td>
+                                        </tr> 
+                                        <tr>
+                                            <td>Discount:</td>
+                                            <td>${{ $order->discount }}</td>
+                                        </tr> 
+                                        
+                                    </tbody>
+                                </table>
+                                <hr>
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Total Cost:</strong></td>
+                                            <td><strong>${{$order->grand_total}}</strong></td>
+                                        </tr>
+                                    </tbody>
+                                   
+                                </table>
+                                {{-- @endforeach --}}
+                                
+                            </div>
+                        </div>
+                    </div>
 
+                 </div>
+
+</div>
 
 
 

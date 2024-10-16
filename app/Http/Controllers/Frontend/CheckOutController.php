@@ -8,6 +8,7 @@ use App\Models\Categorie;
 use Illuminate\Http\Request;
 use App\Models\Customeraddersse;
 use App\Http\Controllers\Controller;
+use App\Models\OrderItem;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckOutController extends Controller
@@ -29,10 +30,13 @@ class CheckOutController extends Controller
         return view('frontend.contant.CheckOut');
     }
    public function thanks(Request $request,$orderId){
-    $order = Order::where('id', $orderId)->with('orderitems')->first();
-   
+     $orderitem = OrderItem::where('order_id', $orderId)->with('product')->with('order')->get();
+    
+    // dd($orderitem);
+     $order = Order::where('id', $orderId)->first();
+//    dd($order);
 
-   return view('frontend.contant.thanks',compact('orderId','order'));
+   return view('frontend.contant.thanks',compact('orderId','orderitem','order'));
     }
    
 }

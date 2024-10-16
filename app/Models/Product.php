@@ -25,20 +25,6 @@ class Product extends Model
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // function brand(){
     //     return $this->hasMany(Brand::class);
     // }
@@ -58,7 +44,13 @@ class Product extends Model
         return $this->hasMany(Ratting::class);
     }
 
-
+ ///thanks page jonno relation ta kora
+    public function order() {
+        return $this->hasMany(Order::class);
+    }
+    public function orderitem() {
+        return $this->hasMany(OrderItem::class);
+    }
 //     public function brands()
 // {
 //     return $this->belongsTo(Brand::class, 'brand_id');

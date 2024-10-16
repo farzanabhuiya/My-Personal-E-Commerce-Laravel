@@ -15,14 +15,20 @@ class Order extends Model
         
     ];
 
-    function OrderItem (){
-        return $this->hasMany(OrderItem::class);
-     }
+    // function OrderItem (){
+    //     return $this->hasMany(OrderItem::class);
+    //  }
 
 
   ///thanks page jonno relation ta kora
      public function orderitems() {
         return $this->hasMany(OrderItem::class);
+    }
+    public function product() {
+        return $this->belongsTo(Product::class);
+    }
+    function OrderItem(){
+        return $this->belongsTo(OrderItem::class);
     }
 
 }

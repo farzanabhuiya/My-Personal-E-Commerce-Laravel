@@ -58,7 +58,8 @@
                                      <div class="col-md-12">
                                         <div class="mb-3">
                                             <select wire:change="updateShippingCharge($event.target.value)"  id="district" class="form-control">
-                                                <option value="">Select a District</option>
+                                                <option >Select a District</option>
+                                                
                                          @forelse ($districts as $district )
                                                
                                          <option value="{{ $district->id }}">{{ $district->district_name }}</option>

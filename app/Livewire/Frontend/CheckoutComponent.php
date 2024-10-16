@@ -116,15 +116,15 @@ class CheckoutComponent extends Component
     public function processCheckout()
     {
       
-    //     $this->validate([
-    //         'first_name' => 'required',
-    //         'last_name' => 'required',
-    //         'email' => 'required|email',
-    //         'mobile' => 'required|min:11',
-    //          'district' => 'required',
-    //         'address' => 'required',
+        $this->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'mobile' => 'required|min:11',
+             'district' => 'required',
+            'address' => 'required',
         
-    //  ]);
+     ]);
 
         // Step 1: Save user address
         $address = new Customeraddersse();

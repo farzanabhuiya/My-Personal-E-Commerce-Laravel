@@ -20,6 +20,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckOutController;
 use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\HomePageController;
+use App\Http\Controllers\Frontend\ItemAllController;
 use App\Http\Controllers\Frontend\ProductSubcategoryController;
 use App\Http\Controllers\Frontend\RattingController;
 use App\Http\Controllers\Frontend\SinglePageController;
@@ -39,6 +40,7 @@ Route::get('/',[HomePageController::class,'homePage'])->name('frontend.contant.h
  Route::get('productSubcategory/{slug}',[ProductSubcategoryController::class,'productSubcategory'])->name('frontend.contant.ProductSubcategory');
             ////BranddAll route
  Route::get('BranddAll/{slug}',[BrandAllController::class,'Branddall'])->name('frontend.contant.BranddAll');
+ Route::get('Item/{slug}',[ItemAllController::class,'Itemall'])->name('frontend.contant.ItemdAll');
 Route::get('singlePage/{slug}',[SinglePageController::class,'singlePage'])->name('frontend.contant.singlePage');
 Route::post('comment',[CommentController::class,'commentStore'])->name('frontend.contant.commentStore');
 Route::post('/singlePage/{product}/ratting', [RattingController::class, 'store'])->name('frontend.contant.rattingStore');

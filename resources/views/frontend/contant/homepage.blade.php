@@ -374,7 +374,7 @@
     <h3 class="col-12">What do you want to buy!</h3>
   @foreach ($items as $item)
   <div class="col-12  col-md-6 col-xl-4 col-xxl-3">
-    <div class="card">
+    <div class="card"  href="{{route('frontend.contant.ItemdAll', [$item->slug])}}"> 
       <div class="row no-gutters  g-0">
         <div class="col-4 d-flex align-items-center">
 
@@ -386,8 +386,8 @@
   
                          {{-- @foreach($images as $image) --}}
                                 
-                                  <img  style="width: 500px;height:300px object-fit:cover;obect-position:center;"
-                                  src="{{asset('storage/ItemImage/'.$images[0])}}" class="card-img-top">
+                                 <a href="{{route('frontend.contant.ItemdAll', [$item->slug])}}"> <img  style="width: 300px;height:300px object-fit:cover;obect-position:center;"
+                                  src="{{asset('storage/ItemImage/'.$images[0])}}" class="card-img-top"></a>
                             {{-- @endforeach --}}
                             
   

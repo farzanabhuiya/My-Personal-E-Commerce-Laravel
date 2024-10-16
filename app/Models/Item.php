@@ -28,4 +28,10 @@ class Item extends Model
     function Brand(){
         return $this->belongsTo(Brand::class);
     }
+
+    /// akta item upor onek product relation/item sathe product relation//itemall page
+   function product(){
+    return $this->hasMany(Product::class);
+ }
+ 
 }

@@ -133,9 +133,11 @@
                           
                           {{-- @endforeach --}}
 
+                           {{-- <div class="text-overlay" wire:click.prevent="addWishlist({{$product->id }})">  <i class="fa-regular fa-heart"></i></a>
+                        </div> --}}
 
-
-                        <div class="text-overlay"> <i class="fa-regular fa-heart"></i></div>
+                        <div class="text-overlay"> <a href="{{route('front.contant.wishlist',$product->id)}}"> <i class="fa-regular fa-heart"></i></a>
+                        </div>
                       </div>
                       <div class="card-body">
                         {{-- @foreach ($products->brands as $brand)

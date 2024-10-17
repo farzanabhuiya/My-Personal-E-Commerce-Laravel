@@ -25,6 +25,7 @@ use App\Http\Controllers\Frontend\ProductSubcategoryController;
 use App\Http\Controllers\Frontend\RattingController;
 use App\Http\Controllers\Frontend\SinglePageController;
 use App\Http\Controllers\Frontend\UserProfileController;
+use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\userDashboard\UserDashboardController;
 use App\Models\DiscountCoupon;
 
@@ -55,7 +56,7 @@ Route::get('/checkout',[CheckOutController::class,'checkout'])->name('front.cont
 Route::post('/processCheckout',[CheckOutController::class,'processCheckout'])->name('front.contant.processCheckout');
 Route::get('/thanks/{orderId}',[CheckOutController::class,'thanks'])->name('front.contant.thanks');
 
- //Route::get('/thank-you/{order_id}',[CheckOutController::class, 'thanks'])->name('front.contant.thanks');
+ Route::get('/wishlistAdd',[WishlistController::class, 'wishlistAdd'])->name('front.contant.wishlist');
 
 
 

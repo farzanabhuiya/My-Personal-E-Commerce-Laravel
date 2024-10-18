@@ -24,7 +24,7 @@ class HomePageController extends Controller
     $products=Product::orderBy('id','DESC') 
          ->withCount('rattings')->withSum('rattings','rating')->with('rattings')
          ->where('is_featured','Yes')->where('status',1)->with('brand')->get();
-         //dd($products);
+        //  dd($products);
      $latestproducts=product::orderBy('id','DESC')->withCount('rattings')
          ->withSum('rattings','rating')->with('rattings')
          ->where('status',1)->latest()->take(6)->get();

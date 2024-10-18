@@ -993,9 +993,7 @@
                                 <li class="slide">
                                     <a href="{{ route('Shipping.index') }}" class="side-menu__item">Add New</a>
                                 </li>
-                                <li class="slide">
-                                    <a href="{{ route('page') }}" class="side-menu__item">page</a>
-                                </li>
+                                
                             </ul>
                         </li>
                         <!-- End::Product-->

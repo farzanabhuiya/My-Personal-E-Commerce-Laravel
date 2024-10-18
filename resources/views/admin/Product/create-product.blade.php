@@ -3,23 +3,9 @@
 <div>
 
     <!-- Content Header (Page header) -->
-      <section class="content-header">					
-            <div class="container-fluid ">
-                <div class="row ">
-                   <div class="d-flex justify-content-between">
-                    <div class="">
-                        <h1>Create Brand</h1>
-                    </div>
-                    <div class="">
-                        <a href="{{route('Product.index')}}" class="btn btn-primary">Back</a>
-                    </div>
-                   </div>
-                </div>
-            </div>
-            <!-- /.container-fluid -->
-        </section>
+     
     <!-- Main content -->
-    <section class="content">
+    {{-- <section class="content">
         <!-- Default box -->
         <div class="container-fluid">
             <form action="{{ route('Product.store') }}" method="POST" enctype="multipart/form-data">
@@ -56,6 +42,8 @@
 
 
                                     </div>
+
+
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label for="shortdiscreiption">Short Discription</label>
@@ -400,8 +388,12 @@
             </form>
         </div>
         <!-- /.card -->
-    </section>
+    </section> --}}
     <!-- /.content -->
+
+
+@livewire('product.create-product-component')
+
 
 
 </div>
@@ -454,37 +446,6 @@
 
 
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        ClassicEditor
-            .create(document.querySelector('#description'))
-            .catch(error => {
-                console.error(error);
-            });
-    });
-
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        ClassicEditor
-            .create(document.querySelector('#shortdiscreiption'))
-            .catch(error => {
-                console.error(error);
-            });
-    });
-
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        ClassicEditor
-            .create(document.querySelector('#shipping_returns'))
-            .catch(error => {
-                console.error(error);
-            });
-    });
-
-</script>
 
 
 
@@ -523,7 +484,7 @@
 
 
 
-<script>
+{{-- <script>
     document.getElementById('imagePreview2').addEventListener('click', function() {
         document.getElementById('imageUpload').click();
     });
@@ -601,7 +562,7 @@
         });
     });
 
-</script>
+</script> --}}
 
 
 

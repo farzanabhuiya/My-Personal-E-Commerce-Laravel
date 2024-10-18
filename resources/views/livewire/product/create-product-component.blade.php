@@ -5,13 +5,15 @@
 
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <div class="container-fluid my-2">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Create Product</h1>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <a href="" class="btn btn-primary">Back</a>
+        <div class="container-fluid ">
+            <div class="row ">
+                <div class="d-flex justify-content-between">
+                    <div class="">
+                        <h1>Create Brand</h1>
+                    </div>
+                    <div class="">
+                        <a href="{{ route('Product.index') }}" class="btn btn-primary">Back</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -29,7 +31,7 @@
                 @method('post')
 
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-8 h-auto">
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div class="row">
@@ -38,36 +40,49 @@
                                             <label for="title">Title</label>
                                             <input wire:model='title' type="text" id="title" class="form-control"
                                                 placeholder="Title">
+                                                @error('title')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
-                                        <div class="mb-3">
-
-
-
-
-
-                                            <label for="shipping_returns">shipping and Returns</label>
-                                            <textarea wire:model='shipping_returns' id="editor" placeholder="Content Goes Here...."></textarea>
-
-
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
+                                        <div class="mb-3" wire:ignore>
                                             <label for="description">Description</label>
-                                            <textarea wire:model='description' id="edito" class="summernote" placeholder="Description"></textarea>
+                                            <textarea wire:model='description' name="description" id="description" class="ckeditor">{{ old('description') }}</textarea>
+
+
+                                            @error('description')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                             <h1>{{$description}}</h1>
+
+
+                                    </div>
+
+
+                                    <div class="col-md-12">
+                                        <div class="mb-3" wire:ignore>
+                                            <label for="shortdiscreiption">Short Discription</label>
+                                            <textarea class="w-full" wire:model='short_description' name='short_discreiption' id="shortdiscreiption" short_discreiptionclass="summernote" placeholder="Short Discreiption">{{ old('short_discreiption') }}  </textarea>
+                                            @error('')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+
+
+                                           
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="short_description">Short Description</label>
-                                            <textarea wire:model='short_description' id="edit" class="summernote" placeholder="Short_description"></textarea>
+                                        <div class="mb-3" wire:ignore>
+                                            <label for="short_description">Returns</label>
+                                            <textarea wire:model='shipping_returns' name='shipping_returns' id="shipping_returns" class="summernote" placeholder="shipping_returns">{{ old('shipping_returns') }}</textarea>
+                                            @error('shipping_returns')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -76,15 +91,24 @@
                         </div>
 
 
-                        <div>
-                          
-                         
-         <input type="file" wire:model='images' id="images" class="form-control" multiple
-                                                placeholder="Price">
+                        <div >
+
+
+                            <input type="file" wire:model='images' id="images" class="form-control" multiple
+                                placeholder="Price">
+
+                              @if ($images) 
 
 
 
-                           
+                                @foreach ($images as $image)
+                                    <img src="{{ $image->temporaryUrl() }}" width="300px" class="mt-2">
+                                @endforeach
+                                
+                            @endif
+
+
+
                             @error('image.*')
                                 <span class="error">{{ $message }}</span>
                             @enderror
@@ -158,13 +182,14 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <h2 class="h4 mb-3">Related products</h2>
-                                <div class="mb-3">
-                                    <select multiple name="realted_product[]" class=" related_product"  id="product-select" >
-                                 
-                                </select>
+                                <div class="mb-3" wire:ignore>
+                                    <select multiple name="realted_product[]" class=" related_product"
+                                        id="product-select">
+
+                                    </select>
 
 
-                      
+
 
 
 
@@ -394,55 +419,81 @@
 
 
 
+   
+        <script>
+        let editor;
+document.addEventListener('DOMContentLoaded', function() {
+    ClassicEditor
+        .create(document.querySelector('#description'))
 
+        .then(function(leditor) {  // এখানে function এর সঠিক বানান
 
+            editor = leditor;
 
+            leditor.model.document.on('change:data', () => {  // 'çhange:data' এর পরিবর্তে 'change:data'
+                @this.set('description', leditor.getData())
+            });
 
+        })
 
-
-
-
-
-
-
-
-
-
-
-
-<script>
-
-
-$(document).ready(function() {
-    // Livewire ইনিশিয়ালাইজড হলে ইভেন্ট হ্যান্ডলার
-    document.addEventListener('livewire:initialized', () => {
-        // Livewire এর imageSelected ইভেন্ট হ্যান্ডলার
-        Livewire.on('imageSelected', () => {
-            console.log('hello');
-            
-            // CKEDITOR চেক করা
-            if (typeof CKEDITOR == 'undefined') {
-                console.log('hello world');
-                // CKEditor ইনিশিয়ালাইজ করা
-                CKEDITOR.replace('edit'); // CKEditor এর সঠিক ID দিন
-            }
-
-            // অন্যান্য কার্যকলাপ এখানে যোগ করুন
-            alert('Image has been selected!');
+        .catch(error => {
+            console.error(error);
         });
-    });
 });
 
 
-
- 
-
- 
-   
 </script>
 
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        ClassicEditor
+            .create(document.querySelector('#shortdiscreiption'))
+
+
+     .then(function(leditor) {  // এখানে function এর সঠিক বানান
+
+            editor = leditor;
+
+            leditor.model.document.on('change:data', () => {  // 'çhange:data' এর পরিবর্তে 'change:data'
+                @this.set('short_description', leditor.getData())
+            });
+
+        })
+
+            .catch(error => {
+                console.error(error);
+            });
+    });
+
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        ClassicEditor
+            .create(document.querySelector('#shipping_returns'))
+
+     .then(function(leditor) {  // এখানে function এর সঠিক বানান
+
+            editor = leditor;
+
+            leditor.model.document.on('change:data', () => {  // 'çhange:data' এর পরিবর্তে 'change:data'
+                @this.set('shipping_returns', leditor.getData())
+            });
+
+        })
+
+
+
+            .catch(error => {
+                console.error(error);
+            });
+    });
+
+</script>
+
+    
 
 
 

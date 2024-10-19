@@ -2,4 +2,10 @@
 @section('content')
     
  @livewire('frontend.productsubcategory-component',['slug'=>$slug]) 
+
+
+
+
+
+ 
 @endsection

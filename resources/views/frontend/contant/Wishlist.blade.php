@@ -44,9 +44,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div onclick="removeWishlist({{ $wishlist->product_id}});" class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center deleteBtn">
+                                <div class="pt-2 ps-sm-3 mx-auto mx-sm-0 text-center ">
                                 
-                                    <button  class="btn btn-outline-danger btn-sm deleteBtn" id="deleteBtn" type="submit"><i class="fas fa-trash-alt me-2"></i>Remove</button>
+                                    <button data-id="{{$wishlist->product_id}}" class="btn btn-outline-danger btn-sm deleteBtn" id="deleteBtn" type="submit"><i class="fas fa-trash-alt me-2"></i>Remove</button>
                                   
                                      
                                       </div>
@@ -73,11 +73,12 @@
 
 
 @push('frontendJs')
-{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     
     $('.deleteBtn').click(function (event){
       event.preventDefault()
+      var productId = $(this).data('id');
         Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -88,35 +89,29 @@
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-       $(this).next('form').submit()
+
+       $.ajax({
+         url:"{{route('front.contant.removeWishlist')}}",
+         type:'post',
+         data:{id:productId},
+         dataType:'json',
+         success:function(response){
+             if(response.status == true){
+            window.location.href="{{route('front.contant.Wishlist')}}";
+             }
+ 
+         }
+     })
+
+
       }
     });
     
     });
     
-        </script> --}}
+        </script>
 
 
-
-
-<script >
-    function removeWishlist(id){
-     $.ajax({
-         url:"{{route('front.contant.removeWishlist')}}",
-         type:'post',
-         data:{id:id},
-         dataType:'json',
-         success:function(response){
-             if(response.status == true){
-                 alert(response.message);
-              
-                 window.location.href="{{route('front.contant.Wishlist')}}";
-             }
- 
-         }
-     })
-    }
- </script>
 @endpush
 
 @endsection

@@ -20,7 +20,7 @@ class CreateProductComponent extends Component
     use SlugGenerator;
     
       public $title="";
-      public $description="";
+      public $description;
       public $short_description="";
       public $shipping_returns="";
       public $related_products="";
@@ -56,14 +56,16 @@ class CreateProductComponent extends Component
 
      public function addProduct(){
         
+    
+
 
         $this->validate([
  
-            // 'title'=> 'required|max:25',
-            // 'categorie_id' =>'required',
-            // 'subcategorie_id' =>'required',
-            // 'brand_id' =>'required',
-            // 'price' =>'required',
+            'title'=> 'required|max:25',
+            'categorie_id' =>'required',
+            'subcategorie_id' =>'required',
+            'brand_id' =>'required',
+            'price' =>'required',
             
             
             

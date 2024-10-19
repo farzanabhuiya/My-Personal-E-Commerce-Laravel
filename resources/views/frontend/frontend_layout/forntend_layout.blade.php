@@ -528,7 +528,20 @@
 
 
 
-            $(".js-range-slider").ionRangeSlider({
+           
+
+        })
+
+    </script>
+
+
+<script>
+     
+
+    document.addEventListener('livewire:initialized', () => {
+        // Runs immediately after Livewire has finished initializing
+        // on the page...
+ $(".js-range-slider").ionRangeSlider({
                 type: "double"
                 , min: 0
                 , max: 1000
@@ -536,10 +549,31 @@
                 , to: 1000
                 , grid: true
             });
-
-        })
+        console.log('he,llo')
+    })
 
     </script>
+
+
+
+<script>
+    document.addEventListener('livewire:init', () => {
+        // Runs after Livewire is loaded but before it's initialized
+        // on the page...
+
+        console.log('he,llo')
+        
+    })
+ 
+</script>
+
+
+
+
+
+
+
+
 
     <script>
         document.getElementById('mode-toggle').addEventListener('change', function() {

@@ -166,7 +166,7 @@
 
 <!-- range -->
 
-                    <div class="card mt-3 ">
+                    <div class="card mt-3 " wire:ignore>
 
                      <div class="p-1">
                       <label for="customRange2" class="form-label mt-3">Price</label>

@@ -74,4 +74,10 @@ class User extends Authenticatable
     function comments(){
         return $this->hasMany(Comment::class);
     }
+
+    function wishlist(){
+        return $this->hasMany(Wishlist::class);
+    }
+
+
 }

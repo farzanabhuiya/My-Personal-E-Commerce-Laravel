@@ -56,7 +56,9 @@ Route::get('/checkout',[CheckOutController::class,'checkout'])->name('front.cont
 Route::post('/processCheckout',[CheckOutController::class,'processCheckout'])->name('front.contant.processCheckout');
 Route::get('/thanks/{orderId}',[CheckOutController::class,'thanks'])->name('front.contant.thanks');
 
- Route::get('/wishlistAdd',[WishlistController::class, 'wishlistAdd'])->name('front.contant.wishlist');
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('front.contant.Wishlist');
+Route::post('/wishlist/add', [WishlistController::class, 'WishlistAdd'])->name('front.contant.WishlistAdd');
+Route::post('/wishlist/remove', [WishlistController::class, 'removeWishlist'])->name('front.contant.removeWishlist');
 
 
 

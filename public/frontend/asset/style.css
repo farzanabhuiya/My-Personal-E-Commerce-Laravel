@@ -174,7 +174,7 @@ body.night-mode {
  } 
 
  .card:hover {
-   transform: translateY(-1px); /* Moving card 5px upwards */
+ /* Moving card 5px upwards */
    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Adding shadow effect */
  }
 

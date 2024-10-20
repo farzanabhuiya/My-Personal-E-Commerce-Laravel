@@ -344,7 +344,7 @@
 
 
 
-    <div class=" bg-secondary position2  shadow">
+    <div class=" bg-secondary position2  shadow" >
 
         <div class="container m-auto">
 
@@ -354,7 +354,7 @@
               
 
             
-                <div class="dropdown">
+                <div class="dropdown" >
                     @foreach ( $categorie as $category )
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         {{$category->name}} 

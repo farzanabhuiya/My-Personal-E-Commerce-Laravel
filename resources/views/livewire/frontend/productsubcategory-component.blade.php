@@ -85,27 +85,31 @@
 
                             <div class="card mt-3 ">
 
-                                <span>
-                                    <a class="btn  m-2" type="button" data-bs-toggle="collapse" data-bs-target="#Brand"
-                                        aria-expanded="false" aria-controls="collapseExample">
+                                 <span>
+                                    <a class="btn  m-2" type="button">
                                         All Brand
                                         <i class="fas fa-chevron-down" id="toggle-icon"></i>
-
                                     </a>
                                 </span>
 
                                 </hr>
-                                <div class="collapse" id="Brand">
+                                <div  id="Brand">
                                     <div class=" card-body">
-                                        @foreach ($brands as $brand)
+                                        @forelse ($brands as $brand)
                                             <div>
-                                                <input type="checkbox" wire:model="selectedBrands" id="brand"
+                                                <input type="checkbox" wire:model.lazy="selectedBrands" id="brand"
                                                     value="{{ $brand->id }}">
                                                 <label class="form-check-label" for="flexCheckDefault"
                                                     for="brand">{{ $brand->name }} </label>
                                             </div>
-                                        @endforeach
 
+                                            
+                                            @empty
+                                            <h1>No product found</h1>
+
+                                        @endforelse
+
+                           
 
 
                                     </div>
@@ -185,7 +189,7 @@
 
 
 
-                    <div class=" col-md-12 col-lg-9 m-auto  card  pb-3">
+                    <div class=" col-md-12 col-lg-9    pb-3">
 
                         <div class="d-flex justify-content-end text-end d-lg-none d-md-block">
                             <button id="filter_slide" class="btn btn-primary"><img src="/svg/filter.svg" alt=""
@@ -202,7 +206,10 @@
 
 
                             @if (!empty($subcategoryProducts->product))
+                                
                                 @forelse ($subcategoryProducts->product as $product)
+                                        
+                            
                                     <div class="col-12 col-sm-6 col-md-4 col-xl-3">
                                         <div class="card shadow mt-3">
                                             <div class="image-container">
@@ -235,8 +242,8 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
+                                        
                                 @empty
                                     <div class="col-12">
                                         <h3>No products found for this subcategory.</h3>

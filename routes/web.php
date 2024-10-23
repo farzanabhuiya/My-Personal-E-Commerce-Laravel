@@ -265,3 +265,18 @@ Route::prefix('/backend/shipping')->controller(ShippingController::class)->name(
 Route::get('/profile',[ProfileController::class,'showProfile'])->name('profile');
 Route::put('/profile-update',[ProfileController::class,'updateProfile'])->name('profile.update');
 Route::put('/password-update',[ProfileController::class,'updatepassword'])->name('profile.password.update');
+
+
+// ==================   ALL USER REALATED ROUTE HERE=========================================//
+
+Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
+    Route::prefix('/dashboard')->controller(DashbordController::class)->name('dashboard.')->group(
+        function(){
+           
+            Route::get('/all-user','allUser')->name('alluser');
+            
+    
+    
+        }
+    );
+    });

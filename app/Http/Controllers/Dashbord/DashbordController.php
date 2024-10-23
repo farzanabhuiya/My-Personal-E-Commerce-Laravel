@@ -16,5 +16,12 @@ class DashbordController extends Controller
     }
 
 
+    function allUser(){
+
+
+        return view('admin.alluser.alluser');
+
+    }
+
 
 }

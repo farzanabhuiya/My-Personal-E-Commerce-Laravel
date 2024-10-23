@@ -32,7 +32,7 @@ class ProductsubcategoryComponent extends Component
 
         $this->categorie = Categorie::orderBy('name', 'ASC')->with('Subcategorie')->where('showhome', 'Yes')->get();
         $this->FutureProducts = Product::orderBy('id', 'DESC')->where('is_featured', 'Yes')->get();
-        $this->products = Product::with('brand')->get();
+        // $this->products = Product::with('brand')->get();
         $this->cartCount = Cart::count();
         $this->brands = Brand::get();
     }
@@ -61,21 +61,50 @@ class ProductsubcategoryComponent extends Component
 
         // when selectedDiscounts is not null or user  click a discount then if block is run and selectedDiscounts is null then else block is run
 
-        if (!empty($this->selectedDiscounts)) {
+        // if (!empty($this->selectedDiscounts)) {
 
-            $minDiscount = 1;
-            $maxDiscount = max($this->selectedDiscounts) + 1;
+        //     $minDiscount = 1;
+        //     $maxDiscount = max($this->selectedDiscounts) + 1;
 
 
-            $this->subcategoryProducts = Subcategorie::with(['product' => function ($query) use ($minDiscount, $maxDiscount) {
+        //     $this->subcategoryProducts = Subcategorie::with(['product' => function ($query) use ($minDiscount, $maxDiscount) {
 
-                $query->whereBetween('discount_amount', [$minDiscount, $maxDiscount]);
-            }])
-                ->where('slug', $this->slug)
-                ->first();
-        } else {
-            $this->subcategoryProducts = Subcategorie::with('product')->where('slug', $this->slug)->first();
-        }
+        //         $query->whereBetween('discount_amount', [$minDiscount, $maxDiscount]);
+        //     }])
+        //         ->where('slug', $this->slug)
+        //         ->first();
+        // } else {
+        //     $this->subcategoryProducts = Subcategorie::with('product')->where('slug', $this->slug)->first();
+        // }
+
+
+// dd($this->subcategoryProducts);
+
+// get product query
+$this->subcategoryProducts = Subcategorie::with(['product' => function($query) {
+        
+   
+    if (!empty($this->selectedBrands)) {
+        $query->whereIn('brand_id', $this->selectedBrands);  
+    }
+
+ 
+    if (!empty($this->selectedDiscounts)) {
+        $minDiscount =1;
+        $maxDiscount = max($this->selectedDiscounts);
+
+     
+        $query->whereBetween('discount_amount', [$minDiscount, $maxDiscount]);
+    }
+
+}])
+->where('slug', $this->slug)
+->first();
+
+
+
+
+
 
 
 

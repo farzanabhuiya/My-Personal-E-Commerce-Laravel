@@ -133,16 +133,13 @@
                           
                           {{-- @endforeach --}}
 
-                           {{-- <div class="text-overlay" wire:click.prevent="addWishlist({{$product->id }})">  <i class="fa-regular fa-heart"></i></a>
-                        </div> --}}
 
-                        <div class="text-overlay"> <a href="{{route('front.contant.wishlist',$product->id)}}"> <i class="fa-regular fa-heart"></i></a>
+                        <div class="text-overlay"> 
+                          <a onclick="WishlistAdd({{$product->id}})" class="whishlist"  href="javascript:void(0)"> <i class="fa-regular fa-heart"></i></a>
                         </div>
+
                       </div>
                       <div class="card-body">
-                        {{-- @foreach ($products->brands as $brand)
-                        <p class="card-text">Brand Name: <span">{{$brand->name}}</span></p>
-                        @endforeach --}}
                          <p class="card-text">Brand Name: <span class="brand-name">{{$product->brand->name}}</span></p> 
                         <h5 class="card-title">Product Name:
                           {{$product->title}}</h5>
@@ -252,7 +249,9 @@
                               <a href ="{{route('frontend.contant.singlePage',$product->slug)}}">  <img style="width: 260px;height:300px object-fit:cover;obect-position:center;"
                                 src="{{asset('storage/ProductImage/'.$images[0])}}" class="card-img-top"> </a>
                        
-                        <div class="text-overlay"><i class="fa-regular fa-heart"></i></div>
+                                <div class="text-overlay"> 
+                                  <a onclick="WishlistAdd({{$product->id}})" class="whishlist"  href="javascript:void(0)"> <i class="fa-regular fa-heart"></i></a>
+                                </div>
                       </div>
                       <div class="card-body">
                         <p class="card-text">Brand Name: <span class="brand-name">{{$latestproduct->brand->name}}</span></p>
@@ -426,6 +425,35 @@
     </main>
 
 
+@push('frontendJs')
+  
 
+    <script>
+      function WishlistAdd(productId) {
+          $.ajax({
+              url: "{{route('front.contant.WishlistAdd')}}",
+               type: 'POST',
+                data: {product_id:productId,},
+              dataType:'json',
+              success:function(response){
+              console.log(response.message);
+     
+                 if( response.status == true){
+                  alert(response.message);
+                  
+  
+                 }else{
+                  alert(response.message);
+                 
+                 }
+  
+              } 
+          });
+      }
+
+
+
+      </script>
+@endpush
 
 @endsection

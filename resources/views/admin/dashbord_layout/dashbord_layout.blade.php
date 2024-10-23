@@ -18,7 +18,7 @@
     <link rel="icon" href="./asset/images/brand-logos/favicon.png" type="image/x-icon">
 
 
-
+    <script src="https://kit.fontawesome.com/1159b8e81c.js" crossorigin="anonymous"></script>
 
 
     <!-- Choices JS -->
@@ -770,7 +770,7 @@
                         <!-- End::slide__category -->
 
                         <li class="slide">
-                            <a href="" class="side-menu__item">
+                            <a href="{{route('dashbord.admin')}} " class="side-menu__item">
                                 <i class="bx bx-home side-menu__icon"></i>
                                 <span class="side-menu__label">Dashboard</span>
                             </a>

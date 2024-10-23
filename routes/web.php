@@ -56,7 +56,9 @@ Route::get('/checkout',[CheckOutController::class,'checkout'])->name('front.cont
 Route::post('/processCheckout',[CheckOutController::class,'processCheckout'])->name('front.contant.processCheckout');
 Route::get('/thanks/{orderId}',[CheckOutController::class,'thanks'])->name('front.contant.thanks');
 
- Route::get('/wishlistAdd',[WishlistController::class, 'wishlistAdd'])->name('front.contant.wishlist');
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('front.contant.Wishlist');
+Route::post('/wishlist/add', [WishlistController::class, 'WishlistAdd'])->name('front.contant.WishlistAdd');
+Route::post('/wishlist/remove', [WishlistController::class, 'removeWishlist'])->name('front.contant.removeWishlist');
 
 
 
@@ -263,3 +265,18 @@ Route::prefix('/backend/shipping')->controller(ShippingController::class)->name(
 Route::get('/profile',[ProfileController::class,'showProfile'])->name('profile');
 Route::put('/profile-update',[ProfileController::class,'updateProfile'])->name('profile.update');
 Route::put('/password-update',[ProfileController::class,'updatepassword'])->name('profile.password.update');
+
+
+// ==================   ALL USER REALATED ROUTE HERE=========================================//
+
+Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
+    Route::prefix('/dashboard')->controller(DashbordController::class)->name('dashboard.')->group(
+        function(){
+           
+            Route::get('/all-user','allUser')->name('alluser');
+            
+    
+    
+        }
+    );
+    });

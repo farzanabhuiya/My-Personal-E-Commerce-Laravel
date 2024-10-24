@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DiscountCouponController;
+use App\Http\Controllers\Backend\GoogleController;
 use App\Http\Controllers\Dashbord\DashbordController;
 use App\Http\Controllers\Backend\ProductSizeController;
 use App\Http\Controllers\Backend\SubCategorieController;
@@ -38,38 +39,47 @@ use App\Models\DiscountCoupon;
 Route::get('/',[HomePageController::class,'homePage'])->name('frontend.contant.homepage');
 
               ///productSubcategory route
- Route::get('productSubcategory/{slug}',[ProductSubcategoryController::class,'productSubcategory'])->name('frontend.contant.ProductSubcategory');
+Route::get('productSubcategory/{slug}',[ProductSubcategoryController::class,'productSubcategory'])->name('frontend.contant.ProductSubcategory');
             ////BranddAll route
- Route::get('BranddAll/{slug}',[BrandAllController::class,'Branddall'])->name('frontend.contant.BranddAll');
- Route::get('Item/{slug}',[ItemAllController::class,'Itemall'])->name('frontend.contant.ItemdAll');
+Route::get('BranddAll/{slug}',[BrandAllController::class,'Branddall'])->name('frontend.contant.BranddAll');
+Route::get('Item/{slug}',[ItemAllController::class,'Itemall'])->name('frontend.contant.ItemdAll');
 Route::get('singlePage/{slug}',[SinglePageController::class,'singlePage'])->name('frontend.contant.singlePage');
 Route::post('comment',[CommentController::class,'commentStore'])->name('frontend.contant.commentStore');
 Route::post('/singlePage/{product}/ratting', [RattingController::class, 'store'])->name('frontend.contant.rattingStore');
 
+                      
 Route::get('/cart', [CartController::class, 'cart'])->name('frontend.contant.Cart');
 Route::post('/AddToCart', [CartController::class, 'AddToCart'])->name('frontend.contant.AddToCart');
 Route::post('/UpdateCart', [CartController::class, 'UpdateCart'])->name('frontend.contant.UpdateCart');
 Route::delete('/UpdateCart/{rowId}', [CartController::class, 'delete'])->name('frontend.contant.deleted');
 
 
-Route::get('/checkout',[CheckOutController::class,'checkout'])->name('front.contant.checkout');
-Route::post('/processCheckout',[CheckOutController::class,'processCheckout'])->name('front.contant.processCheckout');
-Route::get('/thanks/{orderId}',[CheckOutController::class,'thanks'])->name('front.contant.thanks');
+//CheckOutController
+Route::prefix('/checkout')->controller(CheckOutController::class)->name('front.contant.')->group(
+    function(){
+        Route::get('/' ,'checkout')->name('checkout');
+        Route::post('/processCheckout','processCheckout')->name('processCheckout');
+        Route::get('/thanks/{orderId}','thanks')->name('thanks');
+       ; 
 
-Route::get('/wishlist', [WishlistController::class, 'index'])->name('front.contant.Wishlist');
-Route::post('/wishlist/add', [WishlistController::class, 'WishlistAdd'])->name('front.contant.WishlistAdd');
-Route::post('/wishlist/remove', [WishlistController::class, 'removeWishlist'])->name('front.contant.removeWishlist');
+    }
+);
+                    //WishlistController
+Route::prefix('/wishlist')->controller(WishlistController::class)->name('front.contant.')->group(
+    function(){
+        Route::get('/' ,'index')->name('Wishlist');
+        Route::post('/add','WishlistAdd')->name('WishlistAdd');
+        Route::post('/remove','removeWishlist')->name('removeWishlist');    
 
-
-
+    }
+);
+                   ///UserProfileController
 Route::prefix('/userProfile')->controller(UserProfileController::class)->name('frontend.')->group(
     function(){
         Route::get('/' ,'index')->name('userProfile');
        // Route::get('/store' ,'store')->name('store');
        Route::get('/editUserProfile','editUserProfile')->name('editUserProfile');
-        Route::get('/PasswordUpdate','PasswordUpdate')->name('PasswordUpdate');
-
-     
+        Route::get('/PasswordUpdate','PasswordUpdate')->name('PasswordUpdate');    
 
     }
 );
@@ -111,7 +121,7 @@ Route::middleware('auth')->prefix('/dashboard')->controller(UserDashboardControl
 
 
 
-
+                        ////CategoryController
 Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
 Route::prefix('/backend/category')->controller(CategoryController::class)->name('category.')->group(
     function(){
@@ -127,9 +137,8 @@ Route::prefix('/backend/category')->controller(CategoryController::class)->name(
 });
 
 
-
+                       ////SubCategorieController
 Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
-
 Route::prefix('/backend/subcategorie')->controller(SubCategorieController::class)->name('Subcategorie.')->group(
     function(){
         Route::get('/' ,'index')->name('index');
@@ -141,26 +150,23 @@ Route::prefix('/backend/subcategorie')->controller(SubCategorieController::class
     }
 );
 });
-
 Route::get('/get-all-subcategories',[SubCategorieController::class,'getSubcategories'])->name('Subcategorie.get');
 
 
+                        ///BrandController
 Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
-
 Route::prefix('/backend/brand')->controller(BrandController::class)->name('Brand.')->group(
     function(){
         Route::get('/' ,'index')->name('index');
         Route::get('/store' ,'store')->name('store');
         Route::get('/edit/{id}','edit')->name('edit');
         Route::delete('/delete/{id}','delete')->name('delete');
-   
-
     }
 );
 });
 
 
-
+                  ///item Route
 Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
 Route::prefix('/backend/item')->controller(ItemController::class)->name('Item.')->group(
     function(){
@@ -175,9 +181,7 @@ Route::prefix('/backend/item')->controller(ItemController::class)->name('Item.')
 
 
 
-
-
- /////////////////////product Route
+                              ///////ProductSizeController Route
  Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
 Route::prefix('/backend/productSize')->controller(ProductSizeController::class)->name('ProductSize.')->group(
     function(){
@@ -190,8 +194,8 @@ Route::prefix('/backend/productSize')->controller(ProductSizeController::class)-
 );
 });
 
+                     ///ProductColourController route
 Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
-
 Route::prefix('/backend/productcolour')->controller(ProductColourController::class)->name('ProductColour.')->group(
     function(){
         Route::get('/' ,'index')->name('index');
@@ -203,13 +207,12 @@ Route::prefix('/backend/productcolour')->controller(ProductColourController::cla
 );
 });
 
+             /////ProductController route
 Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
 Route::prefix('/backend/product')->controller(ProductController::class)->name('Product.')->group(
     function(){
-        Route::get('/' ,'index')->name('index');
-        
-        Route::get('/create/product','Create')->name('create');
-        
+        Route::get('/' ,'index')->name('index');      
+        Route::get('/create/product','Create')->name('create'); 
         Route::post('/store' ,'store')->name('store');
         // Route::get('/edit/{id}','edit')->name('edit');
         // Route::delete('/delete/{id}','delete')->name('delete');
@@ -222,12 +225,11 @@ Route::prefix('/backend/product')->controller(ProductController::class)->name('P
 
 Route::get('/get-products', [ProductController::class, 'getProducts'])->name('relatedProduct');
 
-// relaed product ajax
-
+                // relaed product ajax
 Route::get('/relatedproduct',[ProductController::class,'getRelatedProducts'])->name('get.Product.related');
 
 
-
+                      ////DiscountCouponController
 Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
 Route::prefix('/backend/discount')->controller(DiscountCouponController::class)->name('Discount.')->group(
     function(){
@@ -244,7 +246,7 @@ Route::prefix('/backend/discount')->controller(DiscountCouponController::class)-
 
 
 
-////////////////route shipping
+               //////////route ShippingController
 Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
 Route::prefix('/backend/shipping')->controller(ShippingController::class)->name('Shipping.')->group(
     function(){
@@ -265,3 +267,9 @@ Route::prefix('/backend/shipping')->controller(ShippingController::class)->name(
 Route::get('/profile',[ProfileController::class,'showProfile'])->name('profile');
 Route::put('/profile-update',[ProfileController::class,'updateProfile'])->name('profile.update');
 Route::put('/password-update',[ProfileController::class,'updatepassword'])->name('profile.password.update');
+
+
+                  //google route
+Route::get('/google/redirect',[GoogleController::class,'googleLogin'])->name('Google.Login');
+Route::get('/google/callback',[GoogleController::class,'googleRedirect'])->name('Google.Redirect');
+

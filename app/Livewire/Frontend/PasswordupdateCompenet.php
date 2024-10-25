@@ -4,6 +4,7 @@ namespace App\Livewire\Frontend;
 
 use Livewire\Component;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class PasswordupdateCompenet extends Component
@@ -20,7 +21,7 @@ class PasswordupdateCompenet extends Component
           'password' =>"required|confirmed|different:old",
           'password_confirmation' =>"required",
         ]);
-        $user = User::find(auth()->user()->id);
+        $user = User::find(Auth::id());
         $user->password = Hash::make($this->password);
         $user->save();
         $this->reset();

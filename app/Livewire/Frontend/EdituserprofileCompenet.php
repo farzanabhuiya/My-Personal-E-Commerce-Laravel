@@ -5,6 +5,7 @@ namespace App\Livewire\Frontend;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
 
 class EdituserprofileCompenet extends Component
 {
@@ -16,7 +17,7 @@ class EdituserprofileCompenet extends Component
 
 
     public function mount(){
-        $users = User::find(auth()->user()->id);
+        $users = User::find(Auth::id());
         // $this->id= $users->id;
         $this->name= $users->name;
         $this->email= $users->email;
@@ -40,7 +41,7 @@ class EdituserprofileCompenet extends Component
          $this->profile_img->storeAs('userprofile',$fileName,'public');
 
        
-          $users = User::find(auth()->user()->id);
+          $users = User::find(Auth::id());
           $users->name = $this->name;
           $users->email = $this->email;
           $users->profile_img = $fileName;

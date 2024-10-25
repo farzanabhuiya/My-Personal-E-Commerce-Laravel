@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend;
 
+use id;
 use App\Models\Order;
 use Livewire\Component;
 use App\Mail\OrderEmail;
@@ -10,11 +11,12 @@ use App\Models\Shipping;
 use App\Models\Categorie;
 use App\Models\OrderItem;
 use App\Models\DiscountCoupon;
-use App\Models\Customeraddersse;
 //use Illuminate\Support\Facades\Mail;
-use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Support\Facades\Mail;
+use App\Models\Customeraddersse;
 use App\Mail\UserNotificationMail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutComponent extends Component
 {
@@ -90,7 +92,7 @@ class CheckoutComponent extends Component
             } 
              // Check max uses per user
         }elseif($coupon->max_uses_user > 0) {
-            $couponUsedByUser = Order::where(['coupon_code_id' => $coupon->id, 'user_id' => auth()->user()->id])->count();
+            $couponUsedByUser = Order::where(['coupon_code_id' => $coupon->id, 'user_id' => Auth::id()])->count();
             if ($couponUsedByUser >= $coupon->max_uses_user) {
                 $this->message = 'You already used this coupon code';
                 return;
@@ -109,7 +111,9 @@ class CheckoutComponent extends Component
             $this->coupon_code_id = $coupon->id;
             // Update the total after discount
             //$this->grandTotal =$subTotal - $this->discount + $this->shippingCharge;
+             //checkout Error slove start (A non-numeric value encountered)
             $this->grandTotal = (float) str_replace(',', '', $subTotal) -$this->discount + $this->shippingCharge;
+             //checkout Error slove end
             $this->message = 'Coupon applied successfully!';
             //dd($coupon);
         
@@ -131,7 +135,7 @@ class CheckoutComponent extends Component
 
         // Step 1: Save user address
         $address = new Customeraddersse();
-        $address->user_id = auth()->user()->id;
+        $address->user_id =  Auth::id();
         $address->first_name = $this->first_name;
         $address->last_name = $this->last_name;
         $address->email = $this->email;
@@ -148,10 +152,12 @@ class CheckoutComponent extends Component
         // Step 2: Store data in order table
         if ($this->payment_method === 'cod') {       
             $order = new Order();
-            $order->user_id =auth()->user()->id;
+            $order->user_id = Auth::id();
+             //checkout Error slove start (A non-numeric value encountered)
             $order->subtotal = (float) str_replace(',', '', Cart::subTotal());
             $order->shipping =  $this->shippingCharge ;
             $order->grand_total =(float) str_replace(',', '', Cart::subTotal()) - $this->discount + $this->shippingCharge;
+             //checkout Error slove end
             $order->discount =  $this->discount;
             $order->coupon_code = $this->CouponCode;
             $order->coupon_code_id = $this->coupon_code_id ?? 0;
@@ -202,12 +208,11 @@ class CheckoutComponent extends Component
  
     public function render()
      {
-
+                            //checkout Error slove start (A non-numeric value encountered)
         $this->grandTotal = (float) str_replace(',', '', Cart::subTotal())-$this->discount + $this->shippingCharge;
         // $gran = gettype($this->discount);
         // dd($this->grandTotal, $gran);
-
-
+                     //checkout Error slove send
 
 
         $categories = Categorie::orderBy('name', 'ASC')

@@ -20,7 +20,7 @@ class ProfileController extends Controller
      public function updateProfile(Request $request){
              $request->validate([
             'name' =>'required|max:20',
-            'email' =>'required|email|unique:users,email,'.auth()->user()->id,
+            'email' =>'required|email|unique:users,email,'. Auth::id(),
     
            'profile_img' =>'nullable|mimes:jpg,png'
           ],[
@@ -36,7 +36,7 @@ class ProfileController extends Controller
           }
     
           
-              $user = User::find(auth()->user()->id);
+              $user = User::find(Auth::id());
               $user->name =$request->name;
               $user->email =$request->email;
               $user->profile_img =$image??null;
@@ -53,7 +53,7 @@ class ProfileController extends Controller
           'password_confirmation' =>"required",
         ]);
        
-     $user = User::find(auth()->user()->id);
+     $user = User::find(Auth::id());
     $user->password = Hash::make($request->password);
     $user->save();
     return back();

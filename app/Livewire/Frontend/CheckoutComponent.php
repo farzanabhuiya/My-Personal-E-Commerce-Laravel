@@ -23,7 +23,7 @@ class CheckoutComponent extends Component
     public $subTotal;
     public $shipping;
     public $grandTotal;
-    public $discount;
+    public $discount =0;
     public $coupon_code;
     public $coupon_code_id;
   
@@ -39,6 +39,8 @@ class CheckoutComponent extends Component
      public $state=''; 
      public $zip='';
      public $notes='';
+     public $subtotal="";
+     public $grand_total='';
      public $payment_method='';
      public $shippingCharge;
      public $CouponCode;
@@ -68,7 +70,7 @@ class CheckoutComponent extends Component
     
             if (!$coupon) {
                 $this->message = 'Invalid coupon code';
-                $this->discount = 0;
+                $this->discount =0;
                 return;
          
                 // Check expires_at for the coupon
@@ -106,7 +108,8 @@ class CheckoutComponent extends Component
             }
             $this->coupon_code_id = $coupon->id;
             // Update the total after discount
-            $this->grandTotal =$subTotal - $this->discount + $this->shippingCharge;;
+            //$this->grandTotal =$subTotal - $this->discount + $this->shippingCharge;
+            $this->grandTotal = (float) str_replace(',', '', $subTotal) -$this->discount + $this->shippingCharge;
             $this->message = 'Coupon applied successfully!';
             //dd($coupon);
         
@@ -146,10 +149,10 @@ class CheckoutComponent extends Component
         if ($this->payment_method === 'cod') {       
             $order = new Order();
             $order->user_id =auth()->user()->id;
-            $order->subtotal = Cart::subTotal();
-            $order->shipping = $this->shippingCharge;
-            $order->grand_total =Cart::subTotal() - $this->discount + $this->shippingCharge;
-            $order->discount = $this->discount;
+            $order->subtotal = (float) str_replace(',', '', Cart::subTotal());
+            $order->shipping =  $this->shippingCharge ;
+            $order->grand_total =(float) str_replace(',', '', Cart::subTotal()) - $this->discount + $this->shippingCharge;
+            $order->discount =  $this->discount;
             $order->coupon_code = $this->CouponCode;
             $order->coupon_code_id = $this->coupon_code_id ?? 0;
             $order->payment_status = "not paid";
@@ -191,18 +194,22 @@ class CheckoutComponent extends Component
        
       
       //$this->reset();
-     // return back()->with('success','Your Order Successfull ');
+   
+   
      return redirect()->route('front.contant.thanks',[$orderId]);
     }
 
  
     public function render()
      {
-        
-        
-        $this->grandTotal=Cart::SubTotal()- $this->discount + $this->shippingCharge;
-       // dd($this->grandTotal);
-       // dd($this->districts);
+
+        $this->grandTotal = (float) str_replace(',', '', Cart::subTotal())-$this->discount + $this->shippingCharge;
+        // $gran = gettype($this->discount);
+        // dd($this->grandTotal, $gran);
+
+
+
+
         $categories = Categorie::orderBy('name', 'ASC')
         ->with('Subcategorie')
         ->where('showhome', 'Yes')->get();

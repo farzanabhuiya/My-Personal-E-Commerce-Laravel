@@ -20,6 +20,7 @@ use App\Http\Controllers\Frontend\BrandAllController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckOutController;
 use App\Http\Controllers\Frontend\CommentController;
+use App\Http\Controllers\Frontend\HistoryOrderUserController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\ItemAllController;
 use App\Http\Controllers\Frontend\ProductSubcategoryController;
@@ -268,8 +269,26 @@ Route::get('/profile',[ProfileController::class,'showProfile'])->name('profile')
 Route::put('/profile-update',[ProfileController::class,'updateProfile'])->name('profile.update');
 Route::put('/password-update',[ProfileController::class,'updatepassword'])->name('profile.password.update');
 
+Route::get('/HistoryOrderUser',[HistoryOrderUserController::class,'HistoryOrderUser'])->name('HistoryOrderUser');
+
+
+
+
 
                   //google route
 Route::get('/google/redirect',[GoogleController::class,'googleLogin'])->name('Google.Login');
 Route::get('/google/callback',[GoogleController::class,'googleRedirect'])->name('Google.Redirect');
 
+// ==================   ALL USER REALATED ROUTE HERE=========================================//
+
+Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
+    Route::prefix('/dashboard')->controller(DashbordController::class)->name('dashboard.')->group(
+        function(){
+           
+            Route::get('/all-user','allUser')->name('alluser');
+            
+    
+    
+        }
+    );
+    });

@@ -79,7 +79,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="name">Discount_amount</label>
-                                    <input type="text" wire:model='discount_amount' id="discount_amount" class="form-control" placeholder="discount_amount">
+                                    <input type="number" min="0" wire:model='discount_amount' id="discount_amount" class="form-control" placeholder="discount_amount">
                                     @error('discount_amount')
                                     <span class="text-danger">{{$message }}</span>
                                    @enderror	
@@ -89,7 +89,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="name">Min Amount</label>
-                                    <input type="text" wire:model='min_amount' id="min_amount" class="form-control" placeholder="min_amount">	
+                                    <input type="number" min="0" wire:model='min_amount' id="min_amount" class="form-control" placeholder="min_amount">	
                                 </div>
                             </div>
                             
@@ -108,7 +108,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="name">Starts_at</label>
-                                    <input autocomplete="off" type="text" wire:model='starts_at'  id="starts_at" class="form-control" placeholder="Starts_at">
+                                    <input autocomplete="off" type="date" wire:model='starts_at'  id="starts_at" class="form-control" placeholder="Starts_at">
                                     @error('starts_at')
                                     <span class="text-danger">{{$message }}</span>
                                    @enderror	
@@ -118,7 +118,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="name">Expires_at</label>
-                                    <input autocomplete="off" type="text" wire:model='expires_at' id="expires_at" class="form-control" placeholder="Expires_at">
+                                    <input autocomplete="off" type="date" wire:model='expires_at' id="expires_at" class="form-control" placeholder="Expires_at">
                                     @error('expires_at')
                                     <span class="text-danger">{{$message }}</span>
                                    @enderror	

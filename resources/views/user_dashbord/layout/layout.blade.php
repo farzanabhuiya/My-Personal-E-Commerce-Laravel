@@ -89,7 +89,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Your Card Details</h6>
                         <a class="collapse-item" href="{{route('frontend.contant.Cart')}}">Card</a>
-                        <a class="collapse-item" href="./cardhistory.html">History</a>
+                        <a class="collapse-item" href="{{route('HistoryOrderUser')}}">History</a>
                        
                     </div>
                 </div>

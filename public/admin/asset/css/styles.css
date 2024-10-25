@@ -20597,4 +20597,30 @@ a:hover {
   transform: none !important;
 }
 
+
+
+/* CSS for hover effect */
+.hover-effect {
+    transition: transform 0.2s, background-color 0.2s; /* Smooth transition */
+}
+
+.hover-effect:hover {
+    transform: translateY(-5px); /* Move the row up */
+    background-color: #f8f9fa; /* Change background color on hover */
+}
+
+.hover-effect a {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space out the content */
+    align-items: center; /* Center vertically */
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit text color */
+    padding: 0.5rem; /* Add some padding */
+}
+
+/* Adjusting row height */
+.table tbody tr {
+    height: 50px; /* Set row height */
+}
+
 /* End::Transform */

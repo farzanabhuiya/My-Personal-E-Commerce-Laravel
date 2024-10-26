@@ -24,4 +24,12 @@ class DashbordController extends Controller
     }
 
 
+    // ===================assenRoll=================================//
+
+    function assenRoll($id){
+
+        return view('admin.alluser.assenRoll',compact('id'));
+    }
+
+
 }

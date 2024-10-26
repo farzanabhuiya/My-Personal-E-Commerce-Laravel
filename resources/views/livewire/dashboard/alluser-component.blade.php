@@ -31,10 +31,10 @@
                     <tr class="hover-effect">
                         <td>{{ $users->firstItem() + $key }}</td>
                         <td>
-                            <a href="" class="text-dark">{{ $user->name }}</a>
+                            <a href="{{ route('dashboard.assenroll', $user->id) }}" class="text-dark">{{ $user->name }}</a>
                         </td>
                         <td>
-                            <a href="">
+                            <a href="{{ route('dashboard.assenroll', $user->id) }}">
                                 <img src="{{ $user->profile_photo_url ?? 'https://via.placeholder.com/50' }}"
                                     alt="User Image" class="rounded-circle" width="30px">
                             </a>
@@ -61,4 +61,23 @@
         </table>
         {{ $users->links() }}
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
+
+

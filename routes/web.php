@@ -112,6 +112,9 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
  });
 
 
+
+
+
 //  USER DASHBOAR
 
 Route::middleware('auth')->prefix('/dashboard')->controller(UserDashboardController::class)->name('userdashboard.')->group(function(){
@@ -286,6 +289,7 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
         function(){
            
             Route::get('/all-user','allUser')->name('alluser');
+            Route::get('/assen-roll/{id}','assenRoll')->name('assenroll');
             
     
     

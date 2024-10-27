@@ -971,6 +971,29 @@
                         <!-- End::discount-->
 
 
+                           
+                        
+                        <!-- Start::DiscountCoupon -->
+                        <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <i class="bx bx-heart side-menu__icon"></i>
+                                <span class="side-menu__label">Order</span>
+                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide side-menu__label1">
+                                    <a href="javascript:void(0)">Order</a>
+                                </li>
+                                <li class="slide">
+                                    <a href="{{ route('Order.list') }}" class="side-menu__item">Avilable
+                                        Order List</a>
+                                </li>
+                                {{-- <li class="slide">
+                                    <a href="{{ route('Discount.index') }}" class="side-menu__item">Add New</a>
+                                </li> --}}
+                            </ul>
+                        </li>
+                        <!-- End::discount-->
 
 
 
@@ -997,7 +1020,8 @@
                             </ul>
                         </li>
                         <!-- End::Product-->
-
+                        
+                       
 
 
                         {{-- <!-- Start::User -->

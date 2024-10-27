@@ -31,4 +31,9 @@ class Order extends Model
         return $this->belongsTo(OrderItem::class);
     }
 
+            // order sathe user relation
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

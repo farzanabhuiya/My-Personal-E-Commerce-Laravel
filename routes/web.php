@@ -3,33 +3,34 @@
 use App\Models\Product;
 use App\Models\ProductColour;
 
+use App\Models\DiscountCoupon;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\ItemController;
 use App\Http\Controllers\Backend\BrandController;
-use App\Http\Controllers\Backend\ProductController;
-use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\DiscountCouponController;
-use App\Http\Controllers\Backend\GoogleController;
-use App\Http\Controllers\Dashbord\DashbordController;
-use App\Http\Controllers\Backend\ProductSizeController;
-use App\Http\Controllers\Backend\SubCategorieController;
-use App\Http\Controllers\Backend\ProductcolourController;
-use App\Http\Controllers\Backend\ProfileController;
-use App\Http\Controllers\Backend\ShippingController;
-use App\Http\Controllers\Frontend\BrandAllController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Frontend\CartController;
-use App\Http\Controllers\Frontend\CheckOutController;
+use App\Http\Controllers\Backend\GoogleController;
+use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ShippingController;
 use App\Http\Controllers\Frontend\CommentController;
-use App\Http\Controllers\Frontend\HistoryOrderUserController;
-use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\ItemAllController;
-use App\Http\Controllers\Frontend\ProductSubcategoryController;
 use App\Http\Controllers\Frontend\RattingController;
-use App\Http\Controllers\Frontend\SinglePageController;
-use App\Http\Controllers\Frontend\UserProfileController;
+use App\Http\Controllers\Dashbord\DashbordController;
+use App\Http\Controllers\Frontend\BrandAllController;
+use App\Http\Controllers\Frontend\CheckOutController;
+use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\WishlistController;
+use App\Http\Controllers\Backend\ProductSizeController;
+use App\Http\Controllers\Frontend\SinglePageController;
+use App\Http\Controllers\Backend\SubCategorieController;
+use App\Http\Controllers\Frontend\UserProfileController;
+use App\Http\Controllers\Backend\ProductcolourController;
+use App\Http\Controllers\Backend\DiscountCouponController;
+use App\Http\Controllers\Frontend\HistoryOrderUserController;
+use App\Http\Controllers\Frontend\ProductSubcategoryController;
 use App\Http\Controllers\userDashboard\UserDashboardController;
-use App\Models\DiscountCoupon;
 
 // Route::get('/', function () {
 //     return view('frontend.contant.homepage');
@@ -263,6 +264,20 @@ Route::prefix('/backend/shipping')->controller(ShippingController::class)->name(
 });
 
 
+
+/////////// Order route
+
+Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
+    Route::prefix('/backend/order')->controller(OrderController::class)->name('Order.')->group(
+        function(){
+            Route::get('/list' ,'orderList')->name('list');
+           // Route::get('/store' ,'store')->name('store');
+       
+       
+    
+        }
+    );
+    });
 
 
 Route::get('/profile',[ProfileController::class,'showProfile'])->name('profile');

@@ -153,6 +153,8 @@ class CheckoutComponent extends Component
         if ($this->payment_method === 'cod') {       
             $order = new Order();
             $order->user_id = Auth::id();
+             // Assign the ID of the saved address directly
+             $order->customeraddersse_id = $address->id;
              //checkout Error slove start (A non-numeric value encountered)
             $order->subtotal = (float) str_replace(',', '', Cart::subTotal());
             $order->shipping =  $this->shippingCharge ;

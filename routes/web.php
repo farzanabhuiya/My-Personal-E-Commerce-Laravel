@@ -113,6 +113,9 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
  });
 
 
+
+
+
 //  USER DASHBOAR
 
 Route::middleware('auth')->prefix('/dashboard')->controller(UserDashboardController::class)->name('userdashboard.')->group(function(){
@@ -271,7 +274,7 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
     Route::prefix('/backend/order')->controller(OrderController::class)->name('Order.')->group(
         function(){
             Route::get('/list' ,'orderList')->name('list');
-           // Route::get('/store' ,'store')->name('store');
+            Route::get('/detail/{id}' ,'orderDetail')->name('detail');
        
        
     
@@ -301,6 +304,7 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
         function(){
            
             Route::get('/all-user','allUser')->name('alluser');
+            Route::get('/assen-roll/{id}','assenRoll')->name('assenroll');
             
     
     

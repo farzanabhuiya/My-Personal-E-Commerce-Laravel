@@ -49,7 +49,7 @@
 
                                 @foreach ( $orders as $order)
                                 <tr>
-                                    <td><a href="order-detail.html">{{$order->id}}</a></td>
+                                    <td><a href="{{route('Order.detail',[$order->id])}}">{{$order->id}}</a></td>
                                     <td>{{$order->user->name}}</td>
                                     <td>{{$order->user->email}}</td>
                                     <td>

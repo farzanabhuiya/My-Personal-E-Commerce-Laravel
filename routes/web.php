@@ -206,6 +206,8 @@ Route::prefix('/backend/productcolour')->controller(ProductColourController::cla
 );
 });
 
+
+
 Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
 Route::prefix('/backend/product')->controller(ProductController::class)->name('Product.')->group(
     function(){

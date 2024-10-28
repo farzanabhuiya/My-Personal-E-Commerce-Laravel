@@ -1,5 +1,4 @@
 <div>
-  
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -18,6 +17,9 @@
         </section>
         <!-- Main content -->
         <section class="content">
+            @if (session()->has('message'))
+            <div class="alert alert-success"><h4>{{ session('message') }}</h4></div>
+        @endif
             <!-- Default box -->
             <div class="container-fluid">
                 <div class="row">
@@ -26,7 +28,7 @@
                             <div class="card-header pt-3">
                                 <div class="row invoice-info">
                                     <div class="col-sm-4 invoice-col">
-                                    <h1 class="h5 mb-3">Shipping Address</h1>
+                                    <h1 class="h4 mb-3">Shipping Address</h1>
                                     <address>
                                         <strong>{{$order->customerAddress->first_name.' '.$order->customerAddress->last_name}}</strong><br>
                                         {{$order->customerAddress->address}}, {{ $order->customerAddress->district->district_name }}<br>
@@ -43,7 +45,20 @@
                                         <br>
                                         <b>Order ID:</b> {{$order->id}}<br>
                                         <b>Total:</b> ${{number_format($order->grand_total,2)}}<br>
-                                        <b>Status:</b> <span class="text-success">Delivered</span>
+                                        <b>Status:</b>
+                                        <span class="badge 
+                                        {{ $order->status == 'pending' ? 'bg-danger' : '' }}
+                                        {{ $order->status == 'shipped' ? 'bg-info' : '' }}
+                                        {{ $order->status == 'delivered' ? 'bg-success' : '' }}
+                                        {{ $order->status == 'cancelled' ? 'bg-danger' : '' }}">
+                                    {{-- {{ ucfirst($status) }} লাইনটি status মানটিকে একটি বাক্যের মতো করে প্রদর্শন করে।
+                                     ucfirst ফাংশনটি এখানে ব্যবহার করা হচ্ছে,
+                                      যা যেকোনো স্ট্রিংয়ের প্রথম অক্ষরটিকে বড় হাতের অক্ষরে রূপান্তর করে।
+                                   উদাহরণস্বরূপ, যদি status মান pending হয়, তবে ucfirst একে Pending রূপে দেখাবে। --}}
+                                        {{ ucfirst($status) }}
+                                    </span>
+
+                                       
                                         <br>
                                     </div>
                                 </div>
@@ -89,24 +104,32 @@
                     </div>
                     <div class="col-md-3">
                         <div class="card">
+                            <form wire:submit.prevent="updateOrder">
+                                @csrf
                             <div class="card-body">
                                 <h2 class="h4 mb-3">Order Status</h2>
                                 <div class="mb-3">
-                                    <select name="status" id="status" class="form-control">
-                                        <option value="">Pending</option>
-                                        <option value="">Shipped</option>
-                                        <option value="">Delivered</option>
-                                        <option value="">Cancelled</option>
+                                    <select  wire:model="status" id="status" class="form-control">
+                                        <option value="pending">Pending</option>
+                                        <option value="shipped">Shipped</option>
+                                        <option value="delivered">Delivered</option>
+                                        <option value="cancelled">Cancelled</option>
                                     </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="">Shipped_Date</label>
+                                    <input type="text" wire:model="shipped_date" id="shipped_date" class="form-control" placeholder="Shipped_Date">
                                 </div>
                                 <div class="mb-3">
                                     <button class="btn btn-primary">Update</button>
                                 </div>
                             </div>
+                        </form>
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                <h2 class="h4 mb-3">Send Inovice Email</h2>
+                                <h2 class="h5 mb-3">Send Inovice Email</h2>
                                 <div class="mb-3">
                                     <select name="status" id="status" class="form-control">
                                         <option value="">Customer</option>                                                
@@ -126,3 +149,17 @@
         <!-- /.content -->
     </div>
 </div>
+@push('customJs')
+
+
+<script>
+    $(document).ready(function(){
+        $('#shipped_date').datetimepicker({
+            // options here
+            format:'Y-m-d H.s',
+        });
+    });
+
+</script>
+
+@endpush

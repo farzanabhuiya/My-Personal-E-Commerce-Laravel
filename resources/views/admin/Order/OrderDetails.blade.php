@@ -3,4 +3,6 @@
 
 @livewire('order.orderdetails-component',['id'=>$id])
 
+
+
    @endsection

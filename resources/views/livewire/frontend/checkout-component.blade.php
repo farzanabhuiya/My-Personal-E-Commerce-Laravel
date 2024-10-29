@@ -164,7 +164,7 @@
 
                         {{-- Discount Coupone Apply --}}
                         <div class="input-group apply-coupan mt-4">
-                            <input type="text" name="code" placeholder="Coupon Code" wire:model='CouponCode' class="form-control" name="discount_code" id="discount_code">
+                            <input type="text" placeholder="Coupon Code" wire:model='CouponCode' class="form-control" name="discount_code" id="discount_code">
                             <button wire:click="applyCoupon('{{ $CouponCode }}')" class="btn btn-dark" type="button">Apply Coupon</button>
                         </div>
                       {{-- {{print_r($applyCoupon)}} --}}

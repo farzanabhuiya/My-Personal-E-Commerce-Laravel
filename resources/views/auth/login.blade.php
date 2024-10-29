@@ -38,6 +38,14 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
+              
+                    <a href="{{route('Google.Login')}}"
+                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" >
+                        <img src="https://banner2.cleanpng.com/20240111/qtv/transparent-google-logo-colorful-google-logo-with-bold-green-1710929465092.webp" width="30px">
+                    {{ __('Google with login') }}
+                    </a>
+                    
+                
 
                 <x-button class="ms-4">
                     {{ __('Log in') }}

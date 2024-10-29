@@ -206,7 +206,7 @@
                     
                   </div>
                   @endforeach
-              <h1>hello world</h1>
+       
                  
                
                  
@@ -387,8 +387,8 @@
   
                          {{-- @foreach($images as $image) --}}
                                 
-                                 {{-- <a href="{{route('frontend.contant.ItemdAll', [$item->slug])}}"> <img  style="width: 300px;height:300px object-fit:cover;obect-position:center;"
-                                  src="{{asset('storage/ItemImage/'.$images[0])}}" class="card-img-top"></a> --}}
+                                 <a href="{{route('frontend.contant.ItemdAll', [$item->slug])}}"> <img  style="width: 250px;height:300px object-fit:cover;obect-position:center;"
+                                  src="{{asset('storage/ItemImage/'.$images[0])}}" class="card-img-top"></a>
                             {{-- @endforeach --}}
                             
   

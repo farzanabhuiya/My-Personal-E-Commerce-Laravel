@@ -402,7 +402,7 @@
 
 @push('customJs')
 
-<script>
+{{-- <script>
     $('.categorySelect').change(getSubcategories)
 
     function getSubcategories() {
@@ -434,7 +434,7 @@
         });
     };
 
-</script>
+</script> --}}
 
 
 

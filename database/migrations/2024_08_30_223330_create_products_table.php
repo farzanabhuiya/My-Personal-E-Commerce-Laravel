@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->longText('description')->nullable();
-            $table->text('short_description')->nullable();
-            $table->text('shipping_returns')->nullable();
+            $table->longText('description');
+            $table->text('short_description');
+            $table->text('shipping_returns');
             $table->text('related_products')->nullable();
             $table->string('image');
             $table->double('price',10,2);

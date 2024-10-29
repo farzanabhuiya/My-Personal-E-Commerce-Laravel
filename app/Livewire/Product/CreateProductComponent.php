@@ -20,29 +20,171 @@ class CreateProductComponent extends Component
     use SlugGenerator;
     
       public $title="";
-      public $description;
+      public $description="";
       public $short_description="";
       public $shipping_returns="";
       public $related_products="";
       public $images=[];
       public $price="";
       public $compare_price="";
-      public $categorie_id="";
+      public $categorie_id;
       public $subcategorie_id="";
-      public $brand_id="";
+      public $brand_id;
       public $item_id="";
-      public $is_featured="";
+      public $is_featured=0;
       public $sku="";
       public $barcode="";
       public $track_qty="";
       public $qty="";
-      public $status="";
+      public $status=1;
       public $discount_amount="";
-      public $discount_type="";
+      public $discount_type="percent";
       public $offer_amount="";
       public $offer_type="";
       public $productsize_id="";
       public $productcolour_id="";
+
+      public $productPhotos=[];
+      public $category;
+
+      public $subcategorie;
+      public $brand;
+
+      public $Item;
+
+      public $productSize;
+      public $productColor;
+
+
+
+
+      public function mount (){
+
+        // ============== FOR CATEGORIE SELECT==============//
+
+        $this->category = Categorie::select('id')->orderBy('id', 'asc')-> first();
+        if ($this->category) {
+            $this->categorie_id = $this->category->id;
+        }
+         // ============== FOR CATEGORIE SELECT END==============//
+
+          // ============== FOR SUBCATEGORIE SELECT==============//
+       
+        $this->subcategorie = Subcategorie::where('categorie_id',$this->categorie_id)->select("id")->orderBy('id', 'asc')->first();
+
+       
+
+        if ($this->subcategorie) {
+            $this->subcategorie_id= $this->subcategorie ->id;
+    
+        }else{
+            $this->subcategorie_id;
+
+        }
+
+        // ============== FOR SUBCATEGORIE SELECT END==============//
+
+
+
+
+        // ============== FOR BRAND SELECT ==============//
+
+        $this->brand = Brand::select('id')->orderBy('id', 'asc')->first();
+
+        // dd( $this->brand );
+        if (  $this->brand ) {
+            $this->brand_id= $this->brand ->id;
+    
+        }
+
+
+
+
+        // ============== FOR BRAND SELECT END==============//
+
+
+
+        // ============== FOR PRODUCT ITEM SELECT START==============//
+
+
+        $this->Item = Item::select('id')->orderBy('id', 'asc')->first();
+
+        // dd( $this->brand );
+        if (  $this->Item ) {
+            $this->item_id= $this->Item ->id;
+    
+        }
+
+        // ============== FOR PRODUCT ITEM SELECT END==============//
+
+
+
+
+        // ============== FOR PRODUCT PRODUCTSIZE SELECT START==============//
+
+        $this->productSize =Productsize::select('id')->orderBy('id', 'asc')->first();
+
+        // dd( $this->brand );
+        if (  $this->productSize ) {
+            $this->productsize_id= $this->productSize ->id;
+    
+        }
+        // ============== FOR PRODUCT PRODUCTSIZE SELECT END==============//
+
+
+
+        // ============== FOR PRODUCT PRODUCCOLOR SELECT START==============//
+
+        $this->productColor =Productcolour::select('id')->orderBy('id', 'asc')->first();
+
+        // dd( $this->brand );
+        if (  $this->productColor ) {
+            $this->productcolour_id= $this->productColor ->id;
+    
+        }
+        // ============== FOR PRODUCT PRODUCOLOR SELECT END==============//
+
+       
+
+
+
+
+
+
+
+
+
+
+
+      }
+
+
+
+
+
+      protected $rules = [
+        'title' => 'required|string|max:255',
+       
+        'description' => 'required|string',
+        'subcategorie_id' => 'required',
+        'short_description' => 'required|string|max:65535', // text field max length
+        'shipping_returns' => 'required|string|max:65535',  // text field max length
+        'related_products' => 'nullable|string|max:65535',  // text field max length
+        'images' => 'required|max:255',               // or use 'image' if storing an image file
+        'price' => 'required|numeric|min:0|max:99999999.99',
+        
+        
+       
+        'sku' => 'required|string|max:100|unique:products,sku',
+        
+        
+       
+        'status' => 'required',
+        
+        
+        
+    ];
+      
       
 
       public function updatedImages()
@@ -59,18 +201,13 @@ class CreateProductComponent extends Component
     
 
 
-        $this->validate([
+        $this->validate(
  
-            'title'=> 'required|max:25',
-            'categorie_id' =>'required',
-            'subcategorie_id' =>'required',
-            'brand_id' =>'required',
-            'price' =>'required',
+           $this->rules,
             
             
             
-            
-          ]);
+          );
           
 
 
@@ -82,7 +219,7 @@ class CreateProductComponent extends Component
            foreach ($this->images as $image) {
             $fileName = Str::random(10).'.'.$image->extension();  
             $image->storeAs('ProductImage',$fileName,'public');
-            $productPhotos[]=$fileName;  
+            $this->productPhotos[]=$fileName;  
         }   
           
            $products = new Product();
@@ -93,7 +230,7 @@ class CreateProductComponent extends Component
            $products-> shipping_returns= $this->shipping_returns;
            $products->related_products = $this->related_products;
 
-           $products->image = json_encode($productPhotos);
+           $products->image = json_encode($this->productPhotos);
 
            $products-> price= $this->price;
            $products->compare_price = $this->compare_price;

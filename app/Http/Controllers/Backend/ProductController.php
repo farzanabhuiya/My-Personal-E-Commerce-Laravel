@@ -222,7 +222,13 @@ public function getRelatedProducts(Request $request)
  
   }
 
+// ==================PRODUCT EDITE===================//
 
+function productEdit( $productId){
+
+  return view('admin.product.edit-product',compact('productId'));
+
+}
 
 
 

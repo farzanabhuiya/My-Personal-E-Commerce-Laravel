@@ -1,14 +1,5 @@
 
 
-
-
-
-
-
-
-
-
-
 // sweet alert
 
 function showToast(message, icon = 'success') {

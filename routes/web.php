@@ -212,14 +212,16 @@ Route::prefix('/backend/productcolour')->controller(ProductColourController::cla
 );
 });
 
+
+// ==================PRODUCT CONTROLLER==================//
 Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
 Route::prefix('/backend/product')->controller(ProductController::class)->name('Product.')->group(
     function(){
         Route::get('/' ,'index')->name('index');      
         Route::get('/create/product','Create')->name('create'); 
         Route::post('/store' ,'store')->name('store');
-        // Route::get('/edit/{id}','edit')->name('edit');
-        // Route::delete('/delete/{id}','delete')->name('delete');
+        Route::get('/edit/{productId}','productEdit')->name('edit');
+        Route::delete('/delete/{deleteId}','delete')->name('delete');
         // Route::get('/relatedproduct' ,'relatedproduct')->name('relatedproduct');
 
 
@@ -233,7 +235,7 @@ Route::get('/get-products', [ProductController::class, 'getProducts'])->name('re
 Route::get('/relatedproduct',[ProductController::class,'getRelatedProducts'])->name('get.Product.related');
 
 
-                      ////DiscountCouponController
+                      ////DiscountCoupon  Controller
 Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
 Route::prefix('/backend/discount')->controller(DiscountCouponController::class)->name('Discount.')->group(
     function(){

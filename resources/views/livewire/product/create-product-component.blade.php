@@ -21,9 +21,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
+
         <!-- Default box -->
         <div class="container-fluid">
             <form wire:submit.prevent="addProduct" method="post" enctype="multipart/form-data">
@@ -58,7 +56,6 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
 
-                                        <h1>{{ $description }}</h1>
 
 
                                     </div>
@@ -102,14 +99,26 @@
 
                             <input type="file" wire:model='images' id="images" class="form-control" multiple
                                 placeholder="Price">
+                            <div wire:loading wire:target="images">Uploading...</div>
+
 
                             @if ($images)
 
 
 
-                                @foreach ($images as $image)
-                                    <img src="{{ $image->temporaryUrl() }}" width="300px" class="mt-2">
+                                @foreach ($images as $index => $image)
+                                    <div class="position-relative m-2" style="display: inline-block;">
+
+                                        <img src="{{ $image->temporaryUrl() }}" width="150px" class="mt-2 rounded">
+
+
+                                        <button class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2"
+                                            type="button" wire:click="removeImage({{ $index }})">
+                                            <i class="bi bi-backspace-fill"></i>
+                                        </button>
+                                    </div>
                                 @endforeach
+
 
                             @endif
 
@@ -232,7 +241,7 @@
                                 <div class="mb-3">
                                     <select wire:model.live='status' id="status" class="form-control">
 
-                                     
+
                                         <option value="1">Active</option>
                                         <option value="0">Block</option>
                                     </select>
@@ -255,7 +264,8 @@
                                     <select wire:model.live="categorie_id" class="form-control categorySelect">
                                         <option disabled selected>Select the Product category</option>
                                         @forelse (\App\Models\Categorie::all() as $category)
-                                            <option {{$category->id==$categorie_id ? "selected":""}} value="{{ $category->id }}">{{ $category->name }}</option>
+                                            <option {{ $category->id == $categorie_id ? 'selected' : '' }}
+                                                value="{{ $category->id }}">{{ $category->name }}</option>
                                         @empty
                                             <option disabled>No category found</option>
                                         @endforelse
@@ -266,11 +276,12 @@
 
                                     <div class="mb-3">
                                         <label for="subcategory">Subcategory</label>
-                                        <select wire:model="subcategorie_id" wire:key="{{ $categorie_id }}"class="form-control subcategorieSelect">
-                                          
+                                        <select wire:model="subcategorie_id"
+                                            wire:key="{{ $categorie_id }}"class="form-control subcategorieSelect">
+
                                             @foreach (\App\Models\Subcategorie::where('categorie_id', $categorie_id)->get() as $subcategorie)
-                                  
-                                                <option {{$subcategorie->id==$subcategorie_id ? "selected":''}} value="{{ $subcategorie->id }}">{{ $subcategorie->name  }}
+                                                <option {{ $subcategorie->id == $subcategorie_id ? 'selected' : '' }}
+                                                    value="{{ $subcategorie->id }}">{{ $subcategorie->name }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -293,7 +304,8 @@
 
                                     <select wire:model='brand_id' id="brand_id" class="form-control">
                                         @forelse ($brands as $brand)
-                                            <option  {{$brand->id==$subcategorie_id ? "selected":''}}   value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                            <option {{ $brand->id == $subcategorie_id ? 'selected' : '' }}
+                                                value="{{ $brand->id }}">{{ $brand->name }}</option>
 
                                         @empty
                                             <option disabled selected>No brand found</option>
@@ -311,7 +323,8 @@
 
                                     <select wire:model='item_id' id="item_id" class="form-control">
                                         @forelse ($items as $item)
-                                            <option  {{$item->id==$item_id ? "selected":''}}  value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option {{ $item->id == $item_id ? 'selected' : '' }}
+                                                value="{{ $item->id }}">{{ $item->name }}</option>
 
                                         @empty
                                             <option disabled selected>No brand found</option>
@@ -327,7 +340,8 @@
                                 <div class="mb-3">
                                     <select wire:model='productsize_id' id="productsize_id" class="form-control">
                                         @forelse ($sizes as $size)
-                                            <option  {{$size->id==$productsize_id ? "selected":''}}  value="{{ $size->id }}">{{ $size->size }}</option>
+                                            <option {{ $size->id == $productsize_id ? 'selected' : '' }}
+                                                value="{{ $size->id }}">{{ $size->size }}</option>
 
                                         @empty
                                             <option disabled selected>No brand found</option>
@@ -346,7 +360,8 @@
                                 <div class="mb-3">
                                     <select wire:model='productcolour_id' id="productcolour_id" class="form-control">
                                         @forelse ($colours as $colour)
-                                            <option  {{$colour->id==$productcolour_id ? "selected":''}}  value="{{ $colour->id }}">{{ $colour->colour }}</option>
+                                            <option {{ $colour->id == $productcolour_id ? 'selected' : '' }}
+                                                value="{{ $colour->id }}">{{ $colour->colour }}</option>
 
                                         @empty
                                             <option disabled selected>No brand found</option>
@@ -375,8 +390,8 @@
                             <div class="card-body">
                                 <h2 class="h4 mb-3">Discount_Amount</h2>
                                 <div class="mb-3">
-                                    <input type="number" min="0" wire:model='discount_amount' id="discount_amount"
-                                        class="form-control" placeholder="discount_amount">
+                                    <input type="number" min="0" wire:model='discount_amount'
+                                        id="discount_amount" class="form-control" placeholder="discount_amount">
                                 </div>
                             </div>
                         </div>
@@ -424,10 +439,15 @@
                     </div>
                 </div>
 
+                <div wire:loading>
+                    Saving Product...
+                </div>
+
                 <div class="pb-5 pt-3">
                     <button class="btn btn-primary">Create</button>
                     <a href="products.html" class="btn btn-outline-dark ml-3">Cancel</a>
                 </div>
+
             </form>
         </div>
         <!-- /.card -->
@@ -515,5 +535,10 @@
                     console.error(error);
                 });
         });
+
+
+
+
+        showToast('Data stored successfully!')
     </script>
 @endpush

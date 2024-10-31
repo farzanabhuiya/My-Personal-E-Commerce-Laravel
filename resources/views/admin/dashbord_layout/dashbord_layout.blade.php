@@ -1256,10 +1256,11 @@
     <script src="{{ asset('admin/asset/js/defaultmenu.min.js') }}"></script>
 
     <script src="{{ asset('Js/sweetalert.js') }}"></script>
+  
 
     <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
 
-
+ 
 
 
 

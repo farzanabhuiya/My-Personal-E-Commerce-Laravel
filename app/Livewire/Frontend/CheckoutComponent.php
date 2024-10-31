@@ -10,8 +10,9 @@ use App\Models\District;
 use App\Models\Shipping;
 use App\Models\Categorie;
 use App\Models\OrderItem;
-use App\Models\DiscountCoupon;
+use App\Mail\OrderShipped;
 //use Illuminate\Support\Facades\Mail;
+use App\Models\DiscountCoupon;
 use App\Models\Customeraddersse;
 use App\Mail\UserNotificationMail;
 use Illuminate\Support\Facades\Auth;
@@ -185,25 +186,28 @@ class CheckoutComponent extends Component
             // Cart::destroy();
         }
 
-        // function orderEmail($orderId){
+         function orderEmail($orderId){
 
-        //     $order = Order::where('id',$orderId)->with('OrderItem')->first();
+            $order = Order::where('id',$orderId)->with('OrderItem')->first();
         
-        //    $data =[
-        //     'subject' =>'thanks you order',
-        //     'order'  =>$order
-        //    ];
+           $data =[
+            'subject' =>'thanks you order',
+            'order'  =>$order
+           ];
         
-        //  // dd($order);
-        //     // Mail::to($order->emails)->send(new OrderEmail($mailData));
-        //     Mail::to($order->email)->send(new OrderEmail($data));
+           dd($order->email);
+            Mail::to($order->email)->send(new OrderEmail($data));
         
-        //  }
-       
-      
+         }
+
+
+
+   
+ 
       //$this->reset();
-   
-   
+
+//       $order = Order::find(1); 
+//    Mail::to('farzanabhuiyan64@gmail.com')->send(new OrderShipped($order));
      return redirect()->route('front.contant.thanks',[$orderId]);
     }
 

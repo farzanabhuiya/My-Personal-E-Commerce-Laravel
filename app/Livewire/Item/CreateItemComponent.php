@@ -68,12 +68,10 @@ class CreateItemComponent extends Component
     $items->save();
     $this->reset();
     $this->dispatch('toast',message:'Data stored successfully!');
-    return back()->with('success','Item Successfull Create');
+    return back();
     
 
     }
-
-
 
 
     public function render()

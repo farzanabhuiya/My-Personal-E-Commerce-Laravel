@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Helpers;
 //use Illuminate\Support\Facades\Mail;
 
 use App\Models\Order;
+use App\Mail\OrderEmail;
+use Illuminate\Support\Facades\Mail;
 //use Illuminate\Support\Facades\Mail;
 
 trait helper {

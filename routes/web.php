@@ -221,7 +221,7 @@ Route::prefix('/backend/product')->controller(ProductController::class)->name('P
         Route::get('/create/product','Create')->name('create'); 
         Route::post('/store' ,'store')->name('store');
         Route::get('/edit/{productId}','productEdit')->name('edit');
-        Route::delete('/delete/{deleteId}','delete')->name('delete');
+        Route::delete('/delete/{productId}','deleteProduct')->name('delete');
         // Route::get('/relatedproduct' ,'relatedproduct')->name('relatedproduct');
 
 

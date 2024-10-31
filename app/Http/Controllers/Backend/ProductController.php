@@ -237,7 +237,15 @@ function productEdit( $productId){
 
 
 
+//================== PRODUCT DELETE============//
+function deleteProduct($productId){
 
+  $product=Product::find($productId);
+
+  $product->delete();
+  return back();
+
+}
 
 
 

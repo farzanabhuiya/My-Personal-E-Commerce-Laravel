@@ -17,9 +17,9 @@ class OrderShipped extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct($name)
+    public function __construct($data)
     {
-        $this->data=$name;
+        $this->data=$data;
         //
     }
 
@@ -29,7 +29,7 @@ class OrderShipped extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Order Shipped',
+            subject: $this->data['subject'],
         );
     }
 
@@ -40,6 +40,15 @@ class OrderShipped extends Mailable
     {
         return new Content(
             view: 'emails.Order',
+
+            with: [
+                'data' => $this->data,
+            ],
+
+
+
+
+
         );
     }
 

@@ -53,7 +53,7 @@ class CartController extends Controller
                 if($productAlreadyExist ==false){
                     Cart::add(['id'=>$product->id, 'name' => $product->title, 'qty' =>1, 'price' =>$product->price,'options' =>[$product->image]]);
                 
-                     $cartCount=Cart::count();
+                    //  $cartCount=Cart::c?mnnbm---444ount();
                     $status=true;
                     $message = 'Product add in Card';
                 }else{
@@ -66,7 +66,7 @@ class CartController extends Controller
 
         }else{
             Cart::add(['id'=>$product->id, 'name' => $product->title, 'qty' =>1, 'price' =>$product->price,'options' =>[$product->image]]);
-            $cartCount=Cart::count();
+            // $cartCount=Cart::count();
            $status=true;
            $message = 'Product add in Card';
         }
@@ -74,7 +74,7 @@ class CartController extends Controller
         return response()->json([
             'status' =>$status,
             'message' => $message ,
-            'cartCount' =>$cartCount,
+            // 'cartCount' =>$cartCount,
         ]);
 
     }

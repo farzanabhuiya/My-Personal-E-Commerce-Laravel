@@ -253,11 +253,11 @@
 
                  
                               
-                              <a href ="{{route('frontend.contant.singlePage',$product->slug)}}">  <img style="width: 260px;height:300px object-fit:cover;obect-position:center;"
+                              <a href ="{{route('frontend.contant.singlePage',$latestproduct->slug)}}">  <img style="width: 260px;height:300px object-fit:cover;obect-position:center;"
                                 src="{{asset('storage/ProductImage/'.$images[0])}}" class="card-img-top"> </a>
                        
                                 <div class="text-overlay"> 
-                                  <a onclick="WishlistAdd({{$product->id}})" class="whishlist"  href="javascript:void(0)"> <i class="fa-regular fa-heart"></i></a>
+                                  <a onclick="WishlistAdd({{$latestproduct->id}})" class="whishlist"  href="javascript:void(0)"> <i class="fa-regular fa-heart"></i></a>
                                 </div>
                       </div>
                       <div class="card-body">

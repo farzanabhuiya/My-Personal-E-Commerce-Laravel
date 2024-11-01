@@ -30,16 +30,21 @@
                                    @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                           <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="email">Slug</label>
-                                    <input type="text"  wire:model='slug' id="slug" class="form-control" placeholder="Slug">	
+                                    <label for="status">Status</label>
+                                    <select wire:model='status' id='status' class="form-control">
+                                        <option  value="1">Active</option>
+                                        <option value="0">Block</option>
+                                    </select>
+                                   
                                 </div>
+                                
                             </div>	
                             <div class="col-md-12">
-                                <div class="mb-3">
-                                    <label for="content">Content</label>
-                                    <textarea  wire:model='content' id="editor"  placeholder="Content Goes Here...."></textarea>
+                                <div class="mb-3" wire:ignore>
+                                    <labe  for="content">Content</labe>
+                                    <textarea  wire:model='content'  id="content" placeholder="Content Goes Here...."></textarea>
                                 </div>								
                             </div>                                    
                         </div>
@@ -62,12 +67,28 @@
 @push('customJs')
 
 <script>
-    ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+    document.addEventListener('DOMContentLoaded', function() {
+        ClassicEditor
+            .create(document.querySelector('#content'))
+
+
+            .then(function(leditor) {
+
+                editor = leditor;
+
+                leditor.model.document.on('change:data', () => { 
+                    @this.set('content', leditor.getData())
+                });
+
+            })
+
+            .catch(error => {
+                console.error(error);
+            });
+    });
 </script>
+
+
 
 <script>
     $(document).ready(function(){  

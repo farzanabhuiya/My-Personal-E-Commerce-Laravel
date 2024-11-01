@@ -1032,11 +1032,12 @@
                                     <a href="javascript:void(0)">Shipping</a>
                                 </li>
                                 <li class="slide">
-                                    <a href="" class="side-menu__item">Avilable
+                                    <a href="{{route('Page.index')}}" class="side-menu__item">Avilable
                                         Page</a>
                                 </li>
+            
                                 <li class="slide">
-                                    <a href="{{route('Page.index')}}" class="side-menu__item">Add New</a>
+                                    <a href="{{route('Page.story')}}" class="side-menu__item">Add New</a>
                                 </li>
                                 
                             </ul>
@@ -1278,10 +1279,11 @@
     <script src="{{ asset('admin/asset/js/defaultmenu.min.js') }}"></script>
 
     <script src="{{ asset('Js/sweetalert.js') }}"></script>
+  
 
     <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
 
-
+ 
 
 
 

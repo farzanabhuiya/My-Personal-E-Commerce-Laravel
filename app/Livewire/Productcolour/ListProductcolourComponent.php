@@ -18,8 +18,6 @@ class ListProductcolourComponent extends Component
 
     public function render()
     {
-
-
         $productcolours = Productcolour::query()
         ->where('colour', 'like', '%' . $this->search . '%')
         ->paginate(6);

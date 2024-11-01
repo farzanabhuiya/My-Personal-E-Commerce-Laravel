@@ -222,6 +222,13 @@ public function getRelatedProducts(Request $request)
  
   }
 
+// ==================PRODUCT EDITE===================//
+
+function productEdit( $productId){
+
+  return view('admin.product.edit-product',compact('productId'));
+
+}
 
 
 
@@ -230,8 +237,15 @@ public function getRelatedProducts(Request $request)
 
 
 
+//================== PRODUCT DELETE============//
+function deleteProduct($productId){
 
+  $product=Product::find($productId);
 
+  $product->delete();
+  return back();
+
+}
 
 
 

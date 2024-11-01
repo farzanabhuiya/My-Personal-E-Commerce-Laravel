@@ -1,6 +1,6 @@
 <div>
 
-
+<a href="" class="btn btn-primary">Back</a>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -8,12 +8,6 @@
                     <div class="card-header bg-success text-black text-center">
                         <h3>Assign Roles to: {{ $user->name }}</h3>
                     </div>
-
-
-
-
-
-
 
 
 

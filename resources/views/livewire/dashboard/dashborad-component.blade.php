@@ -20,7 +20,7 @@
                                 <i class="fas fa-users fa-2x"></i> 
                             </div>
                             <h6 class="card-title mb-1">Total Users</h6> 
-                            <p class="card-text h4 mb-1">20</p> 
+                            <p class="card-text h4 mb-1">{{$userCount}}</p> 
                         </div>
                     </div>
                 </a>

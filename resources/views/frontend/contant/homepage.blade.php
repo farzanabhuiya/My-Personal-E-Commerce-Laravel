@@ -126,12 +126,19 @@
                      
                            @endphp
 
-                       {{-- @foreach($images as $image) --}}
-                              
-                             <a href="{{route('frontend.contant.singlePage', $product->slug)}}">   <img style="width: 260px;height:300px object-fit:cover;obect-position:center;"
+                     @if ( !empty($images))
+                       <a href="{{route('frontend.contant.singlePage', $product->slug)}}">   <img style="width: 260px;height:300px object-fit:cover;obect-position:center;"
                                 src="{{asset('storage/ProductImage/'.$images[0])}}" class="card-img-top"></a>
+                     @else
+
+                     <a href="{{route('frontend.contant.singlePage', $product->slug)}}">   <img style="width: 260px;height:300px object-fit:cover;obect-position:center;"
+                                src="" class="card-img-top"></a>
+                       
+                     @endif
+                              
+                             
                           
-                          {{-- @endforeach --}}
+                       
 
 
                         <div class="text-overlay"> 
@@ -385,11 +392,16 @@
                        
                              @endphp
   
-                         {{-- @foreach($images as $image) --}}
-                                
-                                 <a href="{{route('frontend.contant.ItemdAll', [$item->slug])}}"> <img  style="width: 250px;height:300px object-fit:cover;obect-position:center;"
+                      @if ( !empty($images))
+                        <a href="{{route('frontend.contant.ItemdAll', [$item->slug])}}"> <img  style="width: 250px;height:300px object-fit:cover;obect-position:center;"
                                   src="{{asset('storage/ItemImage/'.$images[0])}}" class="card-img-top"></a>
-                            {{-- @endforeach --}}
+                      @else
+                          <a href="{{route('frontend.contant.ItemdAll', [$item->slug])}}"> <img  style="width: 250px;height:300px object-fit:cover;obect-position:center;"
+                                  src="" class="card-img-top"></a>
+                      @endif
+                                
+                                 
+                       
                             
   
                     

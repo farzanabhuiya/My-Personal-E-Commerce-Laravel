@@ -13,6 +13,7 @@ class CreatePageComponent extends Component
     public $name="";
     public $slug="";
     public $content;
+    public $status;
    
 
 
@@ -27,6 +28,7 @@ class CreatePageComponent extends Component
     $pages->name = $this->name;
     $pages->slug=$this->generateslug($this->name,Page::class);
     $pages->content = $this->content;
+    $pages->status = $this->status;
     $pages->save();
     $this->reset();
     $this->dispatch('toast', message:'Data stored successfully!'); 

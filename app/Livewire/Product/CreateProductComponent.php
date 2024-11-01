@@ -28,7 +28,7 @@ class CreateProductComponent extends Component
     public $price = "";
     public $compare_price = "";
     public $categorie_id;
-    public $subcategorie_id = "";
+    public $subcategorie_id;
     public $brand_id;
     public $item_id = "";
     public $is_featured = "no";

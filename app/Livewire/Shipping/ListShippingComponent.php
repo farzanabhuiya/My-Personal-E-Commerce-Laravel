@@ -12,6 +12,7 @@ class ListShippingComponent extends Component
 
       
     public $shippings='';
+    public $showshipping=15;
     
     public function mount()
     {

@@ -30,8 +30,21 @@ class CategoryController extends Controller
      }
 
 
-     public function destroy($id){
-      Categorie::find($id)->delete();
-      return back();
+     public function delete(Request $request, $id)
+     {
+        
+         $Categorie = Categorie::find($id);
+     
+      
+         if ($Categorie) {
+             $Categorie->delete(); 
+             return response()->json(['success' => 'Categorie deleted successfully!']);
+         } else {
+             return response()->json(['error' => 'Categorie not found!'], 404); 
+         }
      }
+
+
+
+
 }

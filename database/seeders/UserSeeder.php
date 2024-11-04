@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         
+        
         $user = new User();
 
         $user->name = 'Md shovo';
@@ -41,7 +42,7 @@ class UserSeeder extends Seeder
         
 
 
-       
+        User::factory(20)->create();
 
 
 

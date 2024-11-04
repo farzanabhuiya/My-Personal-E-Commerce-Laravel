@@ -13,6 +13,10 @@
     <meta name="Author" content="Programming Wormhole">
     <meta name="keywords" content="dating, love, dating app, programming wormhole">
 
+
+     {{-- <meta name="csrf-token" frontend="{{csrf_token()}}"> --}}
+	 <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Favicon -->
     <!-- <link rel="icon" href="./asset'images/brand-logos/' . 'favicon.png'" type="image/x-icon"> -->
     <link rel="icon" href="./asset/images/brand-logos/favicon.png" type="image/x-icon">
@@ -21,8 +25,6 @@
     <script src="https://kit.fontawesome.com/1159b8e81c.js" crossorigin="anonymous"></script>
 
 
-    <!-- Choices JS -->
-    <script src="{{ asset('admin/asset/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
     {{-- <script src="./asset/libs/choices.js/public/assets/scripts/choices.min.js"></script> --}}
 
 
@@ -31,6 +33,7 @@
 
 
     <script src="{{ asset('admin/asset/js/main.js') }}"></script>
+    {{-- <script src="{{ asset('admin/asset/ckeditor/ckeditor5.css') }}"></script> --}}
     {{-- <script src="../asset/js"></script> --}}
     {{-- select2 cdn --}}
 
@@ -82,7 +85,7 @@
 
 
     <!-- Choices Css -->
-    <link rel="stylesheet" href="{{ asset('admin/asset/libs/choices.js/public/assets/styles/choices.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('admin/asset/libs/choices.js/public/assets/styles/choices.min.css') }}"> --}}
 
 
     <link rel="stylesheet" href="{{ asset('admin/asset/libs/jsvectormap/css/jsvectormap.min.css') }}">
@@ -94,8 +97,7 @@
     <link rel="stylesheet" href="{{ asset('admin/asset/libs/prismjs/themes/prism-coy.min.css') }}">
 
 
-    <!-- Choices JS -->
-    <script src="{{ asset('admin/asset/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+ 
 
 
     <!-- Choices Css -->
@@ -1224,22 +1226,22 @@
 
 
     <!-- Custom JS -->
-    <script src="{{ asset('admin/asset/js/custom.js') }}"></script>
+    {{-- <script src="{{ asset('admin/asset/js/custom.js') }}"></script> --}}
 
 
     <!-- Internal Choices JS -->
-    <script src="{{ asset('admin/asset/js/choices.js') }}"></script>
+    {{-- <script src="{{ asset('admin/asset/js/choices.js') }}"></script> --}}
 
 
     <!-- Quill Editor JS -->
-    <script src="{{ asset('admin/asset/libs/quill/quill.min.js') }}"></script>
+    {{-- <script src="{{ asset('admin/asset/libs/quill/quill.min.js') }}"></script> --}}
 
 
 
 
 
     <!-- Internal Quill JS -->
-    <script src="{{ asset('admin/asset/js/quill-editor.js') }}"></script>
+    {{-- <script src="{{ asset('admin/asset/js/quill-editor.js') }}"></script> --}}
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -1260,15 +1262,23 @@
 
     <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
 
+ {{-- <script  src="{{ asset('admin/asset/ckeditor/ckeditor5.js') }}">   </script> --}}
  
 
-
+    <!-- Choices JS -->
+    <script src="{{ asset('admin/asset/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
 
 
 
     @stack('customJs')
 
-
+<script>
+        $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+  </script>
 
 </body>
 

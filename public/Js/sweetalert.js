@@ -27,25 +27,43 @@ function showToast(message, icon = 'success') {
 }
 
 
-function showdelete(message, icon = 'success') {
+
+
+// ============== THIS FUNTION  IS RUN EVERY DELETE CONTANT=================//  
+
+function deleteajax(brandId,deleteUrl) {
     Swal.fire({
-        title: "Are you sure?",
+        title: 'Are you sure?',
         text: "You won't be able to revert this!",
-        icon: "warning",
+        icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then((result) => {
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
         if (result.isConfirmed) {
-
-            $(this).next('form').submit()
-          Swal.fire({
-            title: "Deleted!",
-            text: message,
-            icon: icon
-          });
+            $.ajax({
+                url: deleteUrl,
+                type: 'DELETE',
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                },
+                success: function(response) {
+                    Swal.fire(
+                        'Deleted!',
+                       response.success,
+                        'success'
+                    );
+                    location.reload();
+                },
+                error: function(xhr) {
+                    Swal.fire(
+                        'Error!',
+                        'There was a problem deleting the brand.',
+                        'error'
+                    );
+                }
+            });
         }
-      });
-
+    });
 }

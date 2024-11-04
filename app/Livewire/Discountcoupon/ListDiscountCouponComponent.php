@@ -8,7 +8,8 @@ use Livewire\Component;
 class ListDiscountCouponComponent extends Component
 {
     public $search='';
-    public $coupons='';
+   
+    public $showCupon=15;
    
     // public function mount()
     // {
@@ -18,9 +19,14 @@ class ListDiscountCouponComponent extends Component
     public function render()
     {
 
-        
-        $this->coupons = DiscountCoupon::where('code', 'like', '%'.$this->search.'%')->get();
+      
+
+
+        $coupons = DiscountCoupon::query()
+        ->where('code', 'like', '%' . $this->search . '%') 
+       
+        ->paginate($this->showCupon);
     
-        return view('livewire.discountcoupon.list-discount-coupon-component');
+        return view('livewire.discountcoupon.list-discount-coupon-component',compact('coupons'));
     }
 }

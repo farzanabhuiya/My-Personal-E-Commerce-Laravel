@@ -23,8 +23,17 @@ class ProductSizeController extends Controller
        return view('admin.Productsize.edit-productsize',compact('id'));
         }
     
-    public function delete($id){
-        Productsize::find($id)->delete();
-        return back()->with('success','ProductSize Successfull deleted');
-       }
+        public function delete(Request $request, $id)
+        {
+           
+            $Productsize = Productsize::find($id);
+        
+         
+            if ($Productsize) {
+                $Productsize->delete(); 
+                return response()->json(['success' => 'Productsize deleted successfully!']);
+            } else {
+                return response()->json(['error' => 'Productsize  not found!'], 404); 
+            }
+        }
 }

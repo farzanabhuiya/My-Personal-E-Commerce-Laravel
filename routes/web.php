@@ -49,11 +49,14 @@ Route::get('singlePage/{slug}',[SinglePageController::class,'singlePage'])->name
 Route::post('comment',[CommentController::class,'commentStore'])->name('frontend.contant.commentStore');
 Route::post('/singlePage/{product}/ratting', [RattingController::class, 'store'])->name('frontend.contant.rattingStore');
 
+
+
+// =================CART ROUTE===============//
                       
-Route::get('/cart', [CartController::class, 'cart'])->name('frontend.contant.Cart');
-Route::post('/AddToCart', [CartController::class, 'AddToCart'])->name('frontend.contant.AddToCart');
-Route::post('/UpdateCart', [CartController::class, 'UpdateCart'])->name('frontend.contant.UpdateCart');
-Route::delete('/UpdateCart/{rowId}', [CartController::class, 'delete'])->name('frontend.contant.deleted');
+Route::get('/cart', [CartController::class, 'cart'])->name('frontend.contant.Cart')->middleware("auth");
+Route::post('/AddToCart', [CartController::class, 'AddToCart'])->name('frontend.contant.AddToCart')->middleware("auth");
+Route::post('/UpdateCart', [CartController::class, 'UpdateCart'])->name('frontend.contant.UpdateCart')->middleware("auth");
+Route::delete('/UpdateCart/{rowId}', [CartController::class, 'delete'])->name('frontend.contant.deleted')->middleware("auth");
 
 
 //CheckOutController
@@ -134,7 +137,7 @@ Route::prefix('/backend/category')->controller(CategoryController::class)->name(
         Route::get('/create' ,'create')->name('create');
         Route::get('/store' ,'store')->name('store');
         Route::get('/edit/{id}','edit')->name('edit');
-        Route::delete('/delete/{id}','destroy')->name('delete');
+        Route::delete('/delete/{id}','delete')->name('delete');
    
 
     }
@@ -164,7 +167,7 @@ Route::prefix('/backend/brand')->controller(BrandController::class)->name('Brand
     function(){
         Route::get('/' ,'index')->name('index');
         Route::get('/store' ,'store')->name('store');
-        Route::get('/edit/{id}','edit')->name('edit');
+        Route::put('/edit/{id}','edit')->name('edit');
         Route::delete('/delete/{id}','delete')->name('delete');
     }
 );
@@ -242,7 +245,7 @@ Route::prefix('/backend/discount')->controller(DiscountCouponController::class)-
         Route::get('/' ,'index')->name('index');
         Route::get('/store' ,'store')->name('store');
         // Route::get('/edit/{id}','edit')->name('edit');
-        // Route::delete('/delete/{id}','delete')->name('delete');
+        Route::delete('/delete/{id}','delete')->name('delete');
         
 
 
@@ -282,6 +285,8 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
         }
     );
     });
+
+    
 
 
 Route::get('/profile',[ProfileController::class,'showProfile'])->name('profile');

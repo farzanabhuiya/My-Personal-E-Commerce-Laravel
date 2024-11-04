@@ -9,6 +9,11 @@ class DiscountCoupon extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'status',
+        
+    ];
+
     //DiscountCoupon model
 public function isExpired()
 {

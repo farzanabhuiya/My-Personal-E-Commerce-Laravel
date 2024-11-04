@@ -26,21 +26,8 @@ class ItemController extends Controller
         return view('admin.Item.edit-item',compact('id'));
     }
 
-    public function delete(Request $request, $id)
-    {
-       
-        $item = Item::find($id);
-    
-     
-        if ($item) {
-            $item->delete(); 
-            return response()->json(['success' => 'Item cupon deleted successfully!']);
-        } else {
-            return response()->json(['error' => 'Item cupon not found!'], 404); 
-        }
+    public function delete($id){
+        Item::find($id)->delete();
+        return back()->with('success','Items Successfull deleted');
     }
-
-
-
-
 }

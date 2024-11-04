@@ -975,31 +975,7 @@
 
                            
                         
-                        <!-- Start::DiscountCoupon -->
-                        <li class="slide has-sub">
-                            <a href="javascript:void(0);" class="side-menu__item">
-                                <i class="bx bx-heart side-menu__icon"></i>
-                                <span class="side-menu__label">Order</span>
-                                <i class="fe fe-chevron-right side-menu__angle"></i>
-                            </a>
-                            <ul class="slide-menu child1">
-                                <li class="slide side-menu__label1">
-                                    <a href="javascript:void(0)">Order</a>
-                                </li>
-                                <li class="slide">
-                                    <a href="{{ route('Order.list') }}" class="side-menu__item">Avilable
-                                        Order List</a>
-                                </li>
-                                {{-- <li class="slide">
-                                    <a href="{{ route('Discount.index') }}" class="side-menu__item">Add New</a>
-                                </li> --}}
-                            </ul>
-                        </li>
-                        <!-- End::discount-->
-
-
-
-
+                    
                         <!-- Start::Shipping -->
                         <li class="slide has-sub">
                             <a href="javascript:void(0);" class="side-menu__item">
@@ -1022,6 +998,53 @@
                             </ul>
                         </li>
                         <!-- End::Product-->
+
+
+
+                        <!-- Start::order -->
+                        <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <i class="bx bx-heart side-menu__icon"></i>
+                                <span class="side-menu__label">Order</span>
+                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide side-menu__label1">
+                                    <a href="javascript:void(0)">Order</a>
+                                </li>
+                                <li class="slide">
+                                    <a href="{{ route('Order.list') }}" class="side-menu__item">Avilable
+                                        Order List</a>
+                                </li>
+                              
+                            </ul>
+                        </li>
+                        <!-- End::order-->
+
+
+                           <!-- Start::page -->
+                           <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <i class="bx bx-heart side-menu__icon"></i>
+                                <span class="side-menu__label">Page</span>
+                                <i class="fe fe-chevron-right side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1">
+                                <li class="slide side-menu__label1">
+                                    <a href="javascript:void(0)">Shipping</a>
+                                </li>
+                                <li class="slide">
+                                    <a href="{{route('Page.index')}}" class="side-menu__item">Avilable
+                                        Page</a>
+                                </li>
+            
+                                <li class="slide">
+                                    <a href="{{route('Page.story')}}" class="side-menu__item">Add New</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <!-- End::Page-->
                         
                        
 

@@ -28,6 +28,7 @@ use App\Http\Controllers\Backend\SubCategorieController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Backend\ProductcolourController;
 use App\Http\Controllers\Backend\DiscountCouponController;
+use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Frontend\HistoryOrderUserController;
 use App\Http\Controllers\Frontend\ProductSubcategoryController;
 use App\Http\Controllers\userDashboard\UserDashboardController;
@@ -280,7 +281,20 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
             Route::get('/list' ,'orderList')->name('list');
             Route::get('/detail/{id}' ,'orderDetail')->name('detail');
        
-       
+        }
+    );
+    });
+
+    /////////// page route
+
+Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
+    Route::prefix('/backend/page')->controller(PageController::class)->name('Page.')->group(
+        function(){
+    
+            Route::get('/' ,'index')->name('index');      
+            Route::get('/story' ,'story')->name('story');
+             Route::get('/edit/{id}','edit')->name('edit');
+            Route::delete('/delete/{id}','delete')->name('delete');
     
         }
     );

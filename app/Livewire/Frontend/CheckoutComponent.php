@@ -186,19 +186,23 @@ class CheckoutComponent extends Component
             // Cart::destroy();
         }
 
-             $order = Order::where('id',$orderId)->with('OrderItem')->first();
+        // function orderEmail($orderId){
+
+        //     $order = Order::where('id',$orderId)->with('OrderItem')->first();
         
-           $data =[
-            'subject' =>'thanks you order',
-            'order'  =>$orderId,
-           ];
+        //    $data =[
+        //     'subject' =>'thanks you order',
+        //     'order'  =>$order
+        //    ];
         
-//   =================SEND MAIL =================//
-            Mail::to("shovom677@gmail.com")->send(new OrderShipped($data));
+        //  // dd($order);
+        //     // Mail::to($order->emails)->send(new OrderEmail($mailData));
+        //     Mail::to($order->email)->send(new OrderEmail($data));
         
+        //  }
        
       
-      $this->reset();
+      //$this->reset();
    
    
      return redirect()->route('front.contant.thanks',[$orderId]);

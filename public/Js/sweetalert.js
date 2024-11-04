@@ -17,7 +17,7 @@ function showToast(message, icon = 'success') {
         });
     
         Toast.fire({
-            icon: 'success',
+            icon: icon,
              title: message ,
              
         });

@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title> @yield('title')</title>
     <meta name="Description" content="Truested Online Earning Platform">
-    <meta name="Author" content="Programming Wormhole">
+    <meta name="Author" content="starlink">
     <meta name="keywords" content="dating, love, dating app, programming wormhole">
 
 
@@ -20,6 +20,7 @@
     <!-- Favicon -->
     <!-- <link rel="icon" href="./asset'images/brand-logos/' . 'favicon.png'" type="image/x-icon"> -->
     <link rel="icon" href="./asset/images/brand-logos/favicon.png" type="image/x-icon">
+    <link rel="icon" href="{{asset('admin/asset/images/brand-logos/favicon.png')}}" type="image/x-icon">
 
 
     <script src="https://kit.fontawesome.com/1159b8e81c.js" crossorigin="anonymous"></script>
@@ -39,7 +40,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-
+  {{-- <link href="{{ asset('admin/asset/css/sweetalert2.min.css') }}" rel="stylesheet"> --}}
 
 
     <style>
@@ -750,7 +751,7 @@
                     <img src="{{ asset('admin/asset/images/brand-logos/' . 'logo.png') }}" alt="logo" class="desktop-logo">
                     <img src="{{ asset('admin/asset/images/brand-logos/' . 'logo.png') }}" alt="logo" class="toggle-logo">
                     <img src="{{ asset('admin/asset/images/brand-logos/' . 'logo.png') }}" alt="logo" class="logo">
-                    <img src="{{ asset('admin/asset/images/brand-logos/' . 'logo.png') }}" alt="logo" class="toggle-dark">
+                    <img src="{{ asset('admin/asset/images/brand-logos/' . 'favicon.png') }}" alt="logo" class="toggle-dark">
                 </a>
             </div>
             <!-- End::main-sidebar-header -->
@@ -761,6 +762,12 @@
                 <!-- Start::nav -->
                 <nav class="main-menu-container nav nav-pills flex-column sub-open">
                     <div class="slide-left" id="slide-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24"
+                            viewBox="0 0 24 24">
+                            <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
+                        </svg>
+                    </div>
+                    <div class="slide-right" id="slide-right">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24"
                             viewBox="0 0 24 24">
                             <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
@@ -1049,7 +1056,7 @@
                        
 
 
-                        {{-- <!-- Start::User -->
+                        {{-- <!-- Start::User -->   
                         <li class="slide">
                             <a href="{{ route('users') }}" class="side-menu__item">
                                 <i class="bx bx-user side-menu__icon"></i>
@@ -1180,7 +1187,7 @@
                         class="text-dark fw-semibold">{{ config('app.name') }}</a>.
                     Designed with <span class="bi bi-heart-fill text-danger"></span> by <a
                         href="https://wa.me/{{ config('dev.whatsapp') }}" target="_blank">
-                        <span class="fw-semibold text-primary text-decoration-underline">Programming Wormhole</span>
+                        <span class="fw-semibold text-primary text-decoration-underline">Starlink</span>
                     </a> All
                     rights
                     reserved
@@ -1273,9 +1280,11 @@
     <script src="{{ asset('admin/asset/js/datetimepicker.js') }}"></script>
     {{-- sweetalert cdn --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {{-- custom sweetalert --}}
 
- {{-- <script src="{{ asset('admin/asset/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script> --}}
+
+   
+
+ 
 
 <!-- Defaultmenu JS -->
     <script src="{{ asset('admin/asset/js/defaultmenu.min.js') }}"></script>
@@ -1285,7 +1294,7 @@
 
     <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
 
- {{-- <script  src="{{ asset('admin/asset/ckeditor/ckeditor5.js') }}">   </script> --}}
+ 
  
 
     <!-- Choices JS -->

@@ -86,9 +86,9 @@
 
 
 
-                                            <a href="{{ asset('storage/ProductImage/' . $productPhoto[0]) }}"
+                                            <a href="{{ !empty($productPhoto[0])? asset('storage/ProductImage/' . $productPhoto[0]):"" }}"
                                                 target="_blank"> <img
-                                                    src="{{ asset('storage/ProductImage/' . $productPhoto[0]) }}"
+                                                    src="{{ !empty($productPhoto[0])? asset('storage/ProductImage/' . $productPhoto[0]): "" }}"
                                                     class="img-thumbnail" width="50"> </a>
 
 
@@ -153,10 +153,10 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                                {{ $products->links() }}
+                              
                             </tbody>
                         </table>
-                        {{-- {{$category->links()}}										 --}}
+                      {{ $products->links() }}
                     </div>
 
                 </div>

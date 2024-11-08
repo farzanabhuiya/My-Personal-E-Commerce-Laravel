@@ -11,7 +11,7 @@
     <div class="col-md-12">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
              {{Session::get('success')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close"  data-bs-dismiss="toast"  aria-label="Close"></button>
           </div>
     </div>
   @endif   
@@ -47,15 +47,15 @@
                                                 <td>
                                                    <?php 
                                                     
-                                                    $imageString = $item->options[0]; 
-                                                    $imageArray = json_decode($imageString, true);
+                                                    {{-- $imageString = $item->options[0];  --}}
+                                                    {{-- $imageArray = json_decode($imageString, true); --}}
                                                     // dd($imageArray[0]);
                                                     ?>
                                                    
                                                    
 
                                                     <div class="d-flex align-items-center justify-content-center">
-                                                        <img style="width: 50px;height:50px object-fit:cover;obect-position:center;" src="{{asset('storage/ProductImage/'.$imageArray[0])}}" >
+                                                        <img style="width: 50px;height:50px object-fit:cover;obect-position:center;" src="{{  !empty($imageArray[0]) ?    asset('storage/ProductImage/'.$imageArray[0]): ""}}" >
                                                         
                                                     </div>
                                                 </td>
@@ -72,7 +72,7 @@
                                                         </div>
                                                         <input type="text" class="form-control form-control-sm  border-0 text-center" value="{{$item->qty}}">
                                                         <div class="input-group-btn">
-                                                            <button class="btn btn-sm btn-dark btn-plus p-2 pt-1 pb-1 add" data-id="{{$item->rowId}}">
+                                                            <button class="btn btn-sm btn-dark btn-plus p-2 pt-1 pb-1 plus "  data-id="{{$item->rowId}}">
                                                                 <i class="fa fa-plus"></i>
                                                             </button>
                                                         </div>
@@ -91,10 +91,10 @@
                                                 </td>
                                                
                                             </tr>
-                                            
+                                            @endforeach
                                             <!-- Add more product rows as needed -->
                                         </tbody>
-                                        @endforeach
+                                        
                                     </table>
                                 </div>
                             </div>
@@ -150,11 +150,11 @@
 </div>
 
 @push('frontendJs')
-    {{-- <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script> --}}
+    
   <script>
    
 
-$('.add').click(function(){
+$('.plus').click(function(){
      var qtyElement = $(this).parent().prev();
      var qtyValue = parseInt(qtyElement.val());
      if (qtyValue < 10) {
@@ -183,7 +183,7 @@ $('.add').click(function(){
   function UpdateCart(rowId,qty){
      $.ajax({
          url:"{{route('frontend.contant.UpdateCart')}}",
-         type:'post',
+         type:'put',
          data:{rowId:rowId, qty:qty},
          dataType:'json',
          success:function(response) {

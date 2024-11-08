@@ -30,7 +30,7 @@ class HomePageController extends Controller
          ->where('status',1)->latest()->take(6)->get();
 
         
-         $cartCount=Cart::count();
+         $cartCount=Cart::content();
         //  dd($cartCount);
          
          $brands = Brand::get();

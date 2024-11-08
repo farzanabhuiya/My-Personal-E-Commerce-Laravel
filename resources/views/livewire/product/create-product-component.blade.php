@@ -519,11 +519,10 @@
             ClassicEditor
                 .create(document.querySelector('#shipping_returns'))
 
-                .then(function(leditor) { // এখানে function এর সঠিক বানান
-
+                .then(function(leditor) {
                     editor = leditor;
 
-                    leditor.model.document.on('change:data', () => { // 'çhange:data' এর পরিবর্তে 'change:data'
+                    leditor.model.document.on('change:data', () => { 
                         @this.set('shipping_returns', leditor.getData())
                     });
 

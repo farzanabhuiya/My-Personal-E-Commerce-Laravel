@@ -199,7 +199,7 @@
 
 
                         <div class="shopping d-flex flex-column gap-1  ">
-                          <a href="javascript: void(0)" onclick="AddCart({{$product->id}})" id="cart" type="button" class="btn "><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
+                          <a href="javascript: void(0)" onclick="AddCart({{$product->id}})" id="cart" type="button" class=" btn"><i class="fa-solid fa-cart-shopping"></i>Add to Cart</a>
                           <a id="buy-now" type="button" class="btn" > <i class="fa-solid fa-bag-shopping"></i>Buy Now</a>
 
                          
@@ -254,7 +254,7 @@
                  
                               
                               <a href ="{{route('frontend.contant.singlePage',$latestproduct->slug)}}">  <img style="width: 260px;height:300px object-fit:cover;obect-position:center;"
-                                src="{{asset('storage/ProductImage/'.$images[0])}}" class="card-img-top"> </a>
+                                src="{{  !empty($images[0]) ?  asset('storage/ProductImage/'.$images[0]) : ""  }}" class="card-img-top"> </a>
                        
                                 <div class="text-overlay"> 
                                   <a onclick="WishlistAdd({{$latestproduct->id}})" class="whishlist"  href="javascript:void(0)"> <i class="fa-regular fa-heart"></i></a>
@@ -448,7 +448,7 @@
                 data: {product_id:productId,},
               dataType:'json',
               success:function(response){
-              console.log(response.message);
+              
      
                  if( response.status == true){
                   alert(response.message);
@@ -465,7 +465,21 @@
 
 
 
-      </script>
+
+
+     
+    </script>
+
+
+
+
+
+
+
+
+
+
+   
 @endpush
 
 @endsection

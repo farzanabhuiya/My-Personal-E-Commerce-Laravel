@@ -131,7 +131,7 @@
                         <div class="nav-item position-relative">
                             <a href="{{route('frontend.contant.Cart')}}" class="text-light me-2 nav-link">
                                 <i class="fa-solid fa-cart-shopping"></i>
-                                <span id="cartCount" class="badge bg-danger">{{$cartCount}}</span>
+                                <span id="cartCount" class="badge bg-danger">{{count($cartCount)}}</span>
                             </a>
                         </div>
 
@@ -549,13 +549,13 @@
                 , to: 1000
                 , grid: true
             });
-        console.log('he,llo')
+        
     })
 
     </script>
 
 
-
+{{-- 
 <script>
     document.addEventListener('livewire:init', () => {
         // Runs after Livewire is loaded but before it's initialized
@@ -565,7 +565,7 @@
         
     })
  
-</script>
+</script> --}}
 
 
 
@@ -675,19 +675,15 @@
 
         })
 
-    </script>
 
 
 
 
-    {{-- @livewireScripts --}}
+
+//==================== ADD TO CART FUNCTION=====================//
 
 
-
-    {{-- <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script> --}}
-    
-    <script>
-        function AddCart(id) {
+   function AddCart(id) {
             $.ajax({
                 url: "{{route('frontend.contant.AddToCart')}}",
                  type: 'POST',
@@ -700,6 +696,8 @@
                    
                    if(cart.status == true){
                      $('#cartCount').html(cart.cartCount);
+
+                     console.log(cart.cartCount)
                     alert(cart.message)
     
                    }else{
@@ -710,8 +708,26 @@
             });
         }
     
+
+
+
+//=====================ADD TO CART FUNTIOIN END========================//
+
+
+
+
     </script>
 
+
+
+
+    {{-- @livewireScripts --}}
+
+
+
+    {{-- <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script> --}}
+    
+   
 
     
 </body>

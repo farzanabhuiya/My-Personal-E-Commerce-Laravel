@@ -131,7 +131,7 @@
                         <div class="nav-item position-relative">
                             <a href="{{route('frontend.contant.Cart')}}" class="text-light me-2 nav-link">
                                 <i class="fa-solid fa-cart-shopping"></i>
-                                <span id="cartCount" class="badge bg-danger">{{count($cartCount)}}</span>
+                                <span id="cartCount" class="badge bg-danger">{{count(Cart::content())}}</span>
                             </a>
                         </div>
 
@@ -690,7 +690,7 @@
                   data: {id:id,},
                 dataType:'json',
                 success:function(response){
-                    // console.log(response) 
+                   
                   let cart =[];
                     cart = response;
                    

@@ -3,7 +3,7 @@
 // sweet alert
 
 function showToast(message, icon = 'success') {
-    $(window).on('toast', function(event) {
+    $(window).on('toast', function (event) {
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -15,11 +15,11 @@ function showToast(message, icon = 'success') {
                 toast.onmouseleave = Swal.resumeTimer;
             }
         });
-    
+
         Toast.fire({
             icon: icon,
-             title: message ,
-             
+            title: message,
+
         });
     });
 
@@ -31,7 +31,7 @@ function showToast(message, icon = 'success') {
 
 // ============== THIS FUNTION  IS RUN EVERY DELETE CONTANT=================//  
 
-function deleteajax(brandId,deleteUrl) {
+function deleteajax(brandId, deleteUrl) {
     Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -48,15 +48,25 @@ function deleteajax(brandId,deleteUrl) {
                 data: {
                     _token: $('meta[name="csrf-token"]').attr('content'),
                 },
-                success: function(response) {
+                success: function (response) {
+
+                    // ================REMOVE tr WHENE DATA IS DELETED===================//
+                    $('#category-row-' + brandId).remove();
+                    // ================REMOVE tr WHENE DATA IS DELETED END===================//
                     Swal.fire(
                         'Deleted!',
-                       response.success,
+                        response.success,
                         'success'
                     );
-                    location.reload();
+                    //    =====================RESET ID WENE DELETE ANY DATA=====================//
+                    $('#categoryTable tbody tr').each(function (index) {
+                        $(this).find('.row-number').text(index + 1);
+                    });
+
+                    //    =====================RESET ID WENE DELETE ANY DATA EMD=====================//
+                    // location.reload();
                 },
-                error: function(xhr) {
+                error: function (xhr) {
                     Swal.fire(
                         'Error!',
                         'There was a problem deleting the brand.',

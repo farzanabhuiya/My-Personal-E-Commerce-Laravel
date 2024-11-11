@@ -79,21 +79,32 @@ class CartController extends Controller
 
 
 //==========================CART UPDATE=======================//
-
- public function UpdateCart(Request $request){
-    $rowId= $request->rowId;
-    $qty = $request->qty;
-    Cart::update($rowId,$qty);
-  
-    $message = 'Card Update Successfully';
-    session()->flash('success',$message );
-
-    return response()->json([
-        'status' =>true,
-        'message' => $message,
+public function UpdateCart(Request $request)
+{
+    $request->validate([
+        'rowId' => 'required',
+        'qty' => 'required|integer|min:1'
     ]);
 
- }
+    $item = Cart::get($request->rowId);
+    $item->qty = $request->qty;
+    Cart::update($request->rowId, $request->qty);
+
+    $itemTotal = $item->price * $request->qty;
+    $newSubtotal = Cart::subtotal();
+    $newTotalPrice = Cart::total();
+    $cartCount=Cart::count();
+    $cartSubTotal=Cart::subtotal();
+    return response()->json([
+        'status' => true,
+        'itemTotal' => $itemTotal,
+        'newSubtotal' => $newSubtotal,
+        'newTotalPrice' => $newTotalPrice,
+        'cartCount' => $cartCount,
+        // 'cartSubTotal' => $cartSubTotal,
+    ]);
+}
+
 
 
 //  ==========================CART DELETE END==================//

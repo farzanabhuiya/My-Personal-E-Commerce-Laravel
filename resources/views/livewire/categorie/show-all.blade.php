@@ -45,10 +45,10 @@
                     </div>
                 </form>
                     <div class="card-body">								
-                        <table class="table table-hover text-nowrap">
+                        <table class="table table-hover text-nowrap" id="categoryTable">
                             <thead>
                                 <tr>
-                                    <th width="">ID</th>
+                                    <th  width="">ID</th>
                                     <th>Name</th>
                                     <th>Slug</th>
                                     <th width="1">Status</th>
@@ -58,8 +58,8 @@
                             <tbody>
                            
                              @foreach ($categories as $key=> $categorie)
-                             <tr>
-                                <td>{{$categories->firstItem()+$key}}</td>
+                             <tr id="category-row-{{$categorie->id }}"  data-categorieId="{{ $categorie->id }}">
+                                <td class="row-number">{{$categories->firstItem()+$key}}</td>
                                 <td>{{$categorie->name}}</td>
                                 <td>{{$categorie->slug}}</td>
                                 <td>
@@ -133,7 +133,7 @@
    
 
        let brandId = $(this).data('id');
-        console.log(brandId)
+       
        var deleteUrl = "{{ route('category.delete', ':id') }}".replace(':id', brandId);
        deleteajax(brandId, deleteUrl)
     

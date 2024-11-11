@@ -45,7 +45,7 @@ class CheckoutComponent extends Component
      public $subtotal="";
      public $grand_total='';
      public $payment_method='';
-     public $shippingCharge;
+     public $shippingCharge=0;
      public $CouponCode;
      //public $coupon;
      public $message='';

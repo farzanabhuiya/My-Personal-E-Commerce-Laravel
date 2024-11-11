@@ -63,7 +63,7 @@
                             <tbody>
                            
                              @foreach ($items as $item)
-                             <tr>
+                             <tr class="table-item" data-id({{$item->id}})>
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->slug}}</td>

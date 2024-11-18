@@ -186,19 +186,19 @@ class CheckoutComponent extends Component
             // Cart::destroy();
         }
 
-         function orderEmail($orderId){
+        //  function orderEmail($orderId){
 
-            $order = Order::where('id',$orderId)->with('OrderItem')->first();
+        //     $order = Order::where('id',$orderId)->with('OrderItem')->first();
         
-           $data =[
-            'subject' =>'thanks you order',
-            'order'  =>$order
-           ];
+        //    $data =[
+        //     'subject' =>'thanks you order',
+        //     'order'  =>$order
+        //    ];
         
-           dd($order->email);
-            Mail::to($order->email)->send(new OrderEmail($data));
+        //    //dd($order->email);
+        //     Mail::to($order->email)->send(new OrderEmail($data));
         
-         }
+        //  }
 
 
 

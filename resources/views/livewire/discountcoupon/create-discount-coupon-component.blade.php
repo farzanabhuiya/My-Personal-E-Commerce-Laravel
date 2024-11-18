@@ -97,7 +97,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="status">Status</label>
-                                    <select wire:model='status'  id='status' class="form-control">
+                                    <select  wire:model.live='status'  id='status' class="form-control">
                                         <option value="1">Active</option>
                                         <option value="0">Block</option>
                                     </select>
@@ -131,6 +131,9 @@
                             
                         </div>
                     </div>							
+                </div>
+                <div wire:loading>
+                    <h4> Saving DiscountCoupon...</h4> 
                 </div>
                 <div class="pb-5 pt-3">
                     <button class="btn btn-primary">Create</button>

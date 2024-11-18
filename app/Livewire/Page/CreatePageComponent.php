@@ -13,7 +13,7 @@ class CreatePageComponent extends Component
     public $name="";
     public $slug="";
     public $content;
-    public $status;
+    public $status=1;
    
 
 

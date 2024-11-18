@@ -13,8 +13,8 @@ class Create extends Component
     use SlugGenerator;
     public $name="";
     public $slug="";
-    public $status;
-    public $showhome;
+    public $status=1;
+    public $showhome='Yes';
 
 
     function addCategory(){

@@ -48,6 +48,10 @@
                                 </div>
                             </div>	
 
+
+                               
+
+
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="name">Category</label>
@@ -64,7 +68,7 @@
 
 
                             <div class="col-md-6">
-                                <div class="mb-3">
+                                <div class="mb-3 " wire:ignore>
                                     <label for="name">SubCategory</label>
                                     <select  wire:model='subcategorie_id'  id="subcategorie_id" class="form-control subcategorieSelect">
                                        
@@ -89,15 +93,26 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="status">Status</label>
+                                    <select  wire:model.live='status' id='status' class="form-control">
+                                        <option  value="1">Active</option>
+                                        <option value="0">Block</option>
+                                    </select>
+                                   
+                                </div>
+                                
+                            </div>
 
                             
                         <div>    
 
    <label for="formFile" class="form-label">Default file input example</label>
                     <input wire:model='images' class="form-control" type="file" id="formFile" multiple> 
-
-
-                            @if ($images)
+                    <div wire:loading wire:target="images"><h5>Uploading...</h5></div>
+                            
+                           @if ($images)
                             @foreach ($images as $image)
                             <img  class='my-2' src="{{ $image->temporaryUrl() }}" width="100px">
 
@@ -112,6 +127,9 @@
                             
                         </div>
                     </div>							
+                </div>
+                <div wire:loading>
+                  <h4> Saving Item....</h4> 
                 </div>
                 <div class="pb-5 pt-3">
                     <button type="submit" class="btn btn-primary">Create</button>

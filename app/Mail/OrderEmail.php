@@ -12,13 +12,19 @@ use Illuminate\Queue\SerializesModels;
 class OrderEmail extends Mailable
 {
     use Queueable, SerializesModels;
-        public $data;
+
+    /**
+     * Create a new message instance.
+     */
+    public $data;
+
     /**
      * Create a new message instance.
      */
     public function __construct($data)
     {
-        $this->data = $data;
+        $this->data=$data;
+        //
     }
 
     /**
@@ -27,7 +33,7 @@ class OrderEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'OrderEmail',
+            subject: $this->data['subject'],
         );
     }
 
@@ -38,9 +44,17 @@ class OrderEmail extends Mailable
     {
         return new Content(
             view: 'emails.Order',
+
+            with: [
+                'data' => $this->data,
+            ],
+
+
+
+
+
         );
     }
-
     /**
      * Get the attachments for the message.
      *
@@ -49,6 +63,5 @@ class OrderEmail extends Mailable
     public function attachments(): array
     {
         return [];
-       
     }
 }

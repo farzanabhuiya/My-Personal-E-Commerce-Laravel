@@ -12,7 +12,7 @@ class ListProductComponent extends Component
     use WithPagination;
     // public $products;
   
-   
+   public $paginate=15;
     public $status ; 
 
     public $search='';
@@ -61,7 +61,7 @@ class ListProductComponent extends Component
         $products = Product::query()
             ->where('title', 'like', '%' . $this->search . '%') 
             ->orWhere('description', 'like', '%' . $this->search . '%') 
-            ->paginate(15); 
+            ->paginate($this->paginate); 
         
       
         

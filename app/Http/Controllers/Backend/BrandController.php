@@ -31,9 +31,20 @@ class BrandController extends Controller
         return view('admin.Brand.edit-brand', compact('id'));
     }
 
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
-        Brand::find($id)->delete();
-        return back()->with('success', 'Brands Successfull deleted');;
+       
+        $brand = Brand::find($id);
+    
+     
+        if ($brand) {
+            $brand->delete(); 
+            return response()->json(['success' => 'Brand deleted successfully!']);
+        } else {
+            return response()->json(['error' => 'Brand not found!'], 404); 
+        }
     }
+
+    
+    
 }

@@ -21,78 +21,95 @@ class CartController extends Controller
     }
 
 
+
+
+
+// =================ADD TO CART ======================//
+
     public function AddToCart(Request $request){
-       
-    //   dd($request->all());
-    //return $request->all();
-
-    //   if(Auth::check()==false){
-    //     return redirect()->route('login');
-
-    //   }
         $id = $request->id;
-    
         $product = Product::find($id);
-        
-     
-        if($product == null){
+    
+        if ($product == null) {
             return response()->json([
-                'status' =>false,
-                'message' =>'product not found',
+                'status' => false,
+                'message' => 'Product not found',
             ]);
         }
-
-        if( Cart::count()>0){
-            $productAlreadyExist =false;
-            
-            foreach(Cart::content() as $item){
-                if($item->id == $product->id){
-                $productAlreadyExist =true;
-                }
-
-                if($productAlreadyExist ==false){
-                    Cart::add(['id'=>$product->id, 'name' => $product->title, 'qty' =>1, 'price' =>$product->price,'options' =>[$product->image]]);
-                
-                     $cartCount=Cart::count();
-                    $status=true;
-                    $message = 'Product add in Card';
-                }else{
-                   
-                    $status=false;
-                    $message = 'Product all ready exist';
-                }
+    
+        $productAlreadyExist = false;
+        foreach (Cart::content() as $item) {
+            if ($item->id == $product->id) {
+                $productAlreadyExist = true;
+                break;
             }
-           
-
-        }else{
-            Cart::add(['id'=>$product->id, 'name' => $product->title, 'qty' =>1, 'price' =>$product->price,'options' =>[$product->image]]);
-            $cartCount=Cart::count();
-           $status=true;
-           $message = 'Product add in Card';
         }
-
+    
+        if (!$productAlreadyExist) {
+            Cart::add([
+                'id' => $product->id, 
+                'name' => $product->title, 
+                'qty' => 1, 
+                'price' => $product->price,
+                'options' => ['image' => $product->image]
+            ]);
+            $status = true;
+            $message = 'Product added to cart';
+        } else {
+            $status = false;
+            $message = 'Product already exists in cart';
+        }
+    
         return response()->json([
-            'status' =>$status,
-            'message' => $message ,
-            'cartCount' =>$cartCount,
+            'status' => $status,
+            'message' => $message,
+            'cartCount' =>count( Cart::content()), 
         ]);
-
     }
+    
+// =========================ADD TO CART END=======================//
 
- public function UpdateCart(Request $request){
-    $rowId= $request->rowId;
-    $qty = $request->qty;
-    Cart::update($rowId,$qty);
-  
-    $message = 'Card Update Successfully';
-    session()->flash('success',$message );
 
-    return response()->json([
-        'status' =>true,
-        'message' => $message,
+
+
+
+
+
+
+
+
+//==========================CART UPDATE=======================//
+public function UpdateCart(Request $request)
+{
+    $request->validate([
+        'rowId' => 'required',
+        'qty' => 'required|integer|min:1'
     ]);
 
- }
+    $item = Cart::get($request->rowId);
+    $item->qty = $request->qty;
+    Cart::update($request->rowId, $request->qty);
+
+    $itemTotal = $item->price * $request->qty;
+    $newSubtotal = Cart::subtotal();
+    $newTotalPrice = Cart::total();
+    $cartCount=Cart::count();
+    $cartSubTotal=Cart::subtotal();
+    return response()->json([
+        'status' => true,
+        'itemTotal' => $itemTotal,
+        'newSubtotal' => $newSubtotal,
+        'newTotalPrice' => $newTotalPrice,
+        'cartCount' => $cartCount,
+        // 'cartSubTotal' => $cartSubTotal,
+    ]);
+}
+
+
+
+//  ==========================CART DELETE END==================//
+
+
 
  public function delete($rowId){
 

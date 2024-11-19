@@ -12,6 +12,7 @@ class ListShippingComponent extends Component
 
       
     public $shippings='';
+    public $showshipping=15;
     
     public function mount()
     {
@@ -23,7 +24,7 @@ class ListShippingComponent extends Component
 
     
     {    $districtes=District::orderBy('district_name','ASC')->get();
-        $shippings = Shipping::with('District')->get();
+        $shippings = Shipping::with('District')->paginate(10);
         return view('livewire.shipping.list-shipping-component',compact('districtes','shippings'));
     }
 }

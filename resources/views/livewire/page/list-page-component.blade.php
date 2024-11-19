@@ -44,9 +44,9 @@
                         <tbody>
                         @foreach ($pages as $key=>$page)
                         <tr>
-                            <td>{{ $pages->firstITEM()+$key }}</td>
-                            <td>{{$page->name}}</td>
-                            <td>{!! Str::length($page->content) > 30 ? substr($page->content,0,30).'....' : $page->content !!}</td>
+                            <td><a href="{{route('Page.detail',[$page->id])}}">{{ $pages->firstITEM()+$key }}</td>
+                            <td><a href="{{route('Page.detail',[$page->id])}}">{{$page->name}}</td>
+                            <td>{!! Str::length($page->content) > 50 ? substr($page->content,0,50).'....' : $page->content !!}</td>
                             <td>
                                 @if ($page->status==1)
                                 <svg wire:click='toggleStatus({{$page->id}})' class="text-success-50 text-success" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">

@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Subcategorie;
+use App\Models\Productsize;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class SubCategorieSeeder extends Seeder
+class ProductSizeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Subcategorie::factory(20)->create();
+        Productsize::factory(30)->create();
     }
 }

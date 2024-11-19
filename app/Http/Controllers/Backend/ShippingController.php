@@ -22,9 +22,18 @@ class ShippingController extends Controller
         return view('admin.Shipping.edit-shipping',compact('id'));
         }
 
-    public function delete($id){
-        Shipping::find($id)->delete();
-        return back()->with('success','Shipping Successfull deleted');;
-      }
+        public function delete(Request $request, $id)
+        {
+           
+            $Shipping = Shipping::find($id);
+        
+         
+            if ($Shipping) {
+                $Shipping->delete(); 
+                return response()->json(['success' => 'Shipping deleted successfully!']);
+            } else {
+                return response()->json(['error' => 'Shippingnot found!'], 404); 
+            }
+        }
  
 }

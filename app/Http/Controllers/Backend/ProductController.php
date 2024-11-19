@@ -238,14 +238,20 @@ function productEdit( $productId){
 
 
 //================== PRODUCT DELETE============//
-function deleteProduct($productId){
+public function deleteProduct(Request $request, $id)
+{
+   
+    $deleteproduct = Product::find($id);
 
-  $product=Product::find($productId);
-
-  $product->delete();
-  return back();
-
+ 
+    if ($deleteproduct) {
+        $deleteproduct->delete(); 
+        return response()->json(['success' => 'Product deleted successfully!']);
+    } else {
+        return response()->json(['error' => 'Productnot found!'], 404); 
+    }
 }
+
 
 
 

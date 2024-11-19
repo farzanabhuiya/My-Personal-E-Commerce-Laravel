@@ -129,13 +129,24 @@
                         </div>                    
                         <div class="card cart-summery">
                             <div class="card-body">
-                                @foreach ($cartContents as $item)
-                                <div class="d-flex justify-content-between pb-2">
-                                    <div class="h6">{{$item->name}} X {{$item->qty}}</div>
-                                    <div class="h6">{{$item->price*$item->qty}}</div>
+
+
+
+                                
+
+                                @forelse ( $cartContents as  $item)
+                                    <div class="d-flex justify-content-between pb-2 summery-end">
+                                    <div class="h6"> <strong>   {{$item->name}} X {{$item->qty}}</strong></div>
+                                    <div class="h6"> <strong> {{$item->price*$item->qty}}</strong> </div>
                                     <div class="h6"></div>
                                 </div>
-                                @endforeach
+                                @empty
+                                    <h1>No Item Found</h1>
+                                @endforelse
+
+
+
+
                                 <div class="d-flex justify-content-between summery-end">
                                     <div class="h6"><strong>Subtotal</strong></div>
                                     <div class="h6"><strong>${{Cart::SubTotal()}}</strong></div>

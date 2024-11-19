@@ -21,8 +21,17 @@ class ProductColourController extends Controller
        return view('admin.ProductColour.edit-productColour',compact('id'));
       }
     
-    public function delete($id){
-      Productcolour::find($id)->delete();
-      return back()->with('success','ProductColour Successfull deleted');
-     }
+      public function delete(Request $request, $id)
+      {
+         
+          $Productcolour = Productcolour::find($id);
+      
+       
+          if ($Productcolour) {
+              $Productcolour->delete(); 
+              return response()->json(['success' => 'Productcolour  deleted successfully!']);
+          } else {
+              return response()->json(['error' => 'Productcolour  not found!'], 404); 
+          }
+      }
 }

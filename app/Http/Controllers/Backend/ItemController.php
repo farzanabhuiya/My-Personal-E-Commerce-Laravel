@@ -28,6 +28,6 @@ class ItemController extends Controller
 
     public function delete($id){
         Item::find($id)->delete();
-        return back();
+        return back()->with('success','Items Successfull deleted');
     }
 }

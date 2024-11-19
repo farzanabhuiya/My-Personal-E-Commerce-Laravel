@@ -10,8 +10,8 @@ use App\Models\District;
 use App\Models\Shipping;
 use App\Models\Categorie;
 use App\Models\OrderItem;
-use App\Mail\OrderShipped;
-//use Illuminate\Support\Facades\Mail;
+
+
 use App\Models\DiscountCoupon;
 use App\Models\Customeraddersse;
 use App\Mail\UserNotificationMail;
@@ -45,7 +45,7 @@ class CheckoutComponent extends Component
      public $subtotal="";
      public $grand_total='';
      public $payment_method='';
-     public $shippingCharge;
+     public $shippingCharge=0;
      public $CouponCode;
      //public $coupon;
      public $message='';
@@ -185,36 +185,27 @@ class CheckoutComponent extends Component
           
             // Cart::destroy();
         }
-
-        //  function orderEmail($orderId){
-
+        
+        // function orderEmail($orderId){
         //     $order = Order::where('id',$orderId)->with('OrderItem')->first();
         
-        //    $data =[
-        //     'subject' =>'thanks you order',
-        //     'order'  =>$order
-        //    ];
-        
-        //    //dd($order->email);
-        //     Mail::to($order->email)->send(new OrderEmail($data));
+        $data =[
+            'subject' =>'thanks you order',
+            'order'  =>$orderId,
+           ];
+            Mail::to("shovom677@gmail.com")->send(new OrderEmail($data));
         
         //  }
-
-
-
-   
- 
-      //$this->reset();
-
-//       $order = Order::find(1); 
-//    Mail::to('farzanabhuiyan64@gmail.com')->send(new OrderShipped($order));
+       
+    
+    $this->reset();
      return redirect()->route('front.contant.thanks',[$orderId]);
     }
 
  
     public function render()
      {
-                            //checkout Error slove start (A non-numeric value encountered)
+                //checkout Error slove start (A non-numeric value encountered)
         $this->grandTotal = (float) str_replace(',', '', Cart::subTotal())-$this->discount + $this->shippingCharge;
         // $gran = gettype($this->discount);
         // dd($this->grandTotal, $gran);

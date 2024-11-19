@@ -26,4 +26,9 @@ class PageController extends Controller
         Page::find($id)->delete();
         return back();
        }
+
+    public function PageDetail($id){
+        return view('admin.Page.PageDetails',compact('id'));
+    }
+
 }

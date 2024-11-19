@@ -131,7 +131,7 @@
                         <div class="nav-item position-relative">
                             <a href="{{route('frontend.contant.Cart')}}" class="text-light me-2 nav-link">
                                 <i class="fa-solid fa-cart-shopping"></i>
-                                <span id="cartCount" class="badge bg-danger">{{$cartCount}}</span>
+                                <span id="cartCount" class="badge bg-danger">{{count(Cart::content())}}</span>
                             </a>
                         </div>
 
@@ -549,13 +549,13 @@
                 , to: 1000
                 , grid: true
             });
-        console.log('he,llo')
+        
     })
 
     </script>
 
 
-
+{{-- 
 <script>
     document.addEventListener('livewire:init', () => {
         // Runs after Livewire is loaded but before it's initialized
@@ -565,7 +565,7 @@
         
     })
  
-</script>
+</script> --}}
 
 
 
@@ -675,6 +675,47 @@
 
         })
 
+
+
+
+
+
+//==================== ADD TO CART FUNCTION=====================//
+
+
+   function AddCart(id) {
+            $.ajax({
+                url: "{{route('frontend.contant.AddToCart')}}",
+                 type: 'POST',
+                  data: {id:id,},
+                dataType:'json',
+                success:function(response){
+                   
+                  let cart =[];
+                    cart = response;
+                   
+                   if(cart.status == true){
+                     $('#cartCount').html(cart.cartCount);
+
+                     console.log(cart.cartCount)
+                    alert(cart.message)
+    
+                   }else{
+                    alert(cart.message)
+                   }
+    
+                } 
+            });
+        }
+    
+
+
+
+//=====================ADD TO CART FUNTIOIN END========================//
+
+
+
+
     </script>
 
 
@@ -686,32 +727,7 @@
 
     {{-- <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script> --}}
     
-    <script>
-        function AddCart(id) {
-            $.ajax({
-                url: "{{route('frontend.contant.AddToCart')}}",
-                 type: 'POST',
-                  data: {id:id,},
-                dataType:'json',
-                success:function(response){
-                    // console.log(response) 
-                  let cart =[];
-                    cart = response;
-                   
-                   if(cart.status == true){
-                     $('#cartCount').html(cart.cartCount);
-                    alert(cart.message)
-    
-                   }else{
-                    alert(cart.message)
-                   }
-    
-                } 
-            });
-        }
-    
-    </script>
-
+   
 
     
 </body>

@@ -72,7 +72,14 @@ class CartController extends Controller
 
 
 
-
+private function getCartDetails()
+{
+    return [
+        'newSubtotal' => Cart::subtotal(),
+        'newTotalPrice' => Cart::total(),
+        'cartCount' => Cart::count(),
+    ];
+}
 
 
 
@@ -91,18 +98,12 @@ public function UpdateCart(Request $request)
     Cart::update($request->rowId, $request->qty);
 
     $itemTotal = $item->price * $request->qty;
-    $newSubtotal = Cart::subtotal();
-    $newTotalPrice = Cart::total();
-    $cartCount=Cart::count();
-    $cartSubTotal=Cart::subtotal();
-    return response()->json([
+    
+    $cartDetails = $this->getCartDetails();
+    return response()->json(array_merge([
         'status' => true,
         'itemTotal' => $itemTotal,
-        'newSubtotal' => $newSubtotal,
-        'newTotalPrice' => $newTotalPrice,
-        'cartCount' => $cartCount,
-        // 'cartSubTotal' => $cartSubTotal,
-    ]);
+    ], $cartDetails));
 }
 
 
@@ -111,10 +112,15 @@ public function UpdateCart(Request $request)
 
 
 
- public function delete($rowId){
+ public function delete( Request $request, $rowId){
 
     Cart::remove($rowId);
-    return back();
+    $cartDetails = $this->getCartDetails();
+
+    return response()->json(array_merge([
+        'status' => "delete",
+        'message' => 'Deleted successfully',
+    ], $cartDetails));
     
  }
 

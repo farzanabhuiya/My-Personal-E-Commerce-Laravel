@@ -48,7 +48,7 @@ Route::post('/singlePage/{product}/ratting', [RattingController::class, 'store']
 Route::get('/cart', [CartController::class, 'cart'])->name('frontend.contant.Cart')->middleware("auth");
 Route::post('/AddToCart', [CartController::class, 'AddToCart'])->name('frontend.contant.AddToCart')->middleware("auth");
 Route::put('/UpdateCart', [CartController::class, 'UpdateCart'])->name('frontend.contant.UpdateCart')->middleware("auth");
-Route::delete('/UpdateCart/{rowId}', [CartController::class, 'delete'])->name('frontend.contant.deleted')->middleware("auth");
+Route::delete('/delete/{rowId}', [CartController::class, 'delete'])->name('frontend.contant.deleted')->middleware("auth");
 
 
 //======================= CHECKOUT ROUTE======================//

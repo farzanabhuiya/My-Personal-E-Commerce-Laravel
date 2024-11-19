@@ -31,7 +31,7 @@ function showToast(message, icon = 'success') {
 
 // ============== THIS FUNTION  IS RUN EVERY DELETE CONTANT=================//  
 
-function deleteajax(brandId, deleteUrl) {
+function deleteajax(Id, deleteUrl) {
     Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -51,7 +51,7 @@ function deleteajax(brandId, deleteUrl) {
                 success: function (response) {
 
                     // ================REMOVE tr WHENE DATA IS DELETED===================//
-                    $('#category-row-' + brandId).remove();
+                    $('#category-row-' + Id).remove();
                     // ================REMOVE tr WHENE DATA IS DELETED END===================//
                     Swal.fire(
                         'Deleted!',
@@ -59,12 +59,37 @@ function deleteajax(brandId, deleteUrl) {
                         'success'
                     );
                     //    =====================RESET ID WENE DELETE ANY DATA=====================//
-                    $('#categoryTable tbody tr').each(function (index) {
-                        $(this).find('.row-number').text(index + 1);
-                    });
+// ==================== ITS WORK FOR DASHBORD ITEM DELETE====================//
+                    let tableId = find("#categoryTable");
+                   
+                    if (tableId == false) {
+                        $('#categoryTable tbody tr').each(function (index) {
+                            $(this).find('.row-number').text(index + 1);
+                        });
+
+
+                    } 
+                    
+   //=================ITS WORK FOR SHOPPING CART ITEM DELETE======================//                 
+                    if(response.status=='delete') {
+
+
+                        $('#item-total' + Id).text((parseFloat(response.itemTotal)).toFixed(2));
+
+                        $('#cart-subtotal').text((response.newSubtotal));
+                        $('#cart-total-price').text((response.newSubtotal));
+                        $('#cartCount').text((parseFloat(response.cartCount)).toFixed(2));
+
+                        $('#cart-row-' + Id).remove();
+
+                        console.log("nay")
+                    }
+
+
+
 
                     //    =====================RESET ID WENE DELETE ANY DATA EMD=====================//
-                    // location.reload();
+
                 },
                 error: function (xhr) {
                     Swal.fire(

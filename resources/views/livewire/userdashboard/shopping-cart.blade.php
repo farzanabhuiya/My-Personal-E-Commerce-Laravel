@@ -24,8 +24,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($cartContents as $item)
-                                    <tr>
+                                @foreach ($cartContents as $key=> $item)
+                                    <tr id="cart-row-{{$key }}">
                                         <td>
                                             <?php
                                             $imageString = $item->options[0] ?? '';
@@ -67,14 +67,10 @@
                                         </td>
 
                                         <td>
-                                            <button class="btn btn-sm btn-danger deleteBtn">
+                                            <button data-id="{{$item->rowId}}" class="btn btn-sm btn-danger deleteBtn">
                                                 <i class="fa fa-times"></i>
                                             </button>
-                                            <form action="{{ route('frontend.contant.deleted', $item->rowId) }}"
-                                                method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
+                                          
                                         </td>
                                     </tr>
                                 @endforeach
@@ -170,9 +166,7 @@
 
 
                         $('#item-total-' + rowId).text((parseFloat(response.itemTotal)).toFixed(2));
-
-
-                        console.log(response.cartCount)
+                      
                         $('#cart-subtotal').text((response.newSubtotal));
                         $('#cart-total-price').text((response.newSubtotal));
                         $('#cartCount').text((parseFloat(response.cartCount)).toFixed(2));
@@ -191,25 +185,26 @@
 
 
 
-   
+
+    <script src="{{ asset('js/sweetalert.js') }}"></script>
+
     <script>
-        $('.deleteBtn').click(function(event) {
+        $(".deleteBtn").on('click', function() {
 
-            event.preventDefault()
-            Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $(this).next('form').submit().prev()
-                }
-            });
 
-        });
+
+            let rowId = $(this).data('id');
+
+
+            let deleteUrl = "{{ route('frontend.contant.deleted', ':id') }}".replace(':id', rowId);
+            deleteajax(rowId, deleteUrl)
+
+
+
+        })
     </script>
+
+
+
+ 
 @endpush

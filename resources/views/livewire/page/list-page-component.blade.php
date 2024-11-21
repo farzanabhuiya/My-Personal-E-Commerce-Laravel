@@ -1,64 +1,31 @@
 <div>
-    <section class="content-header">					
-        <div class="container-fluid my-2">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Pages</h1>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <a href="create-page.html" class="btn btn-primary">New Page</a>
-                </div>
-            </div>
-        </div>
-        <!-- /.container-fluid -->
-    </section>
-    <!-- Main content -->
-    <section class="content">
-        <!-- Default box -->
-        <div class="container-fluid">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-tools">
-                        <div class="input-group input-group" style="width: 250px;">
-                            <input type="text" wire:model.live="search" class="form-control float-right" placeholder="Search">
-        
-                            <div class="input-group-append">
-                              <button type="submit" class="btn btn-default">
-                                <i class="fas fa-search"></i>
-                              </button>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-                <div class="card-body table-responsive p-0">								
-                    <table class="table table-hover text-nowrap">
-                        <thead>
-                            <tr>
-                                <th width="60">ID</th>
-                                <th>Name</th>
-                                <th>Content</th>
-                                <th width="10">Status</th>
-                                <th width="100">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($pages as $key=>$page)
-                        <tr>
-                            <td><a href="{{route('Page.detail',[$page->id])}}">{{ $pages->firstITEM()+$key }}</td>
-                            <td><a href="{{route('Page.detail',[$page->id])}}">{{$page->name}}</td>
-                            <td>{!! Str::length($page->content) > 50 ? substr($page->content,0,50).'....' : $page->content !!}</td>
-                            <td>
-                                @if ($page->status==1)
-                                <svg wire:click='toggleStatus({{$page->id}})' class="text-success-50 text-success" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                @else
+ 
+    <div class="container ">
+        <div class="row align-items-stretch">
 
-                                <svg wire:click='toggleStatus({{$page->id}})' class="text-danger " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                @endif
-                            </td>
+            @foreach ($pages as $key=>$page)
+            
+            <div class="col-lg-3 col-md-4  d-flex">
+                <a href="{{route('Page.detail',[$page->id])}}" class="text-decoration-none">
+                    <div class="card text-center bg-info shadow-sm text-white" style="padding: 10px;">
+                        <div class="card-body p-2">
+                            <div class="d-flex justify-content-center mb-2">
+                             
+                                <td>
+                                    <?php
+                                    $pagePhoto = json_decode($page->image, true);
+                                    
+                                    ?>
+                                    <a href="{{ !empty($pagePhoto[0])? asset('storage/PageImage/' . $pagePhoto[0]):"" }}"
+                                        target="_blank"> <img
+                                            src="{{ !empty($pagePhoto[0])? asset('storage/PageImage/' . $pagePhoto[0]): "" }}"
+                                            class="img-thumbnail" width="80" height="100"> </a>
+                                </td>
+
+                            </div>
+                            <h5 class="card-title mb-1"><a href="{{route('Page.detail',[$page->id])}}">{{$page->name}}</h6> 
+                            <p  class="mb-2">{!! Str::length($page->content) > 40 ? substr($page->content,0,40).'....' : $page->content !!}</p> 
+                        
                             <td>
                                 <a href="{{route('Page.edit',$page->id)}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
@@ -76,20 +43,17 @@
                                     @method('DELETE')
                                 </form>
                             </td>
-                        </tr>	
-                        @endforeach
-                          									
-                        </tbody>
-                    </table>										
-                </div>
-                <div class="card-footer clearfix">
-                    {{$pages->links()}}	
-                </div>
+                        </div>
+                    </div>
+                </a>
             </div>
+            @endforeach 
+  
+            
+
         </div>
-        <!-- /.card -->
-    </section>
-    <!-- /.content -->
+    </div>
+
 </div>
 
 

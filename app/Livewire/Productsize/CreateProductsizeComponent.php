@@ -27,7 +27,8 @@ class CreateProductsizeComponent extends Component
     $productsize->size= $this->size;
     $productsize->save();
     $this->reset();
-    return back()->with('success','ProductSizes Successfull Create');
+    $this->dispatch('toast', message:'Data stored successfully!'); 
+    return back();
     
 
     }

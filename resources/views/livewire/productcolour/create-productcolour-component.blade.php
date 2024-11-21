@@ -71,3 +71,15 @@
     </div>
 
 </div>
+
+@push('customJs')
+
+
+
+<script>
+    $(document).ready(function(){  
+    showToast('Data stored successfully!')
+    
+    })   
+    </script>
+@endpush

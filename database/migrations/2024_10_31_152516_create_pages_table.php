@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('image')->nullable();
             $table->text('content')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

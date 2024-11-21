@@ -41,6 +41,32 @@
                                 </div>
                                 
                             </div>	
+
+
+                            <div  class="col-md-6">           
+                           
+
+                                <label for="formFile" class="form-label">Page Image</label>
+                                 <input  wire:model="image" class="form-control" type="file" id="formFile">  
+     
+                                 <div wire:loading wire:target="image"><h5>Uploading...</h5></div>
+                               @if ($image) 
+                             <img src="{{ $image->temporaryUrl() }}" width="200px" class="mt-2">
+                              @endif   
+                                             @error('image') <span class="error text-danger">{{ $message }}</span> @enderror
+     
+     
+                             </div>
+
+                             <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="slug">Slug</label>
+                                    <input wire:model='slug' type="text" id="slug"  class="form-control" placeholder="Slug">	
+                                   	
+                                </div>
+                            </div>	
+    
+
                             <div class="col-md-12">
                                 <div class="mb-3" wire:ignore>
                                     <labe  for="content">Content</labe>

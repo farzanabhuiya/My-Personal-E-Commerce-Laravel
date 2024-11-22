@@ -75,23 +75,11 @@
 
           <!-- First Column (col-4) -->
 
-         
-
-        
-          
-         
-
-        
-
 
           <!-- Second Column (col-8) -->
           <div class=" col-md-12 custom-column  overflow-auto" >
 
             <div class="row">
-
-             
-
-           
 
             <!-- <img class="filter" src="/svg/filter.svg" alt=""> -->
 

@@ -55,7 +55,7 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
             Route::get('/', 'index')->name('index');
             Route::get('/story', 'story')->name('story');
             Route::get('/edit/{id}', 'edit')->name('edit');
-            Route::delete('/delete/{id}', 'deleted')->name('delete');
+            Route::delete('/delete/{id}', 'delete')->name('delete');
         }
     );
 });

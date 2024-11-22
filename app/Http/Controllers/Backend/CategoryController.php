@@ -34,7 +34,6 @@ class CategoryController extends Controller
      {
         
          $Categorie = Categorie::find($id);
-     
       
          if ($Categorie) {
              $Categorie->delete(); 

@@ -23,9 +23,19 @@ class PageController extends Controller
     }
 
     public function delete($id){
-        Page::find($id)->delete();
-        return back();
-       }
+         
+        $page = Page::find($id);
+    
+     
+        if ($page) {
+            $page->delete(); 
+            return response()->json(['success' => 'page deleted successfully!']);
+        } else {
+            return response()->json(['error' => 'page not found!'], 404); 
+        }
+    }
+
+       
 
     public function PageDetail($id){
         return view('admin.Page.PageDetails',compact('id'));

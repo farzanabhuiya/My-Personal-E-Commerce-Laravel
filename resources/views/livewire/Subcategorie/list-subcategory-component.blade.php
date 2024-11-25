@@ -60,9 +60,10 @@
                             </thead>
                             <tbody>
                            
-                             @foreach ($subcategories as $subcategorie)
-                             <tr>
-                                <td>{{$subcategorie->id}}</td>
+                             @foreach ($subcategories as  $key =>$subcategorie)
+                             <tr id="category-row-{{$subcategorie->id}}">
+                                
+                                <td>{{ $subcategories->firstItem() + $key }}</td>
                                 <td>{{$subcategorie->name}}</td>
                                 <td>{{$subcategorie->slug}}</td>
                                 <td>{{$subcategorie->categorie->name}}</td>

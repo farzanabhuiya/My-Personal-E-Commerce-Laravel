@@ -19,7 +19,7 @@ class SubCategorieController extends Controller
     }
 
 
-    public function story(){
+    public function store(){
         return view('admin.Subcategorie.list-subcategorie');
     }
 
@@ -27,15 +27,37 @@ class SubCategorieController extends Controller
         return view('admin.Subcategorie.edit-subcategory',compact('id'));
     }
     
-    public function deleted($id){
-        Subcategorie::find($id)->delete();
-        return back()->with('success','Subcategories Successfull deleted');
-       }
-
-       
+    
     ///product page subcategorie
    public function getSubcategories(Request $request){
     $subcategories= Subcategorie::where('categorie_id',$request->categoryId)->get();
     return $subcategories;
   }
+
+  
+
+
+// ==================DELETE SUBCATEGORIE =======================//
+
+
+  public function delete(Request $request, $id)
+  {
+     
+    $Subcategorie=  Subcategorie::find($id);
+   
+      if ($Subcategorie) {
+          $Subcategorie->delete(); 
+          return response()->json(['success' => 'Categorie deleted successfully!']);
+      } else {
+          return response()->json(['error' => 'Categorie not found!'], 404); 
+      }
+  }
+
+
+// ==================DELETE SUBCATEGORIE END =======================//
+
+
+
+
+
 }

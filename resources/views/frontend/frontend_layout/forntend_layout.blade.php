@@ -344,6 +344,8 @@
 
 
 
+
+
     <div class=" bg-secondary position2  shadow" >
 
         <div class="container m-auto">
@@ -463,7 +465,7 @@
 
 
     <!-- fontawsom -->
-    @livewireScripts
+    
     
     <script src="https://kit.fontawesome.com/1159b8e81c.js" crossorigin="anonymous"></script>
 
@@ -480,7 +482,7 @@
 
     
     @stack('frontendJs')
-    {{-- @livewireScripts --}}
+
 
 
     <script>
@@ -721,7 +723,7 @@
 
 
 
-    {{-- @livewireScripts --}}
+
 
 
 

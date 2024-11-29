@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <div class="card">
                     {{-- <form wire:submit="addCategory"  method="post"> --}}
-                        <form  method="post">
+                        
                 
     
                     <div class="card-header">
@@ -43,7 +43,7 @@
                         </div>
                      
                     </div>
-                </form>
+                
                     <div class="card-body">								
                         <table class="table table-hover text-nowrap" id="categoryTable">
                             <thead>
@@ -128,20 +128,21 @@
 
     <script>
 
-    $(".delete_categorie").on('click', function() {
-
-   
-
-       let brandId = $(this).data('id');
-       
-       var deleteUrl = "{{ route('category.delete', ':id') }}".replace(':id', brandId);
-       deleteajax(brandId, deleteUrl)
     
 
 
-})
 
-showToast('Status updated successfully!')
+$(document).on('click', '.delete_categorie', function() {
+    let Id = $(this).data('id');
+
+    var deleteUrl = "{{ route('category.delete', ':id') }}".replace(':id', Id);
+
+    // Delete AJAX Function
+    deleteajax(Id, deleteUrl);
+});
+
+
+
     
     
     

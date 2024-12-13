@@ -31,6 +31,7 @@ class CreateShippingComponent extends Component
     $shippings->save();
     $this->reset();
     $this->dispatch('toast',message:'Data stored successfully!');
+    $this->dispatch('shippingUpdated');
     return back();
    
     

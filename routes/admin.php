@@ -162,10 +162,16 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
     
   //===================ALL SHIPPING ROUTE=======================//
 Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
-    Route::prefix('/backend/shipping')->controller(ShippingController::class)->name('Shipping.')->group(
+    Route::prefix('/admin/shipping')->controller(ShippingController::class)->name('Shipping.')->group(
         function(){
+
+
             Route::get('/' ,'index')->name('index');
+            
             Route::get('/store' ,'store')->name('store');
+            // Route::get('/store' ,'store')->name('store');
+
+
             Route::get('/edit/{id}','edit')->name('edit');
             Route::delete('/delete/{id}','delete')->name('delete');
             

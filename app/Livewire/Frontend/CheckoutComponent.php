@@ -181,9 +181,10 @@ class CheckoutComponent extends Component
                 $orderItem->price = $item->price;
                 $orderItem->total = $item->price * $item->qty;
                 $orderItem->save();
+
             }
           
-            // Cart::destroy();
+            Cart::destroy();
         }
         
         // function orderEmail($orderId){

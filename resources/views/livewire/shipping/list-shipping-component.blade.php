@@ -1,7 +1,6 @@
 <div>
    
 
-
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">					
@@ -12,7 +11,7 @@
                         <h1>Shipping</h1>
                     </div>
                     <div class="">
-                        <a href="{{route('Shipping.index')}}" class="btn btn-primary">New Shipping</a>
+                        <a href="{{route('Shipping.store')}}" class="btn btn-primary">New Shipping</a>
                     </div>
                    </div>
                 </div>
@@ -25,15 +24,16 @@
             <div class="container-fluid">
                 <div class="card">
                     
-                        <form  method="post">
+                     
                 
     
                     <div class="card-header">
                         <div class="card-tools ">
                             
                             <div class="input-group input-group" style="width: 250px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-            
+                                <input wire:model.live="search" type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                
+                               
                                 <div class="input-group-append">
                                   <button type="submit" class="btn btn-default">
                                     <i class="fas fa-search"></i>

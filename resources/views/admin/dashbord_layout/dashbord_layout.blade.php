@@ -995,11 +995,11 @@
                                     <a href="javascript:void(0)">Shipping</a>
                                 </li>
                                 <li class="slide">
-                                    <a href="{{ route('Shipping.store') }}" class="side-menu__item">Avilable
+                                    <a href="{{ route('Shipping.index') }}" class="side-menu__item">Avilable
                                         Shipping</a>
                                 </li>
                                 <li class="slide">
-                                    <a href="{{ route('Shipping.index') }}" class="side-menu__item">Add New</a>
+                                    <a href="{{ route('Shipping.store') }}" class="side-menu__item">Add New</a>
                                 </li>
                                 
                             </ul>

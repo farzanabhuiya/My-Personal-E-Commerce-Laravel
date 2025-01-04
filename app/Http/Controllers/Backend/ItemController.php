@@ -27,7 +27,16 @@ class ItemController extends Controller
     }
 
     public function delete($id){
-        Item::find($id)->delete();
-        return back()->with('success','Items Successfull deleted');
+        
+        $item = Item::find($id);
+    
+     
+        if ($item) {
+            $item->delete(); 
+            return response()->json(['success' => 'Item deleted successfully!']);
+        } else {
+            return response()->json(['error' => 'Item not found!'], 404); 
+        }
     }
-}
+
+    }

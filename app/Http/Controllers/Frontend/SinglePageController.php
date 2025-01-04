@@ -23,10 +23,12 @@ class SinglePageController extends Controller
        
 
         $relatedproducts=[];
-        if($product->related_products != ''){
+        if($product->related_products != null){
           $productArray = explode(',',$product->related_products);
           $relatedproducts = product::whereIn('id',$productArray)->get();
     
+        }else{
+            $relatedproducts = [];
         }
     
 

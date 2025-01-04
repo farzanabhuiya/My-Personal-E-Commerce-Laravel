@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 class ShippingController extends Controller
 {
     public function index(){
-        return view('admin.Shipping.create-shipping');
+        return view('admin.Shipping.list-shipping');
     }
 
 
     public function store(){
-        return view('admin.Shipping.list-shipping');
+        return view('admin.Shipping.create-shipping');
     }
      
     

@@ -17,7 +17,7 @@ class CreateDiscountCouponComponent extends Component
     public $type="";
     public $discount_amount ="";
     public $min_amount ="";
-    public $status="";
+    public $status=1;
     public $starts_at ="";
     public $expires_at ="";
     public $request ="";

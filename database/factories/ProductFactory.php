@@ -25,7 +25,7 @@ class ProductFactory extends Factory
             'short_description' => $this->faker->sentence,
             'shipping_returns' => $this->faker->sentence,
             'related_products' => $this->faker->sentence,
-            'image' => $this->faker->imageUrl(640, 480, 'products'),
+            // 'image' => $this->faker->imageUrl(640, 480, 'products'),
             'price' => $this->faker->randomFloat(2, 10, 1000),
             'compare_price' => $this->faker->optional()->randomFloat(2, 10, 1000),
             'categorie_id' =>$this->faker->randomElement([1,2,3,4]),
@@ -44,6 +44,7 @@ class ProductFactory extends Factory
             'offer_type' => $this->faker->randomElement(['percent', 'fixed']),
             'productsize_id' => $this->faker->randomElement([1,2,3,4]),
             'productcolour_id' => $this->faker->randomElement([1,2,3,4]),
+            'image' => $this->faker->image(storage_path('ProductImage'), 50, 50)
 
 
 

@@ -58,7 +58,7 @@ class CreateBrandComponent extends Component
     $brand->save();
     $this->reset();
     $this->dispatch('toast',message:'Data stored successfully!');
-    return back()->with('success','Brand Successfull Create');
+    return back();
     
 
     }

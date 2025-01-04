@@ -26,7 +26,8 @@ class CreateProductcolourComponent extends Component
     $productcolour->colour= $this->colour;
     $productcolour->save();
     $this->reset();
-    return back()->with('success','ProductColour Successfull Create');
+    $this->dispatch('toast', message:'Data stored successfully!'); 
+    return back();
     
 
     }

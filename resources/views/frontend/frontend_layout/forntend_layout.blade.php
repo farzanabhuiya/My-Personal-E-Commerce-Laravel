@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- custom css -->
     <link rel="stylesheet" href="{{asset('frontend/asset/style.css')}}">
 
@@ -359,8 +359,8 @@
                 <div class="dropdown" >
                     @foreach ( $categorie as $category )
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{$category->name}} 
-                    </a>
+                        {{ Str::title($category->name)  }} 
+                    </a>    
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         @foreach ($category->Subcategorie as $Subcategorie)
@@ -393,11 +393,12 @@
         <div class="container-fluid m-auto">
             <div class="row m-auto">
                 <div class=" col-sm-6 col-md-4 col-lg-2">
-                    <p>About</p>
+                    
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Contact Us</a></li>
-                        <li><a href="#" class="text-white">About Us</a></li>
-                        <li><a href="#" class="text-white">Corporete Informatoin</a></li>
+                        <li><a href="{{route('frontend.contant.homepage')}}" class="text-white">Home</a></li>
+                        {{-- @foreach ($pages as $page )
+                        <li><a href="{{route('frontend.contant.page',$page->slug)}}" title="" class="text-white">{{$page->name}}</a></li>
+                        @endforeach --}}
                     </ul>
                 </div>
                 <div class=" col-sm-6  col-md-4 col-lg-2">
@@ -663,7 +664,7 @@
 
 
 
-{{-- form submit --}}
+
 
 
  $('.logout').click(function(){

@@ -9,6 +9,7 @@ use App\Models\Shipping;
 class EditShippingComponent extends Component
 {
 
+  
     public $id="";
     public $district_id="";
     public $amount="";
@@ -18,16 +19,15 @@ class EditShippingComponent extends Component
         $shipping= Shipping::find($id);
         $this->id =$shipping->id;
         $this->district_id = $shipping->district_id;
-        $this->amount = $shipping->ashipping;
+        $this->amount = $shipping->amount;
    }
 
 
    public function UpdateShipping($id){
     $this->validate([
   
-      'district_id'=> 'required|unique:shippings,district_id',
-      'amount'=> 'required',
       
+      'amount'=> 'required',
  
     ]);
      
@@ -35,15 +35,19 @@ class EditShippingComponent extends Component
      $shippings->district_id= $this->district_id;
      $shippings->amount= $this->amount;
      $shippings->save();
-     $this->reset();
+    //  $this->reset();
+    $this->dispatch('shippingUpdated');
      return back()->with('success','Shipping Successfull Upadte');
      
  
      }
     public function render()
     {
-        $districtes=District::orderBy('district_name','ASC')->get();
+
+        //    ->paginate($this->paginate)
+        $districtes=District::get();
         $shippings = Shipping::with('district')->get();
+        
         return view('livewire.shipping.edit-shipping-component',compact('districtes','shippings'));
     }
 }

@@ -13,8 +13,8 @@ class Create extends Component
     use SlugGenerator;
     public $name="";
     public $slug="";
-    public $status;
-    public $showhome;
+    public $status=1;
+    public $showhome='Yes';
 
 
     function addCategory(){
@@ -31,6 +31,7 @@ class Create extends Component
     $category->status = $this->status;
     $category->showhome = $this->showhome;
     $category->save();
+    $this->dispatch('createCtaegorie');
     $this->reset();
     
 

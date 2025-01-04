@@ -162,10 +162,16 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
     
   //===================ALL SHIPPING ROUTE=======================//
 Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () { 
-    Route::prefix('/backend/shipping')->controller(ShippingController::class)->name('Shipping.')->group(
+    Route::prefix('/admin/shipping')->controller(ShippingController::class)->name('Shipping.')->group(
         function(){
+
+
             Route::get('/' ,'index')->name('index');
-            Route::get('/store' ,'store')->name('store');
+            
+            Route::get('/create' ,'store')->name('store');
+            // Route::get('/store' ,'store')->name('store');
+
+
             Route::get('/edit/{id}','edit')->name('edit');
             Route::delete('/delete/{id}','delete')->name('delete');
             
@@ -184,7 +190,11 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
            
             Route::get('/all-user','allUser')->name('alluser');
             Route::get('/assen-roll/{id}','assenRoll')->name('assenroll');
+
             Route::get('/add-roll','addRoll')->name('addroll');
+
+            Route::get('/order-all','allOrder')->name('allOrder');
+
             
     
     
@@ -217,6 +227,8 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
             Route::get('/story' ,'story')->name('story');
              Route::get('/edit/{id}','edit')->name('edit');
             Route::delete('/delete/{id}','delete')->name('delete');
+            Route::get('/detail/{id}' ,'PageDetail')->name('detail');
+       
     
         }
     );

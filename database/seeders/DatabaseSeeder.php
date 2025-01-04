@@ -21,13 +21,13 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             DistrictSeeder::class,
-            CategorieSeeder::class,
-            SubCategorieSeeder::class,
-            BrandSeeder::class,
-            ItemSeeder::class,
-            ProductColourSeeder::class,
-            ProductSizeSeeder::class,
-            ProductSeeder::class,
+            // CategorieSeeder::class,
+            // SubCategorieSeeder::class,
+            // BrandSeeder::class,
+            // ItemSeeder::class,
+            // ProductColourSeeder::class,
+            // ProductSizeSeeder::class,
+            // ProductSeeder::class,
             
         
 

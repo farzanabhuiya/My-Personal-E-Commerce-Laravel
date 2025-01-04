@@ -42,8 +42,10 @@ class ShowAll extends Component
         ->where('name', 'like', '%' . $this->search . '%') 
         ->orWhere('slug', 'like', '%' . $this->search . '%') 
         ->latest()
+
         ->paginate($this->Show_categorie);
         
+
     
         return view('livewire.categorie.show-all',[
             'categories' => $categories,

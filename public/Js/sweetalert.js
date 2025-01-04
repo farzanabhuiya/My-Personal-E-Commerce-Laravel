@@ -82,7 +82,7 @@ function deleteajax(Id, deleteUrl) {
 
                         $('#cart-row-' + Id).remove();
 
-                        console.log("nay")
+                        
                     }
 
 

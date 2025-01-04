@@ -24,7 +24,7 @@ class DashbordController extends Controller
     }
 
 
-    // ===================assenRoll=================================//
+    // ===================ASSEN Roll IN USER=================================//
 
     function assenRoll($id){
 
@@ -37,6 +37,15 @@ class DashbordController extends Controller
 
         return view('');
 
+    }
+
+
+    // =========================ADD ROLL =======================//
+    
+
+    public function addRoll(){
+        return view("admin.addRoll.addRoll");
+          
     }
 
 

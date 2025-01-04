@@ -1,5 +1,5 @@
 <div>
-    {{-- The Master doesn't talk, he acts. --}}
+
 
 
 
@@ -61,7 +61,7 @@
                                     <input type="checkbox" wire:model.lazy="selectedDiscounts" value=10> 0-10%<br>
                                     <input type="checkbox" wire:model.lazy="selectedDiscounts" value=20> 10-20%<br>
                                     <input type="checkbox" wire:model.lazy="selectedDiscounts" value=30> 20-30%<br>
-                                   
+
                                 </div>
 
                             </div>
@@ -85,7 +85,7 @@
 
                             <div class="card mt-3 ">
 
-                                 <span>
+                                <span>
                                     <a class="btn  m-2" type="button">
                                         All Brand
                                         <i class="fas fa-chevron-down" id="toggle-icon"></i>
@@ -93,7 +93,7 @@
                                 </span>
 
                                 </hr>
-                                <div  id="Brand">
+                                <div id="Brand">
                                     <div class=" card-body">
                                         @forelse ($brands as $brand)
                                             <div>
@@ -103,13 +103,12 @@
                                                     for="brand">{{ $brand->name }} </label>
                                             </div>
 
-                                            
-                                            @empty
-                                            <h1>No product found</h1>
 
+                                        @empty
+                                            <h1>No product found</h1>
                                         @endforelse
 
-                           
+
 
 
                                     </div>
@@ -206,10 +205,8 @@
 
 
                             @if (!empty($subcategoryProducts->product))
-                                
+
                                 @forelse ($subcategoryProducts->product as $product)
-                                        
-                            
                                     <div class="col-12 col-sm-6 col-md-4 col-xl-3">
                                         <div class="card shadow mt-3">
                                             <div class="image-container">
@@ -243,7 +240,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                        
+
                                 @empty
                                     <div class="col-12">
                                         <h3>No products found for this subcategory.</h3>
@@ -292,8 +289,10 @@
                                 @php
                                     $images = json_decode($FutureProduct->image);
                                 @endphp
+                                @if (!empty($images) && isset($images[0]))
                                 <img src="{{ asset('storage/ProductImage/' . $images[0]) }}" class="card-img-top">
                                 <div class="text-overlay"><i class="fa-regular fa-heart"></i></div>
+                                @endif
                             </div>
                             <div class="card-body">
                                 <p class="card-text">Brand Name: <span

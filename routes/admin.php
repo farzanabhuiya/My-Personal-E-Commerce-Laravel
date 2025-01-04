@@ -53,7 +53,7 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
     Route::prefix('/backend/subcategorie')->controller(SubCategorieController::class)->name('Subcategorie.')->group(
         function () {
             Route::get('/', 'index')->name('index');
-            Route::get('/story', 'story')->name('story');
+            Route::get('/store', 'store')->name('story');
             Route::get('/edit/{id}', 'edit')->name('edit');
             Route::delete('/delete/{id}', 'delete')->name('delete');
         }
@@ -190,7 +190,11 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
            
             Route::get('/all-user','allUser')->name('alluser');
             Route::get('/assen-roll/{id}','assenRoll')->name('assenroll');
+
+            Route::get('/add-roll','addRoll')->name('addroll');
+
             Route::get('/order-all','allOrder')->name('allOrder');
+
             
     
     

@@ -186,7 +186,7 @@
         
                
 
-                        <div class="card payment-form pt-2 my-4"> 
+                        <div class="card payment-form pt-2 my-4 p-3"> 
                             <h3 class="card-title h5 mb-3">Payment Method</h3> 
                             <div>
                                
@@ -241,16 +241,18 @@
 
 
 
-@push('customJs')
+@push('frontendJs')
 <script>
+
+
     $('#payment_method_one').click(function(){
+
        if( $(this).is(':checked')==true){
 
             $('#card-payment-form').addClass('d-none');
 
        }
     });
-
 
 
     $('#payment_method_tow').click(function(){

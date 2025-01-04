@@ -55,9 +55,11 @@ class ListSubcategoryComponent extends Component
 
 
         $subcategories = Subcategorie::query()
-        ->where('name', 'like', '%' . $this->search . '%')->paginate(6);
+        ->where('name', 'like', '%' . $this->search . '%')->latest()->paginate(10);
         return view('livewire.subcategorie.list-subcategory-component',[
             'subcategories' => $subcategories,
         ]);
+
+        
     }
 }

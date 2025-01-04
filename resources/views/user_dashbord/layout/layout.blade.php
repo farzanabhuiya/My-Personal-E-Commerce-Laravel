@@ -453,7 +453,7 @@
     
     
     @stack('frontendJs')
-    @livewireScripts
+    {{-- @livewireScripts --}}
 
     <script>
         $.ajaxSetup({

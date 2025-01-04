@@ -31,5 +31,13 @@ class DashbordController extends Controller
         return view('admin.alluser.assenRoll',compact('id'));
     }
 
+    // ==================== ALL OORDER===================//
+
+    function allOrder(){
+
+        return view('');
+
+    }
+
 
 }

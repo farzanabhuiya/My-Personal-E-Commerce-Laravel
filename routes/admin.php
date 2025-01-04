@@ -168,7 +168,7 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
 
             Route::get('/' ,'index')->name('index');
             
-            Route::get('/store' ,'store')->name('store');
+            Route::get('/create' ,'store')->name('store');
             // Route::get('/store' ,'store')->name('store');
 
 
@@ -190,6 +190,7 @@ Route::group(['middleware' => ['role:supper_admin|admin|writter']], function () 
            
             Route::get('/all-user','allUser')->name('alluser');
             Route::get('/assen-roll/{id}','assenRoll')->name('assenroll');
+            Route::get('/order-all','allOrder')->name('allOrder');
             
     
     

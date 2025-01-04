@@ -31,6 +31,7 @@ class Create extends Component
     $category->status = $this->status;
     $category->showhome = $this->showhome;
     $category->save();
+    $this->dispatch('createCtaegorie');
     $this->reset();
     
 

@@ -12,12 +12,12 @@ class ShowAll extends Component
      use WithPagination; 
     
      public $search= '';
-   
+     public $Show_categorie=10;
 
-   
-        
-     
 
+     protected $listeners = ['createCtaegorie' => 'refreshList'];
+  
+    
      public function toggleStatus($id)
      {
         $category = Categorie::find($id);  
@@ -42,8 +42,8 @@ class ShowAll extends Component
         ->where('name', 'like', '%' . $this->search . '%') 
         ->orWhere('slug', 'like', '%' . $this->search . '%') 
         ->latest()
-        ->paginate(8);
-        // $categories = Categorie::where('name', 'like', '%'.$this->search .'%')->paginate(2);
+        ->paginate($this->Show_categorie);
+        
     
         return view('livewire.categorie.show-all',[
             'categories' => $categories,

@@ -27,7 +27,12 @@ class SubCategorieController extends Controller
         return view('admin.Subcategorie.edit-subcategory',compact('id'));
     }
     
-    
+    public function deleted($id){
+        Subcategorie::find($id)->delete();
+        return back()->with('success','Subcategories Successfull deleted');
+       }
+
+       
     ///product page subcategorie
    public function getSubcategories(Request $request){
     $subcategories= Subcategorie::where('categorie_id',$request->categoryId)->get();

@@ -31,6 +31,7 @@ use App\Http\Controllers\userDashboard\UserDashboardController;
 
 
 Route::get('/',[HomePageController::class,'homePage'])->name('frontend.contant.homepage');
+Route::get('/page/{slug}',[HomePageController::class,'page'])->name('frontend.contant.page');
 
               ///productSubcategory route
 Route::get('productSubcategory/{slug}',[ProductSubcategoryController::class,'productSubcategory'])->name('frontend.contant.ProductSubcategory');

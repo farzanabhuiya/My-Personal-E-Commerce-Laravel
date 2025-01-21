@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- custom css -->
     <link rel="stylesheet" href="{{asset('frontend/asset/style.css')}}">
 
@@ -64,7 +64,7 @@
 
 
 
-                <span class="col-1"> <i class="fa-solid fa-bars toogle-icon d-lg-none  d-sm-block "></i></span>
+                <span class="col-1 "> <i class="fa-solid fa-bars toogle-icon nav-icon"></i></span>
 
 
 
@@ -346,7 +346,7 @@
 
 
 
-    <div class=" bg-secondary position2  shadow" >
+    {{-- <div class=" bg-secondary position2  shadow" >
 
         <div class="container m-auto">
 
@@ -359,8 +359,8 @@
                 <div class="dropdown" >
                     @foreach ( $categorie as $category )
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{$category->name}} 
-                    </a>
+                        {{ Str::title($category->name)  }} 
+                    </a>    
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         @foreach ($category->Subcategorie as $Subcategorie)
@@ -377,6 +377,31 @@
 
         </div>
 
+    </div> --}}
+
+
+
+    <div class="nav-manu ">
+
+        <ul class="nav-links">
+            <li class="menu-item">
+                
+                <a href="#" class="toggle-submenu">Home <span class="arrow-icon">  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                  </svg> </span></a>
+                <!-- Submenu -->
+                <ul class="submenu">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        
+        
     </div>
 
 
@@ -393,11 +418,12 @@
         <div class="container-fluid m-auto">
             <div class="row m-auto">
                 <div class=" col-sm-6 col-md-4 col-lg-2">
-                    <p>About</p>
+                    
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Contact Us</a></li>
-                        <li><a href="#" class="text-white">About Us</a></li>
-                        <li><a href="#" class="text-white">Corporete Informatoin</a></li>
+                        <li><a href="{{route('frontend.contant.homepage')}}" class="text-white">Home</a></li>
+                        {{-- @foreach ($pages as $page )
+                        <li><a href="{{route('frontend.contant.page',$page->slug)}}" title="" class="text-white">{{$page->name}}</a></li>
+                        @endforeach --}}
                     </ul>
                 </div>
                 <div class=" col-sm-6  col-md-4 col-lg-2">
@@ -465,12 +491,39 @@
 
 
     <!-- fontawsom -->
-    
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function () {
+    // Toggle submenu on clicking "Home"
+    $('.toggle-submenu').click(function (e) {
+        e.preventDefault(); // Prevent default link behavior
+
+        $(this).siblings('.submenu').slideToggle(300); // Toggle submenu visibility
+
+        // Toggle the arrow direction
+        $(this).find('.arrow-icon').toggleClass('arrow-down');
+    });
+
+    // Hamburger menu toggle
+    $('.nav-icon').click(function (e) {
+        $('.nav-links').toggleClass('left-slider');
+        e.stopPropagation();
+    });
+
+    // Close sidebar when clicking outside it
+    $(document).click(function (e) {
+        if (!$('.nav-links').is(e.target) && $('.nav-links').has(e.target).length === 0) {
+            $('.nav-links').removeClass('left-slider');
+        }
+    });
+});
+    </script>
     
     <script src="https://kit.fontawesome.com/1159b8e81c.js" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  
     
                       {{-- slick-carousel --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
@@ -593,9 +646,9 @@
 
 
 
-            $('.toogle-icon ').click(function(event) {
-                event.stopPropagation()
-                $('.dropdown1').toggleClass('left-slider ')
+            // $('.toogle-icon ').click(function(event) {
+            //     event.stopPropagation()
+            //     $('.dropdown1').toggleClass('left-slider ')
 
 
 
@@ -603,7 +656,13 @@
 
 
 
-            })
+            // })
+
+
+
+
+
+
 
 
 
@@ -663,7 +722,7 @@
 
 
 
-{{-- form submit --}}
+
 
 
  $('.logout').click(function(){

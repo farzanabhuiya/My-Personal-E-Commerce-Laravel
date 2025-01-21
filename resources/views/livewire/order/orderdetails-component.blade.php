@@ -136,6 +136,9 @@
                                         <option value="">Admin</option>
                                     </select>
                                 </div>
+                                <div wire:loading>
+                                    <h4> Saving Order...</h4> 
+                                </div>
                                 <div class="mb-3">
                                     <button class="btn btn-primary">Send</button>
                                 </div>

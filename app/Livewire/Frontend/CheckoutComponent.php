@@ -181,38 +181,32 @@ class CheckoutComponent extends Component
                 $orderItem->price = $item->price;
                 $orderItem->total = $item->price * $item->qty;
                 $orderItem->save();
+
             }
           
-            // Cart::destroy();
+            Cart::destroy();
         }
-
+        
         // function orderEmail($orderId){
-
         //     $order = Order::where('id',$orderId)->with('OrderItem')->first();
         
         $data =[
             'subject' =>'thanks you order',
             'order'  =>$orderId,
            ];
-        
-        
-        //  // dd($order);
-        // Mail::to("shovom677@gmail.com")->send(new OrderShipped($data));
             Mail::to("shovom677@gmail.com")->send(new OrderEmail($data));
         
         //  }
        
-      
-      //$this->reset();
-   
-   
+    
+    $this->reset();
      return redirect()->route('front.contant.thanks',[$orderId]);
     }
 
  
     public function render()
      {
-                            //checkout Error slove start (A non-numeric value encountered)
+                //checkout Error slove start (A non-numeric value encountered)
         $this->grandTotal = (float) str_replace(',', '', Cart::subTotal())-$this->discount + $this->shippingCharge;
         // $gran = gettype($this->discount);
         // dd($this->grandTotal, $gran);

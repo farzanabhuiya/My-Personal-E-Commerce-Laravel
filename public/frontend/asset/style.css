@@ -344,16 +344,151 @@ footer {
 
 .toogle-icon {
   position: fixed;
-  top: 15px;
+  top: 10px;
   left:10px;
   z-index: 3;
   /* color: white; */
   
 }
 
-.slide{
-  padding-top: 2.5rem;
+.slide {
+  position: relative; /* Ensure positioning context */
+  z-index: 1; /* Positive rakha */
 }
+
+.fa-bars{
+  color: #f8efef !important;
+
+  position: relative;
+  top: 10px;
+  right: 0px;
+  /* width: 30px; */
+}
+
+
+
+
+/* start */
+.nav-manu{
+  z-index: 20 !important;
+}
+
+.submenu {
+    display: none; /* Initially hide the submenu */
+    list-style: none;
+    background-color: transparent;
+    padding: 10px 0;
+    margin: 5px 0;
+    /* border: 1px solid white; */
+}
+
+.submenu li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 15px;
+    display: block;
+}
+
+
+
+
+
+
+
+
+.nav-icon {
+display: inline-block;
+/* padding: 10px; */
+
+}
+
+.nav-icon span{
+   
+    width: 34px;
+    height: 3px;
+    background-color: rgb(3, 11, 18);
+    display: flex;
+    margin: 5px 0px;
+
+}
+
+
+.nav-manu{
+
+  position: relative;
+  top: -10px;
+
+}
+.nav-links{
+
+  padding-top: 10px;
+    width: 300px;
+    height: 100vh;
+    background-color: black;
+
+}
+
+.nav-links li{
+
+    line-height: 20px;
+}
+
+.nav-links li a{
+
+    text-decoration: none;
+
+}
+
+.fa-bars{
+    font-size:30px;
+}
+
+.nav-links{
+    position: fixed;
+    /* top: 78px !important; */
+    left: -100%;
+
+    width: 200px;
+    height: 100%;
+    background-color:rgb(8, 7, 6);
+    display: flex;
+    flex-direction: column;
+    
+    transition:left 0.6s ease ;
+    
+
+}
+.nav-links  li a {
+  color: white;
+}
+
+
+
+.left-slider{
+    left: 0px;
+    z-index: 20;
+}
+
+
+.arrow-icon {
+    display: inline-block;
+    margin-left: 1px;
+    transition: transform 0.3s ease; /* Smooth rotation */
+}
+
+.arrow-down {
+    transform: rotate(90deg); /* Rotate the arrow down */
+}
+
+/* end */
+
+
+
+
+
+
+
+
 
 
 
@@ -363,7 +498,7 @@ footer {
  
 
 
-  .dropdown1{
+  /* .dropdown1{
 
     background-color:#fff;
     position: fixed;
@@ -396,17 +531,10 @@ footer {
 
 .night-mode .dropdown1{
   background-color:#0c0808;
-} 
+}  */
 
 
-  .fa-bars{
-    color: #f8efef !important;
-
-    position: relative;
-    top: 10px;
-    right: 0px;
-    /* width: 30px; */
-  }
+  
 
   .night-mode .fa-bars{
     color:white !important;
@@ -456,9 +584,7 @@ footer {
 
   }
  
-  .slide{
-    padding-top: 0px;
-  }
+ 
   
   #account{
     display: flex;
@@ -473,6 +599,24 @@ footer {
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .position2{

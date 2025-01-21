@@ -60,9 +60,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($coupons as $coupon)
-                                <tr>
-                                    <td>{{ $coupon->id }}</td>
+                            @foreach ($coupons as $key =>$coupon)
+                            <tr  id="category-row-{{$coupon->id}}">
+                                    <td>{{ $coupons->firstItem() + $key }}</td>
                                     <td>{{ $coupon->code }}</td>
                                     <td>{{ $coupon->name }}</td>
                                     <td>
@@ -109,7 +109,7 @@
                                             </svg>
                                         </a>
                                         <a href="#" data-id="{{ $coupon->id }}"
-                                            class="text-danger w-4 h-4 mr-1 deleteBtn">
+                                            class="text-danger w-4 h-4 mr-1 delete_coupone">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                 <path
@@ -143,17 +143,29 @@
 
 
     @push('customJs')
-        <script>
-            $(".deleteBtn").on('click', function() {
-
-                let brandId = $(this).data('id');
-                var deleteUrl = "{{ route('Discount.delete', ':id') }}".replace(':id', brandId);
-                deleteajax(brandId, deleteUrl)
-
-
-
-            })
-        </script>
+    <script>
+    
+ 
+        $(".delete_coupone").on('click', function() {
+        
+           
+        
+        let cuponeId = $(this).data('id');
+        
+        var deleteUrl = "{{ route('Discount.delete', ':id') }}".replace(':id', cuponeId);
+        deleteajax(cuponeId, deleteUrl)
+     
+    
+    
+    })
+        
+    
+        {{-- sweet alert --}}
+        showToast('Status updated successfully!')
+    
+    
+    
+            </script>
     @endpush
 
 

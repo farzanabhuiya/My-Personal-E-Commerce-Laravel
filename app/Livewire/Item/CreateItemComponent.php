@@ -21,6 +21,7 @@ class CreateItemComponent extends Component
     public $subcategorie_id=1;
     public $brand_id="";
     public $name="";
+    public $status=1;
     public $slug="";
     public $images=[];
     
@@ -63,6 +64,7 @@ class CreateItemComponent extends Component
     $items->subcategorie_id = $this->subcategorie_id;
     $items->brand_id = $this->brand_id;
     $items->name = $this->name;
+    $items->status = $this->status;
     $items->slug=$this->generateslug($this->name,Item::class);
     $items->image = json_encode($itemPhotos);
     $items->save();

@@ -30,7 +30,10 @@ class CreateShippingComponent extends Component
     $shippings->amount= $this->amount;
     $shippings->save();
     $this->reset();
-    return back()->with('success','Shipping Successfull Create');
+    $this->dispatch('toast',message:'Data stored successfully!');
+    $this->dispatch('shippingUpdated');
+    return back();
+   
     
 
     }

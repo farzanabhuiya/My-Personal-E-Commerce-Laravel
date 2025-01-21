@@ -73,7 +73,7 @@
 
                                                 <div class="d-flex align-items-center justify-content-center">
                                                     <img style="width: 60px;height:50px object-fit:cover;obect-position:center;"
-                                                        src="{{ asset('storage/ProductImage/' . $imageArray[0]) }}">
+                                                        src="{{ !empty($imageArray[0]) ?   asset('storage/ProductImage/' . $imageArray[0]): '' }}">
 
                                                 </div>
                                             </td>

@@ -51,7 +51,7 @@
 
 
                             <div class="col-md-6">
-                                <div class="mb-3">
+                                <div class="mb-3" wire:ignore>
                                     <label for="name">SubCategory</label>
                                     <select  wire:model='subcategorie_id'  id="subcategorie_id" class="form-control subcategorieSelect">
                                        
@@ -81,7 +81,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="status">Status</label>
-                                    <select wire:model='status' id='status' class="form-control">
+                                    <select  wire:model.live='status' id='status' class="form-control">
                                         <option  value="1">Active</option>
                                         <option value="0">Block</option>
                                     </select>
@@ -100,7 +100,7 @@
                            <label for="formFile" class="form-label">Barnd Image</label>
                             <input  wire:model="image" class="form-control" type="file" id="formFile">  
 
-
+                            <div wire:loading wire:target="image"><h5>Uploading...</h5></div>
                           @if ($image) 
                         <img src="{{ $image->temporaryUrl() }}" width="200px" class="mt-2">
                          @endif   
@@ -112,6 +112,9 @@
                             
                         </div>
                     </div>							
+                </div>
+                <div wire:loading>
+                    <h4> Saving Brand....</h4> 
                 </div>
                 <div class="pb-5 pt-3">
                     <button type="submit" class="btn btn-primary">Create</button>

@@ -53,6 +53,9 @@
                         </div>
                     </div>							
                 </div>
+                <div wire:loading>
+                    <h4> Saving ProductColour...</h4> 
+                </div>
                 <div class="pb-5 pt-3">
                     <button type="submit" class="btn btn-primary">Create</button>
                     <a href="" class="btn btn-outline-dark ml-3">Cancel</a>
@@ -68,3 +71,15 @@
     </div>
 
 </div>
+
+@push('customJs')
+
+
+
+<script>
+    $(document).ready(function(){  
+    showToast('Data stored successfully!')
+    
+    })   
+    </script>
+@endpush

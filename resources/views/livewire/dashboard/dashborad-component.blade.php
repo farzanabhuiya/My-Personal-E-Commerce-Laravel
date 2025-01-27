@@ -67,6 +67,37 @@
 
         </div>
 
+        <div class="row">
+            <div class="col-md-7">
+                
+                <div id="container" style="width:100%; height:400px;"></div>
+
+
+            </div>
+
+
+            <div class="col-md-5">
+                <div id="pie_chart" style="width:100%; height:400px;"></div>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-7">
+                
+                <div id="culom_chart" style="width:100%; height:400px;"></div>
+
+
+            </div>
+
+
+            <div class="col-md-5">
+                <div id="pie_chart" style="width:100%; height:400px;"></div>
+
+            </div>
+        </div>
+
 
         
     </div>

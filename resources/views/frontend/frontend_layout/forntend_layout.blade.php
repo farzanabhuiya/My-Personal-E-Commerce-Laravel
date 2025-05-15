@@ -395,10 +395,10 @@
                 <div class=" col-sm-6 col-md-4 col-lg-2">
                     
                     <ul class="list-unstyled">
-                        <li><a href="{{route('frontend.contant.homepage')}}" class="text-white">Home</a></li>
-                        {{-- @foreach ($pages as $page )
+                        {{-- <li><a href="{{route('frontend.contant.homepage')}}" class="text-white">Home</a></li> --}}
+                        @foreach ($pages as $page )
                         <li><a href="{{route('frontend.contant.page',$page->slug)}}" title="" class="text-white">{{$page->name}}</a></li>
-                        @endforeach --}}
+                        @endforeach
                     </ul>
                 </div>
                 <div class=" col-sm-6  col-md-4 col-lg-2">

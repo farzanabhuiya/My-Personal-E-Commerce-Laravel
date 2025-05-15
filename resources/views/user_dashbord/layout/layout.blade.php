@@ -12,6 +12,7 @@
    {{-- @yield('title') --}}
    <title> @yield('title')</title>
 
+
   <!-- Custom fonts for this template-->
     <link href="{{asset('user_dashbord/asset/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css"> 
     {{-- <link href="{{asset('user_dashbord/asset/asset/userasset/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css"> --}}
@@ -427,7 +428,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     <script src="{{asset('user_dashbord/asset/vendor/jquery/jquery.min.js')}}"></script>
   
@@ -448,7 +449,7 @@
 
     <!-- Page level custom scripts -->
   
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
    
     
     
